@@ -12,11 +12,11 @@
     </head>
 
     <body>
-        <div class="web-wrapper">
+        <div class="main-content-container">
             <%@ include file="assets/nav.jsp" %>
-            <main class="main-container">
-                <h1>Sydney Car Rental</h1>
-                <h2>All your car hire needs in one convenient website</h2>
+            <main class="container">
+            <h1>Home page still under construction</h1>
+                    
             </main>
             <%@ include file="assets/footer.jsp" %>
         </div>
