@@ -1,3 +1,8 @@
 # ASD-Car-Rental
 
-s
+requires openJDK 21
+
+```
+➜  mvn package
+➜  mvn jetty:run
+```
