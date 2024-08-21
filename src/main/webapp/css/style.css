@@ -1,13 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: "Istok Web", sans-serif;
     letter-spacing: 0.7px;
+    text-decoration: none;
 }
 :root {
-    --primary: #006531;
-    --secondary: #009f77;
+    --primary: #ccba55;
+    --secondary: #4a2944;
     --border-colour: #d1d1d1;
     --background-colour: #FAF4EB;
     --font-colour: #858585;
@@ -173,3 +176,155 @@ footer {
     margin-top: 4rem;
     margin-bottom: 1rem;
   }
+
+
+  /* product card */
+.product-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.card {
+  position: relative;
+  width: 30rem;
+  height: 28rem;
+  background: #191919;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 4rem;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -70%;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  transform: skewY(180deg);
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  top: -70%;
+  transform: skewY(190deg);
+}
+
+
+.card .imgBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  z-index: 1;
+}
+
+.card .imgBox img {
+    max-width: 80%;
+    transition: .5s;
+}
+
+.card:hover .imgBox img {
+    max-width: 70%;
+      
+}
+
+.card .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.contentBox {
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card-content {
+  width: 25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.name-price .car-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.name-price {
+  margin-right: 5rem;
+}
+
+.card .contentBox h3 {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.card .contentBox .price {
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.name-price .car-details h2 span {
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.car-details h2 {
+  font-size: 24;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  margin-top: 5rem;
+  padding: 10px 30px;
+  margin-top: 15px;
+  color: #000000;
+  text-decoration: none;
+  background: var(--primary);
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+.card:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}
+
+.car {
+  height: 80%;
+  width: auto;
+}
