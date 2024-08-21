@@ -212,7 +212,6 @@ footer {
   transform: skewY(190deg);
 }
 
-
 .card .imgBox {
   position: relative;
   width: 100%;
@@ -328,3 +327,5 @@ footer {
   height: 80%;
   width: auto;
 }
+
+
