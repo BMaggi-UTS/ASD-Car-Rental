@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
-        <title>Reset Password</title>
+        <title>Settings</title>
     </head>
 
     <body>
@@ -23,7 +23,7 @@
                             <img class="form-icon" src="/assets/icons/user.png">
                         </div>
                         <button type="submit" class="form-submit">Reset Password</button>
-                        <a class="login-redirects" href="login.jsp">Return to login</a>
+                        <a class="login-redirects" href="login.jsp"><span class="inline-bold">Return to login</span></a>
                         <br>
                         <a class="login-redirects" href="register.jsp">Don't have an account? <span class="inline-bold">Register</span></a>
                     </form>

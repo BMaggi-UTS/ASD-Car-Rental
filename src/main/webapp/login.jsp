@@ -20,7 +20,7 @@
                         <h1 id="login-heading">Login</h1>
                         <div class="form-group">
                             <input class="register-input" type="text" id="email" name="email" placeholder="Email address" required>
-                            <img class="form-icon" src="/assets/icons/user.png">
+                            <img class="form-icon" src="/assets/icons/mail.png">
                         </div>
                         <div class="form-group">
                             <input class="register-input" type="password" id="password" name="password" placeholder="Password" required>

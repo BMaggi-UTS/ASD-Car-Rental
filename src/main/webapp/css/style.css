@@ -189,6 +189,7 @@ footer {
     text-align: center;
     padding: 35px 0 35px 0px;
     min-width: 380px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }
 
   .form-group {
@@ -259,4 +260,70 @@ footer {
   #password-reset-text {
     color: var(--font-colour);
     padding: 10px;
+  }
+
+  /* settings-page */
+
+  .settings-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    position: absolute;
+    left: 20px;
+    text-align: left;
+  }
+
+  #settings-heading {
+    padding: 10px 10px 10px 0px;
+  }
+
+  .setting-menu-item {
+    color: var(--primary);
+    padding: 5px 0px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .settings-main {
+    border: 2px solid var(--border-colour);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 20px;
+    position: relative;
+    min-width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+
+  .setting-line {
+    padding: 10px;
+  }
+
+  .setting-value {
+    display: inline;
+  }
+
+  .setting-label {
+    padding: 10px;
+    font-weight: 600;
+    display: inline;
+  }
+
+  .edit-line {
+    text-align: right;
+    padding: 10px 10px 0px 10px;
+  }
+
+  #edit-details-btn {
+    position: relative;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .setting-divider {
+    width: 100%;
+    margin: 5px 0px;
+    border: 1px solid var(--primary);
+    opacity: 0.5;
   }
