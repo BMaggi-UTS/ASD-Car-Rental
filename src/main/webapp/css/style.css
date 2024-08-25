@@ -82,6 +82,8 @@ nav {
     padding: 4rem 10rem;
     padding-bottom: 15rem;
     background-color: var(--background-colour);
+    width: 100vw;
+    height: 100vh;
 }
 h1 {
     color: var(--secondary);
@@ -172,4 +174,89 @@ footer {
     justify-content: center;
     margin-top: 4rem;
     margin-bottom: 1rem;
+  }
+
+  /* login/register */
+  .login-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    background-color: none;
+    border: 2px solid var(--border-colour);
+    border-radius: 20px;
+    text-align: center;
+    padding: 35px 0 35px 0px;
+    min-width: 380px;
+  }
+
+  .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px;
+    width: 90%;
+  }
+
+  .register-input {
+    background-color: transparent;
+    padding: 15px 35px 15px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    border-width: 2px;
+    border-color: var(--border-colour);
+    border-style: solid;
+    color: black;
+    text-align: left;
+    width: 100%;
+  }
+
+  ::placeholder {
+    color: var(--font-colour);
+    opacity: 0.5; /* Firefox */
+  }
+  
+  ::-ms-input-placeholder { /* Edge 12 -18 */
+    color: var(--font-colour);
+    opacity: 0.5;
+  }
+
+  #login-heading {
+    color: var(--primary);
+    padding: 10px;
+  }
+
+  .form-submit {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    width: 60%;
+    font-size: 18px;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 20px;
+  }
+
+  .form-icon {
+    height: 18px;
+    width: 18px;
+    position: relative;
+    right: 35px;
+  }
+
+  .inline-bold {
+    font-weight: 600;
+  }
+
+  .login-redirects {
+    color: var(--font-colour);
+  }
+
+  #password-reset-text {
+    color: var(--font-colour);
+    padding: 10px;
   }
