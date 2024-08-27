@@ -327,3 +327,37 @@ footer {
     border: 1px solid var(--primary);
     opacity: 0.5;
   }
+
+  .modal-overlay {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modal-content {
+    background-color: var(--background-colour);
+    margin: auto; 
+    padding: 20px;
+    border: 1px solid var(--border-colour);
+    width: 40%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+  }
+
+  .edit-details-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-colour);
+  }

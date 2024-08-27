@@ -24,6 +24,37 @@
                     <a class="setting-menu-item" href="signout">Sign out</a>
                 </div>
 
+                <div class="modal-overlay">
+                    <div class="modal-content">
+                        <p id="close-btn">X</p>
+                        <form class="edit-details-form" action="register", method="post">
+                            <h1 id="login-heading">Edit Details</h1>
+                            <div class="form-group">
+                                <input class="register-input" type="text" id="fname" name="fname" placeholder="First name" required>
+                                <img class="form-icon" src="/assets/icons/user.png">
+                            </div>
+                            <div class="form-group">
+                                <input class="register-input" type="text" id="surname" name="surname" placeholder="Surname" required>
+                                <img class="form-icon" src="/assets/icons/user.png">
+                            </div>
+                            <div class="form-group">
+                                <input class="register-input" type="text" id="email" name="email" placeholder="Email address" required>
+                                <img class="form-icon" src="/assets/icons/mail.png">
+                            </div>
+                            <div class="form-group">
+                                <input class="register-input" type="password" id="password" name="password" placeholder="Password" required>
+                                <img class="form-icon" src="/assets/icons/padlock.png">
+                            </div>
+                            <div class="form-group">
+                                <input class="register-input" type="password" id="password" name="password" placeholder="Confirm Password" required>
+                                <img class="form-icon" src="/assets/icons/padlock.png">
+                            </div>
+                            <button type="submit" class="form-submit">Save</button>
+                        </form>
+                    </div>
+
+                </div>
+
                 <h1>Your Account</h1>
                 <div class="settings-main">
                     <div class="edit-line">
