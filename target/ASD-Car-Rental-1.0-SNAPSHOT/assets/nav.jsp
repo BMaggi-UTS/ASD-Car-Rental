@@ -2,19 +2,11 @@
   <div class="container navbar">
     <a href="/index.jsp"><img src="/assets/logo.png" alt="logo" class="logo"/></a>
     <div class="search-div">
-      <input type="text" placeholder="Search millions of things . . ." />
-      <img
-        src="/assets/search-icon.png"
-        alt="search icon"
-        class="search-icon"
-      />
+      <input type="text" placeholder="Search for your next rental . . ." />
+      <%-- <i class="fa-solid fa-magnifying-glass search-icon fa-2xl"></i> --%>
     </div>
     <div class="cart-div">
-      Cart
-      <img src="/assets/cart-icon.png" alt="cart icon" class="cart-icon" />
-    </div>
-    <div class="user-div">
-      <a href="/dashboard.jsp"><img src="/assets/user-icon.png" alt="user icon" class="user-icon" /></a>
+      <%-- <i class="fa-solid fa-car fa-2xl"></i> --%>
     </div>
   </div>
 </nav>
