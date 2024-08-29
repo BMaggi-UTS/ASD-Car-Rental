@@ -1,0 +1,42 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="controller.*"%>
+<%@page import="model.*"%>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/orderStyle.css">
+        <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
+        <title>Order Management</title>
+    </head>
+
+    <body>
+        <div class="web-wrapper">
+            <%@ include file="assets/nav.jsp" %> 
+            <main class="main-container">
+                <h1>Checkout</h1>
+                
+                <div class="test">
+                    <h3>[Owner of rental's name here]</h3>
+                    <h4>[Car model here] </h4> 
+                    <h5>[Owner/car star rating here]</h5>
+                    <p>[Dates/time booked]</p>
+                    <p>[Address]</p>
+
+                    <br>
+
+                    <p>Pricing with total price underneath</p>
+                    <p>[Address] not here</p>
+
+                    <div class="test">
+                        <p> I hope this works.kkjfskfd</p>
+                    </div>
+                </div>
+            </main>
+            
+            <%@ include file="assets/footer.jsp" %> 
+        </div>
+    </body>
+</html>
