@@ -21,4 +21,4 @@
             <%@ include file="assets/footer.jsp" %>
         </div>
     </body>
-</html>
+</html>a
