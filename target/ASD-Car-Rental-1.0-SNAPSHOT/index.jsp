@@ -36,7 +36,7 @@
                                         <h2> Fuel Efficient </h2>
                                     </div>
                                 </div>
-                                <a href="#" class="buy">Buy Now</a>
+                                <a href="#" class="buy">Book Now</a>
                             </div>
                         </div>
                         </a>
@@ -57,7 +57,7 @@
                                         <h2> Fuel Efficient </h2>
                                     </div>
                                 </div>
-                                <a href="#" class="buy">Buy Now</a>
+                                <a href="#" class="buy">Book Now</a>
                             </div>
                         </div>
                     </div>    

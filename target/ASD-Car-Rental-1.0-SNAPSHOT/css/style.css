@@ -9,8 +9,8 @@
     text-decoration: none;
 }
 :root {
-    --primary: #ccba55;
-    --secondary: #4a2944;
+    --primary: #55c8cc;
+    --secondary: #02bb2a;
     --border-colour: #d1d1d1;
     --background-colour: #FAF4EB;
     --font-colour: #858585;
@@ -87,7 +87,6 @@ nav {
     background-color: var(--background-colour);
 }
 h1 {
-    color: var(--secondary);
     text-align: center;
     font-size: xx-large;
     padding-bottom: 2rem;
