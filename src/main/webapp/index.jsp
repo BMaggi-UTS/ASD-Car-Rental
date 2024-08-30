@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
+<%@page import="java.sql.*"%> 
+<%@page import="java.model.dao.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +11,13 @@
         <link rel="stylesheet" href="css/style.css">
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
         <title>Car Rental</title>
+        <% //initiate a connection using DBConnector (connect to the db)
+            DBConnector conn = new DBConnector(); %>
+            <% //open a connection
+            Connection con = conn.openConnection(); %>
+            <% //use the connection to create a productDAO controller
+            ProductDAO productDAO = new ProductDAO(con); %>
+        
     </head>
 
     <body>
@@ -21,4 +30,4 @@
             <%@ include file="assets/footer.jsp" %>
         </div>
     </body>
-</html>a
+</html>
