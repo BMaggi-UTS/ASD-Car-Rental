@@ -2,7 +2,9 @@
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
 <%@page import="java.sql.*"%> 
-<%@page import="java.model.dao.*"%>
+<%@page import="model.dao.CarDAO"%>
+<%@page import="model.dao.DBConnector"%>
+<%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +18,7 @@
             <% //open a connection
             Connection con = conn.openConnection(); %>
             <% //use the connection to create a productDAO controller
-            ProductDAO productDAO = new ProductDAO(con); %>
+            CarDAO carDAO = new CarDAO(con); %>
         
     </head>
 
@@ -26,6 +28,10 @@
             <main class="main-container">
                 <h1>Sydney Car Rental</h1>
                 <h2>All your car hire needs in one convenient website</h2>
+                <% ArrayList<Car> cars = carDAO.fetchCars(); %>
+                <% for(Car car : cars) { %>
+                    <%= car.getCarMake() %>
+                <% } %>
             </main>
             <%@ include file="assets/footer.jsp" %>
         </div>
