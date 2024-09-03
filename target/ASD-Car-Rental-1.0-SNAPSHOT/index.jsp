@@ -31,8 +31,7 @@
                     <div class="product-wrapper">
                     <% ArrayList<Car> cars = carDAO.fetchCars(); %>
                     <% for(Car car : cars) { %>
-                        
-                     <a href="/car.jsp">
+                     <a href="/car.jsp?id=<%= car.getCarID() %>">
                         <div class="card">
                             <div class="imgBox">
                                 <img src="<%= car.getCarImage() %>" alt="<%= car.getCarMake() %>" class="car">

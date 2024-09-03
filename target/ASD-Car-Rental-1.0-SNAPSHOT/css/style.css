@@ -184,11 +184,12 @@ footer {
   justify-content: center;
   align-items: center;
   padding-top: 5rem;
+  flex-wrap: wrap;
 }
 
 .card {
   position: relative;
-  width: 30rem;
+  width: 25rem;
   height: 28rem;
   background: #191919;
   border-radius: 20px;

@@ -1,6 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
+<%@page import="java.sql.*"%> 
+<%@page import="model.dao.CarDAO"%>
+<%@page import="model.dao.DBConnector"%>
+<%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html>
@@ -10,6 +14,17 @@
         <link rel="stylesheet" href="css/product.css">
         <%-- <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script> --%>
         <title>Car Rental</title>
+        <%
+            //initiate a connection using DBConnector (connect to the db)
+            DBConnector conn = new DBConnector();
+            //open a connection
+            Connection con = conn.openConnection();
+            //use the connection to create a productDAO controller
+            CarDAO carDAO = new CarDAO(con);
+            String carIdString = request.getParameter("id"); 
+            Integer carID = Integer.parseInt(carIdString);
+            Car car = carDAO.selectSpecificCar(carID);
+        %>
     </head>
 
     <body>
@@ -18,10 +33,10 @@
             <main class="main-container">
                 <div class="pic-content-wrapper">
                     <div class="car-pic">
-                        <img src="assets/imgs/mg3.webp">
+                        <img src="<%= car.getCarImage() %>">
                     </div>
                     <div class="detail-content">
-                        <h1>All new MG3<h1>
+                        <h1><%= car.getCarModel() + " " + car.getCarTrim() %><h1>
                         <h2>MG</h2>
                         <table>
                             <tr>
