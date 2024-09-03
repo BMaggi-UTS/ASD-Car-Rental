@@ -10,7 +10,8 @@
 }
 :root {
     --primary: #55c8cc;
-    --secondary: #02bb2a;
+    /* --secondary: #02bb2a; */
+    --secondary: #ffffff;
     --border-colour: #d1d1d1;
     --background-colour: #FAF4EB;
     --font-colour: #858585;
