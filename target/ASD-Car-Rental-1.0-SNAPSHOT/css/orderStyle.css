@@ -5,8 +5,13 @@
   } 
 
   .test{
-    color:rgb(211, 20, 20);
+    color: black;
     text-align: center; 
+    border: 2px solid black;
   }
+
+  
+
+  
 
   

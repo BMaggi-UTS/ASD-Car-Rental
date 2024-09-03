@@ -28,11 +28,11 @@
                     <br>
 
                     <p>Pricing with total price underneath</p>
-                    <p>[Address]</p>
+                    <p>[Address] not here</p>
 
-                    <div class="test">
-                        <p> I hope this works.</p>
-                    </div>
+                    
+                    <p> I hope this works.kkjfskfd</p>
+                
                 </div>
             </main>
             
