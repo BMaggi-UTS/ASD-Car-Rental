@@ -5,7 +5,7 @@ import java.sql.Connection;
 public abstract class DB {   
 
 protected String URL = "jdbc:mysql://localhost:3306/";//replace this string with your jdbc:derby local host url   
-protected String db = "CarRental-ASD";//name of the database   
+protected String db = "CarRental";//name of the database   
 protected String dbuser = "root";//db root user   
 protected String dbpass = "password"; //db root password   
 protected String driver = "com.mysql.cj.jdbc.Driver"; //jdbc client driver
