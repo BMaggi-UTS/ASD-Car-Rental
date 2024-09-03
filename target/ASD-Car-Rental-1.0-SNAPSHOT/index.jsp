@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        <%-- <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script> --%>
+        <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
         <title>Car Rental</title>
         <% //initiate a connection using DBConnector (connect to the db)
             DBConnector conn = new DBConnector(); %>
@@ -24,62 +24,44 @@
 
     <body>
         <div class="web-wrapper">
-        <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
                 <h1>Sydney Car Rental</h1>
                 <h2>All your car hire needs in one convenient website</h2>
                     <div class="product-wrapper">
+                    <% ArrayList<Car> cars = carDAO.fetchCars(); %>
+                    <% for(Car car : cars) { %>
+                        
                      <a href="/car.jsp">
                         <div class="card">
                             <div class="imgBox">
-                                <img src="assets/imgs/mg3.webp" alt="mg3" class="car">
+                                <img src="<%= car.getCarImage() %>" alt="<%= car.getCarMake() %>" class="car">
                             </div>
                             <div class="contentBox">
                                 <div class="card-content">
                                     <div class="name-price">
-                                        <h3>All new MG3</h3>
-                                        <h2 class="price">$182 <span>/ a day</span></h2>
-                                        <h2 class="price">Unlimited kms</h2>
+                                        <h3><%= car.getCarMake() + " " + car.getCarModel() %></h3>
+                                        <h2 class="price">$<%= car.getCarPriceKM() %> <span>/ a KM</span></h2>
+                                        <h2 class="price"><%= car.getCarQuip() %></h2>
                                     </div>
                                     <div class="car-details">
-                                        <h2> 5 seats <h2>
-                                        <h2> Hybrid </h2>
-                                        <h2> Fuel Efficient </h2>
+                                        <h2> <%= car.getCarSeats() %> seats <h2>
+                                        <h2> <% if(car.getCarFuel().equals("P")) { %>
+                                            <%= "Petrol" %>
+                                        <% } else if(car.getCarFuel().equals("D")) { %>
+                                            <%= "Diesel" %> </h2>
+                                        <% } else if(car.getCarFuel().equals("H")) { %>
+                                            <%= "Hybrid" %> </h2>
+                                        <% } %>
+                                        <h2> <%= car.getCarBodyStyle() %></h2>
                                     </div>
                                 </div>
                                 <a href="#" class="buy">Book Now</a>
                             </div>
                         </div>
                         </a>
-                        <div class="card">
-                            <div class="imgBox">
-                                <img src="assets/imgs/mg3.webp" alt="mg3" class="car">
-                            </div>
-                            <div class="contentBox">
-                                <div class="card-content">
-                                    <div class="name-price">
-                                        <h3>All new MG3</h3>
-                                        <h2 class="price">$182 <span>/ a day</span></h2>
-                                        <h2 class="price">Unlimited kms</h2>
-                                    </div>
-                                    <div class="car-details">
-                                        <h2> 5 seats <h2>
-                                        <h2> Hybrid </h2>
-                                        <h2> Fuel Efficient </h2>
-                                    </div>
-                                </div>
-                                <a href="#" class="buy">Book Now</a>
-                            </div>
-                        </div>
+                    <% } %>
                     </div>    
-            <main class="main-container">
-                <h1>Sydney Car Rental</h1>
-                <h2>All your car hire needs in one convenient website</h2>
-                <% ArrayList<Car> cars = carDAO.fetchCars(); %>
-                <% for(Car car : cars) { %>
-                    <%= car.getCarMake() %>
-                <% } %>
             </main>
             <%@ include file="assets/footer.jsp" %>
         </div>

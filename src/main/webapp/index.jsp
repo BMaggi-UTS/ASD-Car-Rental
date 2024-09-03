@@ -28,10 +28,40 @@
             <main class="main-container">
                 <h1>Sydney Car Rental</h1>
                 <h2>All your car hire needs in one convenient website</h2>
-                <% ArrayList<Car> cars = carDAO.fetchCars(); %>
-                <% for(Car car : cars) { %>
-                    <%= car.getCarMake() %>
-                <% } %>
+                    <div class="product-wrapper">
+                    <% ArrayList<Car> cars = carDAO.fetchCars(); %>
+                    <% for(Car car : cars) { %>
+                        
+                     <a href="/car.jsp">
+                        <div class="card">
+                            <div class="imgBox">
+                                <img src="<%= car.getCarImage() %>" alt="<%= car.getCarMake() %>" class="car">
+                            </div>
+                            <div class="contentBox">
+                                <div class="card-content">
+                                    <div class="name-price">
+                                        <h3><%= car.getCarMake() + " " + car.getCarModel() %></h3>
+                                        <h2 class="price">$<%= car.getCarPriceKM() %> <span>/ a KM</span></h2>
+                                        <h2 class="price"><%= car.getCarQuip() %></h2>
+                                    </div>
+                                    <div class="car-details">
+                                        <h2> <%= car.getCarSeats() %> seats <h2>
+                                        <h2> <% if(car.getCarFuel().equals("P")) { %>
+                                            <%= "Petrol" %>
+                                        <% } else if(car.getCarFuel().equals("D")) { %>
+                                            <%= "Diesel" %> </h2>
+                                        <% } else if(car.getCarFuel().equals("H")) { %>
+                                            <%= "Hybrid" %> </h2>
+                                        <% } %>
+                                        <h2> <%= car.getCarBodyStyle() %></h2>
+                                    </div>
+                                </div>
+                                <a href="#" class="buy">Book Now</a>
+                            </div>
+                        </div>
+                        </a>
+                    <% } %>
+                    </div>    
             </main>
             <%@ include file="assets/footer.jsp" %>
         </div>
