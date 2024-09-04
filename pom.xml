@@ -65,6 +65,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>11.0.23</version>
                 <configuration>
+                    <scan>1</scan>
                     <httpConnector>
                         <port>8080</port>
                     </httpConnector>

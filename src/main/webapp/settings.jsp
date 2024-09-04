@@ -62,15 +62,15 @@
                     </div>
                     <div class="setting-line">
                         <p class="setting-label">First Name:</p>
-                        <p class="setting-value">$UsrFName$</p>
+                        <p class="setting-value">Michael</p>
                     </div>
                     <div class="setting-line">
                         <p class="setting-label">Surame:</p>
-                        <p class="setting-value">$UsrSurname$</p>
+                        <p class="setting-value">Lunn</p>
                     </div>
                     <div class="setting-line">
                         <p class="setting-label">Email:</p>
-                        <p class="setting-value">$UsrEmail$</p>
+                        <p class="setting-value">m.lunn54@gmail.com</p>
                     </div>
                     <div class="setting-line">
                         <p class="setting-label">Password:</p>
