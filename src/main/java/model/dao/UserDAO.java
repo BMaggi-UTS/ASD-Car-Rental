@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
+import model.*;
 
 
-import model.Car;
 
 public class UserDAO {
     private Connection con;
@@ -15,55 +17,139 @@ public class UserDAO {
 	public UserDAO(Connection connection) throws SQLException {
 		this.con = connection;
 	}
-	
-	//Car fetch
-	public ArrayList<Car> fetchCars() throws SQLException {
-		ResultSet rs = carFetchReadSt.executeQuery();
-		ArrayList<Car> cars = new ArrayList<Car>();
-		while (rs.next()) {
-			int carID = rs.getInt(1);
-			String carMake = rs.getString(2);
-			String carModel = rs.getString(3);
-			String carTrim  = rs.getString(4);
-			int carOdometer  = rs.getInt(5);
-			String carImage = rs.getString(6);
-			String carTransmission = rs.getString(7);
-			String carFuel = rs.getString(8);
-			int carSeats = rs.getInt(9);
-			String carBodyStyle = rs.getString(10);
-			String carQuip = rs.getString(11);
-			int carPurchasePrice = rs.getInt(12);
-			int carCurrentPrice = rs.getInt(13);
-			int carPriceKM = rs.getInt(14);
-			String carLocation = rs.getString(15);
-			int carRating =rs.getInt(15);
-			 
-			
-			//setting every product value to match the data base
-			//all of these objects being created can be accessed through the array "products"
-			Car c = new Car();
-			c.setCarID(carID);
-			c.setCarMake(carMake);
-			c.setCarModel(carModel);
-			c.setCarTrim(carTrim);
-			c.setCarOdometer(carOdometer);
-			c.setCarImage(carImage);
-			c.setCarTransmission(carTransmission);
-			c.setCarFuel(carFuel);
-			c.setCarSeats(carSeats);
-            c.setCarBodyStyle(carBodyStyle);
-            c.setCarQuip(carQuip);
-			c.setCarPurchasePrice(carPurchasePrice);
-			c.setCarCurrentPrice(carCurrentPrice);
-			c.setCarPriceKM(carPriceKM);
-			c.setCarLocation(carLocation);
-			c.setCarRating(carRating);
 
-			// System.out.println(p.getProductName());
-			//adding the just set up product (p) to the list products.
-			cars.add(c);
-		}
-		return cars;
+	public boolean checkUserExists(String email) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM Users WHERE User_Email = ?");
+		ps.setString(1, email);
+		ResultSet rs = ps.executeQuery();
+		return rs.next();
 	}
 
+	public boolean checkLoginDetailsAreCorrect(String email, String password) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM Users WHERE User_email = ? AND User_Password = ?");
+		ps.setString(1, email);
+		ps.setString(2, DigestUtils.sha256Hex(password));
+		ResultSet rs = ps.executeQuery();
+		return rs.next();
+	}
+
+	public User createInstanceOfUser(String email, String password) throws SQLException {
+
+		String hashedPassword = DigestUtils.sha256Hex(password);
+
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM Users WHERE User_email = ? AND User_Password = ?");
+		ps.setString(1, email);
+		ps.setString(2, hashedPassword);
+		ResultSet rs = ps.executeQuery();
+
+		// user found
+		if(rs.next()) {
+			int id = rs.getInt("User_Email");
+			String firstName = rs.getString("User_FName");
+			String lastName = rs.getString("User_LName");
+			String preferredName = rs.getString("User_PrefName");
+			String phone = rs.getString("User_Phone");
+			String dateOfBirth = rs.getString("User_DOB");
+
+			return new User(id, firstName, lastName, preferredName, email, phone, hashedPassword, dateOfBirth);
+		}
+
+		// no user found
+		return null;
+	}
+
+	public Customer createInstanceOfCustomer (String email, String password) throws SQLException {
+
+		String hashedPassword = DigestUtils.sha256Hex(password);
+
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM Users WHERE User_email = ? AND User_Password = ?");
+		ps.setString(1, email);
+		ps.setString(2, hashedPassword);
+		ResultSet rs = ps.executeQuery();
+
+		// customer found
+		if(rs.next()) {
+			int id = rs.getInt("User_Email");
+			String firstName = rs.getString("User_FName");
+			String lastName = rs.getString("User_LName");
+			String preferredName = rs.getString("User_PrefName");
+			String phone = rs.getString("User_Phone");
+			String dateOfBirth = rs.getString("User_DOB");
+
+			return new Customer(id, firstName, lastName, preferredName, email, phone, hashedPassword, dateOfBirth);
+		}
+
+		// no customer found
+		return null;
+	}
+
+	public Staff createInstanceOfStaff (String email, String password) throws SQLException {
+
+		String hashedPassword = DigestUtils.sha256Hex(password);
+
+		PreparedStatement ps = con.prepareStatement("SELECT Users.User_ID, User_FName, User_LName, User_PrefName, User_Email, User_Password, User_DOB, Roles.Role_ID, Role_Name, Role_Description FROM Users\n" +
+						"INNER JOIN User_Roles\n" +
+						"ON Users.user_id = User_Roles.User_ID\n" +
+						"INNER JOIN Roles\n" +
+						"ON User_Roles.Role_ID = Roles.Role_ID\n" + 
+						"WHERE User_Email = ? AND User_Password = ?");
+		ps.setString(1, email);
+		ps.setString(2, hashedPassword);
+		ResultSet rs = ps.executeQuery();
+
+		// Staff found
+		if(rs.next()) {
+			int id = rs.getInt("User_Email");
+			String firstName = rs.getString("User_FName");
+			String lastName = rs.getString("User_LName");
+			String preferredName = rs.getString("User_PrefName");
+			String phone = rs.getString("User_Phone");
+			String dateOfBirth = rs.getString("User_DOB");
+			String roleName = rs.getString("Role_Name");
+			String roleDescription = rs.getString("Role_Description");
+
+			return new Staff(id, firstName, lastName, preferredName, email, phone, hashedPassword, dateOfBirth, roleName, roleDescription);
+		}
+
+		// no staff found
+		return null;
+	}
+
+	public Staff createInstanceOfAdmin (String email, String password) throws SQLException {
+
+		String hashedPassword = DigestUtils.sha256Hex(password);
+
+		PreparedStatement ps = con.prepareStatement("SELECT Users.User_ID, User_FName, User_LName, User_PrefName, User_Email, User_Password, User_DOB, Roles.Role_ID, Role_Name, Role_Description FROM Users\n" +
+						"INNER JOIN User_Roles\n" +
+						"ON Users.user_id = User_Roles.User_ID\n" +
+						"INNER JOIN Roles\n" +
+						"ON User_Roles.Role_ID = Roles.Role_ID\n" + 
+						"WHERE User_Email = ? AND User_Password = ?");
+		ps.setString(1, email);
+		ps.setString(2, hashedPassword);
+		ResultSet rs = ps.executeQuery();
+
+		// Admin found
+		if(rs.next()) {
+			int id = rs.getInt("User_Email");
+			String firstName = rs.getString("User_FName");
+			String lastName = rs.getString("User_LName");
+			String preferredName = rs.getString("User_PrefName");
+			String phone = rs.getString("User_Phone");
+			String dateOfBirth = rs.getString("User_DOB");
+			String roleName = rs.getString("Role_Name");
+			String roleDescription = rs.getString("Role_Description");
+
+			return new Admin(id, firstName, lastName, preferredName, email, phone, hashedPassword, dateOfBirth, roleName, roleDescription);
+		}
+
+		// no Admin found
+		return null;
+	}
+
+	public void registerNewUser() {
+
+	}
 }

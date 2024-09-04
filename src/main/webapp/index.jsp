@@ -2,7 +2,7 @@
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
 <%@page import="java.sql.*"%> 
-<%@page import="model.dao.CarDAO"%>
+<%@page import="model.dao.*"%>
 <%@page import="model.dao.DBConnector"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -18,7 +18,9 @@
             <% //open a connection
             Connection con = conn.openConnection(); %>
             <% //use the connection to create a productDAO controller
-            CarDAO carDAO = new CarDAO(con); %>
+            CarDAO carDAO = new CarDAO(con);
+            UserDAO userDAO = new UserDAO(con);
+            %>
         
     </head>
 
