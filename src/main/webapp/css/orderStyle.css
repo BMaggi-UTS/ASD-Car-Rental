@@ -16,7 +16,7 @@ hr {
 
 /* Unlocked Boxes */
 .order-summary, .driver-info {
-  position: relative; /* Position relative to position the trash button */
+  position: relative; 
   width: 60%;
   margin: 0 auto;
   border: 1px solid #ccc;
@@ -79,8 +79,6 @@ hr {
 .btn-submit:hover {
   background-color: var(--secondary);
 }
-
-/* Personal Details */
 
 
 /* Styling for date field */
@@ -164,29 +162,29 @@ hr {
 
 .locked-section h2 img {
   vertical-align: middle;
-  max-width: 8%; /* Adjust size as needed */
+  max-width: 8%; 
   height: auto;
 }
 
 
 /* Trash Button */
 .trash-button {
-  position: absolute; /* Position it relative to the parent container */
-  bottom: 20px; /* Adjust as needed */
-  right: 20px; /* Adjust as needed */
+  position: absolute; 
+  bottom: 20px; 
+  right: 20px; 
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 20px; /* Adjust size as needed */
-  color: var(--primary); /* Use your primary color */
+  font-size: 20px; 
+  color: var(--primary); 
 }
 
 .trash-button:hover {
-  color: var(--secondary); /* Change color on hover */
+  color: var(--secondary); 
 }
 
 .trash-button i {
-  margin: 0; /* Remove default margin if needed */
+  margin: 0; 
 }
 
 

@@ -28,13 +28,10 @@
             <main class="main-container">
                 <h1>Sydney Car Rental</h1>
                 <h2>All your car hire needs in one convenient website</h2>
-<<<<<<< HEAD
-=======
                 <% ArrayList<Car> cars = carDAO.fetchCars(); %>
                 <% for(Car car : cars) { %>
                     <%= car.getCarMake() %>
                 <% } %>
->>>>>>> feed96da6aff17a55c0f71eb2a59eaa601f72370
             </main>
             <%@ include file="assets/footer.jsp" %>
         </div>
