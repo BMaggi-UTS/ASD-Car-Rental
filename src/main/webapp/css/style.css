@@ -285,7 +285,7 @@ footer {
     font-weight: 600;
   }
 
-  .settings-main {
+  .settings-section {
     border: 2px solid var(--border-colour);
     width: 80%;
     margin-left: 10%;
@@ -296,7 +296,12 @@ footer {
   }
 
   .setting-line {
-    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    margin-left: 1%;
   }
 
   .setting-value {
@@ -310,15 +315,25 @@ footer {
   }
 
   .edit-line {
-    text-align: right;
     padding: 10px 10px 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-right: 1%;
   }
 
   #edit-details-btn {
+    right: 0;
     position: relative;
     color: var(--primary);
+    font-size: 16px;
     text-decoration: none;
     font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   .setting-divider {
@@ -328,10 +343,10 @@ footer {
     opacity: 0.5;
   }
 
-  .modal-overlay {
-    display: block;
+  #modal-overlay {
     position: fixed;
     z-index: 1;
+    opacity: 0;
     left: 0;
     top: 0;
     width: 100%;
@@ -339,9 +354,16 @@ footer {
     overflow: auto;
     background-color: rgba(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
   }
 
-  .modal-content {
+  #modal-overlay.active {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  .modal {
     background-color: var(--background-colour);
     margin: auto; 
     padding: 20px;
@@ -351,13 +373,59 @@ footer {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
     border-radius: 20px;
+    z-index: 2;
+  }
+
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
   }
 
   .edit-details-form {
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: var(--background-colour);
+  }
+
+  .close-btn {
+    position: absolute;
+    right: 5%;
+    background: none;
+    border: none;
+    z-index: 2;
+    height: 5%;
+    width: 5%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  .setting-section-heading {
+    color: var(--secondary);
+    top: 0;
+    position: relative;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color:#ff9ace;
+    filter: invert(1);
+    border-radius: 5px;
+    padding: 3px;
+    color: white;
+    cursor: pointer;
+    margin: 0;
+    right: 15px;
+    position: absolute;
+
+  }
+
+#dob {
+    width: 100%;
+    position: relative;
   }

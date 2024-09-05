@@ -31,8 +31,21 @@
                             <img class="form-icon" src="/assets/icons/mail.png">
                         </div>
                         <div class="form-group">
+                            <input class="register-input" type="text" id="phone" name="phone" placeholder="Mobile number" required>
+                            <img class="form-icon" src="/assets/icons/phone.png">
+                        </div>
+                        <div class="form-group">
                             <input class="register-input" type="password" id="password" name="password" placeholder="Password" required>
                             <img class="form-icon" src="/assets/icons/padlock.png">
+                        </div>
+                        <div class="form-group">
+                            <input class="register-input" type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" required>
+                            <img class="form-icon" src="/assets/icons/padlock.png">
+                        </div>
+                        <br>
+                        <p>Please enter your Date of Birth:</p>
+                        <div class="form-group">
+                            <input class="register-input" type="date" id="dob" name="dob" required>
                         </div>
                         <button type="submit" class="form-submit">Register</button>
                         <a class="login-redirects" href="login.jsp">Already have an account? <span class="inline-bold">Login</span></a>
