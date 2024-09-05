@@ -198,7 +198,6 @@ footer {
   background-position: center;
   align-items: center;
 }
-
 .location-availability-wrapper h1 {
   color: white;
   font-size: 7rem;
@@ -207,7 +206,6 @@ footer {
   margin-bottom: 3rem;
   padding: 1rem;
 }
-
 .location-selector {
   background-color: #efefef;
   height: 10rem;
@@ -215,18 +213,15 @@ footer {
   display: flex;
   width: 70rem;
 }
-
 .location-selector-wrapper {
   display: flex;
   width: 40rem;
 }
-
 .pickme {
   display: flex;
   flex-direction: column;
 
 }
-
 .pickme button {
   display: none;
   background-color: #f9f9f9;
@@ -236,18 +231,15 @@ footer {
   z-index: 3;
   height: 3rem;
 }
-
 .pickup {
   z-index: 2;
 }
-
 .selector {
   width: 18rem;
     height: 3.5rem;
   border-style: none;
   padding: 2rem;
 }
-
 .selector-wrapper {
   display: flex;
   flex-direction: column;
@@ -259,7 +251,6 @@ footer {
   justify-content: center;
   width: 15rem;
 }
-
 .not-selected {
   padding: 0.5rem 1.5rem;
   background-color: white;
@@ -280,18 +271,15 @@ footer {
   width: 10rem;
   height: 8rem;
 }
-
 .km-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   
 }
-
 .km-wrapper p {
   text-align: center;
 }
-
 .km-wrapper input {
   height: 2rem;
   border-style: none;
@@ -299,7 +287,6 @@ footer {
   padding-left: 0.8rem;
   width: 10rem;
 }
-
 .availability-selector {
   background-color: #e2e2e2;
   height: 10rem;
@@ -307,7 +294,6 @@ footer {
   display: flex;
   width: 70rem;
 }
-
 .date-wrapper {
   width: 40rem;
   display: flex;
@@ -315,7 +301,6 @@ footer {
   align-items: center;
   
 }
-
 .date-wrapper input {
   width: 18rem;
   height: 3.5rem;
@@ -342,6 +327,87 @@ footer {
 .submit-search input:active {
   background-color: #2e7072;
 }
+/* filter bar */
+.filter-bar-wrapper {
+  background-color: white;
+  width: 70rem;
+  height: 5rem;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.filter-bar-wrapper-div {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  width: 41rem;
+}
+.filter-icon-border {
+  border-style: solid;
+  border-top: #fff;
+  border-bottom: #fff;
+  border-right: #fff;
+}
+
+.filter-bar-wrapper-div:hover {
+  background-color: #e9e9e9;
+}
+.filter-bar-wrapper-div:active {
+  background-color: #cccccc;
+}
+
+
+
+.fa-sort {
+  font-size: 1rem;
+}
+.fa-filter {
+  font-size: 1rem;
+}
+
+
+.filter-bar-search {
+  width: 55rem;
+  height: 5rem;
+  border-style: none;
+  padding: 1.2rem;
+  padding-left: 2rem;
+  font-size: 1.2rem;
+}
+
+.filter-bar-search:focus {
+  outline: none;
+}
+
+/*  */
+.filter-bar-search-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.filter-bar-search-wrapper-i {
+  padding: 2rem;
+  border-style: solid;
+  border-top: #fff;
+  border-left: #fff;
+  border-bottom: #fff;
+}
+
+.filter-bar-search-wrapper-i:hover {
+  background-color: #e9e9e9;
+}
+
+.filter-bar-search-wrapper-i:active{
+  background-color: #cccccc;
+}
+
+
+
+
 
   /* product card */
 .product-wrapper {
@@ -349,15 +415,17 @@ footer {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  background-color: white;
+  border-style: solid;
+  border-right: #fff;
+  border-left: #fff;
+  border-bottom: #fff;
 }
 
 .card {
-  position: relative;
-  width: 30rem;
-  background: #FFF;
-  border-radius: 0;
-  overflow: hidden;
-  margin: 4rem;
+  background: #fff;
+  margin: 1rem 2.5rem;
+  box-shadow: 0rem 0rem 5px 0px;
 }
 
 .card .imgBox {

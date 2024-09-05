@@ -33,19 +33,25 @@
             <main class="main-container">
                 <div class="pic-content-wrapper">
                     <div class="car-pic">
-                        <img src="assets/imgs/mg3.webp">
+                        <img src="<%= car.getCarImage() %>">
                     </div>
                     <div class="detail-content">
-                        <h1>All new MG3<h1>
-                        <h2>MG</h2>
+                        <h1><%= car.getCarModel() + " " + car.getCarTrim() %><h1>
+                        <h2><%= car.getCarMake() %></h2>
                         <table>
                             <tr>
                                 <td>icon</td>
-                                <td>5 Seats</td>
+                                <td><%= car.getCarSeats() %> Seats</td>
                             </tr>
                             <tr>
                                 <td>icon</td>
-                                <td>Hybrid Drivetrain</td>
+                                <td><% if(car.getCarFuel().equals("P")) { %>
+                                            <%= "Petrol" %>
+                                        <% } else if(car.getCarFuel().equals("D")) { %>
+                                            <%= "Diesel" %> </h2>
+                                        <% } else if(car.getCarFuel().equals("H")) { %>
+                                            <%= "Hybrid" %> </h2>
+                                        <% } %> Drivetrain</td>
                             </tr>
                             <tr>
                                 <td>icon</td>
