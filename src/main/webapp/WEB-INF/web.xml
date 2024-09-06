@@ -2,10 +2,30 @@
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-   version="6.0">
-    <session-config>
+   version="6.0"> 
+    <session-config> 
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+
+    <servlet>
+  	    <servlet-class>ConnServlet</servlet-class>
+  	    <servlet-name>ConnServlet</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>ConnServlet</servlet-name>
+  	    <url-pattern>/*</url-pattern>
+        <load-on-startup>0</load-on-startup>
+    </servlet-mapping>    
+
+    <servlet>
+  	    <servlet-class>RegisterServlet</servlet-class>
+  	    <servlet-name>RegisterServlet</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>RegisterServlet</servlet-name>
+  	    <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
 </web-app>
