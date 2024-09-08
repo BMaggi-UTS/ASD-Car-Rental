@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public class RegexUtils {
     private static String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
     private static String namePattern = "[A-Z][a-z]*";
-    private static String passwordPattern = "/^(?!\s*$).+/";
-    private static String phonePattern = "04[0-9]{8}$";         
+    private static String passwordPattern = "[A-Z][a-z][0-9]{2,}";
+    private static String phonePattern = "04[0-9]{8}$";
 
 
     private static boolean validate(String pattern, String input){       

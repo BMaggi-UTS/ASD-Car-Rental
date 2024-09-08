@@ -2,8 +2,8 @@ package controller;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import javax.servlet.http.*;
-import javax.servlet.ServletException;
+import jakarta.servlet.http.*;
+import jakarta.servlet.ServletException;
 
 import java.sql.SQLException;
 import java.io.IOException;

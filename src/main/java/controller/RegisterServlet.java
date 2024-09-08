@@ -2,8 +2,8 @@ package controller;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import javax.servlet.http.*;
-import javax.servlet.ServletException;
+import jakarta.servlet.http.*;
+import jakarta.servlet.ServletException;
 
 import java.sql.SQLException;
 import java.io.IOException;
@@ -35,38 +35,47 @@ public class RegisterServlet extends HttpServlet {
             if (userDAO.checkUserExists(email)) {
                 session.setAttribute("duplicateErr", "User is already registered with this email!");
                 valid = false;
+                System.out.println(1);
             }
             if (!password.equals(confirmPassword)) {
                 session.setAttribute("passwordErr", "Passwords do not match!");
                 valid = false;
+                System.out.println(2);
             }
             if (!RegexUtils.validateEmail(email)) {
                 session.setAttribute("emailErr", "Invalid email! Please enter a valid email.");
                 valid = false;
+                System.out.println(3);
             }
             if (!RegexUtils.validateName(firstName)) {
                 session.setAttribute("fnameErr", "Invalid first name! Please enter a valid first name.");
-                valid = false;   
+                valid = false; 
+                System.out.println(4);  
             }
             if (!RegexUtils.validateName(surname)) {
                 session.setAttribute("surnameErr", "Invalid surname! Please enter a valid surname.");
                 valid = false;   
+                System.out.println(5);
             }
             if (!RegexUtils.validatePhoneNo(phone)) {
                 session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid phone number.");
                 valid = false;
+                System.out.println(6);
             }
-            if (!RegexUtils.validatePassword(password)) {
-                session.setAttribute("passwordErr", "Invalid password! Password cannot be empty.");
-                valid = false;   
-            }
+            // if (!RegexUtils.validatePassword(password)) {
+            //     session.setAttribute("passwordErr", "Invalid password! Password cannot be empty.");
+            //     valid = false;   
+            //     System.out.println(7);
+            // }
             if (valid) {
                 userDAO.registerNewCustomer(firstName, surname, email, phone, hashedPassword, dateOfBirth);
                 request.getRequestDispatcher("login.jsp").include(request, response);
+                System.out.println(8);
                 return;
             }
             else {
                 request.getRequestDispatcher("register.jsp").include(request, response);
+                System.out.println(9);
                 return;
             }
         }

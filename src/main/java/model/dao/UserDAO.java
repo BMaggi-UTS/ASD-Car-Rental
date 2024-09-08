@@ -64,31 +64,6 @@ public class UserDAO {
 		return -1;
 	}
 
-	// public User createInstanceOfUser(String email, String password) throws SQLException {
-
-	// 	String hashedPassword = DigestUtils.sha256Hex(password);
-
-	// 	PreparedStatement ps = con.prepareStatement("SELECT * FROM Users WHERE User_email = ? AND User_Password = ?");
-	// 	ps.setString(1, email);
-	// 	ps.setString(2, hashedPassword);
-	// 	ResultSet rs = ps.executeQuery();
-
-	// 	// user found
-	// 	if(rs.next()) {
-	// 		int id = rs.getInt("User_Email");
-	// 		String firstName = rs.getString("User_FName");
-	// 		String lastName = rs.getString("User_LName");
-	// 		String preferredName = rs.getString("User_PrefName");
-	// 		String phone = rs.getString("User_Phone");
-	// 		String dateOfBirth = rs.getString("User_DOB");
-
-	// 		return new User(id, firstName, lastName, preferredName, email, phone, hashedPassword, dateOfBirth);
-	// 	}
-
-	// 	// no user found
-	// 	return null;
-	// }
-
 	public Customer createInstanceOfCustomer (String email, String password) throws SQLException {
 
 		String hashedPassword = DigestUtils.sha256Hex(password);
@@ -189,11 +164,53 @@ public class UserDAO {
         ps.executeUpdate();
 
 		ResultSet rs = con.prepareStatement("SELECT LAST_INSERT_ID()").executeQuery();
-		int userID = rs.getInt(1);
 
-		ps = con.prepareStatement("INSERT INTO User_Roles VALUES (?, 1)");
-		ps.setInt(1, userID);
-		ps.executeUpdate();
+		if(rs.next()) {
+			int userID = rs.getInt(1);
+			ps = con.prepareStatement("INSERT INTO User_Roles VALUES (?, 1)");
+			ps.setInt(1, userID);
+			ps.executeUpdate();
+		}
+
+	}
+
+	public void registerNewStaff(String firstName, String surname, String email, String phone, String hashedPassword, String dateOfBirth) throws SQLException {
+		PreparedStatement ps = con.prepareStatement("INSERT INTO Users (User_FName, User_LName, User_Email, User_Phone, User_Password, User_DOB) VALUES (?, ?, ?, ?, ?, DATE(?))");
+        ps.setString(1, firstName);
+        ps.setString(2, surname);
+        ps.setString(3, email);
+        ps.setString(4, phone);
+        ps.setString(5, hashedPassword);
+        ps.setString(6, dateOfBirth);
+        ps.executeUpdate();
+
+		ResultSet rs = con.prepareStatement("SELECT LAST_INSERT_ID()").executeQuery();
+
+		if(rs.next()) {
+			int userID = rs.getInt(1);
+			ps = con.prepareStatement("INSERT INTO User_Roles VALUES (?, 2)");
+			ps.setInt(1, userID);
+			ps.executeUpdate();
+		}
+	}
+	public void registerNewAdmin(String firstName, String surname, String email, String phone, String hashedPassword, String dateOfBirth) throws SQLException {
+		PreparedStatement ps = con.prepareStatement("INSERT INTO Users (User_FName, User_LName, User_Email, User_Phone, User_Password, User_DOB) VALUES (?, ?, ?, ?, ?, DATE(?))");
+        ps.setString(1, firstName);
+        ps.setString(2, surname);
+        ps.setString(3, email);
+        ps.setString(4, phone);
+        ps.setString(5, hashedPassword);
+        ps.setString(6, dateOfBirth);
+        ps.executeUpdate();
+
+		ResultSet rs = con.prepareStatement("SELECT LAST_INSERT_ID()").executeQuery();
+
+		if(rs.next()) {
+			int userID = rs.getInt(1);
+			ps = con.prepareStatement("INSERT INTO User_Roles VALUES (?, 3)");
+			ps.setInt(1, userID);
+			ps.executeUpdate();
+		}
 
 	}
 
