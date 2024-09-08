@@ -2,7 +2,6 @@ package dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.*;
@@ -12,7 +11,6 @@ import java.util.logging.Logger;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.*;
 
-import jakarta.enterprise.concurrent.Asynchronous.Result;
 import model.dao.UserDAO;
 
 @DisplayName("Test class testing UserDAO read/write funcionality to DB.")
