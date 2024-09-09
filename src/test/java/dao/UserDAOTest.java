@@ -18,13 +18,11 @@ public class UserDAOTest {
     Connection conn;
     UserDAO userDAO;
 
-
-
     @BeforeEach
     public void initialize() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CarRental", "root", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://13.55.60.202:3306/CarRental-ASD", "root", "password");
             conn.setAutoCommit(false);
             conn.prepareStatement("DELETE FROM User_Roles").executeUpdate();
             conn.prepareStatement("DELETE FROM Users").executeUpdate();
