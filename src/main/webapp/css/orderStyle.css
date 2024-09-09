@@ -176,7 +176,10 @@ hr {
   border: none;
   cursor: pointer;
   font-size: 20px; 
-  color: var(--primary); 
+  color: var(--primary);
+  /* New properties for vertical centering */
+  transform: translateY(-50%);
+  bottom: 50%;
 }
 
 .trash-button:hover {

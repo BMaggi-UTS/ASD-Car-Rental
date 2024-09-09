@@ -56,7 +56,7 @@ public class order implements Serializable {
         return carID;
     }
 
-    public void setCarId(int carID) {
+    public void setCarID(int carID) {
         this.carID = carID;
     }
 

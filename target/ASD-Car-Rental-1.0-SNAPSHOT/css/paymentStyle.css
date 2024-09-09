@@ -31,6 +31,38 @@ hr {
 }
 
 
+.order-summary {
+  position: relative; 
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #faf8ee;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h2{
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.pricing p {
+  text-align: left;
+  font-weight: bold;
+  margin: 10px 0;
+  margin-left: 10px;
+}
+
+
 
 .form-group {
   margin-bottom: 15px;
@@ -124,6 +156,20 @@ hr {
   vertical-align: middle;
   max-width: 8%; /* Adjust size as needed */
   height: auto;
+}
+
+/* Button styling for new details form */
+.general-button{
+  text-decoration: none;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 
