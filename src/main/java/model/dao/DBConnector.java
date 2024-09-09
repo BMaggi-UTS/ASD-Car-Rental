@@ -20,6 +20,7 @@ public class DBConnector extends DB {
 			conn = DriverManager.getConnection(URL + db, dbProperties);
 		} catch (SQLException e) {
 			System.out.println(e);
+      throw e;
 		}
 	}
 

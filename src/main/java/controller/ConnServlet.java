@@ -1,13 +1,13 @@
 package controller;
 
-import model.dao.*;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
+
+import model.dao.*;;
 
 public class ConnServlet extends HttpServlet {
     
