@@ -15,12 +15,7 @@
         <%-- <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script> --%>
         <title>Car Rental</title>
         <%
-            //initiate a connection using DBConnector (connect to the db)
-            DBConnector conn = new DBConnector();
-            //open a connection
-            Connection con = conn.openConnection();
-            //use the connection to create a productDAO controller
-            CarDAO carDAO = new CarDAO(con);
+            CarDAO carDAO = (CarDAO) session.getAttribute("carDAO");
             String carIdString = request.getParameter("id"); 
             Integer carID = Integer.parseInt(carIdString);
             Car car = carDAO.selectSpecificCar(carID);
