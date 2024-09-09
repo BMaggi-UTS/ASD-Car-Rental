@@ -9,14 +9,28 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: 'default'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+stages:
+  # Code Pipeline
+  - stage: BuildStage
+    displayName: "Build"
+    jobs:
+      - job: build
+        steps:
+        - task: Maven@4
+          inputs:
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: 'default'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'package'
+
+
+    # These next three lines make builds run in serial. We need to do this since we use a shared "builds" environment in azure - see https://stackoverflow.com/a/73694320/1072030, https://learn.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?view=azure-devops&tabs=yaml, and https://learn.microsoft.com/en-us/azure/devops/release-notes/2021/sprint-190-update#support-for-sequential-deployments-rather-than-latest-only-when-using-exclusive-lock-checks
+    lockBehavior: sequential
+    variables:
+      - group: build_concurrency_lock # relies on a "build_concurrency_lock" Library variable group existing and having an "Exclusive Lock" "Approvals and checks" setup.
+
+
