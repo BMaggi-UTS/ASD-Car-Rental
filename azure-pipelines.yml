@@ -5,7 +5,6 @@
 
 trigger:
 - main
-- michael
 
 pool: MyPool
 
