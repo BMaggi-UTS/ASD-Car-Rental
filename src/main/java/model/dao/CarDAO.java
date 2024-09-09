@@ -77,7 +77,7 @@ public class CarDAO {
 	//select specific car
 	public Car selectSpecificCar(Integer carID) throws SQLException {
 		// Integer product_ID = Integer.parseInt(product_IDs);
-		PreparedStatement st = con.prepareStatement("SELECT * FROM car WHERE car_id=?");
+		PreparedStatement st = con.prepareStatement("SELECT * FROM Car WHERE car_id=?");
     st.setInt(1, carID);
     ResultSet rs = st.executeQuery();
 	if (rs.next()) { // Check if result set is not empty
