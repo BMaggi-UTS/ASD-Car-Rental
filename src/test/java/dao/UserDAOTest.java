@@ -76,7 +76,7 @@ public class UserDAOTest {
             assertTrue(rs.next());
 
             ResultSet rs2 = conn.prepareStatement("SELECT * FROM User_Roles WHERE User_ID=last_insert_id()").executeQuery();
-            assert(rs2.next());
+            assertTrue(rs2.next());
             assertEquals(rs2.getInt("Role_ID"), 2);
         }
         catch (SQLException ex) {
@@ -107,6 +107,7 @@ public class UserDAOTest {
         
         try {
             assertTrue(userDAO.checkUserExists("customer@mail.com"));
+            assertFalse(userDAO.checkUserExists("false@mail.com"));
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
