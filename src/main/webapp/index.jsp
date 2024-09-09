@@ -18,7 +18,7 @@
             DBConnector conn = new DBConnector(); %>
             <% //open a connection
             Connection con = conn.openConnection(); %>
-            <% //use the connection to create a productDAO controller
+            <% //use the connection to create a productDAO controller 
             CarDAO carDAO = new CarDAO(con); %>
         
     </head>
