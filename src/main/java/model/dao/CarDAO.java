@@ -72,4 +72,36 @@ public class CarDAO {
 		return cars;
 	}
 
+	//select specific car
+	public Car selectSpecificCar(Integer carID) throws SQLException {
+		// Integer product_ID = Integer.parseInt(product_IDs);
+		PreparedStatement st = con.prepareStatement("SELECT * FROM car WHERE car_id=?");
+    st.setInt(1, carID);
+    ResultSet rs = st.executeQuery();
+	if (rs.next()) { // Check if result set is not empty
+		Integer car_ID = rs.getInt("car_id");
+        String carMake= rs.getString("car_make");
+        String carModel= rs.getString("car_model");
+        String carTrim= rs.getString("car_trim");
+        String carImage= rs.getString("car_image");
+        Integer  carOdometer= rs.getInt("car_odometer");
+		String carTransmission= rs.getString("car_transmission");
+        String carFuel = rs.getString("car_fuel");
+		Integer carSeats= rs.getInt("car_seats");
+        String carBodyStyle = rs.getString("car_body_style");
+		String carQuip = rs.getString("car_quip");
+		Integer carPurchasePrice = rs.getInt("car_purchase_price");
+		Integer carCurrentPrice= rs.getInt("car_current_price");
+		Integer carPriceKM = rs.getInt ("car_price_km");
+		String carLocation = rs.getString("car_location");
+		Integer carRating = rs.getInt("car_rating");
+
+        // Create and return Product object
+        return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carLocation, carRating);
+		} 
+		else {
+			return null;
+		}
+	}
+
 }
