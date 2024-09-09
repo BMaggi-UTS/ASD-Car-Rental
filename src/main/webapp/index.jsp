@@ -20,6 +20,10 @@
 
     <body>
         <jsp:include page="/ConnServlet"/>
+        <% 
+            CarDAO carDAO = (CarDAO) session.getAttribute("carDAO"); 
+            UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+        %>
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">

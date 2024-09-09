@@ -43,8 +43,6 @@ public class ConnServlet extends HttpServlet {
         session.setAttribute("carDAO", carDAO);
         session.setAttribute("userDAO", userDAO);
         System.out.println("All DAOs have been set in session.");
-        // request.getRequestDispatcher("index.jsp").include(request, response);
-        // response.sendRedirect("index.jsp");
     }
 
     @Override
