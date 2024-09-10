@@ -20,7 +20,7 @@ public class CarDAO {
 		connection.setAutoCommit(true);
 		//preparing predetermined statement
 //		carFetchReadSt = connection.prepareStatement("SELECT car_id, car_make, car_model, car_trim, car_odometer, car_image, car_transmission, car_fuel, car_seats, car_body_style, car_quip, car_purchase_price, car_current_price, car_price_km, car_location, car_rating  FROM CAR");
-    carFetchReadSt = connection.prepareStatement("SELECT Car_ID, Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_Transmission, Car_Fuel, Car_Seats, Car_Body_Style, Car_Quip, Car_Purchase_Price, Car_Current_Price, Car_Price_KM, Car_Location, Car_Rating FROM Car");
+    carFetchReadSt = connection.prepareStatement("SELECT Car_ID, Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_Transmission, Car_Fuel, Car_Seats, Car_Body_Style, Car_Quip, Car_Purchase_Price, Car_Current_Price, Car_Price_KM, Car_Rating FROM Car");
 
 	}
 	
@@ -43,7 +43,6 @@ public class CarDAO {
 			int carPurchasePrice = rs.getInt(12);
 			int carCurrentPrice = rs.getInt(13);
 			int carPriceKM = rs.getInt(14);
-			String carLocation = rs.getString(15);
 			int carRating =rs.getInt(15);
 			 
 			
@@ -64,7 +63,6 @@ public class CarDAO {
 			c.setCarPurchasePrice(carPurchasePrice);
 			c.setCarCurrentPrice(carCurrentPrice);
 			c.setCarPriceKM(carPriceKM);
-			c.setCarLocation(carLocation);
 			c.setCarRating(carRating);
 
 			// System.out.println(p.getProductName());
@@ -75,7 +73,7 @@ public class CarDAO {
 	}
 
 	//select specific car
-	public Car selectSpecificCar(Integer carID) throws SQLException { 
+	public Car selectSpecificCar(Integer carID) throws SQLException {
 		// Integer product_ID = Integer.parseInt(product_IDs);
 		PreparedStatement st = con.prepareStatement("SELECT * FROM Car WHERE car_id=?");
     st.setInt(1, carID);
@@ -95,11 +93,10 @@ public class CarDAO {
 		Integer carPurchasePrice = rs.getInt("car_purchase_price");
 		Integer carCurrentPrice= rs.getInt("car_current_price");
 		Integer carPriceKM = rs.getInt ("car_price_km");
-		String carLocation = rs.getString("car_location");
 		Integer carRating = rs.getInt("car_rating");
 
         // Create and return Product object
-        return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carLocation, carRating);
+        return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating);
 		} 
 		else {
 			return null;
