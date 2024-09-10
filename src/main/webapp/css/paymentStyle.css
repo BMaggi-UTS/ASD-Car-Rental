@@ -1,0 +1,208 @@
+
+.middle {
+  text-align: center;
+  font-size: 14px;
+}
+
+hr {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: none; 
+  border-bottom: 1px solid #ccc; 
+}
+
+/* Unlocked Boxes */
+.payment-summary {
+  position: relative; 
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #faf8ee;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-summary h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+
+.order-summary {
+  position: relative; 
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #faf8ee;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h2{
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.paymentCard {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.pricing p {
+  text-align: left;
+  font-weight: bold;
+  margin: 10px 0;
+  margin-left: 10px;
+}
+
+
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--font-colour);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 16px;
+}
+
+.btn-submit {
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: var(--secondary);
+}
+
+/* Back-button */
+.back-button {
+  display: inline-block; 
+  font-weight: bold;
+  color: var(--primary);
+  text-align: center; 
+  text-decoration: none; 
+  cursor: pointer; 
+  font-size: 16px; 
+  transition: background-color 0.3s; 
+}
+
+/* Hover state */
+.back-button:hover {
+  color: var(--secondary);; /* Darker color on hover */
+}
+
+
+/* Styling for date field */
+
+.form-group input[type="date"] {
+  width: 30%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  background-color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-group input[type="date"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--primary);
+}
+
+
+/* Locked Boxes */
+
+.locked-section {
+  width: 60%;
+  margin: 0 auto;
+  border: 2px solid #dad9d0;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #dfded4;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.locked-section h2 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.locked-section h2 img {
+  vertical-align: middle;
+  max-width: 8%; 
+  height: auto;
+}
+
+/* Button styling for new details form */
+.general-button{
+  text-decoration: none;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+#existingPayment {
+  position: relative; 
+  height: 25vh; 
+}
+
+.trash-button {
+  position: absolute; 
+  top: 50%; 
+  right: 20px; 
+  transform: translateY(-50%); 
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px; 
+  color: var(--primary); 
+}
+
+.trash-button:hover {
+  color: var(--secondary); 
+}
+
+.trash-button i {
+  margin: 0; 
+}
+
+
