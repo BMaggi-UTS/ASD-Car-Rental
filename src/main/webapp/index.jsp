@@ -53,7 +53,7 @@
                                     <input Type="text" placeholder="Search..." id="dropoff" onkeyup="filterFunction2()" class="selector" autocomplete="off">
                                     <div id="search-results2" class="pickme">
                                         <% for(Location location : locations) { %>
-                                            <button onclick="clickResultPickup('<%=location.getLocationName()%>')"><%=location.getLocationName()%></button>
+                                            <button onclick="clickResultPickup2('<%=location.getLocationName()%>')"><%=location.getLocationName()%></button>
                                         <% } %>    
                                     </div>
                                 </div>
