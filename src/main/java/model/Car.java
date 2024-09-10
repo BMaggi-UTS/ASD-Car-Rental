@@ -15,7 +15,6 @@ public class Car implements Serializable {
     private int carPurchasePrice;
     private int carCurrentPrice;
     private int carPriceKM;
-    private String carLocation;
     private int carRating;
 
     public Car(){};
@@ -34,7 +33,6 @@ public class Car implements Serializable {
         int carPurchasePrice,
         int carCurrentPrice,
         int carPriceKM,
-        String carLocation,
         int carRating) {
             this.carMake = carMake;
             this.carModel = carModel;
@@ -49,7 +47,6 @@ public class Car implements Serializable {
             this.carPurchasePrice = carPurchasePrice;
             this.carCurrentPrice = carCurrentPrice;
             this.carPriceKM = carPriceKM;
-            this.carLocation = carLocation;
             this.carRating = carRating;
         }
 
@@ -165,13 +162,6 @@ public class Car implements Serializable {
         this.carPriceKM = carPriceKM;
     }
 
-    public String getCarLocation() {
-        return this.carLocation;
-    }
-
-    public void setCarLocation(String carLocation) {
-        this.carLocation = carLocation;
-    }
 
     public int getCarRating() {
         return this.carRating;
