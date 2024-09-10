@@ -112,20 +112,23 @@
                     
                     <!-- Existing Payment Details Section -->
                     <div id="existingPayment" class="show">
-                        <div class="middle">
+                        <div class="paymentCard">
                             <h3>Existing Payment Details</h3>
                             <p>[Name on Card]</p> 
                             <p>[Card Number]</p> 
                             <p>[Expiry Date]</p> 
                             <p>[CVV]</p> 
                             <p>[Name on card]</p>
+
+                            <br>
+
+                            <button class="trash-button">
+                                <i class="fas fa-trash"></i> <!-- Font Awesome trash bin icon -->
+                            </button>
+
                         </div>
 
-                        <button class="trash-button">
-                            <i class="fas fa-trash"></i> <!-- Font Awesome trash bin icon -->
-                        </button>
-
-                        <br><br><br>
+                        <br><br>
                         
                         <div class="middle">
                             <a href="javascript:void(0);" id="toggleButton" onclick="togglePaymentForm()" class="general-button">Click here to change details</a>
@@ -171,8 +174,11 @@
                         <br>
                         <a href="./orderView.jsp" class="general-button">Pay now</a>
                     </div>
+                </div>
 
-                    
+                <div class="middle">
+                    <br><br><br>
+                    <p>Having trouble? Email us at asdgroup@support.com</p>
                 </div>
 
             
