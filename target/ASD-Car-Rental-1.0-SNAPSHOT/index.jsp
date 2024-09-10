@@ -3,6 +3,7 @@
 <%@page import="model.*"%>
 <%@page import="java.sql.*"%> 
 <%@page import="model.dao.CarDAO"%>
+<%@page import="model.dao.LocationDAO"%>
 <%@page import="model.dao.DBConnector"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -18,8 +19,9 @@
             DBConnector conn = new DBConnector(); %>
             <% //open a connection
             Connection con = conn.openConnection(); %>
-            <% //use the connection to create a productDAO controller
+            <% //use the connection to create a productDAO controller 
             CarDAO carDAO = new CarDAO(con); %>
+            <% LocationDAO locationDAO = new LocationDAO(con); %>
         
     </head>
 
@@ -79,7 +81,19 @@
                     </div>
                 </div>
                 <div class="filter-bar-wrapper">
-
+                    <div class="filter-bar-search-wrapper">
+                        <input type="text" class="filter-bar-search" placeholder="Search...">
+                        <i class="fa-solid fa-magnifying-glass filter-bar-search-wrapper-i"></i>
+                        </input>
+                    </div>
+                    <%-- <div class="spacer">
+                    </div> --%>
+                    <div class="filter-bar-wrapper-div">
+                        <i class="fa-solid fa-sort"></i>
+                    </div>
+                    <div class="filter-bar-wrapper-div filter-icon-border">
+                        <i class="fa-solid fa-filter"></i>
+                    </div>
                 </div>
                 <div class="product-wrapper">
                 <% ArrayList<Car> cars = carDAO.fetchCars(); %>

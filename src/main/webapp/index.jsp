@@ -3,6 +3,7 @@
 <%@page import="model.*"%>
 <%@page import="java.sql.*"%> 
 <%@page import="model.dao.CarDAO"%>
+<%@page import="model.dao.LocationDAO"%>
 <%@page import="model.dao.DBConnector"%>
 <%@page import="java.util.ArrayList"%>
 
@@ -20,6 +21,7 @@
             Connection con = conn.openConnection(); %>
             <% //use the connection to create a productDAO controller 
             CarDAO carDAO = new CarDAO(con); %>
+            <% LocationDAO locationDAO = new LocationDAO(con); %>
         
     </head>
 
