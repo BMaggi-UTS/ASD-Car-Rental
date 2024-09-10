@@ -6,7 +6,7 @@
 trigger:
 - brad
 
-pool: BradPool
+pool: MyPool
 
 steps:
 - task: Maven@4
