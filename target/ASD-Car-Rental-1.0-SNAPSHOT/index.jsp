@@ -5,6 +5,7 @@
 <%@page import="model.dao.CarDAO"%>
 <%@page import="model.dao.LocationDAO"%>
 <%@page import="model.dao.DBConnector"%>
+<%@page import="model.location" %>
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -34,11 +35,15 @@
                     <div class="location-selector">
                         <div class="location-selector-wrapper">
                             <div class="selector-wrapper">
+                            <% ArrayList<Location> locations = locationDAO.fetchLocations(); %>
                                 <p class="label">Pickup</p>
                                 <div class="pickup pickme">
                                     <input Type="text" placeholder="Search..." id="pickup" onkeyup="filterFunction()" class="selector" autocomplete="off">
                                     <div id="search-results" class="pickme">
-                                        <button onclick="clickResultPickup('Sydney')">Sydney</button>
+                                        <% for(Location location : locations) { %>
+                                            <button onclick="clickResultPickup('<%=location.getLocationName%>')"><%=location.getLocationName%></button>
+                                        <% } %>
+                                        
                                         <button onclick="clickResultPickup('Brisbane')">Brisbane</button>
                                         <button onclick="clickResultPickup('Adelaide')">Adelaide</button>
                                     </div>
@@ -86,8 +91,6 @@
                         <i class="fa-solid fa-magnifying-glass filter-bar-search-wrapper-i"></i>
                         </input>
                     </div>
-                    <%-- <div class="spacer">
-                    </div> --%>
                     <div class="filter-bar-wrapper-div">
                         <i class="fa-solid fa-sort"></i>
                     </div>
