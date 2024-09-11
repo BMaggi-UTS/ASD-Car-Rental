@@ -5,7 +5,7 @@
 <%@page import="model.dao.CarDAO"%>
 <%@page import="model.dao.LocationDAO"%>
 <%@page import="model.dao.DBConnector"%>
-<%@page import="model.location" %>
+<%-- <%@page import="model.location" %> --%>
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -41,11 +41,8 @@
                                     <input Type="text" placeholder="Search..." id="pickup" onkeyup="filterFunction()" class="selector" autocomplete="off">
                                     <div id="search-results" class="pickme">
                                         <% for(Location location : locations) { %>
-                                            <button onclick="clickResultPickup('<%=location.getLocationName%>')"><%=location.getLocationName%></button>
-                                        <% } %>
-                                        
-                                        <button onclick="clickResultPickup('Brisbane')">Brisbane</button>
-                                        <button onclick="clickResultPickup('Adelaide')">Adelaide</button>
+                                            <button onclick="clickResultPickup('<%=location.getLocationName()%>')"><%=location.getLocationName()%></button>
+                                        <% } %>                                      
                                     </div>
                                 </div>
                             </div>
@@ -55,9 +52,9 @@
                                 <div class="dropoff pickme">   
                                     <input Type="text" placeholder="Search..." id="dropoff" onkeyup="filterFunction2()" class="selector" autocomplete="off">
                                     <div id="search-results2" class="pickme">
-                                        <button onclick="clickResultPickup2('Sydney')">Sydney</button>
-                                        <button onclick="clickResultPickup2('Brisbane')">Brisbane</button>
-                                        <button onclick="clickResultPickup2('Adelaide')">Adelaide</button>
+                                        <% for(Location location : locations) { %>
+                                            <button onclick="clickResultPickup2('<%=location.getLocationName()%>')"><%=location.getLocationName()%></button>
+                                        <% } %>    
                                     </div>
                                 </div>
                             </div>

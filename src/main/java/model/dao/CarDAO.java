@@ -103,4 +103,37 @@ public class CarDAO {
 		}
 	}
 
+	public ArrayList<Car> selectArrayCar(ArrayList<Integer> carIDList) throws SQLException {
+		ArrayList<Car> cars = new ArrayList<>();
+		for(Integer carID : carIDList) {
+			PreparedStatement st = con.prepareStatement("SELECT * FROM Car WHERE car_id=?");
+			st.setInt(1, carID);
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) { // Check if result set is not empty
+			Integer car_ID = rs.getInt("car_id");
+			String carMake= rs.getString("car_make");
+			String carModel= rs.getString("car_model");
+			String carTrim= rs.getString("car_trim");
+			String carImage= rs.getString("car_image");
+			Integer  carOdometer= rs.getInt("car_odometer");
+			String carTransmission= rs.getString("car_transmission");
+			String carFuel = rs.getString("car_fuel");
+			Integer carSeats= rs.getInt("car_seats");
+			String carBodyStyle = rs.getString("car_body_style");
+			String carQuip = rs.getString("car_quip");
+			Integer carPurchasePrice = rs.getInt("car_purchase_price");
+			Integer carCurrentPrice= rs.getInt("car_current_price");
+			Integer carPriceKM = rs.getInt ("car_price_km");
+			Integer carRating = rs.getInt("car_rating");
+			Car c = new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating);
+			cars.add(c);
+			} 
+			else {
+				cars.add(null);
+			}
+		}
+		return cars;
+
+	}
+
 }

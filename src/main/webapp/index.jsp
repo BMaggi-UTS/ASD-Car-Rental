@@ -30,8 +30,12 @@
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
-                <div class="location-availability-wrapper">
-                    <h1>Sydney Car Rental</h1>
+                <% ArrayList<Integer> carIDs = (ArrayList<Integer>) session.getAttribute("searchIDResult"); %>
+                <%
+                ArrayList<Car> cars = new ArrayList<Car>();
+                if(carIDs == null) { %>
+                    <div class="location-availability-wrapper">
+                        <h1>Sydney Car Rental</h1>
                     <div class="location-selector">
                         <div class="location-selector-wrapper">
                             <div class="selector-wrapper">
@@ -46,7 +50,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="selector-wrapper">
                                 <p class="label">Dropoff</p>
                                 <div class="dropoff pickme">   
@@ -82,65 +85,66 @@
                         </div>
                     </div>
                 </div>
-                <div class="filter-bar-wrapper">
-                    <div class="filter-bar-search-wrapper">
-                        <input type="text" class="filter-bar-search" placeholder="Search...">
-                        <i class="fa-solid fa-magnifying-glass filter-bar-search-wrapper-i"></i>
-                        </input>
-                    </div>
-                    <div class="filter-bar-wrapper-div">
-                        <i class="fa-solid fa-sort"></i>
-                    </div>
-                    <div class="filter-bar-wrapper-div filter-icon-border">
-                        <i class="fa-solid fa-filter"></i>
-                    </div>
-                </div>
+                <%@ include file="assets/filterbar.jsp" %>
                 <div class="product-wrapper">
-                <% ArrayList<Car> cars = carDAO.fetchCars(); %>
-                <% for(Car car : cars) { %>
-                <a href="/car.jsp?id=<%= car.getCarID() %>">
-                    <div class="card">
-                        <div class="imgBox">
-                            <img src="<%= car.getCarImage() %>" alt="<%= car.getCarMake() %>" class="car">
-                            <div class="make-model">
-                                <h3><%= car.getCarMake() %></h3>
-                                <h3><%= car.getCarModel() %></h3>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="contentBox">
-                            <div class="card-content">
-                                <div class="car-details">
-                                    <div>
-                                        <i class="fa-solid fa-chair"></i>
-                                        <h2> <%= car.getCarSeats() %> Seats </h2>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-gas-pump"></i>
-                                        <h2> 
-                                        <% if(car.getCarFuel().equals("P")) { %>
-                                            <%= "Petrol" %>
-                                        <% } else if(car.getCarFuel().equals("D")) { %>
-                                            <%= "Diesel" %>
-                                        <% } else if(car.getCarFuel().equals("H")) { %>
-                                            <%= "Hybrid" %>
-                                        <% } %>
-                                        </h2>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-car-side"></i>
-                                        <h2> <%= car.getCarBodyStyle() %></h2>
-                                    </div>
-                                </div>
-                                <div class="detail-price">
-                                    <h2>$<%= car.getCarPriceKM() %> <span>/ a KM</span></h2>
-                                    <h2><%= car.getCarQuip() %></h2>
+                <% cars = carDAO.fetchCars() ;%>
+                <% } else { %>
+                    <% if(carIDs.get(0) == 0) { %>
+                        <% cars = null; %>
+                        <%= "No cars found. Please enter a different search term" %>
+                    <% } else { %>
+                        <%@ include file="assets/filterbar.jsp" %>
+                        <div class="product-wrapper">
+                        <% cars = carDAO.selectArrayCar(carIDs); %>
+                    <% } %>
+                <% } %>
+                
+                <% if(cars != null) {
+                    for(Car car : cars) { %>
+                    <a href="/car.jsp?id=<%= car.getCarID() %>">
+                        <div class="card">
+                            <div class="imgBox">
+                                <img src="<%= car.getCarImage() %>" alt="<%= car.getCarMake() %>" class="car">
+                                <div class="make-model">
+                                    <h3><%= car.getCarMake() %></h3>
+                                    <h3><%= car.getCarModel() %></h3>
                                 </div>
                             </div>
-                            <a href="#" class="buy">Book Now</a>
+                            <hr>
+                            <div class="contentBox">
+                                <div class="card-content">
+                                    <div class="car-details">
+                                        <div>
+                                            <i class="fa-solid fa-chair"></i>
+                                            <h2> <%= car.getCarSeats() %> Seats </h2>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-gas-pump"></i>
+                                            <h2> 
+                                            <% if(car.getCarFuel().equals("P")) { %>
+                                                <%= "Petrol" %>
+                                            <% } else if(car.getCarFuel().equals("D")) { %>
+                                                <%= "Diesel" %>
+                                            <% } else if(car.getCarFuel().equals("H")) { %>
+                                                <%= "Hybrid" %>
+                                            <% } %>
+                                            </h2>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-car-side"></i>
+                                            <h2> <%= car.getCarBodyStyle() %></h2>
+                                        </div>
+                                    </div>
+                                    <div class="detail-price">
+                                        <h2>$<%= car.getCarPriceKM() %> <span>/ a KM</span></h2>
+                                        <h2><%= car.getCarQuip() %></h2>
+                                    </div>
+                                </div>
+                                <a href="#" class="buy">Book Now</a>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                    <% } %>
                 <% } %>
                 </div>    
             </main>
