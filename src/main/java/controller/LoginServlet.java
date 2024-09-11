@@ -1,7 +1,5 @@
 package controller;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import jakarta.servlet.http.*;
 import jakarta.servlet.ServletException;
 
@@ -22,7 +20,7 @@ public class LoginServlet extends HttpServlet {
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
         
         String email = request.getParameter("email");
-        String hashedPassword = DigestUtils.sha256Hex(request.getParameter("password"));
+        String hashedPassword = request.getParameter("password");
 
 
         User user = null;
@@ -49,14 +47,16 @@ public class LoginServlet extends HttpServlet {
 
             if (user == null) {
                 session.setAttribute("loginErr", "Email or password is incorrect!");
-                request.getRequestDispatcher("login.jsp").include(request, response);
+                response.sendRedirect("login.jsp");
                 return;
             }
             else {
-                request.getRequestDispatcher("index.jsp").include(request, response);
+                response.sendRedirect("index.jsp");
+                return;
+
             }
         } 
-        catch (SQLException | ServletException | IOException ex) {
+        catch (SQLException | IOException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

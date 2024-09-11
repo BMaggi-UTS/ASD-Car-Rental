@@ -75,7 +75,7 @@ public class UserDAO {
 
 		// customer found
 		if(rs.next()) {
-			int id = rs.getInt("User_Email");
+			int id = rs.getInt("User_ID");
 			String firstName = rs.getString("User_FName");
 			String lastName = rs.getString("User_LName");
 			String preferredName = rs.getString("User_PrefName");
@@ -93,7 +93,7 @@ public class UserDAO {
 
 		String hashedPassword = DigestUtils.sha256Hex(password);
 
-		PreparedStatement ps = con.prepareStatement("SELECT Users.User_ID, User_FName, User_LName, User_PrefName, User_Email, User_Password, User_DOB, Roles.Role_ID, Role_Name, Role_Description FROM Users\n" +
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM Users\n" +
 						"INNER JOIN User_Roles\n" +
 						"ON Users.user_id = User_Roles.User_ID\n" +
 						"INNER JOIN Roles\n" +
@@ -105,7 +105,7 @@ public class UserDAO {
 
 		// Staff found
 		if(rs.next()) {
-			int id = rs.getInt("User_Email");
+			int id = rs.getInt("User_ID");
 			String firstName = rs.getString("User_FName");
 			String lastName = rs.getString("User_LName");
 			String preferredName = rs.getString("User_PrefName");
@@ -125,7 +125,7 @@ public class UserDAO {
 
 		String hashedPassword = DigestUtils.sha256Hex(password);
 
-		PreparedStatement ps = con.prepareStatement("SELECT Users.User_ID, User_FName, User_LName, User_PrefName, User_Email, User_Password, User_DOB, Roles.Role_ID, Role_Name, Role_Description FROM Users\n" +
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM Users\n" +
 						"INNER JOIN User_Roles\n" +
 						"ON Users.user_id = User_Roles.User_ID\n" +
 						"INNER JOIN Roles\n" +
@@ -137,7 +137,7 @@ public class UserDAO {
 
 		// Admin found
 		if(rs.next()) {
-			int id = rs.getInt("User_Email");
+			int id = rs.getInt("User_ID");
 			String firstName = rs.getString("User_FName");
 			String lastName = rs.getString("User_LName");
 			String preferredName = rs.getString("User_PrefName");
@@ -213,5 +213,7 @@ public class UserDAO {
 		}
 
 	}
+
+	
 
 }
