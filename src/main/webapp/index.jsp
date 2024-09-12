@@ -33,7 +33,7 @@
                 <% ArrayList<Integer> carIDs = (ArrayList<Integer>) session.getAttribute("searchIDResult"); %>
                 <%
                 ArrayList<Car> cars = new ArrayList<Car>();
-                if(carIDs == null) { %>
+                if(carIDs == null || carIDs.size() == 0) { %>
                     <div class="location-availability-wrapper">
                         <h1>Sydney Car Rental</h1>
                     <div class="location-selector">

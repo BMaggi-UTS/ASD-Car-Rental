@@ -2,10 +2,11 @@
   <div class="container navbar">
     <a href="/index.jsp"><img src="/assets/logo.png" alt="logo" class="logo"/></a>
     <div class="search-div">
-      <form method="post" action="/SearchCarServlet" >
+      <form method="post" action="/SearchCarServlet" autocomplete="off" id="searchSubmit" class="search-div-form">
         <input type="text" name="searchQuery" placeholder="Search for your next rental . . ." />
-        <i class="fa-solid fa-magnifying-glass search-icon fa-2xl"></i>
-        <input type="submit">
+        <a href="#" onclick="document.getElementById('searchSubmit').submit()">
+          <i class="fa-solid fa-magnifying-glass search-icon fa-2xl"></i>
+        </a>
       </form>
     </div>
     <div class="cart-div">
