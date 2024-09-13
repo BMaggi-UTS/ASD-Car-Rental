@@ -1,12 +1,13 @@
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/CarDAO.java
+/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/ConnServlet.java
+/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/SearchCarServlet.java
+/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/DBConnector.java
+/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Car.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Location.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/LocationDAO.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/DB.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/order.java
-/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/ConnServlet.java
-/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/SearchCarServlet.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/orderDAO.java
-/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/DBConnector.java
-/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Car.java
+/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/LocationAvailabilityServlet.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/payment.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/paymentDAO.java

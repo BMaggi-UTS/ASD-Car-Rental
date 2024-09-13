@@ -36,9 +36,6 @@ public class LocationDAO {
 			int locationPostcode = rs.getInt(5);
 			String locationName  = rs.getString(6);
 			
-			
-			//setting every product value to match the data base
-			//all of these objects being created can be accessed through the array "products"
 			Location l = new Location();
 			l.setLocationID(locationID);
 			l.setLocationStreetNumber(locationStreetNumber);
@@ -47,8 +44,6 @@ public class LocationDAO {
 			l.setLocationPostcode(locationPostcode);
 			l.setLocationName(locationName);
 
-			// System.out.println(p.getProductName());
-			//adding the just set up product (p) to the list products.
 			locations.add(l);
 		}
 		return locations;

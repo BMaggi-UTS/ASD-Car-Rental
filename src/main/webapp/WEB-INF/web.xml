@@ -37,4 +37,13 @@
         <servlet-name>SearchCarServlet</servlet-name>
         <url-pattern>/SearchCarServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>LocationAvailabilityServlet</servlet-name>
+        <servlet-class>controller.LocationAvailabilityServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LocationAvailabilityServlet</servlet-name>
+        <url-pattern>/LocationAvailabilityServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -9,7 +9,7 @@
     text-decoration: none;
 }
 :root {
-    --primary: #55c8cc;
+    --primary: #2D77CB;
     /* --secondary: #02bb2a; */
     --secondary: #ffffff;
     --border-colour: #d1d1d1;
@@ -79,7 +79,7 @@ h2 {
   flex-direction: column;
 
 }
-.pickme button {
+.pickme a {
   display: none;
   background-color: #f9f9f9;
   color: black;

@@ -20,7 +20,7 @@ public class CarDAO {
 		connection.setAutoCommit(true);
 		//preparing predetermined statement
 //		carFetchReadSt = connection.prepareStatement("SELECT car_id, car_make, car_model, car_trim, car_odometer, car_image, car_transmission, car_fuel, car_seats, car_body_style, car_quip, car_purchase_price, car_current_price, car_price_km, car_location, car_rating  FROM CAR");
-    carFetchReadSt = connection.prepareStatement("SELECT Car_ID, Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_Transmission, Car_Fuel, Car_Seats, Car_Body_Style, Car_Quip, Car_Purchase_Price, Car_Current_Price, Car_Price_KM, Car_Rating FROM Car");
+    carFetchReadSt = connection.prepareStatement("SELECT Car_ID, Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_Transmission, Car_Fuel, Car_Seats, Car_Body_Style, Car_Quip, Car_Purchase_Price, Car_Current_Price, Car_Price_KM, Car_Rating, Location_ID FROM Car");
 
 	}
 	
@@ -43,7 +43,8 @@ public class CarDAO {
 			int carPurchasePrice = rs.getInt(12);
 			int carCurrentPrice = rs.getInt(13);
 			int carPriceKM = rs.getInt(14);
-			int carRating =rs.getInt(15);
+			int carRating = rs.getInt(15);
+			int locationID = rs.getInt(16);
 			 
 			
 			//setting every product value to match the data base
@@ -64,6 +65,7 @@ public class CarDAO {
 			c.setCarCurrentPrice(carCurrentPrice);
 			c.setCarPriceKM(carPriceKM);
 			c.setCarRating(carRating);
+			c.setLocationID(locationID);
 
 			// System.out.println(p.getProductName());
 			//adding the just set up product (p) to the list products.
@@ -94,9 +96,10 @@ public class CarDAO {
 		Integer carCurrentPrice= rs.getInt("car_current_price");
 		Integer carPriceKM = rs.getInt ("car_price_km");
 		Integer carRating = rs.getInt("car_rating");
+		Integer locationID = rs.getInt("location_id");
 
         // Create and return Product object
-        return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating);
+        return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
 		} 
 		else {
 			return null;
@@ -125,7 +128,8 @@ public class CarDAO {
 			Integer carCurrentPrice= rs.getInt("car_current_price");
 			Integer carPriceKM = rs.getInt ("car_price_km");
 			Integer carRating = rs.getInt("car_rating");
-			Car c = new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating);
+			Integer locationID = rs.getInt("location_id");
+			Car c = new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
 			cars.add(c);
 			} 
 			else {

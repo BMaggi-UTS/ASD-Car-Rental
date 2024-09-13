@@ -1,6 +1,6 @@
 <nav>
   <div class="container navbar">
-    <a href="/index.jsp"><img src="/assets/logo.png" alt="logo" class="logo"/></a>
+    <a href="/index"><img src="/assets/imgs/logo.png" alt="logo" class="logo"/></a>
     <div class="search-div">
       <form method="post" action="/SearchCarServlet" autocomplete="off" id="searchSubmit" class="search-div-form">
         <input type="text" name="searchQuery" placeholder="Search for your next rental . . ." />
