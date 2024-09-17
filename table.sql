@@ -45,6 +45,6 @@ INSERT INTO `Car` (Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_T
 
 
 CREATE USER 'wy5jR63bAEYi1GxT'@'%' IDENTIFIED BY '6JcL1ECgLzQnmH75';
-GRANT ALL PRIVILEGES ON your_database.* TO 'root'@'%';
+GRANT ALL PRIVILEGES ON Car.* TO 'wy5jR63bAEYi1GxT'@'%';
 FLUSH PRIVILEGES;
 -- '%' allows access from any IP address. Should replace with dest IP
