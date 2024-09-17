@@ -12,14 +12,13 @@ import model.dao.DBConnector;
 import model.dao.orderDAO;
 import model.dao.paymentDAO;
 
-import model.dao.*;;
+import model.dao.*;
 
 
-public class ConnServlet extends HttpServlet {
-    
+public class ConnServlet extends HttpServlet{
     private DBConnector db;
+    private Connection conn;
     private CarDAO carDAO;
-    private UserDAO userDAO;
     private orderDAO orderDAO;
     private paymentDAO paymentDAO;
     private Connection connection;
@@ -28,7 +27,9 @@ public class ConnServlet extends HttpServlet {
     public void init() {
         try {
             db = new DBConnector();
-            connection = db.openConnection();
+            conn = db.openConnection();
+            // shipmentDAO = new ShipmentDAO(conn);
+            // userDAO = new UserDAO(conn);
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Failed to establish database connection.");
         }
@@ -45,7 +46,6 @@ public class ConnServlet extends HttpServlet {
 
         try {
             carDAO = new CarDAO(connection);
-            userDAO = new UserDAO(connection);
             orderDAO = new orderDAO(connection);
             paymentDAO = new paymentDAO(connection);
         } catch (SQLException e) {
@@ -53,10 +53,10 @@ public class ConnServlet extends HttpServlet {
         }
 
         session.setAttribute("carDAO", carDAO);
-        session.setAttribute("userDAO", userDAO);
         session.setAttribute("orderDAO", orderDAO);
         session.setAttribute("paymentDAO", paymentDAO);
         System.out.println("All DAOs have been set in session.");
+        request.getRequestDispatcher("index.jsp").include(request, response);
     }
 
     @Override

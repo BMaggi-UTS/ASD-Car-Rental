@@ -214,6 +214,28 @@ public class UserDAO {
 
 	}
 
-	
+	public void updateFirstName(int userID, String newFirstName) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("UPDATE Users SET User_FName = ? WHERE User_ID = ?");
+		ps.setString(1, newFirstName);
+		ps.setInt(2, userID);
+		ps.executeUpdate();
+	}	
+	public void updateLastName(int userID, String newLastName) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("UPDATE Users SET User_LName = ? WHERE User_ID = ?");
+		ps.setString(1, newLastName);
+		ps.setInt(2, userID);
+		ps.executeUpdate();
+	}	
+	public void updatePreferredName(int userID, String newPreferredName) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("UPDATE Users SET User_PrefName = ? WHERE User_ID = ?");
+		ps.setString(1, newPreferredName);
+		ps.setInt(2, userID);
+		ps.executeUpdate();
+	}	
+
+
 
 }
