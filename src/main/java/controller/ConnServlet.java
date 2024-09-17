@@ -12,8 +12,6 @@ import model.dao.DBConnector;
 import model.dao.orderDAO;
 import model.dao.paymentDAO;
 
-import model.dao.*;
-
 
 public class ConnServlet extends HttpServlet{
     private DBConnector db;
