@@ -38,8 +38,8 @@
             </div>
         </div>
         <form method="post" action="/addOrderItemServlet" id="orderItem">
-            <input type="hidden" id="orderCarID" value="<% car.getCarID() %>">
-            
+            <input type="hidden" id="orderCarID" value="<%= car.getCarID() %>">
+
             <input type="submit" value="Book Now">    
         </form>
     </div>
