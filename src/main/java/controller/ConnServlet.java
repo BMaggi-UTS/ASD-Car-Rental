@@ -33,8 +33,6 @@ public class ConnServlet extends HttpServlet{
         try {
             db = new DBConnector();
             conn = db.openConnection();
-            // shipmentDAO = new ShipmentDAO(conn);
-            // userDAO = new UserDAO(conn);
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Failed to establish database connection.");
         }
@@ -46,7 +44,6 @@ public class ConnServlet extends HttpServlet{
         HttpSession session = request.getSession();
         session.setAttribute("carDAO", carDAO);
 
-        
         connection = db.openConnection();
 
         try {

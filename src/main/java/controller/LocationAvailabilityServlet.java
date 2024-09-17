@@ -39,7 +39,6 @@ public class LocationAvailabilityServlet extends HttpServlet {
             String dropoffName = request.getParameter("dropoff");
             for(Location location : locations) {
                 if (pickupName.equals(location.getLocationName())) {
-                    // System.out.println("Match: " + pickupName + " " + location.getLocationName());
                     locationIDs.add(location.getLocationID());
                 }
             }
@@ -47,7 +46,6 @@ public class LocationAvailabilityServlet extends HttpServlet {
                 carID.clear();
                 for(Car car : cars) {
                     if (car.getLocationID() == locationID) {
-                        // System.out.println("hooray " + car.getCarModel() + " " + locationID);
                         carID.add(car.getCarID());
                     }
                 }
@@ -57,12 +55,10 @@ public class LocationAvailabilityServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error occurred while fetching locations.");
         }
         if (carID.size() > 0) {
-            // System.out.println("Product ids that match: " + carID);
             session.setAttribute("carID", carID);
             request.getRequestDispatcher("index.jsp").forward(request, response);
             carID.clear();
         } else {
-            // System.out.println("No matching id's");
             carID.add(0);
             session.setAttribute("carID", carID);
             request.getRequestDispatcher("index.jsp").forward(request, response);

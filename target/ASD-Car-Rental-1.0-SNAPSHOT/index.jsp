@@ -5,7 +5,6 @@
 <%@page import="model.dao.CarDAO"%>
 <%@page import="model.dao.LocationDAO"%>
 <%@page import="model.dao.DBConnector"%>
-<%-- <%@page import="model.location" %> --%>
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -30,31 +29,50 @@
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
-                <% ArrayList<Integer> carIDs = (ArrayList<Integer>) session.getAttribute("searchIDResult"); %>
-                <% ArrayList<Integer> locationIDs = (ArrayList<Integer>) session.getAttribute("locationIDs"); %>
-                <% ArrayList<Car> cars = new ArrayList<Car>(); %>
-                
-                <% if(carIDs == null || carIDs.size() == 0) { %>
-                    <% cars = carDAO.fetchCars();%>
-                    <%@ include file="assets/locationAvailabilitySelector.jsp" %>
-                    <%@ include file="assets/filterbar.jsp" %>
-                    <div class="product-wrapper">
-                <% } else { %>
-                    <% if(carIDs.get(0) == 0) { %>
-                        <% cars = null; %>
-                        <%= "No cars found. Please enter a different search term" %>
-                    <% } else { %>
+                <% 
+                ArrayList<Integer> carIDs = (ArrayList<Integer>) session.getAttribute("searchIDResult");
+                ArrayList<Integer> carIDLocation = (ArrayList<Integer>) session.getAttribute("carID");
+                ArrayList<Car> cars = new ArrayList<Car>();
+                if(carIDs == null || carIDs.size() == 0) {
+                    if(carIDLocation == null || carIDLocation.size() == 0) {
+                        cars = carDAO.fetchCars(); 
+                        %> <%@ include file="assets/locationAvailabilitySelector.jsp" %>
+                        <%@ include file="assets/filterbar.jsp" %>
+                        <div class="product-wrapper"> <%
+                        carIDs = null;
+                        carIDLocation = null;
+                        }
+                    if(carIDs != null && carIDs.size() > 0) {
+                        if(carIDs.get(0) == 0 ) { 
+                            cars = null;
+                        %><%= "No cars found. Please enter a different search term" %><%
+                        } else {
+                        if(carIDs.size() > 0)  { 
+                                %> <%@ include file="assets/filterbar.jsp" %>
+                                <div class="product-wrapper"> <%
+                                cars = carDAO.selectArrayCar(carIDs);
+                                }
+                        }
+                    }
+                }
+                if(carIDLocation != null && carIDLocation.size() > 0) {
+                    if(carIDLocation.get(0) == 0) {
+                        %> <%= "No cars found at this location" %> <%
+                    } else { %>
                         <%@ include file="assets/filterbar.jsp" %>
                         <div class="product-wrapper">
-                        <% cars = carDAO.selectArrayCar(carIDs); %>
-                    <% } %>
-                <% } %>
+                        <% cars = carDAO.selectArrayCar(carIDLocation); %>
+                        <% carIDLocation = null;
+                    }
+                } %>
                 <% if(cars != null) {
                     for(Car car : cars) { %>
                         <%@ include file="assets/carCards.jsp" %>
                     <% } %>
-                <% } %>
-                </div>    
+                <% } else {
+                    %> <%= "Error loading cars" %> <%
+                }%>
+                </div>
             </main>
             <%@ include file="assets/footer.jsp" %>
         </div>
