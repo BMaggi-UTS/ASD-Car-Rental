@@ -4,19 +4,46 @@
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
    version="6.0">
 
-    <session-config>
+    <!-- <session-config>
         <session-timeout>
             30
         </session-timeout>
-    </session-config>
+    </session-config> -->
 
-    <servlet>
-        <!-- Override init parameter to avoid nasty -->
+    <!-- <servlet>
+         Override init parameter to avoid nasty -->
         <!-- file locking issue on windows.         -->
-        <servlet-name>default</servlet-name>
+        <!-- <servlet-name>default</servlet-name>
         <init-param>
             <param-name>useFileMappedBuffer</param-name>
             <param-value>false</param-value>
         </init-param>
+    </servlet> --> 
+    <servlet>
+        <servlet-name>ConnServlet</servlet-name>
+        <servlet-class>controller.ConnServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ConnServlet</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchCarServlet</servlet-name>
+        <servlet-class>controller.SearchCarServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchCarServlet</servlet-name>
+        <url-pattern>/SearchCarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>LocationAvailabilityServlet</servlet-name>
+        <servlet-class>controller.LocationAvailabilityServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LocationAvailabilityServlet</servlet-name>
+        <url-pattern>/LocationAvailabilityServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
