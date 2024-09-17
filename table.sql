@@ -11,7 +11,7 @@ CREATE TABLE `Car` (
   `Car_Model` varchar(15) NOT NULL,
   `Car_Trim` varchar(15) DEFAULT NULL,
   `Car_Odometer` int NOT NULL,
-  `Car_Image` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Car_Image` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `Car_Transmission` char(1) NOT NULL,
   `Car_Fuel` char(1) NOT NULL,
   `Car_Seats` int NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `Car` (
   `Car_Location` varchar(30) DEFAULT NULL,
   `Car_Rating` int DEFAULT NULL,
   PRIMARY KEY (`Car_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- Car DATA
 INSERT INTO `Car` (Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_Transmission, Car_Fuel, Car_Seats, Car_Body_Style, Car_Quip, Car_Purchase_Price, Car_Current_Price, Car_Price_KM, Car_Location, Car_Rating) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `Car` (Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_T
   ('Mercedes-Benz','C-Class','C300',30000,'https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_low/v1/editorial/vhs/merc%20c300%20small_0.png','A','P',5,'Sedan','Luxury and class',42000,40000,1,'1',5);
 
 
-CREATE USER 'root'@'%' IDENTIFIED BY 'password';
+CREATE USER 'wy5jR63bAEYi1GxT'@'%' IDENTIFIED BY '6JcL1ECgLzQnmH75';
 GRANT ALL PRIVILEGES ON your_database.* TO 'root'@'%';
 FLUSH PRIVILEGES;
 -- '%' allows access from any IP address. Should replace with dest IP
