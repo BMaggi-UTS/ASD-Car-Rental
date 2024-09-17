@@ -1,0 +1,299 @@
+:root {
+    --background-colour: #F8F4EC;
+    --border-colour: #E0E0E0;
+    --primary: #27622A;
+    --font-colour: #333333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.report-section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+h2:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.report-tables {
+    display: none;
+    margin-top: 10px;
+}
+
+.report-tables.active {
+    display: block;
+}
+
+.select-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#month {
+    padding: 10px;
+    border: 1px solid var(--border-colour);
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#generate-report {
+    background-color: var(--primary);
+    color: rgb(249, 249, 249);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#generate-report:hover {
+    background-color: rgb(23, 36, 206);
+    transform: translateY(-2px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 30px; /* Added space between nav and reports */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    width: 100px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white; /* Links are always visible */
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+.search-div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.search-div input {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    width: 300px;
+    font-size: 16px;
+}
+
+.search-icon {
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.cart-div {
+    color: white;
+    cursor: pointer;
+}
+
+.cart-div i {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .search-div input {
+        width: 200px;
+    }
+}
+
+/* Enhanced styles for customer tracking page */
+#customer-view {
+    display: block;
+    background-color: var(--background-colour);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+#track-order {
+    background-color: #f9f8f8;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#track-order form {
+    display: flex;
+    flex-direction: column;
+}
+
+#track-order label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--font-colour);
+}
+
+#track-order input[type="text"] {
+    padding: 10px;
+    border: 1px solid var(--border-colour);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+#track-order button {
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#track-order button:hover {
+    background-color: #225118;
+    transform: translateY(-2px);
+}
+
+#order-status {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#order-status p {
+    margin: 10px 0;
+}
+
+#order-status h3 {
+    color: var(--primary);
+}
+
+/* Admin view styles */
+#customer-view {
+    display: none;
+}
+
+#admin-view {
+    display: none;
+}
+
+/* Show customer view or admin view based on user role */
+.show-admin #customer-view {
+    display: none;
+}
+
+.show-admin #admin-view {
+    display: block;
+}
+
+.show-customer #admin-view {
+    display: none;
+}
+
+.show-customer #customer-view {
+    display: block;
+}
+
+
