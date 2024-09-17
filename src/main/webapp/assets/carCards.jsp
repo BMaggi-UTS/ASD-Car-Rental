@@ -37,7 +37,10 @@
                 <h2><%= car.getCarQuip() %></h2>
             </div>
         </div>
-        <a href="#" class="buy">Book Now</a>
+        <form method="post" action="/addOrderItemServlet" id="orderItem">
+            <input type="hidden" id="orderCarID" value="<% car.getCarID() %>">
+            <input type="submit" value="Book Now">    
+        </form>
     </div>
 </div>
 </a>
