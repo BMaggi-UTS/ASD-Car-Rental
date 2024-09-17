@@ -4,6 +4,7 @@
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
    version="6.0"> 
 
+
     <servlet>
   	    <servlet-class>controller.ConnServlet</servlet-class>
   	    <servlet-name>ConnServlet</servlet-name>
@@ -32,4 +33,14 @@
   	    <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <!-- Override init parameter to avoid nasty -->
+        <!-- file locking issue on windows.         -->
+        <servlet-name>default</servlet-name>
+        <init-param>
+            <param-name>useFileMappedBuffer</param-name>
+            <param-value>false</param-value>
+        </init-param>
+    </servlet>
 </web-app>
