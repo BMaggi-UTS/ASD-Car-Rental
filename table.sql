@@ -44,7 +44,7 @@ INSERT INTO `Car` (Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_T
   ('Mercedes-Benz','C-Class','C300',30000,'https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_low/v1/editorial/vhs/merc%20c300%20small_0.png','A','P',5,'Sedan','Luxury and class',42000,40000,1,'1',5);
 
 
-CREATE USER 'wy5jR63bAEYi1G~T'@'%' IDENTIFIED BY '6JcL1ECgLzQnmH75';
+CREATE USER 'wy5jR63bAEYi1GxT'@'%' IDENTIFIED BY '6JcL1ECgLzQnmH75';
 GRANT ALL PRIVILEGES ON your_database.* TO 'root'@'%';
 FLUSH PRIVILEGES;
 -- '%' allows access from any IP address. Should replace with dest IP
