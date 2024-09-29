@@ -46,4 +46,13 @@
         <servlet-name>LocationAvailabilityServlet</servlet-name>
         <url-pattern>/LocationAvailabilityServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateListingServlet</servlet-name>
+        <servlet-class>controller.UpdateListingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateListingServlet</servlet-name>
+        <url-pattern>/UpdateListingServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
