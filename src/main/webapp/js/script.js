@@ -58,9 +58,13 @@ function darken(field) {
         if(buttons[i].id == field) {
             buttons[i].className = "selected";
             document.getElementById("km-holder").style.display = "";
+            document.getElementById("selected-type").value = field;
+            console.log("Selected type = " + field);
         } else {
             buttons[i].className = "not-selected";
             document.getElementById("km-holder").style.display = "none";
         }
     }
 }
+
+document.getElementById("pickup-date").value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) + '-' + date.getDate().toString().padStart(2, 0);
