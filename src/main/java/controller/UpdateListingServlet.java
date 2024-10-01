@@ -31,27 +31,28 @@ public class UpdateListingServlet extends HttpServlet{
         int carPriceKM;
         int carRating;
         int locationID;
+        carID = Integer.parseInt(request.getParameter("id"));
+        carMake = request.getParameter("make");
+        carModel = request.getParameter("model");
+        carTrim = request.getParameter("trim");
+        carOdometer = Integer.parseInt(request.getParameter("odometer"));
+        carImage = request.getParameter("imageurl");
+        carTransmission = request.getParameter("transmission");
+        carFuel = request.getParameter("fuel");
+        carSeats = Integer.parseInt(request.getParameter("seats"));
+        carBodyStyle = request.getParameter("bodystyle");
+        carQuip = request.getParameter("quip");
+        carPurchasePrice = Integer.parseInt(request.getParameter("purchaseprice"));
+        carCurrentPrice = Integer.parseInt(request.getParameter("currentprice"));
+        carPriceKM = Integer.parseInt(request.getParameter("pricekm"));
+        carRating = Integer.parseInt(request.getParameter("rating"));
+        locationID = Integer.parseInt(request.getParameter("locID"));
         try {
-            carID = Integer.parseInt(request.getParameter("id"));
-            carMake = request.getParameter("make");
-            carModel = request.getParameter("model");
-            carTrim = request.getParameter("trim");
-            carOdometer = Integer.parseInt(request.getParameter("odometer"));
-            carImage = request.getParameter("imageurl");
-            carTransmission = request.getParameter("transmission");
-            carFuel = request.getParameter("fuel");
-            carSeats = Integer.parseInt(request.getParameter("seats"));
-            carBodyStyle = request.getParameter("bodystyle");
-            carQuip = request.getParameter("quip");
-            carPurchasePrice = Integer.parseInt(request.getParameter("purchaseprice"));
-            carCurrentPrice = Integer.parseInt(request.getParameter("currentprice"));
-            carPriceKM = Integer.parseInt(request.getParameter("pricekm"));
-            carRating = Integer.parseInt(request.getParameter("rating"));
-            locationID = Integer.parseInt(request.getParameter("locID"));
-
-            carDAO.updateProduct(null, carMake, carModel, carTrim, carImage, null, carTransmission, carFuel, null, carBodyStyle, carQuip, null, null, null, null, null);
+            carDAO.updateProduct(carID, carMake, carModel, carTrim, carImage, carOdometer, carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
+            response.sendRedirect("index");
         } catch(Exception e) {
-
+            System.out.println(e);
+            response.sendRedirect("index");
         }
     }
 }

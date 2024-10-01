@@ -158,31 +158,24 @@ public class CarDAO {
 		Integer carRating,
 		Integer locationID
 	) throws SQLException {
-		PreparedStatement st = con.prepareStatement("UPDATE Car SET Car_ID=?, Car_Make=?, Car_Model=?, Car_Trim=?, Car_Odometer=?, Car_Image=?, Car_Transmission=?, Car_Fuel=?, Car_Seats=?, Car_Body_Style=?, Car_Quip=?, Car_Purchase_Price=?, Car_Current_Price=?, Car_Price_KM=?, Car_Rating=? WHERE car_id=?");
+		PreparedStatement st = con.prepareStatement("UPDATE Car SET Car_ID=?, Car_Make=?, Car_Model=?, Car_Trim=?, Car_Odometer=?, Car_Image=?, Car_Transmission=?, Car_Fuel=?, Car_Seats=?, Car_Body_Style=?, Car_Quip=?, Car_Purchase_Price=?, Car_Current_Price=?, Car_Price_KM=?, Car_Rating=?, location_id=? WHERE car_id=?");
 		st.setInt(1, car_ID);
 		st.setString(2, carMake);
 		st.setString(3, carModel);
 		st.setString(4, carTrim);
 		st.setInt(5, carOdometer);
-		st.setString(6, carTransmission);
-		st.setString(7, carFuel);
-		st.setInt(8, carSeats);
-		st.setString(9, carBodyStyle);
-		st.setString(10, carQuip);
-		st.setInt(11, carPurchasePrice);
-		st.setInt(12, carCurrentPrice);
-		st.setInt(13, carPriceKM);
-		st.setInt(14, carRating);
-		st.setInt(15, locationID);
-		st.setInt(16
-		
-		
-		
-		
-		
-		
-		
-		, car_ID);
+		st.setString(6, carImage);
+		st.setString(7, carTransmission);
+		st.setString(8, carFuel);
+		st.setInt(9, carSeats);
+		st.setString(10, carBodyStyle);
+		st.setString(11, carQuip);
+		st.setInt(12, carPurchasePrice);
+		st.setInt(13, carCurrentPrice);
+		st.setInt(14, carPriceKM);
+		st.setInt(15, carRating);
+		st.setInt(16, locationID);
+		st.setInt(17, car_ID);
 	
 		st.executeUpdate();
 	}
