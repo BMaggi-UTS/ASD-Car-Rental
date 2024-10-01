@@ -41,7 +41,7 @@
                                     <p>Manage Booking</p>
                                 </div>
                             </a>
-                            <a class="option-box" href="#">
+                            <a class="option-box" href="/create-listings.jsp">
                                 <div class="inside-option-box">
                                     <i class="fa-solid fa-folder-open box-icon"></i>
                                     <p>New Booking</p>

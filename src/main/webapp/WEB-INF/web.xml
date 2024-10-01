@@ -3,7 +3,12 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
    version="6.0">
-
+<dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>6.0.0</version> 
+        <scope>provided</scope>
+    </dependency>
     <!-- <session-config>
         <session-timeout>
             30
@@ -54,5 +59,14 @@
     <servlet-mapping>
         <servlet-name>UpdateListingServlet</servlet-name>
         <url-pattern>/UpdateListingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateListingServlet</servlet-name>
+        <servlet-class>controller.CreateListingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateListingServlet</servlet-name>
+        <url-pattern>/CreateListingServlet</url-pattern>
     </servlet-mapping>
 </web-app>

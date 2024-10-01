@@ -1,5 +1,15 @@
 model/Car.class
 model/dao/CarDAO.class
+model/dao/orderDAO.class
+controller/LocationAvailabilityServlet.class
+model/dao/paymentDAO.class
 model/dao/DBConnector.class
+controller/CreateListingServlet.class
+model/Location.class
 controller/ConnServlet.class
+controller/UpdateListingServlet.class
+controller/SearchCarServlet.class
+model/order.class
 model/dao/DB.class
+model/dao/LocationDAO.class
+model/payment.class
