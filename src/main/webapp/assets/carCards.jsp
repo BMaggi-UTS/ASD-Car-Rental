@@ -37,7 +37,7 @@
                     <h2><%= car.getCarQuip() %></h2>
                 </div>
             </div>
-            <form method="get" action="/index" id="orderItem">
+            <form method="get" action="/orderView.jsp" id="orderItem">
                 <input type="hidden" name="orderCarID" value="<%= car.getCarID() %>">
                 <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
                 <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">

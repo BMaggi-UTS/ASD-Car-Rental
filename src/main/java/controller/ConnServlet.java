@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.dao.CarDAO;
 import model.dao.DBConnector;
-import model.dao.orderDAO;
+// import model.dao.orderDAO;
 import model.dao.paymentDAO;
 import model.dao.LocationDAO;
 
@@ -23,7 +23,7 @@ public class ConnServlet extends HttpServlet{
     private DBConnector db;
     private Connection conn;
     private CarDAO carDAO;
-    private orderDAO orderDAO;
+    // private orderDAO orderDAO;
     private paymentDAO paymentDAO;
     private Connection connection;
     private LocationDAO locationDAO;
@@ -48,7 +48,7 @@ public class ConnServlet extends HttpServlet{
 
         try {
             carDAO = new CarDAO(connection);
-            orderDAO = new orderDAO(connection);
+            // orderDAO = new orderDAO(connection);
             paymentDAO = new paymentDAO(connection);
             locationDAO = new LocationDAO(connection);
         } catch (SQLException e) {
@@ -56,7 +56,7 @@ public class ConnServlet extends HttpServlet{
         }
 
         session.setAttribute("carDAO", carDAO);
-        session.setAttribute("orderDAO", orderDAO);
+        // session.setAttribute("orderDAO", orderDAO);
         session.setAttribute("paymentDAO", paymentDAO);
         session.setAttribute("locationDAO", locationDAO);
         System.out.println("All DAOs have been set in session.");
