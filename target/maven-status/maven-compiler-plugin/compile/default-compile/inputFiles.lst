@@ -3,6 +3,7 @@
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/SearchCarServlet.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/DBConnector.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Car.java
+/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/DeleteListingServlet.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Location.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/CreateListingServlet.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/LocationDAO.java

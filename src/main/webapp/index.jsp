@@ -58,6 +58,10 @@
                         %> <%@ include file="assets/filterbar.jsp" %>
                         <div class="product-wrapper"> <%
                         cars = carDAO.selectArrayCar(carIDs);
+                        for(Car car : cars) {
+                            %> <%= car.getCarID() %> <%
+
+                        }
                     }
                 }
                 if(carIDLocation != null && carIDLocation.size() > 0) {

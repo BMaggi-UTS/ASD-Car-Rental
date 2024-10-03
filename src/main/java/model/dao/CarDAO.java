@@ -97,13 +97,13 @@ public class CarDAO {
 		Integer carPriceKM = rs.getInt ("car_price_km");
 		Integer carRating = rs.getInt("car_rating");
 		Integer locationID = rs.getInt("location_id");
-
+		System.out.println(car_ID);
         // Create and return Product object
         return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
-		} 
-		else {
-			return null;
-		}
+	} 
+	else {
+		return null;
+	}
 	}
 
 	public ArrayList<Car> selectArrayCar(ArrayList<Integer> carIDList) throws SQLException {
@@ -113,31 +113,46 @@ public class CarDAO {
 			st.setInt(1, carID);
 			ResultSet rs = st.executeQuery();
 			if (rs.next()) { // Check if result set is not empty
-			Integer car_ID = rs.getInt("car_id");
-			String carMake= rs.getString("car_make");
-			String carModel= rs.getString("car_model");
-			String carTrim= rs.getString("car_trim");
-			String carImage= rs.getString("car_image");
-			Integer  carOdometer= rs.getInt("car_odometer");
-			String carTransmission= rs.getString("car_transmission");
-			String carFuel = rs.getString("car_fuel");
-			Integer carSeats= rs.getInt("car_seats");
-			String carBodyStyle = rs.getString("car_body_style");
-			String carQuip = rs.getString("car_quip");
-			Integer carPurchasePrice = rs.getInt("car_purchase_price");
-			Integer carCurrentPrice= rs.getInt("car_current_price");
-			Integer carPriceKM = rs.getInt ("car_price_km");
-			Integer carRating = rs.getInt("car_rating");
-			Integer locationID = rs.getInt("location_id");
-			Car c = new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
-			cars.add(c);
-			} 
+				Integer car_ID = rs.getInt("car_id");
+				String carMake= rs.getString("car_make");
+				String carModel= rs.getString("car_model");
+				String carTrim= rs.getString("car_trim");
+				String carImage= rs.getString("car_image");
+				Integer carOdometer= rs.getInt("car_odometer");
+				String carTransmission= rs.getString("car_transmission");
+				String carFuel = rs.getString("car_fuel");
+				Integer carSeats= rs.getInt("car_seats");
+				String carBodyStyle = rs.getString("car_body_style");
+				String carQuip = rs.getString("car_quip");
+				Integer carPurchasePrice = rs.getInt("car_purchase_price");
+				Integer carCurrentPrice= rs.getInt("car_current_price");
+				Integer carPriceKM = rs.getInt ("car_price_km");
+				Integer carRating = rs.getInt("car_rating");
+				Integer locationID = rs.getInt("location_id");
+				Car c = new Car();
+				c.setCarID(carID);
+				c.setCarMake(carMake);
+				c.setCarModel(carModel);
+				c.setCarTrim(carTrim);
+				c.setCarOdometer(carOdometer);
+				c.setCarImage(carImage);
+				c.setCarTransmission(carTransmission);
+				c.setCarFuel(carFuel);
+				c.setCarSeats(carSeats);
+				c.setCarBodyStyle(carBodyStyle);
+				c.setCarQuip(carQuip);
+				c.setCarPurchasePrice(carPurchasePrice);
+				c.setCarCurrentPrice(carCurrentPrice);
+				c.setCarPriceKM(carPriceKM);
+				c.setCarRating(carRating);
+				c.setLocationID(locationID);
+				cars.add(c);
+			}
 			else {
 				cars.add(null);
 			}
 		}
 		return cars;
-
 	}
 	//update product
 	public void updateProduct(
