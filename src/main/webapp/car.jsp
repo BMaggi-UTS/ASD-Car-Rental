@@ -7,11 +7,14 @@
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/product.css">
+        <link rel="stylesheet" href="css/carDetail.css">
+        <link rel="stylesheet" href="css/navandfooter.css">
+
         <%-- <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script> --%>
         <title>Car Rental</title>
         <%

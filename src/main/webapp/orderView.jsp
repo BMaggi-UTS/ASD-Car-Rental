@@ -1,6 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
+<%@page import="java.sql.*"%> 
+<%@page import="model.dao.orderDAO"%>
+<%@page import="model.dao.DBConnector"%>
+<%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +13,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/orderStyle.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+        <link rel="stylesheet" href="css/navandfooter.css">
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
         <title>Order Management - Checkout</title>
     </head>
@@ -31,23 +35,86 @@
 
                 <!-- Order Summary Section -->
                 <div class="order-summary">
+                    <% 
+                        
+                        // Retrieve and process input parameters
+                        String pickupDate = request.getParameter("pickupDate");
+                        String dropoffDate = request.getParameter("dropoffDate");
+                            
+                        // Calculate prices
+                        String basePriceString = request.getParameter("booking-price");
+                        double basePrice = Double.parseDouble(basePriceString);
+                        double taxesFees = basePrice * 0.10;
+                        double totalPrice = basePrice + taxesFees;
+                            
+                        String taxesFeesString = String.format("%.2f", taxesFees);
+                        String totalPriceString = String.format("%.2f", totalPrice);
+                            
+                        // Open a connection using DBConnector
+                        DBConnector conn = new DBConnector();
+                        Connection connection = conn.openConnection();
+                        // Use the connection to create an orderDAO controller
+                        orderDAO orderDAO = new orderDAO(connection);
+
+                        String carValid = "";
+                        String carMake = "";
+                        String carRating = "";
+                        int carOdometer = 0;
+                        
+                        Car car = null;
+
+                        try {
+                            // Fetch car data by ID if valid
+                            carValid = request.getParameter("orderCarID");
+                            if (carValid != null) {
+                                try {
+                                    int carId = Integer.parseInt(carValid);
+                                    car = orderDAO.getCarById(13); //hard code this (e.g. replace with 13) and continue to work until id issue fixed. Meant to be carId.
+                                    if (car != null) {
+                                        // Output car details
+                                        carMake = car.getCarMake() + " " + car.getCarModel() + " " + car.getCarTrim();
+                                        carRating = car.getCarRating() + "/5 Star Rating";
+                                        carOdometer = car.getCarOdometer();
+                                    } else {
+                                        out.println("Error: Car not found.");
+                                    }
+                                } catch (NumberFormatException e) {
+                                    out.println("Error: Invalid car ID format.");
+                                }
+                            } else {
+                                out.println("Error: Car ID is missing.");
+                            }
+                            
+                        } catch (SQLException e) {
+                            out.println("Database error: " + e.getMessage());
+                        } catch (Exception e) {
+                            out.println("Unexpected error: " + e.getMessage());
+                        }
+                    %>
+
                     <h2>Order Summary</h2>
                     <div class="card">
-                        <h3>[Owner of rental's name here]</h3>
-                        <h4>[Car model here]</h4> 
-                        <p>Rating: [Owner/car star rating here]</p>
+                        <!-- Draw data from carID in database and list model here -->
+                       
+                        <p><strong><%= carMake %></strong></p>
+                        <p><%= carRating %></p>
+                        <p><%= carOdometer %>km</p>
 
                         <br>
-                        
-                        <p>Dates: [Dates/time booked]</p>
-                        <p>Meeting Location: [Location]</p>
-                    </div>
-                    <div class="pricing">
-                        <p>Base Price: $[Base price]</p>
-                        <p>Taxes & Fees: $[Taxes and fees]</p>
-                        <p><strong>Total Price: $[Total price]</strong></p>
-                    </div>  
 
+                        <p>Pickup Date: <%= pickupDate %></p>
+                        <p>Dropoff Date: <%= dropoffDate %></p>
+
+                        <br><br>
+
+                        <p>Base Price: $<%= basePriceString %></p>
+                        <p>Taxes & Fees: $<%= taxesFeesString %></p> 
+                        <p><strong>Total Price: $<%= totalPriceString %></strong></p> 
+
+                        <img src="<%= car.getCarImage() %>" alt="Car Image">
+
+                    </div>
+                    
                     <button class="trash-button">
                         <i class="fas fa-trash"></i> <!-- Font Awesome trash bin icon -->
                     </button>
