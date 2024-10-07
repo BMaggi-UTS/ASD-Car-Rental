@@ -58,7 +58,7 @@ public class SupplierDAO {
             String contactPhone = rs.getString(6);
             String imagePath = rs.getString(7);
 
-            suppliers.add(new Supplier(id, businessName, ABN, ACN, contactName, contactPhone, imagePath ));
+            suppliers.add(new Supplier(id, businessName, ABN, ACN, contactName, contactPhone, imagePath));
         }
 
         return suppliers;
