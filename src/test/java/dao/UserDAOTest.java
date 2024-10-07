@@ -58,10 +58,10 @@ public class UserDAOTest {
     @Test
     @DisplayName("Test registering a new customer.")
     public void testRegisterNewCustomer() {
-
-        
         try {
-            initialize();
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             userDAO.registerNewCustomer("Customer", "Test", "newcustomer@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -70,15 +70,17 @@ public class UserDAOTest {
             assert(rs2.next());
             assertEquals(rs2.getInt("Role_ID"), 1);
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
     @DisplayName("Test registering a new staff.")
     public void testRegisterNewStaff() {
-        initialize();
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             userDAO.registerNewStaff("Staff", "Test", "newstaff@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -87,7 +89,7 @@ public class UserDAOTest {
             assertTrue(rs2.next());
             assertEquals(rs2.getInt("Role_ID"), 2);
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
@@ -95,8 +97,11 @@ public class UserDAOTest {
     @Test
     @DisplayName("Test registering a new admin.")
     public void testRegisterNewAdmin() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             userDAO.registerNewAdmin("Admin", "Test", "newadmin@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -105,49 +110,61 @@ public class UserDAOTest {
             assert(rs2.next());
             assertEquals(rs2.getInt("Role_ID"), 3);
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
     @DisplayName("Test user can be found in database by email")
     public void testUserExists() {
-        initialize();
+        
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             assertTrue(userDAO.checkUserExists("customer@mail.com"));
             assertFalse(userDAO.checkUserExists("false@mail.com"));
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
     @DisplayName("Test accepting correct user login details")
     public void testLoginDetailsAreCorrectForCorrectLogin() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             assertTrue(userDAO.checkLoginDetailsAreCorrect("customer@mail.com", "password"));
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
     @DisplayName("Test rejecting user login details for incorrect login info")
     public void testLoginDetailsAreCorrectForIncorrectLogin() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             assertFalse(userDAO.checkLoginDetailsAreCorrect("customer@mail.com", "wrong-password"));
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
     @DisplayName("Test retrieving user ID with correct login info")
     public void testGetUserIDWithCorrectInfo() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             ResultSet rs = conn.prepareStatement("SELECT last_insert_id() FROM Users").executeQuery();
             rs.next();
 
@@ -156,21 +173,24 @@ public class UserDAOTest {
             assertEquals(userID, rs.getInt(1));
             
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
     @DisplayName("Test retrieving user ID with correct login info")
     public void testGetUserIDWithIncorrectInfo() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             int userID = userDAO.getUserID("admin@mail.com", "wrong-password");
 
             assertEquals(userID, -1);
             
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
@@ -178,14 +198,17 @@ public class UserDAOTest {
     @Test
     @DisplayName("Test retrieving correct role ID with user id")
     public void testGetRoleID() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             int userID = userDAO.getUserID("admin@mail.com", "password");
             int roleID = userDAO.getRoleID(userID);
 
             assertEquals(roleID, 3);
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
@@ -193,15 +216,18 @@ public class UserDAOTest {
     @Test
     @DisplayName("Test returning instance of a customer given correct login info")
     public void testCreateInstanceOfCustomer() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             Customer customer = userDAO.createInstanceOfCustomer("customer@mail.com", "password");
             assertTrue(customer instanceof Customer);
             assertTrue(customer.getLastName().equals("Customer"));
             assertTrue(customer.getPhone().equals("0403111222"));
 
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -209,15 +235,18 @@ public class UserDAOTest {
     @Test
     @DisplayName("Test returning instance of a staff member given correct login info")
     public void testCreateInstanceOfStaff() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             Staff staff = userDAO.createInstanceOfStaff("staff@mail.com", "password");
             assertTrue(staff instanceof Staff);
             assertTrue(staff.getLastName().equals("Staff"));
             assertTrue(staff.getPhone().equals("0403111223"));
             assertTrue(staff.getRoleName().equals("Staff"));
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -225,15 +254,18 @@ public class UserDAOTest {
     @Test
     @DisplayName("Test returning instance of a admin given correct login info")
     public void testCreateInstanceOfAdmin() {
-        initialize();
+
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             Admin admin = (Admin) userDAO.createInstanceOfAdmin("admin@mail.com", "password");
             assertTrue(admin instanceof Admin);
             assertTrue(admin.getLastName().equals("Admin"));
             assertTrue(admin.getPhone().equals("0403111224"));
             assertTrue(admin.getRoleName().equals("Admin"));
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 
