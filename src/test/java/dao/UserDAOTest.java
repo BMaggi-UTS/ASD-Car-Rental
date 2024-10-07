@@ -62,7 +62,6 @@ public class UserDAOTest {
 
         
         try {
-            initialize();
             userDAO.registerNewCustomer("Customer", "Test", "newcustomer@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -80,7 +79,6 @@ public class UserDAOTest {
     public void testRegisterNewStaff() {
 
         try {
-            initialize();
             userDAO.registerNewStaff("Staff", "Test", "newstaff@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -99,7 +97,6 @@ public class UserDAOTest {
     public void testRegisterNewAdmin() {
 
         try {
-            initialize();
             userDAO.registerNewAdmin("Admin", "Test", "newadmin@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -117,7 +114,6 @@ public class UserDAOTest {
     public void testUserExists() {
         
         try {
-            initialize();
             assertTrue(userDAO.checkUserExists("customer@mail.com"));
             assertFalse(userDAO.checkUserExists("false@mail.com"));
         }
@@ -130,7 +126,6 @@ public class UserDAOTest {
     public void testLoginDetailsAreCorrectForCorrectLogin() {
 
         try {
-            initialize();
             assertTrue(userDAO.checkLoginDetailsAreCorrect("customer@mail.com", "password"));
         }
         catch (SQLException ex) {
@@ -142,7 +137,6 @@ public class UserDAOTest {
     public void testLoginDetailsAreCorrectForIncorrectLogin() {
 
         try {
-            initialize();
             assertFalse(userDAO.checkLoginDetailsAreCorrect("customer@mail.com", "wrong-password"));
         }
         catch (SQLException ex) {
@@ -154,7 +148,6 @@ public class UserDAOTest {
     public void testGetUserIDWithCorrectInfo() {
 
         try {
-            initialize();
             ResultSet rs = conn.prepareStatement("SELECT last_insert_id() FROM Users").executeQuery();
             rs.next();
 
@@ -172,7 +165,6 @@ public class UserDAOTest {
     public void testGetUserIDWithIncorrectInfo() {
 
         try {
-            initialize();
             int userID = userDAO.getUserID("admin@mail.com", "wrong-password");
 
             assertEquals(userID, -1);
@@ -188,7 +180,6 @@ public class UserDAOTest {
     public void testGetRoleID() {
 
         try {
-            initialize();
             int userID = userDAO.getUserID("admin@mail.com", "password");
             int roleID = userDAO.getRoleID(userID);
 
@@ -204,7 +195,6 @@ public class UserDAOTest {
     public void testCreateInstanceOfCustomer() {
 
         try {
-            initialize();
             Customer customer = userDAO.createInstanceOfCustomer("customer@mail.com", "password");
             assertTrue(customer instanceof Customer);
             assertTrue(customer.getLastName().equals("Customer"));
@@ -221,7 +211,6 @@ public class UserDAOTest {
     public void testCreateInstanceOfStaff() {
 
         try {
-            initialize();
             Staff staff = userDAO.createInstanceOfStaff("staff@mail.com", "password");
             assertTrue(staff instanceof Staff);
             assertTrue(staff.getLastName().equals("Staff"));
@@ -238,7 +227,6 @@ public class UserDAOTest {
     public void testCreateInstanceOfAdmin() {
 
         try {
-            initialize();
             Admin admin = (Admin) userDAO.createInstanceOfAdmin("admin@mail.com", "password");
             assertTrue(admin instanceof Admin);
             assertTrue(admin.getLastName().equals("Admin"));
