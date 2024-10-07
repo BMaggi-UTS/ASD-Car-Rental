@@ -7,7 +7,7 @@ trigger:
 - michael
 
 pool:   
-  vmImage: ubuntu-latest
+  MyPool
 
 steps:
 - task: JavaToolInstaller@0
