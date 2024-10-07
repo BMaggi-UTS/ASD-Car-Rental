@@ -6,7 +6,7 @@ public abstract class DB {
 protected String URL = "jdbc:mysql://13.55.60.202:3306/";
 protected String db = "CarRental-ASD";  
 protected String dbuser = "wy5jR63bAEYi1GxT";//db root user   
-protected String dbpass = "6JcL1ECgLzQnmH7"; //db root password   
+protected String dbpass = "6JcL1ECgLzQnmH75"; //db root password   
 
 
 // Local DB
