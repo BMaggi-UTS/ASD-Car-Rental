@@ -80,6 +80,6 @@ INSERT INTO `CarRental-ASD`.Location (Location_Street_Number,Location_Street_Nam
 
 
 CREATE USER 'wy5jR63bAEYi1GxT'@'%' IDENTIFIED BY '6JcL1ECgLzQnmH75';
-GRANT ALL PRIVILEGES ON your_database.* TO 'root'@'%';
+GRANT ALL PRIVILEGES ON *.* TO wy5jR63bAEYi1GxT IDENTIFIED BY '6JcL1ECgLzQnmH75';
 FLUSH PRIVILEGES;
 -- '%' allows access from any IP address. Should replace with dest IP

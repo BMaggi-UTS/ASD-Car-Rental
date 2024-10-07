@@ -2,8 +2,7 @@
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
 <%@page import="java.sql.*"%> 
-<%@page import="model.dao.CarDAO"%>
-<%@page import="model.dao.LocationDAO"%>
+<%@page import="model.dao.*"%>
 <%@page import="model.dao.DBConnector"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.time.*"%>
@@ -21,11 +20,16 @@
         <% //open a connection
         Connection con = conn.openConnection(); %>
         <% //use the connection to create a productDAO controller 
-        CarDAO carDAO = new CarDAO(con); %>
+        //CarDAO carDAO = new CarDAO(con); %>
         <% LocationDAO locationDAO = new LocationDAO(con); %>
     </head>
 
     <body>
+        <jsp:include page="/ConnServlet"/>
+        <% 
+            CarDAO carDAO = (CarDAO) session.getAttribute("carDAO"); 
+            UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+        %>
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
