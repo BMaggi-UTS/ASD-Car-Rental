@@ -25,6 +25,7 @@ public class ConnServlet extends HttpServlet{
     private paymentDAO paymentDAO;
     private Connection connection;
     private LocationDAO locationDAO;
+    private SupplierDAO supplierDAO;
     
     @Override
     public void init() {
@@ -40,7 +41,6 @@ public class ConnServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.setAttribute("carDAO", carDAO);
 
         connection = db.openConnection();
 
@@ -49,8 +49,9 @@ public class ConnServlet extends HttpServlet{
             // orderDAO = new orderDAO(connection);
             paymentDAO = new paymentDAO(connection);
             userDAO = new UserDAO(connection);
-            
             locationDAO = new LocationDAO(connection);
+            supplierDAO = new SupplierDAO(connection);
+
         } catch (SQLException e) {
             System.out.print(e);
         }
@@ -60,6 +61,7 @@ public class ConnServlet extends HttpServlet{
         session.setAttribute("paymentDAO", paymentDAO);
         session.setAttribute("userDAO", userDAO);
         session.setAttribute("locationDAO", locationDAO);
+        session.setAttribute("supplierDAO", supplierDAO);
         System.out.println("All DAOs have been set in session.");
         // request.getRequestDispatcher("index.jsp").include(request, response);
     }

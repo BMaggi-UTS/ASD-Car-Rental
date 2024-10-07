@@ -802,20 +802,30 @@ h2 {
   border-radius: 20px;
 }
 
-.supplier-logo {
+.suppliers-logo {
   width: 100px;
   height: 100px;
   border-radius: 20px;
 }
 
-.supplier-edit-btns {
+.supplier-name {
+  font-weight: 600;
+  color: black;
+}
+
+.supplier-name:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.suppliers-edit-btns {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.supplier-edit-btn {
+.suppliers-edit-btn {
   margin: 10px;
 }
 
@@ -828,6 +838,13 @@ h2 {
   font-weight: 600;
   color: red;
 }
+#edit-supplier:hover {
+  cursor: pointer;
+}
+
+#delete-supplier {
+  cursor: pointer;
+}
 
 .supplier-search-bar {
   display: flex;
@@ -836,4 +853,61 @@ h2 {
   align-items: center;
   margin: auto;
   width: 18%;
+}
+
+.supplier-search-btn {
+  background: none;
+  border: none;
+}
+
+.supplier-search-btn:hover {
+  cursor: pointer;
+}
+
+.add-supplier-btn {
+  background-color: var(--primary);
+  color: white;
+  width: 150px;
+  height: 100px;
+  padding: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.supplier-hbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.supplier-title {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.supplier-logo {
+  width: 20vw;
+  height: 20vw;
+  margin-right: 40px;
+}
+
+.supplier-detail-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 150%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.supplier-title-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#return-btn {
+  font-weight: 600;
+  color: black;
+  text-decoration: underline;
 }

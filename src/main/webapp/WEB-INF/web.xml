@@ -33,6 +33,25 @@
   	    <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+  	    <servlet-class>controller.SuppliersServlet</servlet-class>
+  	    <servlet-name>Suppliers</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>Suppliers</servlet-name>
+  	    <url-pattern>/suppliers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+  	    <servlet-class>controller.SupplierServlet</servlet-class>
+  	    <servlet-name>Supplier</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>Supplier</servlet-name>
+  	    <url-pattern>/supplier/*</url-pattern>
+    </servlet-mapping>
+
+
 
     <!-- <servlet>
          Override init parameter to avoid nasty -->
