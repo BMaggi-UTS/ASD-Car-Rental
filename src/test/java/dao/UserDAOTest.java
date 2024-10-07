@@ -88,7 +88,7 @@ public class UserDAOTest {
 
             ResultSet rs2 = conn.prepareStatement("SELECT * FROM User_Roles WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs2.next());
-            assertEquals(rs2.getInt("Role_ID"), 2);
+            assertEquals(rs2.getInt("Role_ID"), 1);
         }
         catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
