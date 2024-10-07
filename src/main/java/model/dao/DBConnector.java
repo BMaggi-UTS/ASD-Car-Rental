@@ -10,21 +10,17 @@ public class DBConnector extends DB {
 	Connection conn;
 
 	public DBConnector() throws ClassNotFoundException, SQLException {
-	Class.forName(driver);
+		Class.forName(driver);
 
-	Properties dbProperties = new Properties();
+		Properties dbProperties = new Properties();
 		dbProperties.put("user", dbuser);
 		dbProperties.put("password", dbpass);
 		dbProperties.put("allowPublicKeyRetrieval", "true");
 		dbProperties.put("useSSL", "false");
 
-		try {
-			conn = DriverManager.getConnection(URL + db, dbProperties);
-		} catch (SQLException e) {
-			System.out.println(e);
-      		throw e;
-		}
+		conn = DriverManager.getConnection(URL + db, dbProperties);
 	}
+	
 
 	public Connection openConnection(){
 		return this.conn;
