@@ -13,31 +13,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shipment Tracking</title>
-    <link rel="stylesheet" href="reports_shipments.css">
+    <link rel="stylesheet" href="css/reports_shipment.css">
 </head>
 <body>
 
-     <nav>
-        <div class="container navbar">
-          <a href="home.html"><img src="logo.png" alt="logo" class="logo" /></a>
-          
-          <ul class="nav-links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="shipment.html">Shipment</a></li>
-            <li><a href="settings.html">Settings</a></li>
-            <li><a href="Reports.html">Reports</a></li>
-          </ul>
-      
-          <div class="search-div">
-            <input type="text" placeholder="Search for your next rental . . ." />
-            <i class="fa-solid fa-magnifying-glass search-icon fa-2xl"></i>
-          </div>
-      
-          <div class="cart-div">
-            <i class="fa-solid fa-car fa-2xl"></i>
-          </div>
-        </div>
-      </nav>
+    <%@ include file="assets/nav.jsp" %> 
 
     <div class="container">
         <!-- Admin View -->
@@ -180,8 +160,8 @@
             </div>
         </div>
     </div>
-
-    <script src="report.js"></script>
-    <script src="tracking.js"></script>
+    <%@ include file="assets/footer.jsp" %>
+    <script src="js/report.js"></script>
+    <script src="js/tracking.js"></script>
 </body>
 </html>
