@@ -59,10 +59,10 @@ public class UserDAOTest {
     @DisplayName("Test registering a new customer.")
     public void testRegisterNewCustomer() {
         try {
-            DBConnector db = new DBConnector();
-            conn = db.openConnection();
-            conn.setAutoCommit(false);
-            userDAO = new UserDAO(conn);
+            // DBConnector db = new DBConnector();
+            // conn = db.openConnection();
+            // conn.setAutoCommit(false);
+            // userDAO = new UserDAO(conn);
             userDAO.registerNewCustomer("Customer", "Test", "newcustomer@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -71,7 +71,7 @@ public class UserDAOTest {
             assert(rs2.next());
             assertEquals(rs2.getInt("Role_ID"), 1);
         }
-        catch (SQLException | ClassNotFoundException ex) {
+        catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
@@ -84,7 +84,7 @@ public class UserDAOTest {
             userDAO = new UserDAO(conn);
             userDAO.registerNewStaff("Staff", "Test", "newstaff@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
-            assertFalse(rs.next());
+            assertTrue(rs.next());
 
             ResultSet rs2 = conn.prepareStatement("SELECT * FROM User_Roles WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs2.next());
