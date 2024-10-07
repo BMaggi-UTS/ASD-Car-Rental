@@ -9,17 +9,20 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/navandfooter.css">
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
-        <title>Supplier</title>
+        <title>Suppliers</title>
     </head>
-
     <% Supplier supplier = (Supplier) session.getAttribute("supplier"); %>
-
+    <% 
+        int supplierID = supplier.getSupplierID();
+        session.setAttribute("supplierID", supplierID);
+    %>
+        <%@ include file="assets/nav.jsp" %>
     <body>
         <div class="web-wrapper">
-            <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
+                <form action="../save/<%= supplierID%>" method="post">
                 <div class="supplier-title-line">
-                    <p class="supplier-title"><%= supplier.getBusinessName()%></p>
+                    <input id="name" name="name" type="text" class="supplier-title" placeholder="Supplier Name" value="<%= supplier.getBusinessName()%>">
                     <a href="/suppliers" id="return-btn">Return to suppliers</a>
                 </div>
                 <br><br>
@@ -28,27 +31,28 @@
                     <div class="supplier-vbox-details">
                         <div class="supplier-detail-line">
                             <p>ABN:</p>
-                            <p><%= supplier.getABN()%></p>
+                            <input id="abn" name="abn" type="text" placeholder="ABN" value="<%= supplier.getABN()%>">
                         </div>
                         <div class="supplier-detail-line">
                             <p>ACN:</p>
-                            <p><%= supplier.getACN()%></p>
+                            <input id="acn" name="acn" type="text" placeholder="ABN" value="<%= supplier.getACN()%>">
                         </div>
                         <div class="supplier-detail-line">
                             <p>Contact name:</p>
-                            <p><%= supplier.getContactName()%></p>
+                            <input id="contact-name" name="contact-name" type="text" placeholder="ABN" value="<%= supplier.getContactName()%>">
                         </div>
                         <div class="supplier-detail-line">
                             <p>Phone number:</p>
-                            <p><%= supplier.getContactPhone()%></p>
+                            <input id="contact-phone" name="contact-phone" type="text" placeholder="ABN" value="<%= supplier.getContactPhone()%>">
                         </div>
                         <br><br>
                         <div class="supplier-detail-line">
-                            <a href="/supplier/edit/<%= supplier.getSupplierID()%>" id="edit-supplier">Edit</a>
-                            <a href="/supplier/delete/<%= supplier.getSupplierID()%>" id="delete-supplier">Delete</a>
+                            <button id="edit-supplier" type="submit">Save</button>
+                            <a href="/supplier/delete/<%= supplierID%>" id="delete-supplier">Delete</a>
                         </div>
                     </div>
                 </div>
+                </form>
             </main>
             <%@ include file="assets/footer.jsp" %>
         </div>
