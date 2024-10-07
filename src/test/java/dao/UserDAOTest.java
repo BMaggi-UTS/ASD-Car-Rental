@@ -1,15 +1,22 @@
 package dao;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
+// import static org.junit.jupiter.api.Assertions.assertFalse;
+// import static org.junit.jupiter.api.Assertions.assertTrue;
+// import org.junit.jupiter.api.*;
+
+import org.junit.Test;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.After;
+
 
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.junit.jupiter.api.*;
+
 
 import model.Admin;
 import model.Customer;
@@ -17,12 +24,11 @@ import model.Staff;
 import model.dao.UserDAO;
 import model.dao.DBConnector;
 
-@DisplayName("Test class testing UserDAO read/write funcionality to DB.")
 public class UserDAOTest {
     Connection conn;
     UserDAO userDAO;
 
-    @BeforeEach
+    @Before
     public void initialize() {
         try {
             DBConnector db = new DBConnector();
@@ -44,7 +50,7 @@ public class UserDAOTest {
         }
     }
 
-    @AfterEach
+    @After
     public void cleanUp() {
         try {
             conn.rollback();
@@ -56,7 +62,6 @@ public class UserDAOTest {
     }
 
     @Test
-    @DisplayName("Test registering a new customer.")
     public void testRegisterNewCustomer() {
         try {
             // DBConnector db = new DBConnector();
@@ -65,18 +70,17 @@ public class UserDAOTest {
             // userDAO = new UserDAO(conn);
             userDAO.registerNewCustomer("Customer", "Test", "newcustomer@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
-            assertTrue(rs.next());
+            Assert.assertTrue(rs.next());
 
             ResultSet rs2 = conn.prepareStatement("SELECT * FROM User_Roles WHERE User_ID=last_insert_id()").executeQuery();
             assert(rs2.next());
-            assertEquals(rs2.getInt("Role_ID"), 1);
+            Assert.assertEquals(rs2.getInt("Role_ID"), 1);
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
-    @DisplayName("Test registering a new staff.")
     public void testRegisterNewStaff() {
         try {
             // DBConnector db = new DBConnector();
@@ -84,11 +88,11 @@ public class UserDAOTest {
             // userDAO = new UserDAO(conn);
             userDAO.registerNewStaff("Staff", "Test", "newstaff@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
-            assertTrue(rs.next());
+            Assert.assertTrue(rs.next());
 
             ResultSet rs2 = conn.prepareStatement("SELECT * FROM User_Roles WHERE User_ID=last_insert_id()").executeQuery();
-            assertTrue(rs2.next());
-            assertEquals(rs2.getInt("Role_ID"), 2);
+            Assert.assertTrue(rs2.next());
+            Assert.assertEquals(rs2.getInt("Role_ID"), 2);
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
@@ -96,7 +100,6 @@ public class UserDAOTest {
     }
 
     @Test
-    @DisplayName("Test registering a new admin.")
     public void testRegisterNewAdmin() {
 
         try {
@@ -105,61 +108,57 @@ public class UserDAOTest {
             // userDAO = new UserDAO(conn);
             userDAO.registerNewAdmin("Admin", "Test", "newadmin@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
-            assertTrue(rs.next());
+            Assert.assertTrue(rs.next());
 
             ResultSet rs2 = conn.prepareStatement("SELECT * FROM User_Roles WHERE User_ID=last_insert_id()").executeQuery();
             assert(rs2.next());
-            assertEquals(rs2.getInt("Role_ID"), 3);
+            Assert.assertEquals(rs2.getInt("Role_ID"), 3);
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
-    @DisplayName("Test user can be found in database by email")
     public void testUserExists() {
         
         try {
             // DBConnector db = new DBConnector();
             // conn = db.openConnection();
             // userDAO = new UserDAO(conn);
-            assertTrue(userDAO.checkUserExists("customer@mail.com"));
-            assertFalse(userDAO.checkUserExists("false@mail.com"));
+            Assert.assertTrue(userDAO.checkUserExists("customer@mail.com"));
+            Assert.assertFalse(userDAO.checkUserExists("false@mail.com"));
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
-    @DisplayName("Test accepting correct user login details")
     public void testLoginDetailsAreCorrectForCorrectLogin() {
 
         try {
             // DBConnector db = new DBConnector();
             // conn = db.openConnection();
             // userDAO = new UserDAO(conn);
-            assertTrue(userDAO.checkLoginDetailsAreCorrect("customer@mail.com", "password"));
+            Assert.assertTrue(userDAO.checkLoginDetailsAreCorrect("customer@mail.com", "password"));
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
-    @DisplayName("Test rejecting user login details for incorrect login info")
     public void testLoginDetailsAreCorrectForIncorrectLogin() {
 
         try {
             // DBConnector db = new DBConnector();
             // conn = db.openConnection();
             // userDAO = new UserDAO(conn);
-            assertFalse(userDAO.checkLoginDetailsAreCorrect("customer@mail.com", "wrong-password"));
+            Assert.assertFalse(userDAO.checkLoginDetailsAreCorrect("customer@mail.com", "wrong-password"));
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
     @Test
-    @DisplayName("Test retrieving user ID with correct login info")
     public void testGetUserIDWithCorrectInfo() {
 
         try {
@@ -171,7 +170,7 @@ public class UserDAOTest {
 
             int userID = userDAO.getUserID("admin@mail.com", "password");
 
-            assertEquals(userID, rs.getInt(1));
+            Assert.assertEquals(userID, rs.getInt(1));
             
         }
         catch (SQLException ex) {
@@ -179,7 +178,6 @@ public class UserDAOTest {
         }
     }
     @Test
-    @DisplayName("Test retrieving user ID with correct login info")
     public void testGetUserIDWithIncorrectInfo() {
 
         try {
@@ -188,7 +186,7 @@ public class UserDAOTest {
             // userDAO = new UserDAO(conn);
             int userID = userDAO.getUserID("admin@mail.com", "wrong-password");
 
-            assertEquals(userID, -1);
+            Assert.assertEquals(userID, -1);
             
         }
         catch (SQLException ex) {
@@ -197,7 +195,6 @@ public class UserDAOTest {
     }
 
     @Test
-    @DisplayName("Test retrieving correct role ID with user id")
     public void testGetRoleID() {
 
         try {
@@ -207,7 +204,7 @@ public class UserDAOTest {
             int userID = userDAO.getUserID("admin@mail.com", "password");
             int roleID = userDAO.getRoleID(userID);
 
-            assertEquals(roleID, 3);
+            Assert.assertEquals(roleID, 3);
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
@@ -215,7 +212,6 @@ public class UserDAOTest {
     }
 
     @Test
-    @DisplayName("Test returning instance of a customer given correct login info")
     public void testCreateInstanceOfCustomer() {
 
         try {
@@ -223,9 +219,9 @@ public class UserDAOTest {
             // conn = db.openConnection();
             // userDAO = new UserDAO(conn);
             Customer customer = userDAO.createInstanceOfCustomer("customer@mail.com", "password");
-            assertTrue(customer instanceof Customer);
-            assertTrue(customer.getLastName().equals("Customer"));
-            assertTrue(customer.getPhone().equals("0403111222"));
+            Assert.assertTrue(customer instanceof Customer);
+            Assert.assertTrue(customer.getLastName().equals("Customer"));
+            Assert.assertTrue(customer.getPhone().equals("0403111222"));
 
         }
         catch (SQLException ex) {
@@ -234,7 +230,6 @@ public class UserDAOTest {
 
     }
     @Test
-    @DisplayName("Test returning instance of a staff member given correct login info")
     public void testCreateInstanceOfStaff() {
 
         try {
@@ -242,10 +237,10 @@ public class UserDAOTest {
             // conn = db.openConnection();
             // userDAO = new UserDAO(conn);
             Staff staff = userDAO.createInstanceOfStaff("staff@mail.com", "password");
-            assertTrue(staff instanceof Staff);
-            assertTrue(staff.getLastName().equals("Staff"));
-            assertTrue(staff.getPhone().equals("0403111223"));
-            assertTrue(staff.getRoleName().equals("Staff"));
+            Assert.assertTrue(staff instanceof Staff);
+            Assert.assertTrue(staff.getLastName().equals("Staff"));
+            Assert.assertTrue(staff.getPhone().equals("0403111223"));
+            Assert.assertTrue(staff.getRoleName().equals("Staff"));
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -253,7 +248,6 @@ public class UserDAOTest {
 
     }
     @Test
-    @DisplayName("Test returning instance of a admin given correct login info")
     public void testCreateInstanceOfAdmin() {
 
         try {
@@ -261,10 +255,10 @@ public class UserDAOTest {
             // conn = db.openConnection();
             // userDAO = new UserDAO(conn);
             Admin admin = (Admin) userDAO.createInstanceOfAdmin("admin@mail.com", "password");
-            assertTrue(admin instanceof Admin);
-            assertTrue(admin.getLastName().equals("Admin"));
-            assertTrue(admin.getPhone().equals("0403111224"));
-            assertTrue(admin.getRoleName().equals("Admin"));
+            Assert.assertTrue(admin instanceof Admin);
+            Assert.assertTrue(admin.getLastName().equals("Admin"));
+            Assert.assertTrue(admin.getPhone().equals("0403111224"));
+            Assert.assertTrue(admin.getRoleName().equals("Admin"));
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);
