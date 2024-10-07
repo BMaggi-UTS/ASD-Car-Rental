@@ -1,7 +1,5 @@
 package model.dao;
 
-import static org.junit.jupiter.api.Assumptions.abort;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

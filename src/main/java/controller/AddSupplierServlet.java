@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 
 import model.dao.*;
-import model.*;
 
 public class AddSupplierServlet extends HttpServlet {
 
