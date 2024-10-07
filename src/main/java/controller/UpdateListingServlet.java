@@ -48,7 +48,7 @@ public class UpdateListingServlet extends HttpServlet {
         carRating = Integer.parseInt(request.getParameter("rating"));
         locationID = Integer.parseInt(request.getParameter("locID"));
         try {
-            carDAO.updateProduct(carID, carMake, carModel, carTrim, carImage, carOdometer, carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
+            carDAO.updateCar(carID, carMake, carModel, carTrim, carImage, carOdometer, carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
             response.sendRedirect("index");
         } catch(Exception e) {
             System.out.println(e);

@@ -2,11 +2,11 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException; 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import model.dao.CarDAO;
 
@@ -48,7 +48,7 @@ public class CreateListingServlet extends HttpServlet {
         carRating = Integer.parseInt(request.getParameter("rating"));
         locationID = Integer.parseInt(request.getParameter("locID"));
         try {
-            carDAO.createProduct(carID, carMake, carModel, carTrim, carImage, carOdometer, carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
+            carDAO.createCar(carID, carMake, carModel, carTrim, carImage, carOdometer, carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
             response.sendRedirect("index");
         } catch(Exception e) {
             System.out.println(e);

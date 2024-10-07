@@ -3,7 +3,7 @@ package controller;
 import jakarta.servlet.http.*;
 import jakarta.servlet.ServletException;
 
-import java.sql.Connection;
+// import java.sql.Connection;
 import java.sql.SQLException;
 import java.io.IOException;
 import java.util.logging.Logger;

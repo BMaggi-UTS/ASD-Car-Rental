@@ -17,7 +17,7 @@ public class CarDAO {
 		//initiates connection to db
 		this.con = connection;
 		//prevents needing confirmation before making changes to db
-		connection.setAutoCommit(true);
+		connection.setAutoCommit(false);
 		//preparing predetermined statement
 //		carFetchReadSt = connection.prepareStatement("SELECT car_id, car_make, car_model, car_trim, car_odometer, car_image, car_transmission, car_fuel, car_seats, car_body_style, car_quip, car_purchase_price, car_current_price, car_price_km, car_location, car_rating  FROM CAR");
     carFetchReadSt = connection.prepareStatement("SELECT Car_ID, Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_Transmission, Car_Fuel, Car_Seats, Car_Body_Style, Car_Quip, Car_Purchase_Price, Car_Current_Price, Car_Price_KM, Car_Rating, Location_ID FROM Car");
@@ -113,6 +113,7 @@ public class CarDAO {
 			st.setInt(1, carID);
 			ResultSet rs = st.executeQuery();
 			if (rs.next()) { // Check if result set is not empty
+				@SuppressWarnings("unused")
 				Integer car_ID = rs.getInt("car_id");
 				String carMake= rs.getString("car_make");
 				String carModel= rs.getString("car_model");
@@ -155,7 +156,7 @@ public class CarDAO {
 		return cars;
 	}
 	//update product
-	public void updateProduct(
+	public void updateCar(
 		Integer car_ID,
 		String carMake,
 		String carModel,
@@ -195,7 +196,7 @@ public class CarDAO {
 		st.executeUpdate();
 	}
 	//update product
-	public void createProduct(
+	public void createCar(
 		Integer car_ID,
 		String carMake,
 		String carModel,
@@ -233,5 +234,11 @@ public class CarDAO {
 
 		st.executeUpdate();
 	}
+	//delete product
+	public void deleteCar(Integer car_id) throws SQLException {
+		//needed to use string contactation here because ? and st.setint wasnt working.
+		PreparedStatement st = con.prepareStatement("DELETE FROM Car WHERE car_id="+car_id);
 
+		st.executeUpdate(); // executes the query
+	}
 }

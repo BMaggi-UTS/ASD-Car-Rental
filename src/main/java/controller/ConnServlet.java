@@ -10,7 +10,7 @@ import jakarta.servlet.http.*;
 import model.dao.CarDAO;
 import model.dao.DBConnector;
 import model.dao.UserDAO;
-import model.dao.orderDAO;
+// import model.dao.orderDAO;
 import model.dao.paymentDAO;
 import model.dao.LocationDAO;
 
@@ -20,7 +20,7 @@ import model.dao.*;
 public class ConnServlet extends HttpServlet{
     private DBConnector db;
     private CarDAO carDAO;
-    private orderDAO orderDAO;
+    // private orderDAO orderDAO;
     private UserDAO userDAO;
     private paymentDAO paymentDAO;
     private Connection connection;
