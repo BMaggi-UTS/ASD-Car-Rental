@@ -6,7 +6,7 @@
 trigger:
 - michael
 
-pool:   
+pool: 
   vmImage: ubuntu-latest
 
 steps:

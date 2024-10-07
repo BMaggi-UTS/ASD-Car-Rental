@@ -1,10 +1,8 @@
 package model;
 import java.io.Serializable;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 public class order implements Serializable {
     private int userID;
-    private int staffID;
     private int carID;
     private String orderDateTime;
     private String status;
@@ -21,10 +19,8 @@ public class order implements Serializable {
 
     public order(
         int userID,
-        int staffID,
         int carID,
         String orderDateTime,
-        String status,
         String rentalDateStart,
         String rentalDateFinish,
         int odometerStart,
@@ -34,10 +30,8 @@ public class order implements Serializable {
         String middleName,
         int licenseNumber) {
             this.userID = userID;
-            this.staffID = staffID;
             this.carID = carID;
             this.orderDateTime = orderDateTime;
-            this.status = status;
             this.rentalDateStart = rentalDateStart;
             this.odometerStart = odometerStart;
             this.odometerFinish = odometerFinish;
@@ -55,14 +49,6 @@ public class order implements Serializable {
         this.userID = userID;
     }
 
-    public int getStaffID() {
-        return staffID;
-    }
-
-    public void setStaffID(int staffID) {
-        this.staffID = staffID;
-    }
-
     public int getCarID() {
         return carID;
     }
@@ -75,25 +61,23 @@ public class order implements Serializable {
         return orderDateTime;
     }
 
-    public void setOrderDateTime(String orderDateTime) {
-        this.orderDateTime = orderDateTime;
+    public void setOrderDateTime(String currentDateTime) {
+        this.orderDateTime = currentDateTime;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getRentalDateStart() {
         return rentalDateStart;
+
     }
 
     public void setRentalDateStart(String rentalDateStart) {
         this.rentalDateStart = rentalDateStart;
     }
+
 
     public String getRentalDateFinish() {
         return rentalDateFinish;

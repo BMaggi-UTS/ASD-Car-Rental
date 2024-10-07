@@ -125,28 +125,29 @@
                 <!-- Personal Details Section -->
                 <div class="order-summary">
                     <h2>Personal Details</h2>
+
+                    <%
+                    User user = (User) session.getAttribute("user");
+
+                    int userID = user.getUserID();
+                    String userFirstName = user.getFirstName();
+                    String userLastName = user.getLastName();
+                    String userEmail= user.getEmail();
+                    String userPhone = user.getPhone();
+                    %>
                     
-                        <h3>[User name ]</h3>
-                        <h4>[User Address]</h4> 
-                        <p>Email</p>
-                        <p>Phone</p>
+                    <h3>Name: <%= userFirstName %> <%= userLastName %></h3>
+                    <p>Email: <%= userEmail %></p>
+                    <p>Phone: <%= userPhone %></p>
 
-                        <br>
-                        
-                        <p>Dates: [Dates/time booked]</p>
-                        <p>Meeting Location: [Location]</p>
+                    <br>
 
-                        <br>
-
-                        <button class="trash-button">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                    
-                
+                    <button class="trash-button">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
                 </div>
 
                 <br><br>
-
 
                 <!-- Driver's License Section -->
                 <div class="driver-info">
@@ -158,8 +159,7 @@
                     </div>
                     <br><br>
 
-
-                    <form action="contactProcessing.jsp" method="POST">
+                    <form action="addOrderItem" method="POST">
                         <div class="form-group">
                             <label for="firstName">First Name:</label>
                             <input type="firstName" id="firstName" name="firstName" required>

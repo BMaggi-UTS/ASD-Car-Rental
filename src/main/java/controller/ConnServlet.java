@@ -4,15 +4,13 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import javax.servlet.ServletException; 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
 
 import model.dao.CarDAO;
 import model.dao.DBConnector;
-// import model.dao.orderDAO;
+import model.dao.UserDAO;
+import model.dao.orderDAO;
 import model.dao.paymentDAO;
 import model.dao.LocationDAO;
 
@@ -21,9 +19,9 @@ import model.dao.*;
 
 public class ConnServlet extends HttpServlet{
     private DBConnector db;
-    private Connection conn;
     private CarDAO carDAO;
-    // private orderDAO orderDAO;
+    private orderDAO orderDAO;
+    private UserDAO userDAO;
     private paymentDAO paymentDAO;
     private Connection connection;
     private LocationDAO locationDAO;
@@ -32,7 +30,7 @@ public class ConnServlet extends HttpServlet{
     public void init() {
         try {
             db = new DBConnector();
-            conn = db.openConnection();
+            connection = db.openConnection();
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Failed to establish database connection.");
         }
@@ -48,19 +46,22 @@ public class ConnServlet extends HttpServlet{
 
         try {
             carDAO = new CarDAO(connection);
-            // orderDAO = new orderDAO(connection);
+            orderDAO = new orderDAO(connection);
             paymentDAO = new paymentDAO(connection);
+            userDAO = new UserDAO(connection);
+            
             locationDAO = new LocationDAO(connection);
         } catch (SQLException e) {
             System.out.print(e);
         }
 
         session.setAttribute("carDAO", carDAO);
-        // session.setAttribute("orderDAO", orderDAO);
+        session.setAttribute("orderDAO", orderDAO);
         session.setAttribute("paymentDAO", paymentDAO);
+        session.setAttribute("userDAO", userDAO);
         session.setAttribute("locationDAO", locationDAO);
         System.out.println("All DAOs have been set in session.");
-        request.getRequestDispatcher("index.jsp").include(request, response);
+        // request.getRequestDispatcher("index.jsp").include(request, response);
     }
 
     @Override
