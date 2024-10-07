@@ -79,9 +79,9 @@ public class UserDAOTest {
     @DisplayName("Test registering a new staff.")
     public void testRegisterNewStaff() {
         try {
-            DBConnector db = new DBConnector();
-            conn = db.openConnection();
-            userDAO = new UserDAO(conn);
+            // DBConnector db = new DBConnector();
+            // conn = db.openConnection();
+            // userDAO = new UserDAO(conn);
             userDAO.registerNewStaff("Staff", "Test", "newstaff@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -90,7 +90,7 @@ public class UserDAOTest {
             assertTrue(rs2.next());
             assertEquals(rs2.getInt("Role_ID"), 2);
         }
-        catch (SQLException | ClassNotFoundException ex) {
+        catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
