@@ -7,6 +7,8 @@ import java.util.Properties;
 
 public class DBConnector extends DB {
 
+	Connection conn;
+
 	public DBConnector() throws ClassNotFoundException, SQLException {
 	Class.forName(driver);
 
@@ -20,7 +22,7 @@ public class DBConnector extends DB {
 			conn = DriverManager.getConnection(URL + db, dbProperties);
 		} catch (SQLException e) {
 			System.out.println(e);
-      throw e;
+      		throw e;
 		}
 	}
 
