@@ -3,7 +3,6 @@ package dao;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assumptions.abort;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -62,6 +61,9 @@ public class UserDAOTest {
 
         
         try {
+            DBConnector db = new DBConnector();
+            conn = db.openConnection();
+            userDAO = new UserDAO(conn);
             userDAO.registerNewCustomer("Customer", "Test", "newcustomer@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
             assertTrue(rs.next());
@@ -70,7 +72,7 @@ public class UserDAOTest {
             assert(rs2.next());
             assertEquals(rs2.getInt("Role_ID"), 1);
         }
-        catch (SQLException ex) {
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
