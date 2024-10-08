@@ -14,8 +14,8 @@ trigger:
 trigger:
 - brad
 
-pool:   
-  MyPool
+pool:
+  vmImage: 'ubuntu-latest'  # or your preferred image
 
 steps:
 - task: JavaToolInstaller@0
