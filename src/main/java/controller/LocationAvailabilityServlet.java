@@ -57,7 +57,7 @@ public class LocationAvailabilityServlet extends HttpServlet {
             System.out.println(daysBetween);
         } catch(DateTimeParseException e) {
             request.setAttribute("errors", "errors");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("/errors.jsp").forward(request, response);
             return;
         }
         

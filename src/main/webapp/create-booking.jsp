@@ -38,6 +38,17 @@
                 <div class="product-wrapper br-top">
                     <div class="option-container">
                         <h1>Create a new booking</h1>
+                        <h1><%
+                                if(request.getAttribute("errors") != null) {
+                                 %>
+                                 <div class="errors">
+                                    <p>
+                                        <%= request.getAttribute("errors") %>
+                                    </p>
+                                 </div>
+                                 <%
+                                }
+                                %></h1>
                         <form action="/CreateBookingServlet" method="post" autocomplete="off" id="update-listing-form">
                             <div class="table-emulator">
                                 <h2>ID</h2>
@@ -50,8 +61,8 @@
                                 <input type="text" name="aID" value="<%= lastID + 1 %>">
                                 <input type="text" name="cID">
                                 <input type="text" name="oID">
-                                <input type="text" name="startDate">
-                                <input type="text" name="finishDate">
+                                <input type="text" name="startDate" placeholder="YYYY-MM-DD">
+                                <input type="text" name="finishDate" placeholder="YYYY-MM-DD">
                             </div>
                             <button type="submit" class="submit-modal"><i class="fa-solid fa-floppy-disk "></i></button>
                         </form>

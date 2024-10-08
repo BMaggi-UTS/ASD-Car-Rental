@@ -149,3 +149,24 @@ footer {
     margin-top: 4rem;
     margin-bottom: 1rem;
   }
+  .errors {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    z-index: 10000;
+    color: red;
+  }
+  .errors h1 {
+    padding-top: 5rem;
+  }
+  .errors h2 {
+    padding-bottom: 2rem;
+    color: black;
+  }
+  .errors p {
+    font-size: 1rem;
+  }
+  .errors span {
+    color: red;
+  }

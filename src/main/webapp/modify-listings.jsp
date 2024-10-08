@@ -32,6 +32,7 @@
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
+            
              <% ArrayList<Car> cars = carDAO.fetchCars(); %>
             <% for(Car car : cars) { %>
                 <form action="/UpdateListingServlet" method="post" autocomplete="off" id="update-listing-form">
@@ -92,6 +93,17 @@
                 <div class="product-wrapper br-top">
                     <div class="option-container">
                         <h1>Modify Listings</h1>
+                        <h1><%
+                                if(request.getAttribute("errors") != null) {
+                                 %>
+                                 <div class="errors">
+                                    <p>
+                                        <%= request.getAttribute("errors") %>
+                                    </p>
+                                 </div>
+                                 <%
+                                }
+                                %></h1>
                         <div>
                         <form action="/UpdateListingServlet" method="post" autocomplete="off" id="update-listing-form">
                             <div class="control-buttons">

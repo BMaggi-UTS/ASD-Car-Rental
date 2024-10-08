@@ -39,10 +39,21 @@
                         <div>
                         <form action="/ModifyBookingServlet" method="post" autocomplete="off" id="update-listing-form">
                             <div class="control-buttons">
+                                <h1><%
+                                if(request.getAttribute("errors") != null) {
+                                 %>
+                                 <div class="errors">
+                                    <p>
+                                        <%= request.getAttribute("errors") %>
+                                    </p>
+                                 </div>
+                                 <%
+                                }
+                                %></h1>
                                 <a onclick="editAll()"><i class="fa-solid fa-pencil"></i></a>
                                 <button type="submit"><i class="fa-solid fa-floppy-disk"></i></button>
                             </div>
-                            
+
                                 <table>
                                     <tr>
                                         <th>ID</th>
