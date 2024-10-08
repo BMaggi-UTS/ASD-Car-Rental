@@ -25,6 +25,7 @@ public class orderDAO {
                + "Rental_Date_Start, Rental_Date_Finish, Odometer_Start, Odometer_Finish, "
                + "License_Number, Tax_Price, Base_Price, Total_Price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+            
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, order.getUserID());
             statement.setInt(2, order.getCarID());
