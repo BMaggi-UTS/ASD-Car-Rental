@@ -15,6 +15,9 @@ public class order implements Serializable {
     private String firstName;
     private String lastName;
     private String middleName;
+    private String totalPriceString;
+    private String basePriceString;
+    private String taxesFeesString;
 
     public order(){};
 
@@ -30,7 +33,10 @@ public class order implements Serializable {
         String firstName,
         String lastName,
         String middleName,
-        int licenseNumber) {
+        int licenseNumber,
+        String totalPriceString,
+        String basePriceString,
+        String taxesFeesString) {
             this.orderID = orderID;
             this.userID = userID;
             this.carID = carID;
@@ -41,7 +47,9 @@ public class order implements Serializable {
             this.firstName = firstName;
             this.lastName = lastName;
             this.middleName = middleName;
-            this.licenseNumber = licenseNumber;
+            this.totalPriceString = totalPriceString;
+            this.taxesFeesString = taxesFeesString;
+            this.basePriceString = basePriceString;
         }
 
     public int getorderID() {
@@ -144,6 +152,30 @@ public class order implements Serializable {
 
     public void setLicenseNumber(int licenseNumber) {
         this.licenseNumber = licenseNumber;
+    }
+
+    public String gettaxesFeesString() {
+        return taxesFeesString;
+    }
+
+    public void settaxesFeesString(String taxesFeesString) {
+        this.taxesFeesString = taxesFeesString;
+    }
+
+    public String getbasePriceString() {
+        return basePriceString;
+    }
+
+    public void setbasePriceString(String basePriceString) {
+        this.basePriceString = basePriceString;
+    }
+
+    public String gettotalPriceString() {
+        return totalPriceString;
+    }
+
+    public void settotalPriceString(String totalPriceString) {
+        this.totalPriceString = totalPriceString;
     }
 }
 

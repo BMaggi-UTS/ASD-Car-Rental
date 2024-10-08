@@ -114,10 +114,7 @@
                         <img src="<%= car.getCarImage() %>" alt="Car Image">
 
                     </div>
-                    
-                    <button class="trash-button">
-                        <i class="fas fa-trash"></i> <!-- Font Awesome trash bin icon -->
-                    </button>
+
                 </div>
 
                 <br><br>
@@ -142,9 +139,6 @@
 
                     <br>
 
-                    <button class="trash-button">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
                 </div>
 
                 <br><br>
@@ -160,6 +154,15 @@
                     <br><br>
 
                     <form action="addOrderItem" method="POST">
+                        <!-- Hidden inputs -->
+                        <input type="hidden" name="orderCarID" value="13"> <!-- HARDCODED. Needs to be fixed. -->
+                        <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
+                        <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">
+                        <input type="hidden" name="base-price" value="<%= basePriceString %>">
+                        <input type="hidden" name="tax-fees" value="<%= taxesFeesString %>">
+                        <input type="hidden" name="booking-price" value="<%= totalPriceString %>">
+                        
+                        
                         <div class="form-group">
                             <label for="firstName">First Name:</label>
                             <input type="firstName" id="firstName" name="firstName" required>

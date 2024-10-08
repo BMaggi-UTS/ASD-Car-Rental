@@ -9,6 +9,9 @@
         </a>
       </form>
     </div>
+    <div class="order-history">
+      <a href="/viewOrders" class="order-history-button">Order History</a>
+    </div>
     <div class="cart-div">
       <i class="fa-solid fa-car fa-2xl"></i>
     </div>

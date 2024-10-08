@@ -89,4 +89,29 @@
         <servlet-name>addOrderItem</servlet-name>
         <url-pattern>/addOrderItem</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>viewOrders</servlet-name>
+        <servlet-class>controller.viewOrders</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewOrders</servlet-name>
+        <url-pattern>/viewOrders</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>updateDriver</servlet-name>
+        <servlet-class>controller.updateDriver</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateDriver</servlet-name>
+        <url-pattern>/updateDriver</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteOrder</servlet-name>
+        <servlet-class>controller.deleteOrder</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteOrder</servlet-name>
+        <url-pattern>/deleteOrder</url-pattern>
+    </servlet-mapping>
+
 </web-app>
