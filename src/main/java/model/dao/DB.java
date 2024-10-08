@@ -11,7 +11,7 @@ protected String dbpass = "6JcL1ECgLzQnmH75"; //db root password
 
 // Local DB
 // protected String URL = "jdbc:mysql://localhost:3306/";
-// protected String db = "CarRental";  
+// protected String db = "CarRental-ASD";  
 // protected String dbuser = "root";//db root user   
 // protected String dbpass = "password"; //db root password   
 
