@@ -68,6 +68,13 @@
             <version>8.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.13.2</version>
+          <scope>test</scope>
+        </dependency>
+
     </dependencies>
     
     <build>
@@ -95,6 +102,11 @@
                         <port>8080</port>
                     </httpConnector>
                 </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>2.22.2</version>
             </plugin>
         </plugins>
     </build>
