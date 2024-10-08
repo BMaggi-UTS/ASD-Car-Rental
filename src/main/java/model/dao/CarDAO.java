@@ -140,4 +140,23 @@ public class CarDAO {
 
 	}
 
+  // In CarDAO.java
+
+// Add new car
+public void addCar(Car car) throws SQLException {
+    PreparedStatement st = con.prepareStatement("INSERT INTO Car (car_make, car_model, car_current_price) VALUES (?, ?, ?)");
+    st.setString(1, car.getCarMake());
+    st.setString(2, car.getCarModel());
+    st.setInt(3, car.getCarCurrentPrice());
+    st.executeUpdate();
+}
+
+// Delete a car by ID
+public void deleteCar(int carID) throws SQLException {
+    PreparedStatement st = con.prepareStatement("DELETE FROM Car WHERE car_id = ?");
+    st.setInt(1, carID);
+    st.executeUpdate();
+}
+
+
 }
