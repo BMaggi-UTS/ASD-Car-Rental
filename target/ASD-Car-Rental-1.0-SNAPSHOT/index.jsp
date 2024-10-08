@@ -41,17 +41,17 @@
                         <div class="product-wrapper"> <%
                         carIDs = null;
                         carIDLocation = null;
-                        }
+                    }
                     if(carIDs != null && carIDs.size() > 0) {
                         if(carIDs.get(0) == 0 ) { 
                             cars = null;
                         %><%= "No cars found. Please enter a different search term" %><%
                         } else {
-                        if(carIDs.size() > 0)  { 
+                            if(carIDs.size() > 0)  { 
                                 %> <%@ include file="assets/filterbar.jsp" %>
                                 <div class="product-wrapper"> <%
                                 cars = carDAO.selectArrayCar(carIDs);
-                                }
+                            }
                         }
                     }
                 }
