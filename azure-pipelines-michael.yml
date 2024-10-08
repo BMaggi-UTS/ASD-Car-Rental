@@ -6,10 +6,20 @@
 trigger:
 - michael
 
+<<<<<<< HEAD
 pool: 
   vmImage: ubuntu-latest
+=======
+pool:   
+  MyPool
+>>>>>>> 41152445b50b8247684277687a94fcda9ac0576c
 
 steps:
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '21'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
