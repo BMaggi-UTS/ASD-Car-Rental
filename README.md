@@ -26,7 +26,7 @@ https://github.com/BMaggi-UTS/ASD-Car-Rental.git
 DB Schema:
 The database schema is located in 'db' folder at the root of the directory.
 
-Build steps:
+Build Steps
 
 1. Clone the repo:
     git clone https://github.com/BMaggi-UTS/ASD-Car-Rental.git
@@ -173,5 +173,3 @@ Project structure:
 │           └── dao
 │               ├── SupplierDAOTest.java
 │               └── UserDAOTest.java
-
-59 directories, 248 files
