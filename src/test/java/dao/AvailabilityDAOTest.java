@@ -31,6 +31,7 @@ public class AvailabilityDAOTest {
             conn.setAutoCommit(false);
             conn.prepareStatement("DELETE FROM Availability").executeUpdate();
 
+            
             conn.prepareStatement("DELETE FROM Orders").executeUpdate();
             conn.prepareStatement("DELETE FROM Car").executeUpdate();
             availabilityDAO = new AvailabilityDAO(conn); 
