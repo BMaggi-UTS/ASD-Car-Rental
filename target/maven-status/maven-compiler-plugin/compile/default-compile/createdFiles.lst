@@ -2,6 +2,7 @@ controller/LocationAvailabilityServlet.class
 model/Staff.class
 model/dao/DBConnector.class
 controller/ConnServlet.class
+model/Availability.class
 model/Customer.class
 model/dao/LocationDAO.class
 model/payment.class
@@ -26,4 +27,5 @@ model/order.class
 controller/RegexUtils.class
 model/dao/DB.class
 model/User.class
+model/dao/AvailabilityDAO.class
 model/dao/SupplierDAO.class

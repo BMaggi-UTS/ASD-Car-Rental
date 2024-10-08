@@ -1,7 +1,7 @@
 package model;
 import java.io.Serializable;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
+// import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 public class order implements Serializable {
     private int userID;
     private int staffID;

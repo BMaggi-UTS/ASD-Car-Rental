@@ -3,6 +3,7 @@
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Car.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/SuppliersServlet.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/DeleteListingServlet.java
+/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Availability.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/User.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Location.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/CreateListingServlet.java
@@ -14,6 +15,7 @@
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/Customer.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/orderDAO.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/LocationAvailabilityServlet.java
+/Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/AvailabilityDAO.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/controller/addOrderItem.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/payment.java
 /Users/bradleymadgwick/ASD-Car-Rental/src/main/java/model/dao/paymentDAO.java

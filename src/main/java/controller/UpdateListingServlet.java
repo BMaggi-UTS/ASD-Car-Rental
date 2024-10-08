@@ -49,10 +49,10 @@ public class UpdateListingServlet extends HttpServlet {
         locationID = Integer.parseInt(request.getParameter("locID"));
         try {
             carDAO.updateCar(carID, carMake, carModel, carTrim, carImage, carOdometer, carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
-            response.sendRedirect("index");
+            response.sendRedirect("/catalogueStaffView.jsp");
         } catch(Exception e) {
             System.out.println(e);
-            response.sendRedirect("index");
+            response.sendRedirect("/catalogueStaffView.jsp");
         }
     }
 }

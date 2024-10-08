@@ -8,14 +8,25 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 // import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
-// import model.Car;
-// import model.dao.CarDAO;
+import model.dao.CarDAO;
 
 public class DeleteListingServlet extends HttpServlet {
-    @Override
+   @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       String[] idList = request.getParameterValues("deleteCheckbox");
-        System.out.println(idList);
-     }
+        HttpSession session = request.getSession();
+        CarDAO carDAO = (CarDAO) session.getAttribute("carDAO");
+        int carID;
+
+        carID = Integer.parseInt(request.getParameter("carID"));
+
+        try {
+            carDAO.deleteCar(carID);
+            response.sendRedirect("/catalogueStaffView.jsp");
+        } catch(Exception e) {
+            System.out.println(e);
+            response.sendRedirect("/catalogueStaffView.jsp");
+        }
+    }
 }

@@ -115,5 +115,32 @@
         <servlet-name>DeleteListingServlet</servlet-name>
         <url-pattern>/DeleteListingServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateBookingServlet</servlet-name>
+        <servlet-class>controller.CreateBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateBookingServlet</servlet-name>
+        <url-pattern>/CreateBookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ModifyBookingServlet</servlet-name>
+        <servlet-class>controller.ModifyBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyBookingServlet</servlet-name>
+        <url-pattern>/ModifyBookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteBookingServlet</servlet-name>
+        <servlet-class>controller.DeleteBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteBookingServlet</servlet-name>
+        <url-pattern>/DeleteBookingServlet</url-pattern>
+    </servlet-mapping>
     
 </web-app>

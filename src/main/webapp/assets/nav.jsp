@@ -9,6 +9,7 @@
         </a>
       </form>
     </div>
+    <a href="catalogueStaffView.jsp">Staff View</a>
     <div class="cart-div">
       <i class="fa-solid fa-car fa-2xl"></i>
     </div>

@@ -28,6 +28,7 @@
     </head>
 
     <body>
+    <jsp:include page="/ConnServlet"/>
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
@@ -46,24 +47,28 @@
                                 <th>Location</th>
                                 <th>Delete?</th>
                             </tr>
-                            <form action="/DeleteListingServlet" method="post" autocomplete="off" id="delete-listing-form">>
+                           
 
                             <% for(Car car : cars) { %>
+                             <form action="/DeleteListingServlet" method="post" autocomplete="off" id="delete-listing-form">>
                                 <tr>
-                                    <td class="bg-not-active" ondblclick="swap('<%= car.getCarID() %>')" id="<%= car.getCarID() %>"><p><%= car.getCarID() %></p><input type="text" class="hidden" name="id" value="<%= car.getCarID() %>"></td>
-                                    <td class="bg-not-active" ondblclick="swap('<%= car.getCarMake() + car.getCarID() %>')" id="<%= car.getCarMake() + car.getCarID()%>"><p><%= car.getCarMake()%></p> <input type="text" class="hidden" name="make" value="<%= car.getCarMake()%>"> </td>
-                                    <td class="bg-not-active" ondblclick="swap('<%= car.getCarModel() + car.getCarID() %>')" id="<%= car.getCarModel() + car.getCarID()%>"><p><%= car.getCarModel()%></p> <input type="text" class="hidden" name="model" value="<%= car.getCarModel()%>"> </td>
-                                    <td class="bg-not-active" ondblclick="swap('<%= car.getCarOdometer() + car.getCarID() %>')" id="<%= car.getCarOdometer() + car.getCarID()%>"><p><%= car.getCarOdometer() %></p><input type="text" class="hidden" name="odometer" value="<%= car.getCarOdometer() %>"></td>
-                                    <td class="bg-not-active" ondblclick="swap('<%= car.getCarTransmission() + car.getCarID() %>')" id="<%= car.getCarTransmission() + car.getCarID() %>"><p><%= car.getCarTransmission() %></p><input type="text" class="hidden" name="transmission" value="<%= car.getCarTransmission() %>"></td>
-                                    <td class="bg-not-active" ondblclick="swap('<%= car.getCarFuel() + car.getCarID() %>')" id="<%= car.getCarFuel() + car.getCarID() %>"><p><%= car.getCarFuel() %></p><input type="text" class="hidden" name="fuel" value="<%= car.getCarFuel() %>"></td>
-                                    <td class="bg-not-active" ondblclick="swap('<%= car.getLocationID() + car.getCarMake() + car.getCarID() %>')" id="<%= car.getLocationID() + car.getCarMake() + car.getCarID() %>"><p><%= car.getLocationID() %></p><input type="text" class="hidden" name="locID" value="<%= car.getLocationID() %>"></td>
+                                    <td class="bg-not-active"><p><%= car.getCarID()%></p> </td>
+                                    <td class="bg-not-active"><p><%= car.getCarMake()%></p> </td>
+                                    <td class="bg-not-active"><p><%= car.getCarModel()%></p> </td>
+                                    <td class="bg-not-active"><p><%= car.getCarOdometer() %></p></td>
+                                    <td class="bg-not-active"><p><%= car.getCarTransmission() %></p></td>
+                                    <td class="bg-not-active"><p><%= car.getCarFuel() %></p></td>
+                                    <td class="bg-not-active"><p><%= car.getLocationID() %></p></td>
                                     <td class="bg-not-active">
-                                        <input type="checkbox" value="<%= car.getCarID()%>" name="deleteCheckbox[]">
+                                        <input type="hidden" value="<%= car.getCarID()%>" name="carID">
+                                        <button type="submit">Delete</button>
                                     </td>
                                 </tr>
+                                </form>
                             <% } %>
-                            <button type="submit">submit</button>
-                            </form>
+                             
+
+                           
 
                         </table>
                     </div>

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Car;
-// import model.order;
+import model.order;
 
 public class orderDAO {
 
@@ -17,37 +17,38 @@ public class orderDAO {
     }
 
     // Method to create a new order
-    // public void createOrder(order order) throws SQLException {
-    //     String sql = "INSERT INTO orders (User_ID, Staff_ID, Car_ID, Order_Date_Time, Status, "
-    //            + "Rental_Date_Start, Rental_Date_Finish, Odometer_Start, Odometer_Finish, "
-    //            + "License_Number, First_Name, Middle_Name, Last_Name, License_Expiry_Date, "
-    //            + "DOB, State) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public void createOrder(order order) throws SQLException {
+        // order newOrder;
+        String sql = "INSERT INTO orders (User_ID, Staff_ID, Car_ID, Order_Date_Time, Status, "
+               + "Rental_Date_Start, Rental_Date_Finish, Odometer_Start, Odometer_Finish, "
+               + "License_Number, First_Name, Middle_Name, Last_Name, License_Expiry_Date, "
+               + "DOB, State) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    //     try (PreparedStatement statement = connection.prepareStatement(sql)) {
-    //         statement.setInt(1, order.getUserID());
-    //         statement.setInt(2, order.getStaffID());
-    //         statement.setInt(3, order.getCarID());
-    //         statement.setString(4, order.getOrderDateTime());
-    //         statement.setString(5, order.getStatus());
-    //         statement.setString(6, order.getRentalDateStart());
-    //         statement.setString(7, order.getRentalDateFinish());
-    //         statement.setInt(8, order.getOdometerStart());
-    //         statement.setInt(9, order.getOdometerFinish());
-    //         statement.setInt(10, order.getLicenseNumber());
-    //         statement.setString(11, order.getfirstName()); 
-    //         statement.setString(12, order.getmiddleName()); 
-    //         statement.setString(13, order.getlastName()); 
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, order.getUserID());
+            statement.setInt(2, order.getStaffID());
+            statement.setInt(3, order.getCarID());
+            statement.setString(4, order.getOrderDateTime());
+            statement.setString(5, order.getStatus());
+            statement.setString(6, order.getRentalDateStart());
+            statement.setString(7, order.getRentalDateFinish());
+            statement.setInt(8, order.getOdometerStart());
+            statement.setInt(9, order.getOdometerFinish());
+            statement.setInt(10, order.getLicenseNumber());
+            statement.setString(11, order.getfirstName()); 
+            statement.setString(12, order.getmiddleName()); 
+            statement.setString(13, order.getlastName()); 
 
-    //         // Create and format the expiration date from the form input
-    //         String licenseExpiryDate = order.getExpiryYear() + "-" + newOrder.getExpiryMonth() + "-" + newOrder.getExpiryDay();
-    //         statement.setString(14, licenseExpiryDate); // Expiration Date
+            // Create and format the expiration date from the form input
+            String licenseExpiryDate = "2025-10-10";
+            statement.setString(14, licenseExpiryDate); // Expiration Date
 
-    //         statement.setDate(15, java.sql.Date.valueOf(newOrder.getDOB())); // Date of Birth
-    //         statement.setString(16, newOrder.getState()); // State
+            statement.setString(15, "2002-09-10"); // Date of Birth
+            statement.setString(16, "nsw"); // State
 
-    //         statement.executeUpdate();
-    //     }
-    // }
+            statement.executeUpdate();
+        }
+    }
 
     // // Method to get an order by ID for search purposes
     // public order getOrderById(int orderId) throws SQLException {
