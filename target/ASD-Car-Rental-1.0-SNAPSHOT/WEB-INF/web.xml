@@ -2,13 +2,55 @@
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-   version="6.0">
+   version="6.0"> 
 
-    <!-- <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config> -->
+    <servlet>
+  	    <servlet-class>controller.ConnServlet</servlet-class>
+  	    <servlet-name>ConnServlet</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>ConnServlet</servlet-name>
+  	    <url-pattern>/ConnServlet</url-pattern>
+        <load-on-startup>0</load-on-startup>
+    </servlet-mapping>    
+    <servlet>
+  	    <servlet-class>controller.LoginServlet</servlet-class>
+  	    <servlet-name>LoginServlet</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>LoginServlet</servlet-name>
+  	    <url-pattern>/login</url-pattern>
+        <load-on-startup>0</load-on-startup>
+    </servlet-mapping>    
+
+    <servlet>
+  	    <servlet-class>controller.RegisterServlet</servlet-class>
+  	    <servlet-name>Register</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>Register</servlet-name>
+  	    <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+  	    <servlet-class>controller.SuppliersServlet</servlet-class>
+  	    <servlet-name>Suppliers</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>Suppliers</servlet-name>
+  	    <url-pattern>/suppliers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+  	    <servlet-class>controller.SupplierServlet</servlet-class>
+  	    <servlet-name>Supplier</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>Supplier</servlet-name>
+  	    <url-pattern>/supplier/*</url-pattern>
+    </servlet-mapping>
+
+
 
     <!-- <servlet>
          Override init parameter to avoid nasty -->
@@ -46,4 +88,59 @@
         <servlet-name>LocationAvailabilityServlet</servlet-name>
         <url-pattern>/LocationAvailabilityServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateListingServlet</servlet-name>
+        <servlet-class>controller.UpdateListingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateListingServlet</servlet-name>
+        <url-pattern>/UpdateListingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateListingServlet</servlet-name>
+        <servlet-class>controller.CreateListingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateListingServlet</servlet-name>
+        <url-pattern>/CreateListingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteListingServlet</servlet-name>
+        <servlet-class>controller.DeleteListingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteListingServlet</servlet-name>
+        <url-pattern>/DeleteListingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateBookingServlet</servlet-name>
+        <servlet-class>controller.CreateBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateBookingServlet</servlet-name>
+        <url-pattern>/CreateBookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ModifyBookingServlet</servlet-name>
+        <servlet-class>controller.ModifyBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyBookingServlet</servlet-name>
+        <url-pattern>/ModifyBookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteBookingServlet</servlet-name>
+        <servlet-class>controller.DeleteBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteBookingServlet</servlet-name>
+        <url-pattern>/DeleteBookingServlet</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
