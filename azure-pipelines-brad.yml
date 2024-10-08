@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- michael
+- brad
 
 pool:
   vmImage: 'ubuntu-latest' 
