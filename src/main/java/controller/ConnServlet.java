@@ -15,9 +15,9 @@ import java.util.logging.Level;
 public class ConnServlet extends HttpServlet{
     private DBConnector db;
     private CarDAO carDAO;
-    private orderDAO orderDAO;
+    // private orderDAO orderDAO;
     private UserDAO userDAO;
-    private paymentDAO paymentDAO;
+    // private paymentDAO paymentDAO;
     private Connection connection;
     private LocationDAO locationDAO;
     private SupplierDAO supplierDAO;
