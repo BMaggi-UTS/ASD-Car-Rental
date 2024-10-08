@@ -31,7 +31,6 @@ public class AvailabilityDAOTest {
             conn.setAutoCommit(false);
             conn.prepareStatement("DELETE FROM Availability").executeUpdate();
 
-
             conn.prepareStatement("DELETE FROM Orders").executeUpdate();
             conn.prepareStatement("DELETE FROM Car").executeUpdate();
             availabilityDAO = new AvailabilityDAO(conn); 
@@ -40,8 +39,6 @@ public class AvailabilityDAOTest {
 
             carDAO.createCar(99991, "TestMake", "TestModel", "TestTrim", "TestImageText", 123456, "M", "P", 5, "Hatch", "TestQuip", 123, 456, 2, 5, 1);
             carDAO.createCar(99992, "TestMakeTwo", "TestModelTwo", "TestTrimTwo", "TestImageTextTwo", 123456, "M", "P", 5, "Hatch", "TestQuipTwo", 123, 456, 2, 5, 1);
-
-            
 
             availabilityDAO.createAvailability(99991, 99991, 1, "2024-08-10", "2024-08-11");
             availabilityDAO.createAvailability(99992, 99992, 1, "2024-08-20", "2024-08-20");
