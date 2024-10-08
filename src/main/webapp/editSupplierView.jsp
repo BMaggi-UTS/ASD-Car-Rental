@@ -15,6 +15,30 @@
     <% 
         int supplierID = supplier.getSupplierID();
         session.setAttribute("supplierID", supplierID);
+
+        String businessNameErr = (String) session.getAttribute("businessNameErr");
+        session.setAttribute("businessNameErr", "");
+        if(businessNameErr == null){
+            businessNameErr = "";
+        }
+
+        String abnErr = (String) session.getAttribute("abnErr");
+        session.setAttribute("abnErr", "");
+        if(abnErr == null){
+            abnErr = "";
+        }
+
+        String acnErr = (String) session.getAttribute("acnErr");
+        session.setAttribute("acnErr", "");
+        if(acnErr == null){
+            acnErr = "";
+        }
+
+        String phoneErr = (String) session.getAttribute("phoneErr");
+        session.setAttribute("phoneErr", "");
+        if(phoneErr == null){
+            phoneErr = "";
+        }
     %>
         <%@ include file="assets/nav.jsp" %>
     <body>
@@ -29,21 +53,27 @@
                 <div class="supplier-hbox">
                     <img class="supplier-logo" src="/assets/supplier-logos/<%= supplier.getImagePath()%>">
                     <div class="supplier-vbox-details">
+                        <div class="supplier-errors">
+                            <p class="error"><%= businessNameErr%></p>
+                            <p class="error"><%= abnErr%></p>
+                            <p class="error"><%= acnErr%></p>
+                            <p class="error"><%= phoneErr%></p>
+                        </div>
                         <div class="supplier-detail-line">
                             <p>ABN:</p>
                             <input id="abn" name="abn" type="text" placeholder="ABN" value="<%= supplier.getABN()%>">
                         </div>
                         <div class="supplier-detail-line">
                             <p>ACN:</p>
-                            <input id="acn" name="acn" type="text" placeholder="ABN" value="<%= supplier.getACN()%>">
+                            <input id="acn" name="acn" type="text" placeholder="ACN" value="<%= supplier.getACN()%>">
                         </div>
                         <div class="supplier-detail-line">
                             <p>Contact name:</p>
-                            <input id="contact-name" name="contact-name" type="text" placeholder="ABN" value="<%= supplier.getContactName()%>">
+                            <input id="contact-name" name="contact-name" type="text" placeholder="Contact name" value="<%= supplier.getContactName()%>">
                         </div>
                         <div class="supplier-detail-line">
                             <p>Phone number:</p>
-                            <input id="contact-phone" name="contact-phone" type="text" placeholder="ABN" value="<%= supplier.getContactPhone()%>">
+                            <input id="contact-phone" name="contact-phone" type="text" placeholder="Contact phone" value="<%= supplier.getContactPhone()%>">
                         </div>
                         <br><br>
                         <div class="supplier-detail-line">

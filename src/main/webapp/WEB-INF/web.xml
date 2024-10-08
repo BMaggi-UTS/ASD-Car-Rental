@@ -82,6 +82,19 @@
   	    <url-pattern>/supplier/delete/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+  	    <servlet-class>controller.UpdateDetailsServlet</servlet-class>
+  	    <servlet-name>UpdateDetailsServlet</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>UpdateDetailsServlet</servlet-name>
+  	    <url-pattern>/user/save</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+  	    <servlet-name>UpdateDetailsServlet</servlet-name>
+  	    <url-pattern>/user/delete</url-pattern>
+    </servlet-mapping>
+
 
 
 

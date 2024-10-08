@@ -49,9 +49,39 @@ public class EditSupplierServlet extends HttpServlet {
         String contactPhone = request.getParameter("contact-phone");
 
         try{
-            supplierDAO.updateSupplier(id, businessName, abn, acn, contactName, contactPhone);
-            response.sendRedirect("/supplier/" + id);
-            return;
+            boolean valid = true;
+
+            if(businessName.equals("")) {
+                session.setAttribute("businessNameErr", "Supplier must have a name!");
+                valid = false;
+            }
+            
+            if(!abn.equals("")){
+                if(!RegexUtils.validateABN(abn)){
+                    session.setAttribute("abnErr", "Invalid ABN! Must be an 11 digit number.");
+                    valid = false;
+                }
+            }
+            if(!acn.equals("")){
+                if(!RegexUtils.validateACN(acn)){
+                    session.setAttribute("acnErr", "Invalid ACN! Must be a 9 digit number.");
+                    valid = false;
+                }
+            }
+            if(!RegexUtils.validatePhoneNo(contactPhone)){
+                session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid mobile number.");
+                valid = false;
+            }
+
+            if(valid){
+                supplierDAO.updateSupplier(id, businessName, abn, acn, contactName, contactPhone);
+                response.sendRedirect("/supplier/" + id);
+                return;
+            }
+            else {
+                response.sendRedirect("/supplier/edit/" + id);
+                return;
+            }
         }
         catch (SQLException ex) {
             Logger.getLogger(EditSupplierServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -236,6 +236,28 @@ public class UserDAO {
 		ps.executeUpdate();
 	}	
 
+	public void updatePhoneNumber(int userID, String newPhoneNumber) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("UPDATE Users SET User_Phone = ? WHERE User_ID = ?");
+		ps.setString(1, newPhoneNumber);
+		ps.setInt(2, userID);
+		ps.executeUpdate();
+	}	
+	public void updateDateOfBirth(int userID, String newDateOfBirth) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("UPDATE Users SET User_DOB = ? WHERE User_ID = ?");
+		ps.setString(1, newDateOfBirth);
+		ps.setInt(2, userID);
+		ps.executeUpdate();
+	}
+	
+	public void deleteUser(int userID) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("DELETE FROM Users WHERE User_ID = ?");
+		ps.setInt(1, userID);
+		ps.executeUpdate();
+	}
+
 
 
 }

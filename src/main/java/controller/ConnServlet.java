@@ -6,15 +6,10 @@ import java.sql.SQLException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-
-import model.dao.CarDAO;
-import model.dao.DBConnector;
-import model.dao.UserDAO;
-import model.dao.orderDAO;
-import model.dao.paymentDAO;
-import model.dao.LocationDAO;
-
 import model.dao.*;
+
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 
 public class ConnServlet extends HttpServlet{
@@ -42,28 +37,42 @@ public class ConnServlet extends HttpServlet{
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
 
-        connection = db.openConnection();
-
-        try {
-            carDAO = new CarDAO(connection);
-            // orderDAO = new orderDAO(connection);
-            paymentDAO = new paymentDAO(connection);
-            userDAO = new UserDAO(connection);
-            locationDAO = new LocationDAO(connection);
-            supplierDAO = new SupplierDAO(connection);
-
-        } catch (SQLException e) {
-            System.out.print(e);
+        connection = (Connection) session.getAttribute("connection");
+        if(connection == null) {
+            connection = db.openConnection();
+            session.setAttribute("connection", connection);
         }
 
-        session.setAttribute("carDAO", carDAO);
-        // session.setAttribute("orderDAO", orderDAO);
-        session.setAttribute("paymentDAO", paymentDAO);
-        session.setAttribute("userDAO", userDAO);
-        session.setAttribute("locationDAO", locationDAO);
-        session.setAttribute("supplierDAO", supplierDAO);
+        try {
+            carDAO = (CarDAO) session.getAttribute("carDAO");
+            if(carDAO == null) {
+                carDAO = new CarDAO(connection);
+                session.setAttribute("carDAO", carDAO);
+            }
+
+            userDAO = (UserDAO) session.getAttribute("userDAO");
+            if(userDAO == null) {
+                userDAO = new UserDAO(connection);
+                session.setAttribute("userDAO", userDAO);
+            }
+
+            locationDAO = (LocationDAO) session.getAttribute("locationDAO");
+            if(locationDAO == null) {
+                locationDAO = new LocationDAO(connection);
+                session.setAttribute("locationDAO", locationDAO);
+            }
+
+            supplierDAO = (SupplierDAO) session.getAttribute("supplierDAO");
+            if(supplierDAO == null) {
+                supplierDAO = new SupplierDAO(connection);
+                session.setAttribute("supplierDAO", supplierDAO);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         System.out.println("All DAOs have been set in session.");
-        // request.getRequestDispatcher("index.jsp").include(request, response);
     }
 
     @Override

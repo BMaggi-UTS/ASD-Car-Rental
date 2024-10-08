@@ -24,13 +24,44 @@ public class AddSupplierServlet extends HttpServlet {
         String contactName = request.getParameter("contact-name");
         String contactPhone = request.getParameter("contact-phone");
 
-        try {
-            supplierDAO.addSupplier(businessName, abn, acn, contactName, contactPhone);
-            int newSupplierID = supplierDAO.getLastInsertID();
-            response.sendRedirect("/supplier/" + newSupplierID);
+        try{
+            boolean valid = true;
+
+            if(businessName.equals("")) {
+                session.setAttribute("businessNameErr", "Supplier must have a name!");
+                valid = false;
+            }
+            
+            if(!abn.equals("")){
+                if(!RegexUtils.validateABN(abn)){
+                    session.setAttribute("abnErr", "Invalid ABN! Must be an 11 digit number.");
+                    valid = false;
+                }
+            }
+            if(!acn.equals("")){
+                if(!RegexUtils.validateACN(acn)){
+                    session.setAttribute("acnErr", "Invalid ACN! Must be a 9 digit number.");
+                    valid = false;
+                }
+            }
+            if(!RegexUtils.validatePhoneNo(contactPhone)){
+                session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid mobile number.");
+                valid = false;
+            }
+
+            if(valid){
+                supplierDAO.addSupplier(businessName, abn, acn, contactName, contactPhone);
+                int newSupplierID = supplierDAO.getLastInsertID();
+                response.sendRedirect("/supplier/" + newSupplierID);
+                return;
+            }
+            else {
+                response.sendRedirect("/addSupplierView.jsp");
+                return;
+            }
         }
         catch (SQLException ex) {
-            Logger.getLogger(AddSupplierServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditSupplierServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }

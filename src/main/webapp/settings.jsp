@@ -13,7 +13,32 @@
         <script defer src="script.js"></script>
     </head>
 
-    <% User user = (User) session.getAttribute("user");%>
+    <% 
+        User user = (User) session.getAttribute("user");
+        if(user == null){
+            response.sendRedirect("login.jsp");
+        }
+
+        String fnameErr = (String) session.getAttribute("fnameErr");
+        session.setAttribute("fnameErr", "");
+
+        String surnameErr = (String) session.getAttribute("surnameErr");
+        session.setAttribute("surnameErr", "");
+
+        String phoneErr = (String) session.getAttribute("phoneErr");
+        session.setAttribute("phoneErr", "");
+
+        if(fnameErr == null){
+            fnameErr = "";
+        }
+        if(surnameErr == null){
+            surnameErr = "";
+        }
+        if(phoneErr == null){
+            phoneErr = "";
+        }
+
+    %>
 
 
     <body>
@@ -26,7 +51,7 @@
                     <a class="setting-menu-item" href="preferences">Preferences</a>
                     <a class="setting-menu-item" href="paymentmethods">Payment methods</a>
                     <hr class="setting-divider">
-                    <a class="setting-menu-item" href="signout">Sign out</a>
+                    <a class="setting-menu-item" href="signout.jsp">Sign out</a>
                 </div>
 
                 <div id="modal-overlay">
@@ -47,7 +72,7 @@
                     </div>
                     <div class="modal" id="personal-details-modal">
                         <button data-close-btn class="close-btn">&times;</button>
-                        <form class="edit-details-form" action="register", method="post">
+                        <form class="edit-details-form" action="user/save", method="post">
                             <h1 id="login-heading">Personal Details</h1>
                             <div class="form-group">
                                 <input class="register-input" type="text" id="fname" name="fname" placeholder="First name" value="<%= user.getFirstName()%>" required>
@@ -76,6 +101,11 @@
                 </div>
 
                 <h1>Your Account</h1>
+                <div class="errors">
+                    <p class="error"><%= fnameErr%></p>
+                    <p class="error"><%= surnameErr%></p>
+                    <p class="error"><%= phoneErr%></p>
+                </div>
                 <div class="settings-section">
                     <div class="edit-line">
                         <h3 class="setting-section-heading">Login Details</h3>
@@ -104,7 +134,7 @@
                         <p class="setting-value"><%= user.getFirstName()%></p>
                     </div>
                     <div class="setting-line">
-                        <p class="setting-label">Surame:</p>
+                        <p class="setting-label">Surname:</p>
                         <p class="setting-value"><%= user.getLastName()%></p>
                     </div>
                     <div class="setting-line">
@@ -121,6 +151,8 @@
                     </div>
                     <br>
                 </div>
+                <br><br><br><br>
+                <a class="delete-account-button" href="user/delete">Delete Account</a>
             </main>
             <%@ include file="assets/footer.jsp" %>
         </div>

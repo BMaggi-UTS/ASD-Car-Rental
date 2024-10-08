@@ -11,6 +11,33 @@
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
         <title>Suppliers</title>
     </head>
+
+    <%
+        String businessNameErr = (String) session.getAttribute("businessNameErr");
+        session.setAttribute("businessNameErr", "");
+        if(businessNameErr == null){
+            businessNameErr = "";
+        }
+
+        String abnErr = (String) session.getAttribute("abnErr");
+        session.setAttribute("abnErr", "");
+        if(abnErr == null){
+            abnErr = "";
+        }
+
+        String acnErr = (String) session.getAttribute("acnErr");
+        session.setAttribute("acnErr", "");
+        if(acnErr == null){
+            acnErr = "";
+        }
+
+        String phoneErr = (String) session.getAttribute("phoneErr");
+        session.setAttribute("phoneErr", "");
+        if(phoneErr == null){
+            phoneErr = "";
+        }
+    %>
+
     <%@ include file="assets/nav.jsp" %>
     <body>
         <div class="web-wrapper">
@@ -24,6 +51,12 @@
                 <div class="supplier-hbox">
                     <img class="supplier-logo" src="/assets/supplier-logos/placeholder.png">
                     <div class="supplier-vbox-details">
+                        <div class="supplier-errors">
+                            <p class="error"><%= businessNameErr%></p>
+                            <p class="error"><%= abnErr%></p>
+                            <p class="error"><%= acnErr%></p>
+                            <p class="error"><%= phoneErr%></p>
+                        </div>
                         <div class="supplier-detail-line">
                             <p>ABN:</p>
                             <input id="abn" name="abn" type="text" placeholder="ABN">
