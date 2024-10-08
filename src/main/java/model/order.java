@@ -1,7 +1,5 @@
 package model;
 import java.io.Serializable;
-
-// import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
 public class order implements Serializable {
     private int userID;
     private int staffID;
@@ -13,9 +11,6 @@ public class order implements Serializable {
     private int odometerStart;
     private int odometerFinish;
     private int licenseNumber;
-    private String firstName;
-    private String lastName;
-    private String middleName;
 
     public order(){};
 
@@ -29,9 +24,6 @@ public class order implements Serializable {
         String rentalDateFinish,
         int odometerStart,
         int odometerFinish,
-        String firstName,
-        String lastName,
-        String middleName,
         int licenseNumber) {
             this.userID = userID;
             this.staffID = staffID;
@@ -41,9 +33,6 @@ public class order implements Serializable {
             this.rentalDateStart = rentalDateStart;
             this.odometerStart = odometerStart;
             this.odometerFinish = odometerFinish;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.middleName = middleName;
             this.licenseNumber = licenseNumber;
         }
 
@@ -117,30 +106,6 @@ public class order implements Serializable {
 
     public void setOdometerFinish(int odometerFinish) {
         this.odometerFinish = odometerFinish;
-    }
-
-    public String getfirstName() {
-        return firstName;
-    }
-
-    public void setfirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getlastName() {
-        return lastName;
-    }
-
-    public void setlastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getmiddleName() {
-        return middleName;
-    }
-
-    public void setmiddleName(String middleName) {
-        this.middleName = middleName;
     }
 
     public int getLicenseNumber() {
