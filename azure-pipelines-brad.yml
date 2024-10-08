@@ -16,6 +16,13 @@ steps:
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
+- script: |
+  echo "Running tests with EC2 DB connection..."
+  env:
+    DB_HOST: "13.55.60.202:3306"
+    DB_USER: "wy5jR63bAEYi1GxT"
+    DB_PASSWORD: "6JcL1ECgLzQnmH75"
+
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'

@@ -18,9 +18,9 @@ import model.dao.orderDAO;
 @DisplayName("Test class testing CarDAO read/write funcionality to DB.")
 public class AvailabilityDAOTest {
     Connection conn;
-    static AvailabilityDAO availabilityDAO;
-    static CarDAO carDAO;
-    static orderDAO orderDAO;
+    AvailabilityDAO availabilityDAO;
+    CarDAO carDAO;
+    orderDAO orderDAO;
 
     @BeforeEach
     public void initialize() {
@@ -31,7 +31,7 @@ public class AvailabilityDAOTest {
             conn.setAutoCommit(false);
             conn.prepareStatement("DELETE FROM Availability").executeUpdate();
 
-            
+
             conn.prepareStatement("DELETE FROM Orders").executeUpdate();
             conn.prepareStatement("DELETE FROM Car").executeUpdate();
             availabilityDAO = new AvailabilityDAO(conn); 

@@ -19,7 +19,7 @@ import model.dao.DBConnector;
 @DisplayName("Test class testing CarDAO read/write funcionality to DB.")
 public class CarDAOTest {
     Connection conn;
-    static CarDAO carDAO;
+    CarDAO carDAO;
 
     @BeforeEach
     public void initialize() {
