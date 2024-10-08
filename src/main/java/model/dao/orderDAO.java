@@ -18,22 +18,23 @@ public class orderDAO {
 
     // Method to create a new order
     public void createOrder(order order) throws SQLException {
-        String sql = "INSERT INTO orders (User_ID, Car_ID, Order_Date_Time, Status, "
+        String sql = "INSERT INTO Orders (Order_ID, User_ID, Car_ID, Order_Date_Time, Status, "
                + "Rental_Date_Start, Rental_Date_Finish, Odometer_Start, Odometer_Finish, "
-               + "License_Number, First_Name, Middle_Name, Last_Name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+               + "License_Number, First_Name, Middle_Name, Last_Name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, order.getUserID());
-            statement.setInt(2, order.getCarID());
-            statement.setString(3, order.getOrderDateTime());
-            statement.setString(4, order.getRentalDateStart());
-            statement.setString(5, order.getRentalDateFinish());
-            statement.setInt(6, order.getOdometerStart());
-            statement.setInt(7, order.getOdometerFinish());
-            statement.setInt(8, order.getLicenseNumber());
-            statement.setString(9, order.getfirstName()); 
-            statement.setString(10, order.getmiddleName()); 
-            statement.setString(11, order.getlastName()); 
+            statement.setInt(1, order.getorderID());
+            statement.setInt(2, order.getUserID());
+            statement.setInt(3, order.getCarID());
+            statement.setString(4, order.getOrderDateTime());
+            statement.setString(5, order.getRentalDateStart());
+            statement.setString(6, order.getRentalDateFinish());
+            statement.setInt(7, order.getOdometerStart());
+            statement.setInt(8, order.getOdometerFinish());
+            statement.setInt(9, order.getLicenseNumber());
+            statement.setString(10, order.getfirstName()); 
+            statement.setString(11, order.getmiddleName()); 
+            statement.setString(12, order.getlastName()); 
 
             statement.executeUpdate();
         }

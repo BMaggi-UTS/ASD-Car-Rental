@@ -2,6 +2,7 @@ package model;
 import java.io.Serializable;
 
 public class order implements Serializable {
+    private int orderID;
     private int userID;
     private int carID;
     private String orderDateTime;
@@ -18,6 +19,7 @@ public class order implements Serializable {
     public order(){};
 
     public order(
+        int orderID,
         int userID,
         int carID,
         String orderDateTime,
@@ -29,6 +31,7 @@ public class order implements Serializable {
         String lastName,
         String middleName,
         int licenseNumber) {
+            this.orderID = orderID;
             this.userID = userID;
             this.carID = carID;
             this.orderDateTime = orderDateTime;
@@ -40,6 +43,14 @@ public class order implements Serializable {
             this.middleName = middleName;
             this.licenseNumber = licenseNumber;
         }
+
+    public int getorderID() {
+        return orderID;
+    }
+
+    public void setorderID(int orderID) {
+        this.orderID = orderID;
+    }
 
     public int getUserID() {
         return userID;

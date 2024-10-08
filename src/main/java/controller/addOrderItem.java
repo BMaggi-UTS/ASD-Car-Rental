@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,6 +11,11 @@ import jakarta.servlet.http.HttpSession;
 
 import model.order; 
 import model.dao.orderDAO; 
+import model.Car; 
+import model.dao.CarDAO; 
+import model.User; 
+import model.dao.UserDAO; 
+
 
 public class addOrderItem extends HttpServlet {
 
@@ -16,20 +23,28 @@ public class addOrderItem extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         orderDAO orderDAO = (orderDAO) session.getAttribute("orderDAO");
+        CarDAO carDAO = (CarDAO) session.getAttribute("carDAO");
+
+        User user = (User) session.getAttribute("user");
+
+        int userID = user.getUserID();
+        
         
         // Retrieve parameters from the request
-        int userID = Integer.parseInt(request.getParameter("userID")); // Retrieves User ID from the request
 
-        int carID = Integer.parseInt(request.getParameter("orderCarID"));
-        String pickupDate = request.getParameter("pickupDate");
-        String dropoffDate = request.getParameter("dropoffDate");
-        double bookingPrice = Double.parseDouble(request.getParameter("booking-price"));
-        String currentDateTime = java.time.LocalDateTime.now().toString(); // Capture current date and time
-        int odometerStart = Integer.parseInt(request.getParameter("odometerStart")); // Retrieve Odometer Start
-        int odometerFinish = Integer.parseInt(request.getParameter("odometerFinish")); // Retrieve Odometer Finish
-        int licenseNumber = Integer.parseInt(request.getParameter("licenseNumber")); // Retrieve License Number
+        int carID = Integer.parseInt(request.getParameter("orderCarID")); 
+        
 
         try {
+            Car car = carDAO.selectSpecificCar(carID);
+            String pickupDate = request.getParameter("pickupDate");
+            String dropoffDate = request.getParameter("dropoffDate");
+            // double bookingPrice = Double.parseDouble(request.getParameter("booking-price"));
+            String currentDateTime = java.time.LocalDateTime.now().toString(); // Capture current date and time
+            int odometerStart = car.getCarOdometer(); // Retrieve Odometer Start
+            int odometerFinish = 0; // Retrieve Odometer Finish
+            int licenseNumber = Integer.parseInt(request.getParameter("licenseNumber")); // Retrieve License Number
+    
             // Create a new order object
             order newOrder = new order();
             newOrder.setUserID(userID);
@@ -54,6 +69,6 @@ public class addOrderItem extends HttpServlet {
             System.out.println("Error: " + e.getMessage());
             session.setAttribute("orderError", "An error occurred while processing your order.");
             response.sendRedirect("index.jsp"); // Redirect back to the main page
-        }
+        } 
     }
 }
