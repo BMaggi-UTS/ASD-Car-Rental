@@ -1,8 +1,3 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - brad
 
@@ -16,13 +11,15 @@ steps:
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
+# Set up environment variables to use in your database connection
 - script: |
-  echo "Running tests with EC2 DB connection..."
+    echo "Running tests with EC2 DB connection..."
   env:
     DB_HOST: "13.55.60.202:3306"
     DB_USER: "wy5jR63bAEYi1GxT"
     DB_PASSWORD: "6JcL1ECgLzQnmH75"
 
+# Run Maven build and tests
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
