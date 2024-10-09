@@ -17,33 +17,7 @@
         <link rel="stylesheet" href="css/navandfooter.css">
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
         <title>Order Management - Checkout</title>
-        <style>
-            /* Inline CSS to handle hiding/showing new details form */
-            .hidden {
-                display: none;
-            }
-            .show {
-                display: block;
-            }
-        </style> 
-        <script>
-            /*for appear/disappear animation*/
-            function togglePaymentForm() {
-                var existingPayment = document.getElementById("existingPayment");
-                var newPaymentForm = document.getElementById("newPaymentForm");
-                var toggleButton = document.getElementById("toggleButton");
-
-                if (existingPayment.classList.contains("hidden")) {
-                    existingPayment.classList.remove("hidden");
-                    newPaymentForm.classList.add("hidden");
-                    toggleButton.innerText = "Click here to add new details";
-                } else {
-                    existingPayment.classList.add("hidden");
-                    newPaymentForm.classList.remove("hidden");
-                    toggleButton.innerText = "Cancel and go back to existing details";
-                }
-            }
-        </script>
+        
     </head>
 
     <body>
@@ -172,77 +146,48 @@
 
                 <!-- Payment Information Section -->
                 <div class="payment-summary">
-                    <h2>Payment Information</h2>
+                    <h2>Add Payment Information</h2>
                     <br>
-                    
-                    <!-- Existing Payment Details Section -->
-                    <div id="existingPayment" class="show">
-                        <div class="paymentCard">
-                            <h3>Existing Payment Details</h3>
-                            <p>[Name on Card]</p> 
-                            <p>[Card Number]</p> 
-                            <p>[Expiry Date]</p> 
-                            <p>[CVV]</p> 
-                            <p>[Name on card]</p>
 
-                            <br>
+                    <form action="paymentProcessing.jsp" method="POST">
+                        <div class="form-group">
+                            <label for="cardName">Name on Card:</label>
+                            <input type="text" id="cardName" name="cardName" maxlength="50" required>
+                            </div>
 
-                            <button class="trash-button">
-                                <i class="fas fa-trash"></i> <!-- Font Awesome trash bin icon -->
-                            </button>
-
+                        <!-- Card Number -->
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number:</label>
+                            <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}" maxlength="16" required>
                         </div>
 
-                        <br><br>
-                        
-                        <div class="middle">
-                            <a href="javascript:void(0);" id="toggleButton" onclick="togglePaymentForm()" class="general-button">Click here to change details</a>
+                        <!-- Expiry Date -->
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date:</label>
+                            <input type="month" id="expiryDate" name="expiryDate" required>
                         </div>
 
-                        <br><br>
-                    </div>
-                    
-                    <!-- New Payment Form Section -->
-                    <div id="newPaymentForm" class="hidden">
-                        <br><br>
-                        <h2>New Card Details:</h2>
-                        <br>
-                        <form action="paymentProcessing.jsp" method="POST">
-                            <div class="form-group">
-                                <label for="cardName">Name on Card:</label>
-                                <input type="text" id="cardName" name="cardName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="cardNumber">Card Number:</label>
-                                <input type="text" id="cardNumber" name="cardNumber" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="expiryDate">Expiry Date:</label>
-                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="cvv">CVV:</label>
-                                <input type="text" id="cvv" name="cvv" required>
-                            </div>
-                            <br>
-                            <button type="submit" class="btn-submit">Add Payment Details</button>
-                        </form>
-                        <br><br>
-                    </div>
+                        <!-- CVV -->
+                        <div class="form-group">
+                            <label for="cvv">CVV:</label>
+                            <input type="text" id="cvv" name="cvv" pattern="\d{3,4}" maxlength="4" required>
+                        </div>
+                    <br>
+                        <button type="submit" class="btn-submit">Add Payment Details</button>
+                    </form>
 
                     <br><br>
-
 
 
                     <div class="middle">
                         <p>By clicking the button below, your payment will be processed.</p>
                         <br>
-                        <a href="./orderView.jsp" class="general-button">Pay now</a>
                     </div>
+                </div>
                 
-
+                
                 <div class="middle">
-                    <br><br><br>
+                    <br>
                     <p>Having trouble? Email us at asdgroup@support.com</p>
                 </div>
 
