@@ -112,7 +112,7 @@ public class SupplierDAOTest {
     }
 
     @Test
-    @DisplayName("Test returning the correct supplier when retrieving with supplier ID")
+    @DisplayName("Test returning correct supplier details after being updated") 
     public void testUpdateSupplier() {
         
         try{
