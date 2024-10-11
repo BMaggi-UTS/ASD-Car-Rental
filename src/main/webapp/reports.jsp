@@ -2,6 +2,7 @@
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
 <%@page import="java.sql.*"%> 
+<%@page import="table.sql.*"%> 
 <%@page import="model.dao.CarDAO"%>
 <%@page import="model.dao.LocationDAO"%>
 <%@page import="model.dao.DBConnector"%>

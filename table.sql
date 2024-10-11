@@ -48,3 +48,50 @@ CREATE USER 'wy5jR63bAEYi1GxT'@'%' IDENTIFIED BY '6JcL1ECgLzQnmH75';
 GRANT ALL PRIVILEGES ON *.* TO wy5jR63bAEYi1GxT IDENTIFIED BY '6JcL1ECgLzQnmH75';
 FLUSH PRIVILEGES;
 -- '%' allows access from any IP address. Should replace with dest IP
+
+CREATE TABLE `User` (
+  `User_ID` int NOT NULL AUTO_INCREMENT,
+  `Username` varchar(50) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  PRIMARY KEY (`User_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `Staff` (
+  `Staff_ID` int NOT NULL AUTO_INCREMENT,
+  `Staff_Name` varchar(50) NOT NULL,
+  PRIMARY KEY (`Staff_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- Orders Table
+CREATE TABLE `orders` (
+  `Order_ID` int NOT NULL AUTO_INCREMENT,
+  `User_ID` int NOT NULL,
+  `Staff_ID` int NOT NULL,
+  `Car_ID` int NOT NULL,
+  `DateTime` DATETIME NOT NULL,
+  `Status` varchar(20) NOT NULL,
+  `Rental_Date_Start` DATE NOT NULL,
+  `Rental_Date_Finish` DATE NOT NULL,
+  `Odometer_Start` int NOT NULL,
+  `Odometer_Finish` int DEFAULT NULL,
+  `License_Number` int NOT NULL,
+  PRIMARY KEY (`Order_ID`),
+  FOREIGN KEY (`Car_ID`) REFERENCES `Car`(`Car_ID`) ON DELETE CASCADE,
+  FOREIGN KEY (`User_ID`) REFERENCES `User`(`User_ID`) ON DELETE CASCADE, -- Assuming you have a `User` table.
+  FOREIGN KEY (`Staff_ID`) REFERENCES `Staff`(`Staff_ID`) ON DELETE CASCADE -- Assuming you have a `Staff` table.
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE `Feedback` (
+  `Feedback_ID` INT NOT NULL AUTO_INCREMENT,
+  `User_ID` INT NOT NULL,              -- References the user leaving feedback
+  `Car_ID` INT NOT NULL,               -- References the car being reviewed
+  `Feedback_Date` DATETIME NOT NULL,
+  `Comments` TEXT,
+  `Rating` INT CHECK (Rating BETWEEN 1 AND 5), -- Rating out of 5
+  PRIMARY KEY (`Feedback_ID`),
+  FOREIGN KEY (`User_ID`) REFERENCES `User` (`User_ID`),
+  FOREIGN KEY (`Car_ID`) REFERENCES `Car` (`Car_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
