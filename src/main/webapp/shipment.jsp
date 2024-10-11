@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shipment Tracking</title>
     <link rel="stylesheet" href="css/reports_shipment.css">
+    <link rel="stylesheet" href="css/navandfooter.css">
 </head>
 <body>
 

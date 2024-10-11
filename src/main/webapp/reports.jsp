@@ -14,6 +14,8 @@
     <meta charset="UTF-8">
     <title>Car Rental Reports</title>
     <link rel="stylesheet" href="css/reports_shipment.css">
+    <link rel="stylesheet" href="css/navandfooter.css">
+
 </head>
 <body>
 
