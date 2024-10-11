@@ -1,5 +1,0 @@
-controller/ConnServlet.class
-model/Car.class
-model/dao/CarDAO.class
-model/dao/DBConnector.class
-model/dao/DB.class

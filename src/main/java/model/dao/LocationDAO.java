@@ -20,7 +20,7 @@ public class LocationDAO {
 		connection.setAutoCommit(true);
 		//preparing predetermined statement
 //		carFetchReadSt = connection.prepareStatement("SELECT car_id, car_make, car_model, car_trim, car_odometer, car_image, car_transmission, car_fuel, car_seats, car_body_style, car_quip, car_purchase_price, car_current_price, car_price_km, car_location, car_rating  FROM CAR");
-    carFetchReadSt = connection.prepareStatement("SELECT location_id, location_street_number, location_street_name, location_state, location_postcode, location_name FROM location");
+    carFetchReadSt = connection.prepareStatement("SELECT location_id, location_street_number, location_street_name, location_state, location_postcode, location_name FROM Location");
 
 	}
 	
@@ -36,9 +36,6 @@ public class LocationDAO {
 			int locationPostcode = rs.getInt(5);
 			String locationName  = rs.getString(6);
 			
-			
-			//setting every product value to match the data base
-			//all of these objects being created can be accessed through the array "products"
 			Location l = new Location();
 			l.setLocationID(locationID);
 			l.setLocationStreetNumber(locationStreetNumber);
@@ -47,8 +44,6 @@ public class LocationDAO {
 			l.setLocationPostcode(locationPostcode);
 			l.setLocationName(locationName);
 
-			// System.out.println(p.getProductName());
-			//adding the just set up product (p) to the list products.
 			locations.add(l);
 		}
 		return locations;
