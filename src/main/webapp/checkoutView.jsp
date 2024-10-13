@@ -2,10 +2,13 @@
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
 <%@page import="model.dao.orderDAO"%>
+<%@page import="model.dao.paymentDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="model.dao.DBConnector"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.SQLException"%>
+<%@ page import="model.payment"%>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +28,7 @@
             <%@ include file="assets/nav.jsp" %> 
 
             <main class="main-container">
-                <h1>Payment Details</h1>
+                <h1>Checkout</h1>
                 <br>
 
                 <!-- Order Summary Section -->
@@ -50,6 +53,7 @@
                         Connection connection = conn.openConnection();
                         // Use the connection to create an orderDAO controller
                         orderDAO orderDAO = new orderDAO(connection);
+                        paymentDAO paymentDAO = new paymentDAO(connection);
 
                         String carValid = "";
                         String carMake = "";
@@ -85,6 +89,44 @@
                         } catch (Exception e) {
                             out.println("Unexpected error: " + e.getMessage());
                         }
+                        
+                        try{
+
+                        } catch (Exception e) {
+                            out.println("Unexpected error: " + e.getMessage());
+                        }
+
+
+                        payment payment = null;
+                        int paymentID = 0;
+                        String cardName = "";
+                        String cardNumber = "";
+                        String expiry = "";
+                        String cvc = "";
+
+                        try{
+                            User user = (User) session.getAttribute("user");
+                            int userID = user.getUserID();
+                            int newPaymentID = paymentDAO.getMostRecentPayment(userID);
+                            payment = paymentDAO.getPaymentById(newPaymentID);
+                            try {
+                                if (payment != null) {
+                                    paymentID = payment.getPaymentID();
+                                    cardName = payment.getCardName();
+                                    cardNumber = payment.getCardNumber();
+                                    expiry = payment.getExpiry().format(DateTimeFormatter.ofPattern("MM/yyyy"));// or just .toString() will work
+                                    cvc = payment.getCvc();
+                                } else {
+                                    out.println("Error: Payment is null.");
+                                }
+                            } catch (NumberFormatException e) {
+                                out.println("Error: Invalid car ID format.");
+                            }
+                        } catch (SQLException e) {
+                            out.println("Database error: " + e.getMessage());
+                        } catch (Exception e) {
+                            out.println("Unexpected error: " + e.getMessage());
+                        }
                     %>
 
                     <h2>Order Summary</h2>
@@ -108,7 +150,17 @@
 
                         <img src="<%= car.getCarImage() %>" alt="Car Image">
 
-                        <form action="deleteOrder" method="POST">
+                        <br><br>
+                        
+                        <p><strong>Payment Details:</strong></p>
+                        <p>Card Name: <%= cardName %></p>
+                        <p>Card Number: <%= cardNumber %></p>
+                        <p>Expiry: <%= expiry %></p>
+                        <p>CVC/CVV: <%= cvc %></p>
+
+                        <br>
+
+                        <form action="deletePayment" method="POST">
                             <button class="trash-button" type="submit">
                                 <i class="fas fa-trash"></i> <!-- Font Awesome trash bin icon -->
                             </button>
@@ -119,22 +171,18 @@
 
                 <br>
 
-                <!-- Content to show previously filled information -->
-                <div class="locked-section">
-                    <h2><img src="assets/orderImages/Lock.png" alt="Lock Icon"> Personal Details</h2>
-                </div>
-                <br>
-                <div class="locked-section">
-
-                    <h2><img src="assets/orderImages/Lock.png" alt="Lock Icon"> Driver's License</h2>
-                    
-                </div>
-
-                <br><br>
-
                 <!-- Button to return to the orderView page -->
                 <div class="middle">
-                    <a href="/editDriverView.jsp" class="back-button">Need to change your driver details? Click here to update.</a>
+                    <a href="/editPaymentView.jsp" class="back-button">Need to change your payment details? Click here to update.</a>
+                </div>
+
+                <div class="middle">
+                    <p>By clicking the button below, your payment will be processed.</p>
+                    <br>
+                </div>
+
+                <div class="middle">
+                    <a href="/confirmationView.jsp" class="pay-button">Pay Now</a>
                 </div>
 
                 <br><br>
@@ -142,57 +190,6 @@
                 <hr>
 
                 <br><br>
-                
-
-                <!-- Payment Information Section -->
-                <div class="payment-summary">
-                    <h2>Add Payment Information</h2>
-                    <br>
-
-                    <form action="addPayment" method="POST">
-                        <input type="hidden" name="orderCarID" value="13"> <!-- HARDCODED. Needs to be fixed. -->
-                        <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
-                        <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">
-                        <input type="hidden" name="base-price" value="<%= basePriceString %>">
-                        <input type="hidden" name="tax-fees" value="<%= taxesFeesString %>">
-                        <input type="hidden" name="booking-price" value="<%= totalPriceString %>">
-
-                        <div class="form-group">
-                            <label for="cardName">Name on Card:</label>
-
-                            <input type="text" id="cardName" name="cardName" maxlength="50" required>
-                            </div>
-
-                        <!-- Card Number -->
-                        <div class="form-group">
-                            <label for="cardNumber">Card Number:</label>
-                            <input type="text" id="cardNumber" name="cardNumber" maxlength="16" required>
-                        </div>
-
-                        <!-- Expiry Date -->
-                        <div class="form-group">
-                            <label for="expiryDate">Expiry Date:</label>
-                            <input type="month" id="expiryDate" name="expiryDate" required>
-                        </div>
-
-                        <!-- CVV -->
-                        <div class="form-group">
-                            <label for="cvv">CVV:</label>
-                            <input type="text" id="cvv" name="cvv" pattern="\d{3,4}" maxlength="4" required>
-                        </div>
-                    <br>
-                        <button type="submit" class="btn-submit">Add Payment Details</button>
-                    </form>
-
-                    <br><br>
-
-
-                    <div class="middle">
-                        <p>By clicking the button below, your payment will be processed.</p>
-                        <br>
-                    </div>
-                </div>
-                
                 
                 <div class="middle">
                     <br>

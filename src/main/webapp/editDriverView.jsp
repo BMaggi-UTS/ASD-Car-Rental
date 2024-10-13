@@ -159,6 +159,11 @@
                     </form>
                 </div>
 
+                <div class="middle">
+                        <p>By clicking the button above, your details will be updated and order will be processed.</p>
+                <br>
+                    </div>
+
                 <br><br>
 
 

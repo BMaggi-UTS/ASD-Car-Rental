@@ -1,37 +1,41 @@
 package model;
 import java.io.Serializable;
-import java.time.LocalDate; // year, month, day
 import java.time.YearMonth; // year, month
 
 
 public class payment implements Serializable {
+    private int paymentID;
     private int orderID;
-    private int cardNumber;
+    private int userID;
+    private String cardName;
+    private String cardNumber;
     private YearMonth expiry;
     private String cvc;
-    private String status;
-    private LocalDate date;
-    private String currency;
 
     public payment(){};
 
     public payment(
+        int paymentID,
         int orderID,
-        int cardNumber,
+        int userID,
+        String cardName,
+        String cardNumber,
         YearMonth expiry,
-        String cvc,
-        String status,
-        LocalDate date,
-        String currency) {
+        String cvc) {
             this.orderID = orderID;
+            this.userID = userID;
+            this.cardName = cardName;
             this.cardNumber = cardNumber;
             this.expiry = expiry;
-            this.cvc = cvc;
-            this.status = status;
-            this.date = date;
-            this.currency = currency;
-            
+            this.cvc = cvc;      
         }
+    public int getPaymentID() {
+        return paymentID;
+    }
+    
+    public void setPaymentID(int paymentID) {
+        this.paymentID = paymentID;
+    }
 
     public int getOrderID() {
         return orderID;
@@ -41,11 +45,27 @@ public class payment implements Serializable {
         this.orderID = orderID;
     }
 
-    public int getCardNumber() {
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getCardName() {
+        return cardName;
+    }
+
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
+
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -54,7 +74,11 @@ public class payment implements Serializable {
     }
 
     public void setExpiry(YearMonth expiry) {
-        this.expiry = expiry;
+        this.expiry = expiry; 
+    }
+
+    public String getExpiryAsString() {
+        return expiry.toString(); // Convert YearMonth to "YYYY-MM" string format
     }
 
     public String getCvc() {
@@ -63,31 +87,6 @@ public class payment implements Serializable {
 
     public void setCvc(String cvc) {
         this.cvc = cvc;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-
-        this.date = date;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
     }
 }
 
