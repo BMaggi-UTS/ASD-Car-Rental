@@ -41,5 +41,5 @@ function showOrderDetails(orderId) {
 
 function getUserRole() {
     // Replace this logic with your actual role-checking logic
-    return document.body.dataset.role || 'admin';
+    return document.body.dataset.role || 'customer';
 }
