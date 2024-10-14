@@ -17,53 +17,26 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         const orderId = document.getElementById('order-id').value;
-        fetchOrderStatus(orderId);
-    });
 
-    // Periodic status check every 10 seconds
-    setInterval(() => {
-        const orderId = document.getElementById('order-id').value;
-        if (orderId) fetchOrderStatus(orderId);
-    }, 10000);
+        // For presentation purposes, simulate order details display
+        showOrderDetails(orderId);
+    });
 });
 
-function fetchOrderStatus(orderId) {
-    fetch(`/api/track-order/${orderId}`)
-        .then(response => response.json())
-        .then(data => updateOrderStatus(data))
-        .catch(error => {
-            document.getElementById('order-status').innerHTML = `<p>There was an error retrieving your order status.</p>`;
-        });
-}
-
-function updateOrderStatus(data) {
+function showOrderDetails(orderId) {
     const orderStatusDiv = document.getElementById('order-status');
-    if (data.error) {
-        orderStatusDiv.innerHTML = `<p>${data.error}</p>`;
-    } else {
-        orderStatusDiv.innerHTML = `
-            <h3>Order Status</h3>
-            <p><strong>Order ID:</strong> ${data.orderId}</p>
-            <p><strong>Car Model:</strong> ${data.carModel}</p>
-            <p><strong>Status:</strong> ${data.status}</p>
-            <p><strong>Estimated Delivery Date:</strong> ${data.estimatedDeliveryDate}</p>
-        `;
+    
+    // Simulated order details for presentation
+    orderStatusDiv.innerHTML = `
+        <h3>Order Details for Order ID: ${orderId}</h3>
+        <p><strong>Car Model:</strong> Tesla Model S</p>
+        <p><strong>Status:</strong> In Transit</p>
+        <p><strong>Estimated Delivery Date:</strong> 12th October 2024</p>
+        <p><strong>Shipping Address:</strong> 123 Main Street, Sydney, NSW</p>
+    `;
 
-        // Send email notification when the car is ready for pick-up
-        if (data.status === 'Ready for Pick-Up') {
-            sendPickupNotification(data.orderId);
-        }
-    }
-}
-
-function sendPickupNotification(orderId) {
-    fetch(`/api/notify-pickup/${orderId}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log("Notification sent");
-            }
-        });
+    // Scroll to the order status section
+    orderStatusDiv.scrollIntoView({ behavior: 'smooth' });
 }
 
 function getUserRole() {

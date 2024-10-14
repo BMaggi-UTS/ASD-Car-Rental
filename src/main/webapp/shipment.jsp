@@ -18,135 +18,11 @@
 </head>
 <body>
 
+    <!-- Navigation Bar -->
     <%@ include file="assets/nav.jsp" %> 
 
     <div class="container">
-        <!-- Admin View -->
-        <div id="admin-view" class="admin-section">
-            <div class="report-section" id="car-shipments">
-                <h2>Car Shipments</h2>
-                <div class="report-tables">
-                    <h3>Shipment Details</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Shipment ID</th>
-                                <th>Car Model</th>
-                                <th>Customer Name</th>
-                                <th>Shipping Address</th>
-                                <th>Status</th>
-                                <th>Carrier</th>
-                                <th>Estimated Delivery Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Database -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="report-section" id="shipment-history">
-                <h2>Shipment History</h2>
-                <div class="report-tables">
-                    <h3>History Overview</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Shipment ID</th>
-                                <th>Car Model</th>
-                                <th>Delivery Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Database -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="report-section" id="shipping-costs">
-                <h2>Shipping Costs</h2>
-                <div class="report-tables">
-                    <h3>Cost Overview</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Shipping Method</th>
-                                <th>Cost</th>
-                                <th>Car Model</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Database -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="report-section" id="delivery-issues">
-                <h2>Delivery Issues</h2>
-                <div class="report-tables">
-                    <h3>Issues Overview</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Issue ID</th>
-                                <th>Shipment ID</th>
-                                <th>Description</th>
-                                <th>Resolution Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Populate from Database -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="report-section" id="order-fulfillment">
-                <h2>Order Fulfillment</h2>
-                <div class="report-tables">
-                    <h3>Fulfillment Details</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Car Model</th>
-                                <th>Quantity Shipped</th>
-                                <th>Shipped Date</th>
-                                <th>Delivery Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Populate from Database -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="report-section" id="carrier-performance">
-                <h2>Carrier Performance</h2>
-                <div class="report-tables">
-                    <h3>Performance Overview</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Carrier Name</th>
-                                <th>On-Time Delivery Rate</th>
-                                <th>Customer Feedback</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Populate from Database -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Customer View -->
+        <!-- Customer View Section -->
         <div id="customer-view" class="customer-section">
             <div class="report-section" id="track-order">
                 <h2>Track Your Order</h2>
@@ -156,12 +32,53 @@
                     <button type="submit">Track</button>
                 </form>
                 <div id="order-status" class="report-tables">
-                    <!-- Order status will be displayed here -->
+                    <!-- Order details will be displayed here after submission -->
                 </div>
             </div>
         </div>
+
+        <!-- Admin View Section (Optional) -->
+        <div id="admin-view" class="admin-section">
+            <div class="report-section" id="admin-shipment">
+                <h2>All Shipment Details (Admin View)</h2>
+                <!-- Admin table of all shipments -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Car</th>
+                            <th>Status</th>
+                            <th>Delivery Date</th>
+                            <th>Customer Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example data for presentation -->
+                        <tr>
+                            <td>12345</td>
+                            <td>Tesla Model S</td>
+                            <td>In Transit</td>
+                            <td>12th October 2024</td>
+                            <td>123 Main Street, Sydney, NSW</td>
+                        </tr>
+                        <tr>
+                            <td>67890</td>
+                            <td>BMW X5</td>
+                            <td>Delivered</td>
+                            <td>8th October 2024</td>
+                            <td>456 Elm Street, Melbourne, VIC</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+
+    <!-- Footer -->
     <%@ include file="assets/footer.jsp" %>
+
+    <!-- Scripts -->
     <script src="js/report.js"></script>
     <script src="js/tracking.js"></script>
 </body>
