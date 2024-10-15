@@ -77,8 +77,26 @@
         <div class="report-section" id="renting-report">
             <h2>Renting Report</h2>
             <div class="report-tables">
-                <!-- Similar structure as Sales Report -->
-                <!-- Add date selection and tables as needed -->
+                <h3>Custom Renting Report</h3>
+                <label for="rent-start-date">Start Date:</label>
+                <input type="date" id="rent-start-date">
+                <label for="rent-end-date">End Date:</label>
+                <input type="date" id="rent-end-date">
+                <button class="btn" id="generate-renting-report">Generate Report</button>
+                <button class="btn" id="export-renting-pdf">Export as PDF</button>
+                <table id="renting-report-table">
+                    <thead>
+                        <tr>
+                            <th>Date of Renting</th>
+                            <th>Car Name</th>
+                            <th>Amount</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filled with JavaScript -->
+                    </tbody>
+                </table>
             </div>
         </div>
 

@@ -172,3 +172,38 @@ document.addEventListener('DOMContentLoaded', function () {
         doc.save('Customer_Feedback_Report.pdf');
     });
 });
+
+
+// Renting Report Generation and Export to PDF
+document.getElementById("generate-renting-report").addEventListener("click", function () {
+    // Fetch data between the selected dates (for presentation purposes, use static data)
+    let rentTableBody = document.querySelector("#renting-report-table tbody");
+    rentTableBody.innerHTML = `
+        <tr>
+            <td>2024-10-01</td>
+            <td>Tesla Model S</td>
+            <td>1</td>
+            <td>$1200</td>
+        </tr>
+        <tr>
+            <td>2024-10-03</td>
+            <td>BMW X5</td>
+            <td>2</td>
+            <td>$1500</td>
+        </tr>
+        <!-- Add more data as needed -->
+    `;
+});
+
+document.getElementById("export-renting-pdf").addEventListener("click", function () {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.text("Renting Report", 14, 16);
+    doc.autoTable({
+        startY: 20,
+        html: "#renting-report-table"
+    });
+
+    doc.save("renting_report.pdf");
+});
