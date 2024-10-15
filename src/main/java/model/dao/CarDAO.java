@@ -139,5 +139,52 @@ public class CarDAO {
 		return cars;
 
 	}
+	//update product
+	public void updateProduct(
+		Integer car_ID,
+		String carMake,
+		String carModel,
+		String carTrim,
+		String carImage,
+		Integer carOdometer,
+		String carTransmission,
+		String carFuel,
+		Integer carSeats,
+		String carBodyStyle,
+		String carQuip,
+		Integer carPurchasePrice,
+		Integer carCurrentPrice,
+		Integer carPriceKM,
+		Integer carRating,
+		Integer locationID
+	) throws SQLException {
+		PreparedStatement st = con.prepareStatement("UPDATE Car SET Car_ID=?, Car_Make=?, Car_Model=?, Car_Trim=?, Car_Odometer=?, Car_Image=?, Car_Transmission=?, Car_Fuel=?, Car_Seats=?, Car_Body_Style=?, Car_Quip=?, Car_Purchase_Price=?, Car_Current_Price=?, Car_Price_KM=?, Car_Rating=? WHERE car_id=?");
+		st.setInt(1, car_ID);
+		st.setString(2, carMake);
+		st.setString(3, carModel);
+		st.setString(4, carTrim);
+		st.setInt(5, carOdometer);
+		st.setString(6, carTransmission);
+		st.setString(7, carFuel);
+		st.setInt(8, carSeats);
+		st.setString(9, carBodyStyle);
+		st.setString(10, carQuip);
+		st.setInt(11, carPurchasePrice);
+		st.setInt(12, carCurrentPrice);
+		st.setInt(13, carPriceKM);
+		st.setInt(14, carRating);
+		st.setInt(15, locationID);
+		st.setInt(16
+		
+		
+		
+		
+		
+		
+		
+		, car_ID);
+	
+		st.executeUpdate();
+	}
 
 }

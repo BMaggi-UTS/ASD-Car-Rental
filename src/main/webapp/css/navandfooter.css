@@ -149,3 +149,30 @@ footer {
     margin-top: 4rem;
     margin-bottom: 1rem;
   }
+
+  .order-history {
+    margin-left: auto; /* Pushes the div to the right */
+    display: flex;
+    align-items: center;
+  }
+  
+  .order-history-button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue background */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 2px solid #007bff; /* Adds a border around the button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for a 3D effect */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  }
+  
+  .order-history-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+
+  .order-history-button:active {
+    transform: translateY(0); /* Button back to original position when clicked */
+  }
