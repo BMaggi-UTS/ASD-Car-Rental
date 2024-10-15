@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const feedbackEndDate = document.getElementById('feedback-end-date');
     const feedbackReportTableBody = document.querySelector('#feedback-report-table tbody');
 
+    // Renting Report Elements
+    const generateRentingReportBtn = document.getElementById('generate-renting-report');
+    const exportRentingPdfBtn = document.getElementById('export-renting-pdf');
+    const rentingStartDate = document.getElementById('renting-start-date');
+    const rentingEndDate = document.getElementById('renting-end-date');
+    const rentingReportTableBody = document.querySelector('#renting-report-table tbody');
+
     // Toggle report section visibility
     sections.forEach(section => {
         section.addEventListener('click', function () {
@@ -49,24 +56,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const endDate = salesEndDate.value;
 
         if (startDate && endDate) {
-            // Fetch data from the backend (simulate with static data)
-            // In a real application, you'd use fetch() or $.ajax() to get data from the server
-            // For example:
-            // fetch(`/getSalesReport?startDate=${startDate}&endDate=${endDate}`)
-            //     .then(response => response.json())
-            //     .then(data => { /* Populate table */ });
-
-            // Simulated data
+            // Simulated data for sales report
             const data = [
                 { date: '2024-09-05', customers: 10, carsRented: 8, revenue: 2000 },
                 { date: '2024-09-06', customers: 12, carsRented: 10, revenue: 2500 },
-                // Add more data as needed
             ];
 
-            // Clear previous data
-            salesReportTableBody.innerHTML = '';
-
-            // Populate table with data
+            salesReportTableBody.innerHTML = '';  // Clear previous data
             data.forEach(item => {
                 const row = `<tr>
                     <td>${item.date}</td>
@@ -91,11 +87,47 @@ document.addEventListener('DOMContentLoaded', function () {
         doc.save('Custom_Sales_Report.pdf');
     });
 
+    // Generate Renting Report
+    generateRentingReportBtn.addEventListener('click', function () {
+        const startDate = rentingStartDate.value;
+        const endDate = rentingEndDate.value;
+
+        if (startDate && endDate) {
+            // Simulated data for renting report
+            const data = [
+                { date: '2024-09-05', carName: 'Toyota Corolla', amount: 5, revenue: 1000 },
+                { date: '2024-09-06', carName: 'Honda Civic', amount: 7, revenue: 1400 },
+            ];
+
+            rentingReportTableBody.innerHTML = '';  // Clear previous data
+            data.forEach(item => {
+                const row = `<tr>
+                    <td>${item.date}</td>
+                    <td>${item.carName}</td>
+                    <td>${item.amount}</td>
+                    <td>$${item.revenue}</td>
+                </tr>`;
+                rentingReportTableBody.insertAdjacentHTML('beforeend', row);
+            });
+        } else {
+            alert('Please select both start and end dates.');
+        }
+    });
+
+    // Export Renting Report as PDF
+    exportRentingPdfBtn.addEventListener('click', function () {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.text('Custom Renting Report', 10, 10);
+        doc.autoTable({ html: '#renting-report-table', startY: 20 });
+        doc.save('Custom_Renting_Report.pdf');
+    });
+
     // Generate Monthly Sales Report
     generateMonthlySalesReportBtn.addEventListener('click', function () {
         const selectedMonth = salesMonthSelect.value;
         if (selectedMonth) {
-            // Fetch data from backend
             // Simulated data
             const data = {
                 '2024-9': {
@@ -106,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     avgSpending: 250,
                     totalRevenue: 50000
                 },
-                // Add data for other months
             };
 
             const report = data[selectedMonth];
@@ -136,18 +167,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const endDate = feedbackEndDate.value;
 
         if (startDate && endDate) {
-            // Fetch data from backend
-            // Simulated data
+            // Simulated data for feedback report
             const data = [
                 { customerName: 'John Doe', date: '2024-09-05', feedback: 'Great service!', rating: 5 },
                 { customerName: 'Jane Smith', date: '2024-09-06', feedback: 'Very satisfied.', rating: 4 },
-                // Add more data as needed
             ];
 
-            // Clear previous data
-            feedbackReportTableBody.innerHTML = '';
-
-            // Populate table with data
+            feedbackReportTableBody.innerHTML = '';  // Clear previous data
             data.forEach(item => {
                 const row = `<tr>
                     <td>${item.customerName}</td>
@@ -171,39 +197,4 @@ document.addEventListener('DOMContentLoaded', function () {
         doc.autoTable({ html: '#feedback-report-table', startY: 20 });
         doc.save('Customer_Feedback_Report.pdf');
     });
-});
-
-
-// Renting Report Generation and Export to PDF
-document.getElementById("generate-renting-report").addEventListener("click", function () {
-    // Fetch data between the selected dates (for presentation purposes, use static data)
-    let rentTableBody = document.querySelector("#renting-report-table tbody");
-    rentTableBody.innerHTML = `
-        <tr>
-            <td>2024-10-01</td>
-            <td>Tesla Model S</td>
-            <td>1</td>
-            <td>$1200</td>
-        </tr>
-        <tr>
-            <td>2024-10-03</td>
-            <td>BMW X5</td>
-            <td>2</td>
-            <td>$1500</td>
-        </tr>
-        <!-- Add more data as needed -->
-    `;
-});
-
-document.getElementById("export-renting-pdf").addEventListener("click", function () {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    doc.text("Renting Report", 14, 16);
-    doc.autoTable({
-        startY: 20,
-        html: "#renting-report-table"
-    });
-
-    doc.save("renting_report.pdf");
 });
