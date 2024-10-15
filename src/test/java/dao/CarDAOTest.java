@@ -1,6 +1,9 @@
-package model.dao;
+package dao;
 
 import model.Car;
+import model.dao.CarDAO;
+import model.dao.DBConnector;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
