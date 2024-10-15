@@ -4,6 +4,7 @@
 <%@page import="java.sql.*"%> 
 <%@page import="model.dao.CarDAO"%>
 <%@page import="model.dao.LocationDAO"%>
+<%@page import="model.dao.ShipmentDAO"%>
 <%@page import="model.dao.DBConnector"%>
 <%@page import="java.util.ArrayList"%>
 

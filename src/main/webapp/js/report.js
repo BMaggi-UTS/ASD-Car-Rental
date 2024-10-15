@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const feedbackEndDate = document.getElementById('feedback-end-date');
     const feedbackReportTableBody = document.querySelector('#feedback-report-table tbody');
 
-    // Renting Report Elements
+    // ** Renting Report Elements **
     const generateRentingReportBtn = document.getElementById('generate-renting-report');
     const exportRentingPdfBtn = document.getElementById('export-renting-pdf');
     const rentingStartDate = document.getElementById('renting-start-date');
@@ -56,13 +56,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const endDate = salesEndDate.value;
 
         if (startDate && endDate) {
-            // Simulated data for sales report
+            // Simulated data
             const data = [
                 { date: '2024-09-05', customers: 10, carsRented: 8, revenue: 2000 },
                 { date: '2024-09-06', customers: 12, carsRented: 10, revenue: 2500 },
             ];
 
-            salesReportTableBody.innerHTML = '';  // Clear previous data
+            // Clear previous data
+            salesReportTableBody.innerHTML = '';
+
+            // Populate table with data
             data.forEach(item => {
                 const row = `<tr>
                     <td>${item.date}</td>
@@ -93,19 +96,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const endDate = rentingEndDate.value;
 
         if (startDate && endDate) {
-            // Simulated data for renting report
+            // Simulated data
             const data = [
-                { date: '2024-09-05', carName: 'Toyota Corolla', amount: 5, revenue: 1000 },
-                { date: '2024-09-06', carName: 'Honda Civic', amount: 7, revenue: 1400 },
+                { carName: 'Toyota Camry', weekRentals: 5, monthRentals: 15, weekRevenue: 3000, monthRevenue: 9000 },
+                { carName: 'Honda Accord', weekRentals: 3, monthRentals: 10, weekRevenue: 1800, monthRevenue: 6000 },
             ];
 
-            rentingReportTableBody.innerHTML = '';  // Clear previous data
+            // Clear previous data
+            rentingReportTableBody.innerHTML = '';
+
+            // Populate table with data
             data.forEach(item => {
                 const row = `<tr>
-                    <td>${item.date}</td>
                     <td>${item.carName}</td>
-                    <td>${item.amount}</td>
-                    <td>$${item.revenue}</td>
+                    <td>${item.weekRentals}</td>
+                    <td>${item.monthRentals}</td>
+                    <td>$${item.weekRevenue}</td>
+                    <td>$${item.monthRevenue}</td>
                 </tr>`;
                 rentingReportTableBody.insertAdjacentHTML('beforeend', row);
             });
@@ -119,9 +126,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
-        doc.text('Custom Renting Report', 10, 10);
+        doc.text('Renting Report', 10, 10);
         doc.autoTable({ html: '#renting-report-table', startY: 20 });
-        doc.save('Custom_Renting_Report.pdf');
+        doc.save('Renting_Report.pdf');
     });
 
     // Generate Monthly Sales Report
@@ -167,13 +174,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const endDate = feedbackEndDate.value;
 
         if (startDate && endDate) {
-            // Simulated data for feedback report
+            // Simulated data
             const data = [
                 { customerName: 'John Doe', date: '2024-09-05', feedback: 'Great service!', rating: 5 },
                 { customerName: 'Jane Smith', date: '2024-09-06', feedback: 'Very satisfied.', rating: 4 },
             ];
 
-            feedbackReportTableBody.innerHTML = '';  // Clear previous data
+            // Clear previous data
+            feedbackReportTableBody.innerHTML = '';
+
+            // Populate table with data
             data.forEach(item => {
                 const row = `<tr>
                     <td>${item.customerName}</td>

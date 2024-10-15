@@ -6,6 +6,7 @@
 <%@page import="model.dao.CarDAO"%>
 <%@page import="model.dao.LocationDAO"%>
 <%@page import="model.dao.DBConnector"%>
+<%@page import="model.dao.ReportDAO"%>
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -15,7 +16,6 @@
     <title>Car Rental Reports</title>
     <link rel="stylesheet" href="css/reports_shipment.css">
     <link rel="stylesheet" href="css/navandfooter.css">
-
 </head>
 <body>
 
@@ -129,6 +129,7 @@
     </div>   
 
     <%@ include file="assets/footer.jsp" %>
+    
     <!-- Include jsPDF library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <!-- Include jsPDF AutoTable plugin -->

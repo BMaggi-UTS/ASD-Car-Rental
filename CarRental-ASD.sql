@@ -253,6 +253,46 @@ INSERT INTO `Users` VALUES
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+-- Table structure for table `Reports`
+DROP TABLE IF EXISTS `Reports`;
+CREATE TABLE `Reports` (
+  `Report_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Report_Type` varchar(20) NOT NULL,         -- Type of report (sales, rental, feedback)
+  `Start_Date` date NOT NULL,                 -- Start date for the report
+  `End_Date` date NOT NULL,                   -- End date for the report
+  `Total_Revenue` decimal(10,2) NOT NULL,     -- Total revenue in this period
+  `Total_Rentals` int(11) NOT NULL,           -- Total number of rentals
+  `Total_Customers` int(11) NOT NULL,         -- Total number of customers
+  PRIMARY KEY (`Report_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+-- Data for Reports
+INSERT INTO `Reports` (`Report_Type`, `Start_Date`, `End_Date`, `Total_Revenue`, `Total_Rentals`, `Total_Customers`) VALUES
+('Sales', '2024-09-01', '2024-09-30', 15000.00, 120, 110),
+('Rental', '2024-09-01', '2024-09-30', 8000.00, 80, 75),
+('Feedback', '2024-09-01', '2024-09-30', 0.00, 0, 95);
+
+
+-- Table structure for table `Shipments`
+DROP TABLE IF EXISTS `Shipments`;
+CREATE TABLE `Shipments` (
+  `Shipment_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Order_ID` int(11) NOT NULL,               -- Associated Order ID
+  `Shipment_Status` varchar(50) NOT NULL,    -- Status (e.g., "In Progress", "Delivered", etc.)
+  `Shipment_Tracking` varchar(255) DEFAULT NULL,  -- Tracking details
+  `Shipment_Date` date NOT NULL,             -- Shipment date
+  `Estimated_Arrival` date DEFAULT NULL,     -- Estimated arrival date
+  PRIMARY KEY (`Shipment_ID`),
+  FOREIGN KEY (`Order_ID`) REFERENCES `Order`(`Order_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+-- Data for Shipments
+INSERT INTO `Shipments` (`Order_ID`, `Shipment_Status`, `Shipment_Tracking`, `Shipment_Date`, `Estimated_Arrival`) VALUES
+(1, 'In Progress', 'TRACK12345', '2024-10-01', '2024-10-03'),
+(2, 'Delivered', 'TRACK12346', '2024-09-25', '2024-09-27'),
+(3, 'Awaiting Dispatch', NULL, '2024-10-02', '2024-10-05');
+
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
