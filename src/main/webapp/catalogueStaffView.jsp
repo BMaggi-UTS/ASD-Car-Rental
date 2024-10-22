@@ -66,9 +66,15 @@
                                 </div>
                             </a>
                             <a class="option-box" href="/create-listings.jsp">
+                                <div class="inside-option-box">
+                                    <i class="fa-solid fa-car-on box-icon"></i>
+                                    <p>Add Listing</p>
                                 </div>
                             </a>
                             <a class="option-box" href="/delete-listings.jsp">
+                                <div class="inside-option-box">
+                                    <i class="fa-solid fa-car-burst box-icon"></i>
+                                    <p>Delete Listing</p>
                                 </div>
                             </a>
                             <a class="option-box" href="#">

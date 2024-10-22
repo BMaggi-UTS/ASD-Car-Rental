@@ -30,7 +30,7 @@ public class AvailabilityDAOTest {
 
             conn.setAutoCommit(false);
             conn.prepareStatement("DELETE FROM Availability").executeUpdate();
-            conn.prepareStatement("DELETE FROM orders").executeUpdate();
+            conn.prepareStatement("DELETE FROM Orders").executeUpdate();
             conn.prepareStatement("DELETE FROM Car").executeUpdate();
             
             availabilityDAO = new AvailabilityDAO(conn); 
@@ -38,15 +38,16 @@ public class AvailabilityDAOTest {
             orderDAO = new orderDAO(conn);
 
             // creating fake order data for testing availability
-            conn.prepareStatement("INSERT INTO orders (Order_ID) VALUES (99995)").executeUpdate();
-            conn.prepareStatement("INSERT INTO orders (Order_ID) VALUES (99996)").executeUpdate();
+            conn.prepareStatement("INSERT INTO Orders (User_ID, Car_ID, Order_Date_Time, Rental_Date_Start, Rental_Date_Finish, Odometer_Start, License_Number) VALUES (1, 1, '2008-11-11 13:23:44', '2024-10-10', '2024-10-15', 1000, 'aaa')").executeUpdate();
+            conn.prepareStatement("INSERT INTO Orders (User_ID, Car_ID, Order_Date_Time, Rental_Date_Start, Rental_Date_Finish, Odometer_Start, License_Number) VALUES (1, 1, '2008-11-11 13:23:44', '2024-10-10', '2024-10-15', 1000, 'aaa')").executeUpdate();
+
 
             // creating fake order data for testing availability
             carDAO.createCar(99993, "TestMake", "TestModel", "TestTrim", "TestImageText", 123456, "M", "P", 5, "Hatch", "TestQuip", 123, 456, 2, 5, 1);
             carDAO.createCar(99994, "TestMakeTwo", "TestModelTwo", "TestTrimTwo", "TestImageTextTwo", 123456, "M", "P", 5, "Hatch", "TestQuipTwo", 123, 456, 2, 5, 1);
 
-            availabilityDAO.createAvailability(99991, 99993, 99995, "2024-08-10", "2024-08-11");
-            availabilityDAO.createAvailability(99992, 99994, 99996, "2024-08-20", "2024-08-20");
+            availabilityDAO.createAvailability(99991, 99993, 1, "2024-08-10", "2024-08-11");
+            availabilityDAO.createAvailability(99992, 99994, 2, "2024-08-20", "2024-08-20");
 
         }
         catch (ClassNotFoundException | SQLException ex) {
@@ -69,7 +70,7 @@ public class AvailabilityDAOTest {
     @DisplayName("Test Creating a New Availability Booking.")
     public void testCreateNewCar() {
         try {
-            availabilityDAO.createAvailability(99998, 99993, 99995, "2024-12-20", "2024-12-25");
+            availabilityDAO.createAvailability(99998, 99993, 1, "2024-12-20", "2024-12-25");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Availability WHERE Availability_ID=99998").executeQuery();
             assertTrue(rs.next());
         }
@@ -107,7 +108,7 @@ public class AvailabilityDAOTest {
     public void testUpdateAvailability() {
 
         try {
-            availabilityDAO.updateAvailability(99991, 99993, 99995, "2025-10-08", "2025-11-08");
+            availabilityDAO.updateAvailability(99991, 99993, 1, "2025-10-08", "2025-11-08");
             Availability testAvailability = availabilityDAO.selectSpecificAvailability(99991);
             assertEquals(testAvailability.getStartDate(), "2025-10-08");
             

@@ -149,7 +149,6 @@ footer {
     margin-top: 4rem;
     margin-bottom: 1rem;
   }
-<<<<<<< HEAD
   .errors {
     display: flex;
     flex-direction: column;
@@ -180,8 +179,7 @@ footer {
     font-size: 2rem !important;
     color: black;
     font-weight: bolder;
-=======
-
+  }
   .order-history {
     margin-left: auto; /* Pushes the div to the right */
     display: flex;
@@ -207,5 +205,4 @@ footer {
 
   .order-history-button:active {
     transform: translateY(0); /* Button back to original position when clicked */
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   }

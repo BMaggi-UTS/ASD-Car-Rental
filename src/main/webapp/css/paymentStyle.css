@@ -12,7 +12,6 @@ hr {
 }
 
 /* Unlocked Boxes */
-<<<<<<< HEAD
 .payment-summary {
   position: relative; 
   width: 60%;
@@ -32,8 +31,6 @@ hr {
 }
 
 
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 .order-summary {
   position: relative; 
   width: 60%;
@@ -74,7 +71,6 @@ hr {
 
 
 
-<<<<<<< HEAD
 .form-group {
   margin-bottom: 15px;
 }
@@ -95,12 +91,6 @@ hr {
 
 .btn-submit {
   width: 100%;
-=======
-
-
-.btn-submit {
-  width: 60%;
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   font-size: 16px;
   font-weight: bold;
   padding: 10px;
@@ -133,7 +123,6 @@ hr {
 }
 
 
-<<<<<<< HEAD
 /* Styling for date field */
 
 .form-group input[type="date"] {
@@ -151,7 +140,6 @@ hr {
   box-shadow: 0 0 5px var(--primary);
 }
 
-=======
 /* General form styling */
 
 .payment-summary {
@@ -243,7 +231,6 @@ button:hover {
 }
 
 
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
 /* Locked Boxes */
 
@@ -283,15 +270,12 @@ button:hover {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 
 #existingPayment {
   position: relative; 
   height: 25vh; 
 }
 
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 .trash-button {
   position: absolute; 
   top: 50%; 
@@ -312,31 +296,4 @@ button:hover {
   margin: 0; 
 }
 
-<<<<<<< HEAD
-=======
-.pay-button {
-  padding: 10px 20px;
-  background-color: #007bff; /* Blue background */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 16px;
-  border: 2px solid #007bff; /* Adds a border around the button */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for a 3D effect */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
-}
-
-.order-history-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-2px); /* Slight lift on hover */
-}
-
-.order-history-button:active {
-  transform: translateY(0); /* Button back to original position when clicked */
-}
-
-
-
-
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 

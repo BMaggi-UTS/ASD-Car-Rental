@@ -24,10 +24,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
     color: white;
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 }
 .inside-option-box {
     display: flex;
@@ -60,11 +57,7 @@ td {
     padding: 1rem 2rem;
     width: 10rem;
 }
-<<<<<<< HEAD
 .table-emulator input {
-=======
-input {
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     display: table-cell;
     vertical-align: inherit;
     unicode-bidi: isolate;
@@ -94,7 +87,6 @@ input {
 .bg-active {
     padding: 0;
 }
-<<<<<<< HEAD
 
 .control-buttons {
     text-align: right;
@@ -116,19 +108,6 @@ input {
 
 }
 .control-buttons a:hover, .control-buttons button:hover {
-=======
-.control-buttons {
-    text-align: right;
-    font-size: 1.5rem;
-    height: 3rem;
-}
-.control-buttons a {
-    padding: 0.5rem 1rem;
-    background-color: #f7f7f7;
-    transition: 0.2s;
-}
-.control-buttons a:hover {
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     background-color: #d5d5d5;
     cursor: pointer;
 }
@@ -166,11 +145,8 @@ input {
     transition: 200ms ease-in-out;
     border-radius: 20px;
     z-index: 1000;
-<<<<<<< HEAD
     display: flex;
     flex-direction: column;
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   }
   .modal.active {
     transform: translate(-50%, -50%) scale(1);
@@ -197,7 +173,6 @@ input {
   }
   .table-emulator h2, .table-emulator input {
     width: 8rem;
-<<<<<<< HEAD
   }
   .submit-modal {
     text-align: center;
@@ -207,6 +182,4 @@ input {
     height: 4rem;
     margin-left: 32rem;
     margin-top: 2rem;
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   }

@@ -3,21 +3,8 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
    version="6.0"> 
-<<<<<<< HEAD
-    <filter>
-    <filter-name>UrlRewriteFilter</filter-name>
-    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>UrlRewriteFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-=======
 
 
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     <servlet>
   	    <servlet-class>controller.ConnServlet</servlet-class>
   	    <servlet-name>ConnServlet</servlet-name>
@@ -46,48 +33,17 @@
   	    <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
-<<<<<<< HEAD
-    <servlet>
-  	    <servlet-class>controller.SuppliersServlet</servlet-class>
-  	    <servlet-name>Suppliers</servlet-name>
-    </servlet>
-    <servlet-mapping>
-  	    <servlet-name>Suppliers</servlet-name>
-  	    <url-pattern>/suppliers</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-  	    <servlet-class>controller.SupplierServlet</servlet-class>
-  	    <servlet-name>Supplier</servlet-name>
-    </servlet>
-    <servlet-mapping>
-  	    <servlet-name>Supplier</servlet-name>
-  	    <url-pattern>/supplier/*</url-pattern>
-    </servlet-mapping>
-
-
-
-    <!-- <servlet>
-         Override init parameter to avoid nasty -->
-        <!-- file locking issue on windows.         -->
-        <!-- <servlet-name>default</servlet-name>
-=======
 
     <servlet>
         <!-- Override init parameter to avoid nasty -->
         <!-- file locking issue on windows.         -->
         <servlet-name>default</servlet-name>
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
         <init-param>
             <param-name>useFileMappedBuffer</param-name>
             <param-value>false</param-value>
         </init-param>
-<<<<<<< HEAD
-    </servlet> --> 
-=======
     </servlet> 
     
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     <servlet>
         <servlet-name>ConnServlet</servlet-name>
         <servlet-class>controller.ConnServlet</servlet-class>
@@ -124,7 +80,6 @@
         <servlet-name>UpdateListingServlet</servlet-name>
         <url-pattern>/UpdateListingServlet</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
     <servlet>
         <servlet-name>CreateListingServlet</servlet-name>
         <servlet-class>controller.CreateListingServlet</servlet-class>
@@ -171,7 +126,6 @@
         <url-pattern>/DeleteBookingServlet</url-pattern>
     </servlet-mapping>
     
-=======
 
     <servlet>
         <servlet-name>addOrderItem</servlet-name>
@@ -230,5 +184,4 @@
         <url-pattern>/deletePayment</url-pattern>
     </servlet-mapping>
 
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 </web-app>

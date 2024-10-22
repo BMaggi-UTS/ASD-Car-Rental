@@ -93,7 +93,6 @@
                 <div class="product-wrapper br-top">
                     <div class="option-container">
                         <h1>Modify Listings</h1>
-<<<<<<< HEAD
                         <h1><%
                                 if(request.getAttribute("errors") != null) {
                                  %>
@@ -112,14 +111,6 @@
                                 <button type="submit"><i class="fa-solid fa-floppy-disk"></i></button>
                             </div>
                             
-=======
-                        <div>
-                            <div class="control-buttons">
-                                <a onclick="editAll()"><i class="fa-solid fa-pencil"></i></a>
-                                <a onclick=""><i class="fa-solid fa-floppy-disk"></i></a>
-                            </div>
-                            <form action="/updateListingServlet" method="post" autocomplete="off" id="update-listing-form">
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                                 <table>
                                     <tr>
                                         <th>ID</th>

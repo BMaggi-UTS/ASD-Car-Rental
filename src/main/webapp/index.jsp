@@ -33,10 +33,6 @@
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
-<<<<<<< HEAD
-                
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                 <%
                 ArrayList<Integer> carIDs = (ArrayList<Integer>) session.getAttribute("searchIDResult");
                 ArrayList<Integer> carIDLocation = (ArrayList<Integer>) session.getAttribute("carID");
