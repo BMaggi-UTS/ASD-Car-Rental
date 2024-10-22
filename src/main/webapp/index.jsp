@@ -93,13 +93,9 @@
     </body>
 </html>
 <script src="js/script.js"></script>
-<<<<<<< HEAD
 <script>
 document.getElementById("locationAvailabilityForm").reset();
 document.getElementById("pickup-date").min = new Date().toISOString().split("T")[0];
 document.getElementById("dropoff-date").min = new Date().toISOString().split("T")[0];
 
 </script>
-=======
-<script>document.getElementById("locationAvailabilityForm").reset();</script>
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620

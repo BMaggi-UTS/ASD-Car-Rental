@@ -35,7 +35,6 @@
                         <h1>Catalogue Management Portal</h1>
                         <p>Here you can manage all of your needs with the current catalogue selection.</p>
                         <div class="option-box-wrapper">
-<<<<<<< HEAD
                             <a class="option-box" href="/">
                                 <div class="inside-option-box">
                                     <i class="fa-solid fa-backward"></i>
@@ -43,57 +42,33 @@
                                 </div>
                             </a>
                             <a class="option-box" href="/modify-booking.jsp">
-=======
-                            <a class="option-box" href="#">
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                                 <div class="inside-option-box">
                                     <i class="fa-solid fa-user box-icon"></i>
                                     <p>Manage Booking</p>
                                 </div>
                             </a>
-<<<<<<< HEAD
                             <a class="option-box" href="/create-booking.jsp">
-=======
-                            <a class="option-box" href="#">
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                                 <div class="inside-option-box">
                                     <i class="fa-solid fa-folder-open box-icon"></i>
                                     <p>New Booking</p>
                                 </div>
                             </a>
-<<<<<<< HEAD
                             <a class="option-box" href="/delete-booking.jsp">
                                 <div class="inside-option-box">
                                     <i class="fa-solid fa-folder-minus box-icon"></i>
                                     <p>Delete Booking</p>
                                 </div>
                             </a>
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                             <a class="option-box" href="modify-listings.jsp">
                                 <div class="inside-option-box">
                                     <i class="fa-solid fa-car box-icon"></i>
                                     <p>Modify Listings</p>
                                 </div>
                             </a>
-<<<<<<< HEAD
                             <a class="option-box" href="/create-listings.jsp">
-=======
-                            <a class="option-box" href="#">
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
-                                <div class="inside-option-box">
-                                    <i class="fa-solid fa-car-on box-icon"></i>
-                                    <p>Add Listing</p>
                                 </div>
                             </a>
-<<<<<<< HEAD
                             <a class="option-box" href="/delete-listings.jsp">
-=======
-                            <a class="option-box" href="#">
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
-                                <div class="inside-option-box">
-                                    <i class="fa-solid fa-car-burst box-icon"></i>
-                                    <p>Delete Listing</p>
                                 </div>
                             </a>
                             <a class="option-box" href="#">

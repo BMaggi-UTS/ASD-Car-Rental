@@ -10,12 +10,8 @@ import java.util.ArrayList;
 import model.Location;
 
 public class LocationDAO {
-<<<<<<< HEAD
     @SuppressWarnings("unused")
 	private Connection con;
-=======
-    private Connection con;
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 	private PreparedStatement carFetchReadSt;
 
 	public LocationDAO(Connection connection) throws SQLException {

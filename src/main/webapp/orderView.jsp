@@ -114,14 +114,6 @@
                         <img src="<%= car.getCarImage() %>" alt="Car Image">
 
                     </div>
-<<<<<<< HEAD
-                    
-                    <button class="trash-button">
-                        <i class="fas fa-trash"></i> <!-- Font Awesome trash bin icon -->
-                    </button>
-=======
-
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                 </div>
 
                 <br><br>
@@ -129,26 +121,6 @@
                 <!-- Personal Details Section -->
                 <div class="order-summary">
                     <h2>Personal Details</h2>
-<<<<<<< HEAD
-                    
-                        <h3>[User name ]</h3>
-                        <h4>[User Address]</h4> 
-                        <p>Email</p>
-                        <p>Phone</p>
-
-                        <br>
-                        
-                        <p>Dates: [Dates/time booked]</p>
-                        <p>Meeting Location: [Location]</p>
-
-                        <br>
-
-                        <button class="trash-button">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                    
-                
-=======
 
                     <%
                     User user = (User) session.getAttribute("user");
@@ -167,15 +139,10 @@
 
                     <br>
 
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                 </div>
 
                 <br><br>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                 <!-- Driver's License Section -->
                 <div class="driver-info">
                     <h2>Driver's License</h2>
@@ -186,10 +153,6 @@
                     </div>
                     <br><br>
 
-<<<<<<< HEAD
-
-                    <form action="contactProcessing.jsp" method="POST">
-=======
                     <form action="addOrderItem" method="POST">
                         <!-- Hidden inputs -->
                         <input type="hidden" name="orderCarID" value="13"> <!-- HARDCODED. Needs to be fixed. -->
@@ -200,7 +163,6 @@
                         <input type="hidden" name="booking-price" value="<%= totalPriceString %>">
                         
                         
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                         <div class="form-group">
                             <label for="firstName">First Name:</label>
                             <input type="firstName" id="firstName" name="firstName" required>

@@ -1,21 +1,13 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-<<<<<<< HEAD
-import java.sql.SQLException;
-=======
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
 import model.payment;
 
@@ -27,21 +19,6 @@ public class paymentDAO {
         this.connection = connection;
     }
 
-<<<<<<< HEAD
-    // Method to create new payment details
-    public void createPayment(payment payment) throws SQLException {
-        String sql = "INSERT INTO payments (Order_ID, Card_Number, Expiry_Date, CVC, Status, Date, Currency) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, payment.getOrderID());
-            statement.setInt(2, payment.getCardNumber());
-            statement.setString(3, payment.getExpiry().toString()); // This is IF expiry is stored as a string "YYYY-MM". Remember to change.)
-            statement.setString(4, payment.getCvc());
-            statement.setString(5, payment.getStatus());
-            statement.setDate(6, java.sql.Date.valueOf(payment.getDate())); // used to convert LocalDate to SQL Date
-            statement.setString(7, payment.getCurrency());
-
-=======
     // Method to create a new payment detail set
     public void createPayment(payment payment) throws SQLException {
 
@@ -56,27 +33,11 @@ public class paymentDAO {
             statement.setString(5, payment.getExpiryAsString());
             statement.setString(6, payment.getCvc());
             
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
             statement.executeUpdate();
         }
     }
 
     // Method to update an existing payment
-<<<<<<< HEAD
-    public void updatePaymentDetails(payment payment) throws SQLException {
-        String sql = "UPDATE payments SET Card_Number = ?, Expiry_Date = ?, CVC = ?, Status = ?, Date = ?, Currency = ? WHERE Order_ID = ?";
-
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, payment.getCardNumber());
-            statement.setString(2, payment.getExpiry().toString()); // This is IF expiry is stored as a string "YYYY-MM". Remember to change.)
-            statement.setString(3, payment.getCvc());
-            statement.setString(4, payment.getStatus());
-            statement.setDate(5, java.sql.Date.valueOf(payment.getDate())); // used to convert LocalDate to SQL Date
-            statement.setString(6, payment.getCurrency());
-            statement.setInt(7, payment.getOrderID());
-
-            statement.executeUpdate();
-=======
     public void updatePaymentDetails(int paymentID, String cardName, String cardNumber, String expiry, String cvc) throws SQLException {
         String sql = "UPDATE Payments SET Name_on_Card = ?, Card_Number = ?, Expiry_Date = ?, CVV = ? WHERE Payment_ID = ?";
 
@@ -90,28 +51,18 @@ public class paymentDAO {
             pstmt.executeUpdate();          
         } catch (SQLException e) {
             throw new SQLException("Error updating payment details: " + e.getMessage());
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
         }
     }
 
     // Method to delete payment details by Order ID
-<<<<<<< HEAD
-    public void deletePayment(int orderID) throws SQLException {
-        String sql = "DELETE FROM payments WHERE Order_ID = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, orderID);
-=======
     public void deletePayment(int paymentID) throws SQLException {
         String sql = "DELETE FROM Payments WHERE Payment_ID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, paymentID);
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
             statement.executeUpdate();
         }
     }
-<<<<<<< HEAD
-=======
 
     //Retrieve paymentID - automatically set in database, not in project, thus needs to be retrieved manually.
     public List<Integer> getPaymentID(int userId) throws SQLException {
@@ -180,5 +131,4 @@ public class paymentDAO {
         }
         return null;
     }
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 }

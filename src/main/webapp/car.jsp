@@ -26,10 +26,7 @@
     </head>
 
     <body>
-<<<<<<< HEAD
     <jsp:include page="/ConnServlet"/>
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">

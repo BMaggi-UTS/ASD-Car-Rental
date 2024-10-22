@@ -1,14 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="controller.*"%>
 <%@page import="model.*"%>
-<<<<<<< HEAD
-=======
 <%@page import="model.dao.orderDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="model.dao.DBConnector"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.SQLException"%>
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
 <!DOCTYPE html>
 <html>
@@ -27,84 +24,6 @@
             <%@ include file="assets/nav.jsp" %> 
 
             <main class="main-container">
-<<<<<<< HEAD
-                <h1>Order History</h1>
-
-                <br><br>
-
-                <!-- Order Summary Section -->
-                <div class="order-summary">
-                    <h2>Had a memorable experience? Find your orders here!</h2>
-
-                    <br>
-
-                    <div class="card">
-                        <h3>[Order Number here]</h3>
-                        <h3>[Owner of rental's name here]</h3>
-                        <h4>[Car model here]</h4> 
-                        <p>Rating: [Owner/car star rating here]</p>
-
-                        <br>
-                        
-                        <p>Dates: [Dates/time booked]</p>
-                        <p>Meeting Location: [Location]</p>
-                    
-                        <br><br>
-
-                        <p>Base Price: $[Base price]</p>
-                        <p>Taxes & Fees: $[Taxes and fees]</p>
-                        <p><strong>Total Price: $[Total price]</strong></p>
-
-                        <br><br>
-                        
-                    </div>
-
-                    <br>
-
-                    <div class="card">
-                        <h3>[Order Number here]</h3>
-                        <h3>[Owner of rental's name here]</h3>
-                        <h4>[Car model here]</h4> 
-                        <p>Rating: [Owner/car star rating here]</p>
-
-                        <br>
-                        
-                        <p>Dates: [Dates/time booked]</p>
-                        <p>Meeting Location: [Location]</p>
-                    
-                        <br><br>
-
-                        <p>Base Price: $[Base price]</p>
-                        <p>Taxes & Fees: $[Taxes and fees]</p>
-                        <p><strong>Total Price: $[Total price]</strong></p>
-
-                        <br><br>
-                        
-                    </div>
-
-                    <br>
-
-                    <div class="card">
-                        <h3>[Order Number here]</h3>
-                        <h3>[Owner of rental's name here]</h3>
-                        <h4>[Car model here]</h4> 
-                        <p>Rating: [Owner/car star rating here]</p>
-
-                        <br>
-                        
-                        <p>Dates: [Dates/time booked]</p>
-                        <p>Meeting Location: [Location]</p>
-                    
-                        <br><br>
-
-                        <p>Base Price: $[Base price]</p>
-                        <p>Taxes & Fees: $[Taxes and fees]</p>
-                        <p><strong>Total Price: $[Total price]</strong></p>
-
-                        <br><br>
-                        
-                    </div>
-=======
             <h1>Order History</h1>
 
             <br>
@@ -177,20 +96,12 @@
                         }
                     } // End of else block
                 %>
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
                 </div>
 
                 <br><br>
-<<<<<<< HEAD
-
-                
-
-            </main>
-=======
             
         </main>
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
             <%@ include file="assets/footer.jsp" %> 
         </div>

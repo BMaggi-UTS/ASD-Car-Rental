@@ -4,20 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
 import model.Car;
 import model.order;
 
-<<<<<<< HEAD
-public class orderDAO {
-=======
 public class orderDAO { 
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
     private Connection connection;
 
@@ -27,35 +20,6 @@ public class orderDAO {
 
     // Method to create a new order
     public void createOrder(order order) throws SQLException {
-<<<<<<< HEAD
-        // order newOrder;
-        String sql = "INSERT INTO orders (User_ID, Staff_ID, Car_ID, Order_Date_Time, Status, "
-               + "Rental_Date_Start, Rental_Date_Finish, Odometer_Start, Odometer_Finish, "
-               + "License_Number, First_Name, Middle_Name, Last_Name, License_Expiry_Date, "
-               + "DOB, State) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, order.getUserID());
-            statement.setInt(2, order.getStaffID());
-            statement.setInt(3, order.getCarID());
-            statement.setString(4, order.getOrderDateTime());
-            statement.setString(5, order.getStatus());
-            statement.setString(6, order.getRentalDateStart());
-            statement.setString(7, order.getRentalDateFinish());
-            statement.setInt(8, order.getOdometerStart());
-            statement.setInt(9, order.getOdometerFinish());
-            statement.setInt(10, order.getLicenseNumber());
-            statement.setString(11, order.getfirstName()); 
-            statement.setString(12, order.getmiddleName()); 
-            statement.setString(13, order.getlastName()); 
-
-            // Create and format the expiration date from the form input
-            String licenseExpiryDate = "2025-10-10";
-            statement.setString(14, licenseExpiryDate); // Expiration Date
-
-            statement.setString(15, "2002-09-10"); // Date of Birth
-            statement.setString(16, "nsw"); // State
-=======
 
         String sql = "INSERT INTO Orders (User_ID, Car_ID, Order_Date_Time, "
                + "Rental_Date_Start, Rental_Date_Finish, Odometer_Start, Odometer_Finish, "
@@ -73,14 +37,11 @@ public class orderDAO {
             statement.setString(9, order.gettaxesFeesString()); 
             statement.setString(10, order.getbasePriceString()); 
             statement.setString(11, order.gettotalPriceString()); 
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
             statement.executeUpdate();
         }
     }
 
-<<<<<<< HEAD
-=======
     //Retrieve orders based on UserID
     public List<order> getOrdersByUserID(int userID) throws SQLException {
         List<order> orders = new ArrayList<>();
@@ -148,7 +109,6 @@ public class orderDAO {
 
 
 
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     // // Method to get an order by ID for search purposes
     // public order getOrderById(int orderId) throws SQLException {
     //     String sql = "SELECT * FROM orders WHERE Order_ID = ?";
@@ -159,15 +119,8 @@ public class orderDAO {
     //             if (resultSet.next()) {
     //                 order order = new order();
     //                 order.setUserID(resultSet.getInt("User_ID"));
-<<<<<<< HEAD
-    //                 order.setStaffID(resultSet.getInt("Staff_ID"));
     //                 order.setCarID(resultSet.getInt("Car_ID"));
     //                 order.setOrderDateTime(resultSet.getString("DateTime"));
-    //                 order.setStatus(resultSet.getString("Status"));
-=======
-    //                 order.setCarID(resultSet.getInt("Car_ID"));
-    //                 order.setOrderDateTime(resultSet.getString("DateTime"));
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     //                 order.setRentalDateStart(resultSet.getString("Rental_Date_Start"));
     //                 order.setRentalDateFinish(resultSet.getString("Rental_Date_Finish"));
     //                 order.setOdometerStart(resultSet.getInt("Odometer_Start"));
@@ -187,15 +140,8 @@ public class orderDAO {
 
     //     try (PreparedStatement statement = connection.prepareStatement(sql)) {
     //         statement.setInt(1, order.getUserID());
-<<<<<<< HEAD
-    //         statement.setInt(2, order.getStaffID());
     //         statement.setInt(3, order.getCarID());
     //         statement.setString(4, order.getOrderDateTime());
-    //         statement.setString(5, order.getStatus());
-=======
-    //         statement.setInt(3, order.getCarID());
-    //         statement.setString(4, order.getOrderDateTime());
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     //         statement.setString(6, order.getRentalDateStart());
     //         statement.setString(7, order.getRentalDateFinish());
     //         statement.setInt(8, order.getOdometerStart());
@@ -211,11 +157,7 @@ public class orderDAO {
 
     // Method to delete an order by ID
     public void deleteOrder(int orderId) throws SQLException {
-<<<<<<< HEAD
-        String sql = "DELETE FROM orders WHERE Order_ID = ?";
-=======
         String sql = "DELETE FROM Orders WHERE Order_ID = ?";
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, orderId);
 
@@ -223,8 +165,6 @@ public class orderDAO {
         }
     }
 
-<<<<<<< HEAD
-=======
     // Method to fetch the most recent order by user ID
     public int getMostRecentOrder(int userID) throws SQLException {
         String sql = "SELECT * FROM Orders WHERE User_ID = ? ORDER BY Order_ID DESC LIMIT 1";
@@ -248,7 +188,6 @@ public class orderDAO {
 
 
 
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     public Car getCarById(int carId) throws SQLException {
 
         System.out.println("Fetching car with ID: " + carId);
@@ -285,10 +224,6 @@ public class orderDAO {
         }
         return null;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     
 
 
