@@ -7,7 +7,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
+<<<<<<< HEAD
         <link rel="stylesheet" href="css/navandfooter.css">
+=======
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
         <title>Settings</title>
     </head>

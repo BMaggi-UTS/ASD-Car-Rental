@@ -28,9 +28,12 @@
 
 }
 /* nav css */
+<<<<<<< HEAD
 a:-webkit-any-link {
   color: inherit;
 }
+=======
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 nav {
     border-bottom: 2px solid var(--primary);
     background-color: var(--background-colour);
@@ -128,6 +131,10 @@ h2 {
   background-image: url("https://cdn.pixabay.com/photo/2024/06/11/13/30/ai-generated-8823151_1280.jpg");
   background-size: cover;
   width: 100vw;
+<<<<<<< HEAD
+=======
+  height: 50rem;
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   margin-left: -10rem;
   padding-left: 10rem;
   padding-right: 10rem;
@@ -136,12 +143,16 @@ h2 {
   /* margin-bottom: rem; */
   background-position: center;
   align-items: center;
+<<<<<<< HEAD
   padding-bottom: 10rem;
   position: relative;
 }
 /* input[type='date']::-webkit-calendar-picker-indicator {
   position: relative;
 } */
+=======
+}
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 .location-availability-wrapper h1 {
   color: white;
   font-size: 7rem;
@@ -156,9 +167,12 @@ h2 {
   padding: 2rem;
   display: flex;
   width: 70rem;
+<<<<<<< HEAD
   z-index: 100;
   position: relative;
   /* position: relative; */
+=======
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 }
 .location-selector-wrapper {
   display: flex;
@@ -175,7 +189,11 @@ h2 {
   color: black;
   border-style: none;
   position: relative;
+<<<<<<< HEAD
   z-index: 20;
+=======
+  z-index: 3;
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   height: 3rem;
 }
 .pickup {
@@ -183,7 +201,11 @@ h2 {
 }
 .selector {
   width: 18rem;
+<<<<<<< HEAD
   height: 3.5rem;
+=======
+    height: 3.5rem;
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   border-style: none;
   padding: 2rem;
 }
@@ -240,8 +262,11 @@ h2 {
   padding: 2rem;
   display: flex;
   width: 70rem;
+<<<<<<< HEAD
   z-index: 5;
   position: relative;
+=======
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 }
 .date-wrapper {
   width: 40rem;
@@ -790,8 +815,14 @@ h2 {
     color: white;
     cursor: pointer;
     margin: 0;
+<<<<<<< HEAD
     /* right: 15px;
     position: absolute; */
+=======
+    right: 15px;
+    position: absolute;
+
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   }
 
 #dob {
@@ -813,12 +844,17 @@ h2 {
   border-radius: 20px;
 }
 
+<<<<<<< HEAD
 .suppliers-logo {
+=======
+.supplier-logo {
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   width: 100px;
   height: 100px;
   border-radius: 20px;
 }
 
+<<<<<<< HEAD
 .supplier-name {
   font-weight: 600;
   color: black;
@@ -830,13 +866,20 @@ h2 {
 }
 
 .suppliers-edit-btns {
+=======
+.supplier-edit-btns {
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+<<<<<<< HEAD
 .suppliers-edit-btn {
+=======
+.supplier-edit-btn {
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
   margin: 10px;
 }
 
@@ -849,6 +892,7 @@ h2 {
   font-weight: 600;
   color: red;
 }
+<<<<<<< HEAD
 #edit-supplier:hover {
   cursor: pointer;
 }
@@ -856,6 +900,8 @@ h2 {
 #delete-supplier {
   cursor: pointer;
 }
+=======
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 
 .supplier-search-bar {
   display: flex;
@@ -864,6 +910,7 @@ h2 {
   align-items: center;
   margin: auto;
   width: 18%;
+<<<<<<< HEAD
 }
 
 .supplier-search-btn {
@@ -922,3 +969,6 @@ h2 {
   color: black;
   text-decoration: underline;
 }
+=======
+}
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620

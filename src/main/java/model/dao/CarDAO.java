@@ -17,7 +17,11 @@ public class CarDAO {
 		//initiates connection to db
 		this.con = connection;
 		//prevents needing confirmation before making changes to db
+<<<<<<< HEAD
 		connection.setAutoCommit(false);
+=======
+		connection.setAutoCommit(true);
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 		//preparing predetermined statement
 //		carFetchReadSt = connection.prepareStatement("SELECT car_id, car_make, car_model, car_trim, car_odometer, car_image, car_transmission, car_fuel, car_seats, car_body_style, car_quip, car_purchase_price, car_current_price, car_price_km, car_location, car_rating  FROM CAR");
     carFetchReadSt = connection.prepareStatement("SELECT Car_ID, Car_Make, Car_Model, Car_Trim, Car_Odometer, Car_Image, Car_Transmission, Car_Fuel, Car_Seats, Car_Body_Style, Car_Quip, Car_Purchase_Price, Car_Current_Price, Car_Price_KM, Car_Rating, Location_ID FROM Car");
@@ -67,6 +71,10 @@ public class CarDAO {
 			c.setCarRating(carRating);
 			c.setLocationID(locationID);
 
+<<<<<<< HEAD
+=======
+			// System.out.println(p.getProductName());
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 			//adding the just set up product (p) to the list products.
 			cars.add(c);
 		}
@@ -96,12 +104,22 @@ public class CarDAO {
 		Integer carPriceKM = rs.getInt ("car_price_km");
 		Integer carRating = rs.getInt("car_rating");
 		Integer locationID = rs.getInt("location_id");
+<<<<<<< HEAD
         // Create and return Product object
         return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
 	} 
 	else {
 		return null;
 	}
+=======
+
+        // Create and return Product object
+        return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
+		} 
+		else {
+			return null;
+		}
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 	}
 
 	public ArrayList<Car> selectArrayCar(ArrayList<Integer> carIDList) throws SQLException {
@@ -111,6 +129,7 @@ public class CarDAO {
 			st.setInt(1, carID);
 			ResultSet rs = st.executeQuery();
 			if (rs.next()) { // Check if result set is not empty
+<<<<<<< HEAD
 				@SuppressWarnings("unused")
 				Integer car_ID = rs.getInt("car_id");
 				String carMake= rs.getString("car_make");
@@ -147,14 +166,42 @@ public class CarDAO {
 				c.setLocationID(locationID);
 				cars.add(c);
 			}
+=======
+			Integer car_ID = rs.getInt("car_id");
+			String carMake= rs.getString("car_make");
+			String carModel= rs.getString("car_model");
+			String carTrim= rs.getString("car_trim");
+			String carImage= rs.getString("car_image");
+			Integer  carOdometer= rs.getInt("car_odometer");
+			String carTransmission= rs.getString("car_transmission");
+			String carFuel = rs.getString("car_fuel");
+			Integer carSeats= rs.getInt("car_seats");
+			String carBodyStyle = rs.getString("car_body_style");
+			String carQuip = rs.getString("car_quip");
+			Integer carPurchasePrice = rs.getInt("car_purchase_price");
+			Integer carCurrentPrice= rs.getInt("car_current_price");
+			Integer carPriceKM = rs.getInt ("car_price_km");
+			Integer carRating = rs.getInt("car_rating");
+			Integer locationID = rs.getInt("location_id");
+			Car c = new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
+			cars.add(c);
+			} 
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 			else {
 				cars.add(null);
 			}
 		}
 		return cars;
+<<<<<<< HEAD
 	}
 	//update product
 	public void updateCar(
+=======
+
+	}
+	//update product
+	public void updateProduct(
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 		Integer car_ID,
 		String carMake,
 		String carModel,
@@ -172,12 +219,17 @@ public class CarDAO {
 		Integer carRating,
 		Integer locationID
 	) throws SQLException {
+<<<<<<< HEAD
 		PreparedStatement st = con.prepareStatement("UPDATE Car SET Car_ID=?, Car_Make=?, Car_Model=?, Car_Trim=?, Car_Odometer=?, Car_Image=?, Car_Transmission=?, Car_Fuel=?, Car_Seats=?, Car_Body_Style=?, Car_Quip=?, Car_Purchase_Price=?, Car_Current_Price=?, Car_Price_KM=?, Car_Rating=?, location_id=? WHERE car_id=?");
+=======
+		PreparedStatement st = con.prepareStatement("UPDATE Car SET Car_ID=?, Car_Make=?, Car_Model=?, Car_Trim=?, Car_Odometer=?, Car_Image=?, Car_Transmission=?, Car_Fuel=?, Car_Seats=?, Car_Body_Style=?, Car_Quip=?, Car_Purchase_Price=?, Car_Current_Price=?, Car_Price_KM=?, Car_Rating=? WHERE car_id=?");
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 		st.setInt(1, car_ID);
 		st.setString(2, carMake);
 		st.setString(3, carModel);
 		st.setString(4, carTrim);
 		st.setInt(5, carOdometer);
+<<<<<<< HEAD
 		st.setString(6, carImage);
 		st.setString(7, carTransmission);
 		st.setString(8, carFuel);
@@ -239,4 +291,29 @@ public class CarDAO {
 
 		st.executeUpdate(); // executes the query
 	}
+=======
+		st.setString(6, carTransmission);
+		st.setString(7, carFuel);
+		st.setInt(8, carSeats);
+		st.setString(9, carBodyStyle);
+		st.setString(10, carQuip);
+		st.setInt(11, carPurchasePrice);
+		st.setInt(12, carCurrentPrice);
+		st.setInt(13, carPriceKM);
+		st.setInt(14, carRating);
+		st.setInt(15, locationID);
+		st.setInt(16
+		
+		
+		
+		
+		
+		
+		
+		, car_ID);
+	
+		st.executeUpdate();
+	}
+
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 }

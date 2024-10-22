@@ -23,159 +23,17 @@
             <%@ include file="assets/nav.jsp" %> 
 
             <main class="main-container">
-                <h1>Checkout</h1>
+                <h1>Edit Driver Details</h1>
                 <br>
 
-                <h2>We offer free cancellation for all rental services!</h2>
+                <h2>Made a mistake? No worries!</h2>
                 <div class="middle">
-                    <p>Plans changed? We've got your back.</p>
+                    <p>Enter your new details here.</p>
                 </div>
 
                 <br><br>
 
-                <!-- Order Summary Section -->
-                <div class="order-summary">
-                    <% 
-                        
-                        // Retrieve and process input parameters
-                        String pickupDate = request.getParameter("pickupDate");
-                        String dropoffDate = request.getParameter("dropoffDate");
-                            
-                        // Calculate prices
-                        String basePriceString = request.getParameter("booking-price");
-                        double basePrice = Double.parseDouble(basePriceString);
-                        double taxesFees = basePrice * 0.10;
-                        double totalPrice = basePrice + taxesFees;
-                            
-                        String taxesFeesString = String.format("%.2f", taxesFees);
-                        String totalPriceString = String.format("%.2f", totalPrice);
-                            
-                        // Open a connection using DBConnector
-                        DBConnector conn = new DBConnector();
-                        Connection connection = conn.openConnection();
-                        // Use the connection to create an orderDAO controller
-                        orderDAO orderDAO = new orderDAO(connection);
-
-                        String carValid = "";
-                        String carMake = "";
-                        String carRating = "";
-                        int carOdometer = 0;
-                        
-                        Car car = null;
-
-                        try {
-                            // Fetch car data by ID if valid
-                            carValid = request.getParameter("orderCarID");
-                            if (carValid != null) {
-                                try {
-                                    int carId = Integer.parseInt(carValid);
-                                    car = orderDAO.getCarById(13); //hard code this (e.g. replace with 13) and continue to work until id issue fixed. Meant to be carId.
-                                    if (car != null) {
-                                        // Output car details
-                                        carMake = car.getCarMake() + " " + car.getCarModel() + " " + car.getCarTrim();
-                                        carRating = car.getCarRating() + "/5 Star Rating";
-                                        carOdometer = car.getCarOdometer();
-                                    } else {
-                                        out.println("Error: Car not found.");
-                                    }
-                                } catch (NumberFormatException e) {
-                                    out.println("Error: Invalid car ID format.");
-                                }
-                            } else {
-                                out.println("Error: Car ID is missing.");
-                            }
-                            
-                        } catch (SQLException e) {
-                            out.println("Database error: " + e.getMessage());
-                        } catch (Exception e) {
-                            out.println("Unexpected error: " + e.getMessage());
-                        }
-                    %>
-
-                    <h2>Order Summary</h2>
-                    <div class="card">
-                        <!-- Draw data from carID in database and list model here -->
-                       
-                        <p><strong><%= carMake %></strong></p>
-                        <p><%= carRating %></p>
-                        <p><%= carOdometer %>km</p>
-
-                        <br>
-
-                        <p>Pickup Date: <%= pickupDate %></p>
-                        <p>Dropoff Date: <%= dropoffDate %></p>
-
-                        <br><br>
-
-                        <p>Base Price: $<%= basePriceString %></p>
-                        <p>Taxes & Fees: $<%= taxesFeesString %></p> 
-                        <p><strong>Total Price: $<%= totalPriceString %></strong></p> 
-
-                        <img src="<%= car.getCarImage() %>" alt="Car Image">
-
-                    </div>
-<<<<<<< HEAD
-                    
-                    <button class="trash-button">
-                        <i class="fas fa-trash"></i> <!-- Font Awesome trash bin icon -->
-                    </button>
-=======
-
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
-                </div>
-
-                <br><br>
-
-                <!-- Personal Details Section -->
-                <div class="order-summary">
-                    <h2>Personal Details</h2>
-<<<<<<< HEAD
-                    
-                        <h3>[User name ]</h3>
-                        <h4>[User Address]</h4> 
-                        <p>Email</p>
-                        <p>Phone</p>
-
-                        <br>
-                        
-                        <p>Dates: [Dates/time booked]</p>
-                        <p>Meeting Location: [Location]</p>
-
-                        <br>
-
-                        <button class="trash-button">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </button>
-                    
                 
-=======
-
-                    <%
-                    User user = (User) session.getAttribute("user");
-
-                    int userID = user.getUserID();
-                    String userFirstName = user.getFirstName();
-                    String userLastName = user.getLastName();
-                    String userEmail= user.getEmail();
-                    String userPhone = user.getPhone();
-                    %>
-                    
-                    <h3>Name: <%= userFirstName %> <%= userLastName %></h3>
-                    <p>Email: <%= userEmail %></p>
-                    <p>Phone: <%= userPhone %></p>
-                    
-
-                    <br>
-
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
-                </div>
-
-                <br><br>
-
-<<<<<<< HEAD
-
-=======
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                 <!-- Driver's License Section -->
                 <div class="driver-info">
                     <h2>Driver's License</h2>
@@ -186,21 +44,8 @@
                     </div>
                     <br><br>
 
-<<<<<<< HEAD
+                    <form action="updateDriver" method="POST">
 
-                    <form action="contactProcessing.jsp" method="POST">
-=======
-                    <form action="addOrderItem" method="POST">
-                        <!-- Hidden inputs -->
-                        <input type="hidden" name="orderCarID" value="13"> <!-- HARDCODED. Needs to be fixed. -->
-                        <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
-                        <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">
-                        <input type="hidden" name="base-price" value="<%= basePriceString %>">
-                        <input type="hidden" name="tax-fees" value="<%= taxesFeesString %>">
-                        <input type="hidden" name="booking-price" value="<%= totalPriceString %>">
-                        
-                        
->>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                         <div class="form-group">
                             <label for="firstName">First Name:</label>
                             <input type="firstName" id="firstName" name="firstName" required>
@@ -314,14 +159,16 @@
                     </form>
                 </div>
 
+                <div class="middle">
+                        <p>By clicking the button above, your details will be updated and order will be processed.</p>
+                <br>
+                    </div>
+
                 <br><br>
 
 
                 <hr>
-                <!-- Payment Information Section -->
-                <div class="locked-section">
-                    <h2><img src="assets/orderImages/Lock.png" alt="Lock Icon"> Payment Information</h2>
-                </div>
+                
 
             </main>
 

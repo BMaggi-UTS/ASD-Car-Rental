@@ -2,8 +2,11 @@ package controller;
 
 import java.io.IOException;
 
+<<<<<<< HEAD
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 
+=======
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,11 +15,16 @@ import jakarta.servlet.http.HttpSession;
 
 import model.dao.CarDAO;
 
+<<<<<<< HEAD
 public class UpdateListingServlet extends HttpServlet {
+=======
+public class UpdateListingServlet extends HttpServlet{
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         CarDAO carDAO = (CarDAO) session.getAttribute("carDAO");
+<<<<<<< HEAD
         
         try {
             int carID = Integer.parseInt(request.getParameter("id"));
@@ -60,6 +68,45 @@ public class UpdateListingServlet extends HttpServlet {
             request.setAttribute("errors", e);
             request.getRequestDispatcher("/critical-errors.jsp").forward(request, response);
             return;
+=======
+        int carID;
+        String carMake;
+        String carModel;
+        String carTrim;
+        int carOdometer;
+        String carImage;
+        String carTransmission;
+        String carFuel;
+        int carSeats;
+        String carBodyStyle;
+        String carQuip;
+        int carPurchasePrice;
+        int carCurrentPrice;
+        int carPriceKM;
+        int carRating;
+        int locationID;
+        try {
+            carID = Integer.parseInt(request.getParameter("id"));
+            carMake = request.getParameter("make");
+            carModel = request.getParameter("model");
+            carTrim = request.getParameter("trim");
+            carOdometer = Integer.parseInt(request.getParameter("odometer"));
+            carImage = request.getParameter("imageurl");
+            carTransmission = request.getParameter("transmission");
+            carFuel = request.getParameter("fuel");
+            carSeats = Integer.parseInt(request.getParameter("seats"));
+            carBodyStyle = request.getParameter("bodystyle");
+            carQuip = request.getParameter("quip");
+            carPurchasePrice = Integer.parseInt(request.getParameter("purchaseprice"));
+            carCurrentPrice = Integer.parseInt(request.getParameter("currentprice"));
+            carPriceKM = Integer.parseInt(request.getParameter("pricekm"));
+            carRating = Integer.parseInt(request.getParameter("rating"));
+            locationID = Integer.parseInt(request.getParameter("locID"));
+
+            carDAO.updateProduct(null, carMake, carModel, carTrim, carImage, null, carTransmission, carFuel, null, carBodyStyle, carQuip, null, null, null, null, null);
+        } catch(Exception e) {
+
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
         }
     }
 }

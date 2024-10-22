@@ -28,6 +28,7 @@
     </head>
 
     <body>
+<<<<<<< HEAD
     <jsp:include page="/ConnServlet"/>
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
@@ -89,10 +90,68 @@
                         
                     </div>
                 </form>
+=======
+        <div class="web-wrapper">
+            <%@ include file="assets/nav.jsp" %>
+            <main class="main-container">
+             <% ArrayList<Car> cars = carDAO.fetchCars(); %>
+            <% for(Car car : cars) { %>
+                <div id="<%=car.getCarID() + "overlay" %>" class="modal-overlay">
+                    <div class="modal">
+                        <a class="close-btn" onclick="closeModal(<%=car.getCarID()%>)">&times;</a>
+                        <h1><%=car.getCarMake() %> <%=car.getCarModel()%></h1>
+                        <div class="table-emulator">
+                            <h2>ID</h2>
+                            <h2>Make</h2>
+                            <h2>Model</h2>
+                            <h2>Trim</h2>
+                            <h2>Odometer</h2>
+                            <h2>Image URL</h2>
+                        </div>
+                        <div class="table-emulator">
+                            <input type="text" value="<%= car.getCarID() %>">
+                            <input type="text" value="<%= car.getCarMake() %>">
+                            <input type="text" value="<%= car.getCarModel() %>">
+                            <input type="text" value="<%= car.getCarTrim() %>">
+                            <input type="text" value="<%= car.getCarOdometer() %>">
+                            <input type="text" value="<%= car.getCarImage() %>">
+                        </div>
+                        <div class="table-emulator">
+                            <h2>Transmission</h2>
+                            <h2>Fuel Type</h2>
+                            <h2>Seats</h2>
+                            <h2>Body Style</h2>
+                            <h2>Quip</h2>
+                            <h2>Purchase Price</h2>
+                        </div>
+                        <div class="table-emulator">
+                            <input type="text" value="<%= car.getCarTransmission() %>">
+                            <input type="text" value="<%= car.getCarFuel() %>">
+                            <input type="text" value="<%= car.getCarSeats() %>">
+                            <input type="text" value="<%= car.getCarBodyStyle() %>">
+                            <input type="text" value="<%= car.getCarQuip() %>">
+                            <input type="text" value="<%= car.getCarPurchasePrice() %>">
+                        </div>
+                        <div class="table-emulator">
+                            <h2>Current Price</h2>
+                            <h2>Price Per KM</h2>
+                            <h2>Car Rating</h2>
+                            <h2>Location ID</h2>
+                        </div>
+                        <div class="table-emulator">
+                            <input type="text" value="<%= car.getCarCurrentPrice() %>">
+                            <input type="text" value="<%= car.getCarPriceKM() %>">
+                            <input type="text" value="<%= car.getCarRating() %>">
+                            <input type="text" value="<%= car.getLocationID() %>">
+                        </div>
+                    </div>
+                </div>
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                 <% } %>
                 <div class="product-wrapper br-top">
                     <div class="option-container">
                         <h1>Modify Listings</h1>
+<<<<<<< HEAD
                         <h1><%
                                 if(request.getAttribute("errors") != null) {
                                  %>
@@ -111,6 +170,14 @@
                                 <button type="submit"><i class="fa-solid fa-floppy-disk"></i></button>
                             </div>
                             
+=======
+                        <div>
+                            <div class="control-buttons">
+                                <a onclick="editAll()"><i class="fa-solid fa-pencil"></i></a>
+                                <a onclick=""><i class="fa-solid fa-floppy-disk"></i></a>
+                            </div>
+                            <form action="/updateListingServlet" method="post" autocomplete="off" id="update-listing-form">
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                                 <table>
                                     <tr>
                                         <th>ID</th>
@@ -124,6 +191,7 @@
                                     </tr>
                                     <% for(Car car : cars) { %>
                                             <tr>
+<<<<<<< HEAD
                                                 <td class="bg-not-active" ondblclick="swap('<%= car.getCarID() %>')" id="<%= car.getCarID() %>"><p><%= car.getCarID() %></p><input type="text" class="hidden" name="id" value="<%= car.getCarID() %>"></td>
                                                 <td class="bg-not-active" ondblclick="swap('<%= car.getCarMake() + car.getCarID() %>')" id="<%= car.getCarMake() + car.getCarID()%>"><p><%= car.getCarMake()%></p> <input type="text" class="hidden" name="make" value="<%= car.getCarMake()%>"> </td>
                                                 <td class="bg-not-active" ondblclick="swap('<%= car.getCarModel() + car.getCarID() %>')" id="<%= car.getCarModel() + car.getCarID()%>"><p><%= car.getCarModel()%></p> <input type="text" class="hidden" name="model" value="<%= car.getCarModel()%>"> </td>
@@ -142,11 +210,26 @@
                                                 
                                                 <td onclick="openModal( <%= car.getCarID()%> + 'overlay')" class="bg-not-active">
                                                    <i class="fa-solid fa-chevron-right"></i>
+=======
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarID() %>')" id="<%= car.getCarID() %>"><p><%= car.getCarID() %></p><input type="text" class="hidden" name="id"></td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarMake() + car.getCarID() %>')" id="<%= car.getCarMake() + car.getCarID()%>"><p> <%= car.getCarMake()%></p> <input type="text" class="hidden" name="make"> </td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarModel() + car.getCarID() %>')" id="<%= car.getCarModel() + car.getCarID()%>"><p> <%= car.getCarModel()%></p> <input type="text" class="hidden" name="model"> </td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarOdometer() + car.getCarID() %>')" id="<%= car.getCarOdometer() + car.getCarID()%>"><p><%= car.getCarOdometer() %></p><input type="text" class="hidden" name="odometer"></td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarTransmission() + car.getCarID() %>')" id="<%= car.getCarTransmission() + car.getCarID() %>"><p><%= car.getCarTransmission() %></p><input type="text" class="hidden" name="transmission"></td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarFuel() + car.getCarID() %>')" id="<%= car.getCarFuel() + car.getCarID() %>"><p><%= car.getCarFuel() %></p><input type="text" class="hidden" name="fuel"></td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getLocationID() + car.getCarMake() + car.getCarID() %>')" id="<%= car.getLocationID() + car.getCarMake() + car.getCarID() %>"><p><%= car.getLocationID() %></p><input type="text" class="hidden" name="locID"></td>
+                                                <td class="bg-not-active">
+                                                    <button onclick="openModal( <%= car.getCarID()%> + 'overlay')"><i class="fa-solid fa-chevron-right"></i></button>
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                                                 </td>
                                             </tr>
                                         
                                     <% } %>
                                 </table>
+<<<<<<< HEAD
+=======
+                                <button type="submit">aaa</button>
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
                             </form>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
    version="6.0"> 
+<<<<<<< HEAD
     <filter>
     <filter-name>UrlRewriteFilter</filter-name>
     <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
@@ -13,6 +14,10 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+=======
+
+
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     <servlet>
   	    <servlet-class>controller.ConnServlet</servlet-class>
   	    <servlet-name>ConnServlet</servlet-name>
@@ -41,6 +46,7 @@
   	    <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+<<<<<<< HEAD
     <servlet>
   	    <servlet-class>controller.SuppliersServlet</servlet-class>
   	    <servlet-name>Suppliers</servlet-name>
@@ -65,11 +71,23 @@
          Override init parameter to avoid nasty -->
         <!-- file locking issue on windows.         -->
         <!-- <servlet-name>default</servlet-name>
+=======
+
+    <servlet>
+        <!-- Override init parameter to avoid nasty -->
+        <!-- file locking issue on windows.         -->
+        <servlet-name>default</servlet-name>
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
         <init-param>
             <param-name>useFileMappedBuffer</param-name>
             <param-value>false</param-value>
         </init-param>
+<<<<<<< HEAD
     </servlet> --> 
+=======
+    </servlet> 
+    
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
     <servlet>
         <servlet-name>ConnServlet</servlet-name>
         <servlet-class>controller.ConnServlet</servlet-class>
@@ -106,6 +124,7 @@
         <servlet-name>UpdateListingServlet</servlet-name>
         <url-pattern>/UpdateListingServlet</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
     <servlet>
         <servlet-name>CreateListingServlet</servlet-name>
         <servlet-class>controller.CreateListingServlet</servlet-class>
@@ -152,4 +171,64 @@
         <url-pattern>/DeleteBookingServlet</url-pattern>
     </servlet-mapping>
     
+=======
+
+    <servlet>
+        <servlet-name>addOrderItem</servlet-name>
+        <servlet-class>controller.addOrderItem</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addOrderItem</servlet-name>
+        <url-pattern>/addOrderItem</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>viewOrders</servlet-name>
+        <servlet-class>controller.viewOrders</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewOrders</servlet-name>
+        <url-pattern>/viewOrders</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>updateDriver</servlet-name>
+        <servlet-class>controller.updateDriver</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateDriver</servlet-name>
+        <url-pattern>/updateDriver</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteOrder</servlet-name>
+        <servlet-class>controller.deleteOrder</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteOrder</servlet-name>
+        <url-pattern>/deleteOrder</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>addPayment</servlet-name>
+        <servlet-class>controller.addPayment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addPayment</servlet-name>
+        <url-pattern>/addPayment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>updatePayment</servlet-name>
+        <servlet-class>controller.updatePayment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updatePayment</servlet-name>
+        <url-pattern>/updatePayment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deletePayment</servlet-name>
+        <servlet-class>controller.deletePayment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deletePayment</servlet-name>
+        <url-pattern>/deletePayment</url-pattern>
+    </servlet-mapping>
+
+>>>>>>> f1e12794eb8cc3bc137fa4b87757a78a48868620
 </web-app>
