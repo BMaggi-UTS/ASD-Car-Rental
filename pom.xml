@@ -18,7 +18,33 @@
         -->
         <jettyVersion>11.0.23</jettyVersion>
     </properties>
-    
+
+    <repositories>
+	<repository>
+	  <id>MichaelALunn</id>
+	  <url>https://pkgs.dev.azure.com/MichaelALunn/_packaging/MichaelALunn/maven/v1</url>
+	  <releases>
+	    <enabled>true</enabled>
+	  </releases>
+	  <snapshots>
+	    <enabled>true</enabled>
+	  </snapshots>
+	</repository>
+    </repositories>
+
+    <distributionManagement>
+	<repository>
+	  <id>MichaelALunn</id>
+	  <url>https://pkgs.dev.azure.com/MichaelALunn/_packaging/MichaelALunn/maven/v1</url>
+	  <releases>
+	    <enabled>true</enabled>
+	  </releases>
+	  <snapshots>
+	    <enabled>true</enabled>
+	  </snapshots>
+	</repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
