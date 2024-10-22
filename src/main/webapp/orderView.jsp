@@ -114,7 +114,6 @@
                         <img src="<%= car.getCarImage() %>" alt="Car Image">
 
                     </div>
-
                 </div>
 
                 <br><br>

@@ -28,6 +28,9 @@
 
 }
 /* nav css */
+a:-webkit-any-link {
+  color: inherit;
+}
 nav {
     border-bottom: 2px solid var(--primary);
     background-color: var(--background-colour);
@@ -125,7 +128,6 @@ h2 {
   background-image: url("https://cdn.pixabay.com/photo/2024/06/11/13/30/ai-generated-8823151_1280.jpg");
   background-size: cover;
   width: 100vw;
-  height: 50rem;
   margin-left: -10rem;
   padding-left: 10rem;
   padding-right: 10rem;
@@ -134,7 +136,12 @@ h2 {
   /* margin-bottom: rem; */
   background-position: center;
   align-items: center;
+  padding-bottom: 10rem;
+  position: relative;
 }
+/* input[type='date']::-webkit-calendar-picker-indicator {
+  position: relative;
+} */
 .location-availability-wrapper h1 {
   color: white;
   font-size: 7rem;
@@ -149,6 +156,9 @@ h2 {
   padding: 2rem;
   display: flex;
   width: 70rem;
+  z-index: 100;
+  position: relative;
+  /* position: relative; */
 }
 .location-selector-wrapper {
   display: flex;
@@ -165,7 +175,7 @@ h2 {
   color: black;
   border-style: none;
   position: relative;
-  z-index: 3;
+  z-index: 20;
   height: 3rem;
 }
 .pickup {
@@ -173,7 +183,7 @@ h2 {
 }
 .selector {
   width: 18rem;
-    height: 3.5rem;
+  height: 3.5rem;
   border-style: none;
   padding: 2rem;
 }
@@ -230,6 +240,8 @@ h2 {
   padding: 2rem;
   display: flex;
   width: 70rem;
+  z-index: 5;
+  position: relative;
 }
 .date-wrapper {
   width: 40rem;
@@ -778,9 +790,8 @@ h2 {
     color: white;
     cursor: pointer;
     margin: 0;
-    right: 15px;
-    position: absolute;
-
+    /* right: 15px;
+    position: absolute; */
   }
 
 #dob {
@@ -808,7 +819,17 @@ h2 {
   border-radius: 20px;
 }
 
-.supplier-edit-btns {
+.supplier-name {
+  font-weight: 600;
+  color: black;
+}
+
+.supplier-name:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.suppliers-edit-btns {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -828,6 +849,13 @@ h2 {
   font-weight: 600;
   color: red;
 }
+#edit-supplier:hover {
+  cursor: pointer;
+}
+
+#delete-supplier {
+  cursor: pointer;
+}
 
 .supplier-search-bar {
   display: flex;
@@ -836,4 +864,61 @@ h2 {
   align-items: center;
   margin: auto;
   width: 18%;
+}
+
+.supplier-search-btn {
+  background: none;
+  border: none;
+}
+
+.supplier-search-btn:hover {
+  cursor: pointer;
+}
+
+.add-supplier-btn {
+  background-color: var(--primary);
+  color: white;
+  width: 150px;
+  height: 100px;
+  padding: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.supplier-hbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.supplier-title {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.supplier-logo {
+  width: 20vw;
+  height: 20vw;
+  margin-right: 40px;
+}
+
+.supplier-detail-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 150%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.supplier-title-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#return-btn {
+  font-weight: 600;
+  color: black;
+  text-decoration: underline;
 }

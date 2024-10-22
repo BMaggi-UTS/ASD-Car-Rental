@@ -80,6 +80,52 @@
         <servlet-name>UpdateListingServlet</servlet-name>
         <url-pattern>/UpdateListingServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateListingServlet</servlet-name>
+        <servlet-class>controller.CreateListingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateListingServlet</servlet-name>
+        <url-pattern>/CreateListingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteListingServlet</servlet-name>
+        <servlet-class>controller.DeleteListingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteListingServlet</servlet-name>
+        <url-pattern>/DeleteListingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateBookingServlet</servlet-name>
+        <servlet-class>controller.CreateBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateBookingServlet</servlet-name>
+        <url-pattern>/CreateBookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ModifyBookingServlet</servlet-name>
+        <servlet-class>controller.ModifyBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyBookingServlet</servlet-name>
+        <url-pattern>/ModifyBookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteBookingServlet</servlet-name>
+        <servlet-class>controller.DeleteBookingServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteBookingServlet</servlet-name>
+        <url-pattern>/DeleteBookingServlet</url-pattern>
+    </servlet-mapping>
+    
 
     <servlet>
         <servlet-name>addOrderItem</servlet-name>

@@ -97,7 +97,6 @@ public class order implements Serializable {
         this.rentalDateStart = rentalDateStart;
     }
 
-
     public String getRentalDateFinish() {
         return rentalDateFinish;
     }
