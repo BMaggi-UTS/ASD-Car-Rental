@@ -1,13 +1,16 @@
 <div class="location-availability-wrapper">
     <h1>Sydney Car Rental</h1>
     <form action="/LocationAvailabilityServlet" method="post" autocomplete="off" id="locationAvailabilityForm">
+    
         <div class="location-selector">
+        
             <div class="location-selector-wrapper">
+            
                 <div class="selector-wrapper">
                     <% ArrayList<Location> locations = locationDAO.fetchLocations(); %>
                     <p class="label">Pickup</p>
                     <div class="pickup pickme">
-                        <input Type="text" placeholder="Search..." id="pickup" onkeyup="filterFunction()" class="selector" autocomplete="off" name="pickup" value="<% if(pickupName != null) { %><%= pickupName %><% } %>">
+                        <input Type="text" placeholder="Search..." id="pickup" onkeyup="filterFunction()" class="selector" autocomplete="off" name="pickup" required value="<% if(pickupName != null) { %><%= pickupName %><% } %>">
                         <div id="search-results" class="pickme">
                             <% for(Location location : locations) { %>
                                 <a onclick="clickResultPickup('<%=location.getLocationName()%>')"><%=location.getLocationName()%></a>
@@ -18,7 +21,7 @@
                 <div class="selector-wrapper">
                     <p class="label">Dropoff</p>
                     <div class="dropoff pickme">
-                        <input Type="text" placeholder="Search..." id="dropoff" onkeyup="filterFunction2()" class="selector" autocomplete="off" name="dropoff" value="<% if(pickupName != null) { %><%= pickupName %><% } %>">
+                        <input Type="text" placeholder="Search..." id="dropoff" onkeyup="filterFunction2()" class="selector" autocomplete="off" name="dropoff" required value="<% if(pickupName != null) { %><%= pickupName %><% } %>">
                         <div id="search-results2" class="pickme">
                             <% for(Location location : locations) { %>
                                 <a onclick="clickResultPickup2('<%=location.getLocationName()%>')"><%=location.getLocationName()%></a>
@@ -39,16 +42,27 @@
         </div>
         <div class="availability-selector">
             <div class="date-wrapper">
-                <input type="date" name="pickup-date" id="pickup-date">
-                <input type="date" name="dropoff-date" id="dropoff-date">
+                <input type="date" name="pickup-date" id="pickup-date" required>
+                <input type="date" name="dropoff-date" id="dropoff-date" required>
             </div>
             <div class="price-selector-wrapper selector-wrapper" id="age">
-                <button onclick="darken('21-25')" id="day" class="not-selected">21-25</button>
-                <button onclick="darken('25+')" id="km" class="not-selected">25+</button>
+                <button onclick="darken('21-25')" id="15-25" class="not-selected" type="button">21-25</button>
+                <button onclick="darken('25+')" id="25" class="not-selected" type="button">25+</button>
+                <input type="hidden" id="selected-type-age" name="selected-type-age">
             </div>
             <div class="submit-search">
                 <input type="submit" value="Search">
             </div>
         </div>
+         <% if(request.getAttribute("errors") != null) { %>
+        <div class="error-location">
+            <div class="errors">
+            <p class="error-location-text">
+                <%= request.getAttribute("errors") %>
+            </p>
+            </div>
+        </div>
+         <% } %>
     </form>
+    
 </div>

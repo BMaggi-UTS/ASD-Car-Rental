@@ -104,6 +104,7 @@ public class CarDAOTest {
             Logger.getLogger(CarDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
+    
     @Test
     @DisplayName("Test Cars Can Be Updated")
     public void testUpdateCar() {
@@ -119,6 +120,7 @@ public class CarDAOTest {
             Logger.getLogger(CarDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
+    
     @Test
     @DisplayName("Delete Test Cars")
     public void testDeleteCar() {

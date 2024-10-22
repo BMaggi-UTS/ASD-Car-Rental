@@ -10,7 +10,7 @@ public class Availability implements Serializable {
 
     public Availability(){};
 
-    public Availability(int carID,
+    public Availability(
         int AvailabilityID,
         int CarID,
         int OrderID,

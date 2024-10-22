@@ -67,7 +67,6 @@ public class CarDAO {
 			c.setCarRating(carRating);
 			c.setLocationID(locationID);
 
-			// System.out.println(p.getProductName());
 			//adding the just set up product (p) to the list products.
 			cars.add(c);
 		}
@@ -97,7 +96,6 @@ public class CarDAO {
 		Integer carPriceKM = rs.getInt ("car_price_km");
 		Integer carRating = rs.getInt("car_rating");
 		Integer locationID = rs.getInt("location_id");
-		System.out.println(car_ID);
         // Create and return Product object
         return new Car(car_ID, carMake, carModel, carTrim, carOdometer, carImage,carTransmission, carFuel, carSeats, carBodyStyle, carQuip, carPurchasePrice, carCurrentPrice, carPriceKM, carRating, locationID);
 	} 

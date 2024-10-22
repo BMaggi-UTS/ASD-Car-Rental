@@ -56,7 +56,7 @@ public class AvailabilityDAO {
             String aFinishDate = rs.getString("Availability_Finish_Date");
 
             // Create and return Product object
-            return new Availability(availability_ID, carID, orderID, orderID, aStartDate, aFinishDate);
+            return new Availability(availability_ID, carID, orderID, aStartDate, aFinishDate);
         } 
         else {
             return null;

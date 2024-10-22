@@ -30,22 +30,27 @@ public class AvailabilityDAOTest {
 
             conn.setAutoCommit(false);
             conn.prepareStatement("DELETE FROM Availability").executeUpdate();
-
-            conn.prepareStatement("DELETE FROM Orders").executeUpdate();
+            conn.prepareStatement("DELETE FROM orders").executeUpdate();
             conn.prepareStatement("DELETE FROM Car").executeUpdate();
+            
             availabilityDAO = new AvailabilityDAO(conn); 
             carDAO = new CarDAO(conn); 
             orderDAO = new orderDAO(conn);
 
-            carDAO.createCar(99991, "TestMake", "TestModel", "TestTrim", "TestImageText", 123456, "M", "P", 5, "Hatch", "TestQuip", 123, 456, 2, 5, 1);
-            carDAO.createCar(99992, "TestMakeTwo", "TestModelTwo", "TestTrimTwo", "TestImageTextTwo", 123456, "M", "P", 5, "Hatch", "TestQuipTwo", 123, 456, 2, 5, 1);
+            // creating fake order data for testing availability
+            conn.prepareStatement("INSERT INTO orders (Order_ID) VALUES (99995)").executeUpdate();
+            conn.prepareStatement("INSERT INTO orders (Order_ID) VALUES (99996)").executeUpdate();
 
-            availabilityDAO.createAvailability(99991, 99991, 1, "2024-08-10", "2024-08-11");
-            availabilityDAO.createAvailability(99992, 99992, 1, "2024-08-20", "2024-08-20");
+            // creating fake order data for testing availability
+            carDAO.createCar(99993, "TestMake", "TestModel", "TestTrim", "TestImageText", 123456, "M", "P", 5, "Hatch", "TestQuip", 123, 456, 2, 5, 1);
+            carDAO.createCar(99994, "TestMakeTwo", "TestModelTwo", "TestTrimTwo", "TestImageTextTwo", 123456, "M", "P", 5, "Hatch", "TestQuipTwo", 123, 456, 2, 5, 1);
+
+            availabilityDAO.createAvailability(99991, 99993, 99995, "2024-08-10", "2024-08-11");
+            availabilityDAO.createAvailability(99992, 99994, 99996, "2024-08-20", "2024-08-20");
 
         }
         catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(CarDAOTest.class.getName()).log(Level.SEVERE, null, ex);     
+            Logger.getLogger(AvailabilityDAOTest.class.getName()).log(Level.SEVERE, null, ex);     
         }
     }
 
@@ -64,8 +69,8 @@ public class AvailabilityDAOTest {
     @DisplayName("Test Creating a New Availability Booking.")
     public void testCreateNewCar() {
         try {
-            availabilityDAO.createAvailability(99993, 3, 3, "2024-12-20", "2024-12-25");
-            ResultSet rs = conn.prepareStatement("SELECT * FROM Availability WHERE Availability_ID=99993").executeQuery();
+            availabilityDAO.createAvailability(99998, 99993, 99995, "2024-12-20", "2024-12-25");
+            ResultSet rs = conn.prepareStatement("SELECT * FROM Availability WHERE Availability_ID=99998").executeQuery();
             assertTrue(rs.next());
         }
         catch (SQLException ex) {
@@ -102,11 +107,9 @@ public class AvailabilityDAOTest {
     public void testUpdateAvailability() {
 
         try {
-            System.out.println("Before" + availabilityDAO.selectSpecificAvailability(99991).getStartDate());
-            availabilityDAO.updateAvailability(99991, 1, 1, "2025-10-08", "2025-11-08");
+            availabilityDAO.updateAvailability(99991, 99993, 99995, "2025-10-08", "2025-11-08");
             Availability testAvailability = availabilityDAO.selectSpecificAvailability(99991);
             assertEquals(testAvailability.getStartDate(), "2025-10-08");
-            System.out.println("After" + availabilityDAO.selectSpecificAvailability(99991).getStartDate());
             
         }
         catch (SQLException ex) {
@@ -124,6 +127,16 @@ public class AvailabilityDAOTest {
             availabilityDAO.deleteAvailability(99992);
             assertNull(availabilityDAO.selectSpecificAvailability(99991));
             assertNull(availabilityDAO.selectSpecificAvailability(99992));
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(AvailabilityDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
+        }
+    }
+    @Test
+    @DisplayName("Test retrival of car through availability")
+    public void testRetrievalCar() {
+        try {
+            assertEquals("TestMake", carDAO.selectSpecificCar(availabilityDAO.selectSpecificAvailability(99991).getCarID()).getCarMake());
         }
         catch (SQLException ex) {
             Logger.getLogger(AvailabilityDAOTest.class.getName()).log(Level.SEVERE, null, ex);  

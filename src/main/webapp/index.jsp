@@ -33,6 +33,7 @@
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
+                
                 <%
                 ArrayList<Integer> carIDs = (ArrayList<Integer>) session.getAttribute("searchIDResult");
                 ArrayList<Integer> carIDLocation = (ArrayList<Integer>) session.getAttribute("carID");
@@ -89,4 +90,9 @@
     </body>
 </html>
 <script src="js/script.js"></script>
-<script>document.getElementById("locationAvailabilityForm").reset();</script>
+<script>
+document.getElementById("locationAvailabilityForm").reset();
+document.getElementById("pickup-date").min = new Date().toISOString().split("T")[0];
+document.getElementById("dropoff-date").min = new Date().toISOString().split("T")[0];
+
+</script>

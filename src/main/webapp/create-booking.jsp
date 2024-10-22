@@ -39,16 +39,17 @@
                     <div class="option-container">
                         <h1>Create a new booking</h1>
                         <h1><%
-                                if(request.getAttribute("errors") != null) {
-                                 %>
-                                 <div class="errors">
-                                    <p>
-                                        <%= request.getAttribute("errors") %>
-                                    </p>
-                                 </div>
-                                 <%
-                                }
-                                %></h1>
+                        if(request.getAttribute("errors") != null) {
+                            %>
+                            <div class="errors">
+                            <p>
+                                <%= request.getAttribute("errors") %>
+                            </p>
+                            </div>
+                            <%
+                        }
+                        %>
+                        </h1>
                         <form action="/CreateBookingServlet" method="post" autocomplete="off" id="update-listing-form">
                             <div class="table-emulator">
                                 <h2>ID</h2>
