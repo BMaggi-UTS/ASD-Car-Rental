@@ -29,6 +29,7 @@
         <% 
             CarDAO carDAO = (CarDAO) session.getAttribute("carDAO"); 
             UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+            User user = (User) session.getAttribute("user");
         %>
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>

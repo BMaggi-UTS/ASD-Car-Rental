@@ -41,7 +41,13 @@
                 <input type="hidden" name="orderCarID" value="<%= car.getCarID() %>">
                 <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
                 <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">
-                <input type="submit" value="Book Now" class="submit">
+                <% if (user == null) { %>
+                    <p>Please log in</p>
+                <% } else if(dropoffDate == null) { %>
+                    <p>Select a date</p>
+                    <% } else { %>
+                    <input type="submit" value="Book Now" class="submit">
+                    <% } %>
                 <div class="price-div">
                     <% if(paymentSelected != null) { %>
                         <% if(paymentSelected.equals("km")) { %>
