@@ -12,25 +12,6 @@ hr {
 }
 
 /* Unlocked Boxes */
-.payment-summary {
-  position: relative; 
-  width: 60%;
-  margin: 0 auto;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  background-color: #faf8ee;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.payment-summary h2 {
-  text-align: center;
-  color: var(--primary);
-  margin-bottom: 20px;
-  font-size: 20px;
-}
-
-
 .order-summary {
   position: relative; 
   width: 60%;
@@ -71,26 +52,10 @@ hr {
 
 
 
-.form-group {
-  margin-bottom: 15px;
-}
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--font-colour);
-}
-
-.form-group input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  font-size: 16px;
-}
 
 .btn-submit {
-  width: 100%;
+  width: 60%;
   font-size: 16px;
   font-weight: bold;
   padding: 10px;
@@ -122,23 +87,6 @@ hr {
   color: var(--secondary);; /* Darker color on hover */
 }
 
-
-/* Styling for date field */
-
-.form-group input[type="date"] {
-  width: 30%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 50px;
-  background-color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.form-group input[type="date"]:focus {
-  outline: none;
-  box-shadow: 0 0 5px var(--primary);
-}
 
 /* General form styling */
 
@@ -270,12 +218,6 @@ button:hover {
   cursor: pointer;
 }
 
-
-#existingPayment {
-  position: relative; 
-  height: 25vh; 
-}
-
 .trash-button {
   position: absolute; 
   top: 50%; 
@@ -296,4 +238,23 @@ button:hover {
   margin: 0; 
 }
 
+.pay-button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue background */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 2px solid #007bff; /* Adds a border around the button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow for a 3D effect */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
 
+.order-history-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.order-history-button:active {
+  transform: translateY(0); /* Button back to original position when clicked */
+}

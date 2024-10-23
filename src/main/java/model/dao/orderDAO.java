@@ -109,29 +109,32 @@ public class orderDAO {
 
 
 
-    // // Method to get an order by ID for search purposes
-    // public order getOrderById(int orderId) throws SQLException {
-    //     String sql = "SELECT * FROM orders WHERE Order_ID = ?";
-    //     try (PreparedStatement statement = connection.prepareStatement(sql)) {
-    //         statement.setInt(1, orderId);
+    // Method to get an order by ID for search purposes
+    public order getOrderById(int orderId) throws SQLException {
+        String sql = "SELECT * FROM Orders WHERE Order_ID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, orderId);
 
-    //         try (ResultSet resultSet = statement.executeQuery()) {
-    //             if (resultSet.next()) {
-    //                 order order = new order();
-    //                 order.setUserID(resultSet.getInt("User_ID"));
-    //                 order.setCarID(resultSet.getInt("Car_ID"));
-    //                 order.setOrderDateTime(resultSet.getString("DateTime"));
-    //                 order.setRentalDateStart(resultSet.getString("Rental_Date_Start"));
-    //                 order.setRentalDateFinish(resultSet.getString("Rental_Date_Finish"));
-    //                 order.setOdometerStart(resultSet.getInt("Odometer_Start"));
-    //                 order.setOdometerFinish(resultSet.getInt("Odometer_Finish"));
-    //                 order.setLicenseNumber(resultSet.getInt("License_Number"));
-    //                 return order;
-    //             }
-    //         }
-    //     }
-    //     return null;
-    // }
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    order order = new order();
+                    order.setUserID(resultSet.getInt("User_ID"));
+                    order.setCarID(resultSet.getInt("Car_ID"));
+                    order.setOrderDateTime(resultSet.getString("Order_Date_Time"));
+                    order.setRentalDateStart(resultSet.getString("Rental_Date_Start"));
+                    order.setRentalDateFinish(resultSet.getString("Rental_Date_Finish"));
+                    order.setOdometerStart(resultSet.getInt("Odometer_Start"));
+                    order.setOdometerFinish(resultSet.getInt("Odometer_Finish"));
+                    order.setLicenseNumber(Integer.parseInt(resultSet.getString("License_Number")));
+                    order.settaxesFeesString(resultSet.getString("Tax_Price"));
+                    order.setbasePriceString(resultSet.getString("Base_Price"));
+                    order.settotalPriceString(resultSet.getString("Total_Price"));
+                    return order;
+                }
+            }
+        }
+        return null;
+    }
 
     // // Method to update an existing order
     // public void updateOrderDetails(order order) throws SQLException {

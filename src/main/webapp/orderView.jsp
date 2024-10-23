@@ -60,6 +60,7 @@
                         String carMake = "";
                         String carRating = "";
                         int carOdometer = 0;
+                        int carID = 0;
                         
                         Car car = null;
 
@@ -68,8 +69,8 @@
                             carValid = request.getParameter("orderCarID");
                             if (carValid != null) {
                                 try {
-                                    int carId = Integer.parseInt(carValid);
-                                    car = orderDAO.getCarById(carId); //hard code this (e.g. replace with 13) and continue to work until id issue fixed. Meant to be carId.
+                                    carID = Integer.parseInt(carValid);
+                                    car = orderDAO.getCarById(carID); 
                                     if (car != null) {
                                         // Output car details
                                         carMake = car.getCarMake() + " " + car.getCarModel() + " " + car.getCarTrim();
@@ -155,7 +156,7 @@
 
                     <form action="addOrderItem" method="POST">
                         <!-- Hidden inputs -->
-                        <input type="hidden" name="orderCarID" value="13"> <!-- HARDCODED. Needs to be fixed. -->
+                        <input type="hidden" name="orderCarID" value="<%= carID %>"> 
                         <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
                         <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">
                         <input type="hidden" name="base-price" value="<%= basePriceString %>">
@@ -178,8 +179,20 @@
 
                         <div class="form-group">
                             <label for="license">License Number:</label>
-                            <input type="license" id="license" name="license" required>
+                            <input type="number" id="license" name="license" min="0" max="99999999" required oninput="checkLength(this)">
+
+                            <script>
+                                function checkLength(input) {
+                                    if (input.value.length > 8) {
+                                        input.setCustomValidity("Number cannot be longer than 8 digits");
+                                    } else {
+                                        input.setCustomValidity("");
+                                    }
+                                }
+                            </script>
                         </div>
+
+
 
                         <br>
 

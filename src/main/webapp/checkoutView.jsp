@@ -59,7 +59,7 @@
                         String carMake = "";
                         String carRating = "";
                         int carOdometer = 0;
-                        
+                        int carID = 0;
                         Car car = null;
 
                         try {
@@ -67,8 +67,8 @@
                             carValid = request.getParameter("orderCarID");
                             if (carValid != null) {
                                 try {
-                                    int carId = Integer.parseInt(carValid);
-                                    car = orderDAO.getCarById(13); //hard code this (e.g. replace with 13) and continue to work until id issue fixed. Meant to be carId.
+                                    carID = Integer.parseInt(carValid);
+                                    car = orderDAO.getCarById(carID);
                                     if (car != null) {
                                         // Output car details
                                         carMake = car.getCarMake() + " " + car.getCarModel() + " " + car.getCarTrim();
@@ -108,6 +108,7 @@
                             User user = (User) session.getAttribute("user");
                             int userID = user.getUserID();
                             int newPaymentID = paymentDAO.getMostRecentPayment(userID);
+                            System.out.println("New Payment ID:" + newPaymentID);
                             payment = paymentDAO.getPaymentById(newPaymentID);
                             try {
                                 if (payment != null) {
