@@ -69,7 +69,7 @@
                             if (carValid != null) {
                                 try {
                                     int carId = Integer.parseInt(carValid);
-                                    car = orderDAO.getCarById(13); //hard code this (e.g. replace with 13) and continue to work until id issue fixed. Meant to be carId.
+                                    car = orderDAO.getCarById(carId); //hard code this (e.g. replace with 13) and continue to work until id issue fixed. Meant to be carId.
                                     if (car != null) {
                                         // Output car details
                                         carMake = car.getCarMake() + " " + car.getCarModel() + " " + car.getCarTrim();
@@ -255,11 +255,12 @@
                             <label for="DOB">Date of Birth:</label>
                             <input type="date" id="DOB" name="DOB" required>
                         </div>
+
                         <div class="form-group">
                             <label>State</label>
                             <div class="dropdown">
                                 <select name="State">
-                                    <option value="" disabled selected>State</option>
+                                    <option value="" disabled selected>Select</option>
                                     <option value="NSW">NSW</option>
                                     <option value="ACT">ACT</option>
                                     <option value="VIC">VIC</option>
