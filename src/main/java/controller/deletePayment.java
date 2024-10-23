@@ -34,6 +34,8 @@ public class deletePayment extends HttpServlet {
             // Fetch the most recent payment for the user
             int deletePaymentID = paymentDAO.getMostRecentPayment(userID);
 
+            System.out.println("Deleting: " + deletePaymentID);
+
             paymentDAO.deletePayment(deletePaymentID);
             session.setAttribute("paymentMessage", "Payment deleted successfully.");
 

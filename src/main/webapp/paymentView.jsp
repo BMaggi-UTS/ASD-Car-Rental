@@ -37,11 +37,11 @@
                         String dropoffDate = request.getParameter("dropoffDate");
                             
                         // Calculate prices
+                        
                         String basePriceString = request.getParameter("booking-price");
                         double basePrice = Double.parseDouble(basePriceString);
                         double taxesFees = basePrice * 0.10;
-                        double totalPrice = basePrice + taxesFees;
-                            
+                        double totalPrice = basePrice + taxesFees;   
                         String taxesFeesString = String.format("%.2f", taxesFees);
                         String totalPriceString = String.format("%.2f", totalPrice);
                             
@@ -135,7 +135,8 @@
 
                 <!-- Button to return to the orderView page -->
                 <div class="middle">
-                    <a href="/editDriverView.jsp" class="back-button">Need to change your driver details? Click here to update.</a>
+                    <a href="/editDriverView.jsp?orderCarID=<%= carID %>&pickupDate=<%= pickupDate %>&dropoffDate=<%= dropoffDate %>&base-price=<%= basePriceString %>&tax-fees=<%= taxesFeesString %>&booking-price=<%= totalPriceString %>" 
+                    class="back-button">Need to change your driver details? Click here to update.</a>
                 </div>
 
                 <br><br>
@@ -160,14 +161,26 @@
 
                         <div class="form-group">
                             <label for="cardName">Name on Card:</label>
-                            <input type="text" id="cardName" name="cardName" maxlength="50" required>
+                            <input type="text" id="cardName" name="cardName" maxlength="50" required pattern="[A-Za-z\s]+">
                         </div>
+
+                        
 
                         <!-- Card Number -->
                         <div class="form-group">
                             <label for="cardNumber">Card Number:</label>
-                            <input type="text" id="cardNumber" name="cardNumber" maxlength="16" required>
+                            <input type="number" id="cardNumber" name="cardNumber" min="0" max="9999999999999999" required oninput="checkLengthh(this)">
+                            <script>
+                                function checkLengthh(input) {
+                                    if (input.value.length > 16) {
+                                        input.setCustomValidity("Card number cannot be longer than 16 digits");
+                                    } else {
+                                        input.setCustomValidity("");
+                                    }
+                                }
+                            </script>
                         </div>
+
 
                         <!-- Expiry Date -->
                         <div class="form-group">
@@ -178,8 +191,19 @@
                         <!-- CVV -->
                         <div class="form-group">
                             <label for="cvv">CVV:</label>
-                            <input type="text" id="cvv" name="cvv" pattern="\d{3,4}" maxlength="4" required>
+                            <input type="number" id="cvv" name="cvv" pattern="\d{3,4}" maxlength="4" required oninput="checkLength(this)">
+
+                            <script>
+                                function checkLength(input) {
+                                    if (input.value.length > 4) {
+                                        input.setCustomValidity("CVV cannot be longer than 4 digits");
+                                    } else {
+                                        input.setCustomValidity("");
+                                    }
+                                }
+                            </script>
                         </div>
+
                     <br>
                         <button type="submit" class="btn-submit">Add Payment Details</button>
                     </form>

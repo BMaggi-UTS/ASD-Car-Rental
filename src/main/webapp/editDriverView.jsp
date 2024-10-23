@@ -23,6 +23,44 @@
             <%@ include file="assets/nav.jsp" %> 
 
             <main class="main-container">
+
+                <% 
+                        // Retrieve and process input parameters
+                        String pickupDate = request.getParameter("pickupDate");
+                        String dropoffDate = request.getParameter("dropoffDate");
+                            
+                        // Calculate prices
+                        
+                        String basePriceString = request.getParameter("booking-price");
+                        double basePrice = Double.parseDouble(basePriceString);
+                        double taxesFees = basePrice * 0.10;
+                        double totalPrice = basePrice + taxesFees;   
+                        String taxesFeesString = String.format("%.2f", taxesFees);
+                        String totalPriceString = String.format("%.2f", totalPrice);
+                            
+                        // Open a connection using DBConnector
+                        DBConnector conn = new DBConnector();
+                        Connection connection = conn.openConnection();
+                        // Use the connection to create an orderDAO controller
+                        orderDAO orderDAO = new orderDAO(connection);
+
+                        String carValid = "";
+                        int carID = 0;
+                        
+                        try {
+                            carValid = request.getParameter("orderCarID");
+                            if (carValid != null) {
+                                try {
+                                    carID = Integer.parseInt(carValid);
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Invalid car ID format: " + carValid);
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("An error occurred while processing car ID: " + e.getMessage());
+                        }
+                %>
+                
                 <h1>Edit Driver Details</h1>
                 <br>
 
@@ -45,6 +83,12 @@
                     <br><br>
 
                     <form action="updateDriver" method="POST">
+                        <input type="hidden" name="orderCarID" value="<%= carID %>"> 
+                        <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
+                        <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">
+                        <input type="hidden" name="base-price" value="<%= basePriceString %>">
+                        <input type="hidden" name="tax-fees" value="<%= taxesFeesString %>">
+                        <input type="hidden" name="booking-price" value="<%= totalPriceString %>">
 
                         <div class="form-group">
                             <label for="firstName">First Name:</label>

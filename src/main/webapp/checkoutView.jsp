@@ -33,7 +33,9 @@
 
                 <!-- Order Summary Section -->
                 <div class="order-summary">
-                    <% 
+                    <%  
+                        
+                        
                         
                         // Retrieve and process input parameters
                         String pickupDate = request.getParameter("pickupDate");
@@ -108,7 +110,7 @@
                             User user = (User) session.getAttribute("user");
                             int userID = user.getUserID();
                             int newPaymentID = paymentDAO.getMostRecentPayment(userID);
-                            System.out.println("New Payment ID:" + newPaymentID);
+                            System.out.println("New Payment ID being displayed:" + newPaymentID);
                             payment = paymentDAO.getPaymentById(newPaymentID);
                             try {
                                 if (payment != null) {
@@ -174,9 +176,11 @@
 
                 <!-- Button to return to the orderView page -->
                 <div class="middle">
-                    <a href="/editPaymentView.jsp" class="back-button">Need to change your payment details? Click here to update.</a>
+                    <a href="/editPaymentView.jsp?orderCarID=<%= carID %>&pickupDate=<%= pickupDate %>&dropoffDate=<%= dropoffDate %>&base-price=<%= basePriceString %>&tax-fees=<%= taxesFeesString %>&booking-price=<%= totalPriceString %>" 
+                    class="back-button">Need to change your payment details? Click here to update.</a>
                 </div>
 
+        
                 <div class="middle">
                     <p>By clicking the button below, your payment will be processed.</p>
                     <br>

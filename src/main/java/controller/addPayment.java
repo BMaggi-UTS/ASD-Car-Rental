@@ -64,7 +64,13 @@ public class addPayment extends HttpServlet {
             newPayment.setCvc(cvc);
  
             // Save the payment using paymentDAO
+            
             paymentDAO.createPayment(newPayment); 
+            System.out.println("Added: " + cardName);
+            int recentPay = paymentDAO.getMostRecentPayment(userID);
+            System.out.println("Newly added userID: " + recentPay);
+
+
             request.getRequestDispatcher("checkoutView.jsp").forward(request, response); // Forward to paymentView
 
         } catch (Exception e) {
