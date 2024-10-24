@@ -17,7 +17,7 @@ public class viewOrders extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // session.setAttribute("orderDAO", orderDAO); put this in login servlet after user logs in?
+        
         
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");

@@ -16,6 +16,8 @@ public class updateDriver extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        session.setAttribute("bookingPrice", request.getParameter("booking-price"));
+
         orderDAO orderDAO = (orderDAO) session.getAttribute("orderDAO");
         User user = (User) session.getAttribute("user");
 
@@ -46,7 +48,7 @@ public class updateDriver extends HttpServlet {
         } catch (Exception e) {
             System.out.println("Unexpected error: " + e.getMessage());
             session.setAttribute("orderError", "An unexpected error occurred.");
-            response.sendRedirect("confirmationView.jsp");
+            response.sendRedirect("index.jsp");
         }
     }
 }

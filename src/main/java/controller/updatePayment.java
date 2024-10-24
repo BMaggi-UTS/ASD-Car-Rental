@@ -19,6 +19,8 @@ public class updatePayment extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        session.setAttribute("bookingPrice", request.getParameter("booking-price"));
+
         paymentDAO paymentDAO = (paymentDAO) session.getAttribute("paymentDAO");
         User user = (User) session.getAttribute("user");
 
@@ -57,7 +59,7 @@ public class updatePayment extends HttpServlet {
             paymentDAO.updatePaymentDetails(paymentID, cardName, cardNumber, expiryAsString, cvc);
 
             // Redirect to the confirmation page or payment view
-            request.getRequestDispatcher("confirmationView.jsp").forward(request, response);
+            request.getRequestDispatcher("checkoutView.jsp").forward(request, response);
         } catch (SQLException e) {
             System.out.println("Database error: " + e.getMessage());
             session.setAttribute("paymentError", "An error occurred while updating payment details.");
@@ -65,7 +67,7 @@ public class updatePayment extends HttpServlet {
         } catch (Exception e) {
             System.out.println("Unexpected error: " + e.getMessage());
             session.setAttribute("paymentError", "An unexpected error occurred.");
-            response.sendRedirect("confirmationView.jsp");
+            response.sendRedirect("index.jsp");
         }
     }
 }

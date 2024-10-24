@@ -49,7 +49,7 @@ public class ConnServlet extends HttpServlet{
 
         try {
             carDAO = new CarDAO(connection);
-            // orderDAO = new orderDAO(connection);
+            orderDAO = new orderDAO(connection);
             paymentDAO = new paymentDAO(connection);
             userDAO = new UserDAO(connection);
             locationDAO = new LocationDAO(connection);
@@ -61,7 +61,7 @@ public class ConnServlet extends HttpServlet{
         }
 
         session.setAttribute("carDAO", carDAO);
-        // session.setAttribute("orderDAO", orderDAO);
+        session.setAttribute("orderDAO", orderDAO);
         session.setAttribute("paymentDAO", paymentDAO);
         session.setAttribute("userDAO", userDAO);
         session.setAttribute("locationDAO", locationDAO);

@@ -20,6 +20,7 @@ public class orderDAO {
 
     // Method to create a new order
     public void createOrder(order order) throws SQLException {
+        connection.setAutoCommit(false); // Set auto-commit to false
 
         String sql = "INSERT INTO Orders (User_ID, Car_ID, Order_Date_Time, "
                + "Rental_Date_Start, Rental_Date_Finish, Odometer_Start, Odometer_Finish, "
@@ -39,6 +40,10 @@ public class orderDAO {
             statement.setString(11, order.gettotalPriceString()); 
 
             statement.executeUpdate();
+            connection.commit(); // Commit the transaction
+        } catch (SQLException e) {
+            connection.rollback(); // Rollback in case of an error
+            throw new SQLException("Error creating order: " + e.getMessage());
         }
     }
 
@@ -94,12 +99,19 @@ public class orderDAO {
     }
 
     public void updateDriverDetails(int userID, String licenseNumber) throws SQLException {
-    String sql = "UPDATE Orders SET License_Number = ? WHERE User_ID = ?";
+    connection.setAutoCommit(false); // Set auto-commit to false
+    
+    int tempOrderID = getMostRecentOrder(userID);
+
+    String sql = "UPDATE Orders SET License_Number = ? WHERE Order_ID = ?";
     try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
         pstmt.setString(1, licenseNumber); // Set the license number
-        pstmt.setInt(2, userID);           // Set the user ID
+        pstmt.setInt(2, tempOrderID);           // Set the user ID
         pstmt.executeUpdate();             // Execute the update
+
+        connection.commit(); // Commit the transaction
     } catch (SQLException e) {
+        connection.rollback(); // Rollback in case of an error
         throw new SQLException("Error updating driver details: " + e.getMessage());
     }
 }
@@ -109,29 +121,32 @@ public class orderDAO {
 
 
 
-    // // Method to get an order by ID for search purposes
-    // public order getOrderById(int orderId) throws SQLException {
-    //     String sql = "SELECT * FROM orders WHERE Order_ID = ?";
-    //     try (PreparedStatement statement = connection.prepareStatement(sql)) {
-    //         statement.setInt(1, orderId);
+    // Method to get an order by ID for search purposes
+    public order getOrderById(int orderId) throws SQLException {
+        String sql = "SELECT * FROM Orders WHERE Order_ID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, orderId);
 
-    //         try (ResultSet resultSet = statement.executeQuery()) {
-    //             if (resultSet.next()) {
-    //                 order order = new order();
-    //                 order.setUserID(resultSet.getInt("User_ID"));
-    //                 order.setCarID(resultSet.getInt("Car_ID"));
-    //                 order.setOrderDateTime(resultSet.getString("DateTime"));
-    //                 order.setRentalDateStart(resultSet.getString("Rental_Date_Start"));
-    //                 order.setRentalDateFinish(resultSet.getString("Rental_Date_Finish"));
-    //                 order.setOdometerStart(resultSet.getInt("Odometer_Start"));
-    //                 order.setOdometerFinish(resultSet.getInt("Odometer_Finish"));
-    //                 order.setLicenseNumber(resultSet.getInt("License_Number"));
-    //                 return order;
-    //             }
-    //         }
-    //     }
-    //     return null;
-    // }
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    order order = new order();
+                    order.setUserID(resultSet.getInt("User_ID"));
+                    order.setCarID(resultSet.getInt("Car_ID"));
+                    order.setOrderDateTime(resultSet.getString("Order_Date_Time"));
+                    order.setRentalDateStart(resultSet.getString("Rental_Date_Start"));
+                    order.setRentalDateFinish(resultSet.getString("Rental_Date_Finish"));
+                    order.setOdometerStart(resultSet.getInt("Odometer_Start"));
+                    order.setOdometerFinish(resultSet.getInt("Odometer_Finish"));
+                    order.setLicenseNumber(Integer.parseInt(resultSet.getString("License_Number")));
+                    order.settaxesFeesString(resultSet.getString("Tax_Price"));
+                    order.setbasePriceString(resultSet.getString("Base_Price"));
+                    order.settotalPriceString(resultSet.getString("Total_Price"));
+                    return order;
+                }
+            }
+        }
+        return null;
+    }
 
     // // Method to update an existing order
     // public void updateOrderDetails(order order) throws SQLException {
@@ -157,11 +172,17 @@ public class orderDAO {
 
     // Method to delete an order by ID
     public void deleteOrder(int orderId) throws SQLException {
+        connection.setAutoCommit(false); // Set auto-commit to false
+
         String sql = "DELETE FROM Orders WHERE Order_ID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, orderId);
 
             statement.executeUpdate();
+            connection.commit(); // Commit the transaction
+        } catch (SQLException e) {
+            connection.rollback(); // Rollback in case of an error
+            throw new SQLException("Error deleting order: " + e.getMessage());
         }
     }
 

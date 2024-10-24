@@ -33,7 +33,9 @@
 
                 <!-- Order Summary Section -->
                 <div class="order-summary">
-                    <% 
+                    <%  
+                        
+                        
                         
                         // Retrieve and process input parameters
                         String pickupDate = request.getParameter("pickupDate");
@@ -59,7 +61,7 @@
                         String carMake = "";
                         String carRating = "";
                         int carOdometer = 0;
-                        
+                        int carID = 0;
                         Car car = null;
 
                         try {
@@ -67,8 +69,8 @@
                             carValid = request.getParameter("orderCarID");
                             if (carValid != null) {
                                 try {
-                                    int carId = Integer.parseInt(carValid);
-                                    car = orderDAO.getCarById(13); //hard code this (e.g. replace with 13) and continue to work until id issue fixed. Meant to be carId.
+                                    carID = Integer.parseInt(carValid);
+                                    car = orderDAO.getCarById(carID);
                                     if (car != null) {
                                         // Output car details
                                         carMake = car.getCarMake() + " " + car.getCarModel() + " " + car.getCarTrim();
@@ -108,6 +110,7 @@
                             User user = (User) session.getAttribute("user");
                             int userID = user.getUserID();
                             int newPaymentID = paymentDAO.getMostRecentPayment(userID);
+                            System.out.println("New Payment ID being displayed:" + newPaymentID);
                             payment = paymentDAO.getPaymentById(newPaymentID);
                             try {
                                 if (payment != null) {
@@ -173,9 +176,11 @@
 
                 <!-- Button to return to the orderView page -->
                 <div class="middle">
-                    <a href="/editPaymentView.jsp" class="back-button">Need to change your payment details? Click here to update.</a>
+                    <a href="/editPaymentView.jsp?orderCarID=<%= carID %>&pickupDate=<%= pickupDate %>&dropoffDate=<%= dropoffDate %>&base-price=<%= basePriceString %>&tax-fees=<%= taxesFeesString %>&booking-price=<%= totalPriceString %>" 
+                    class="back-button">Need to change your payment details? Click here to update.</a>
                 </div>
 
+        
                 <div class="middle">
                     <p>By clicking the button below, your payment will be processed.</p>
                     <br>

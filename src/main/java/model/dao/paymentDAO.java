@@ -21,6 +21,8 @@ public class paymentDAO {
 
     // Method to create a new payment detail set
     public void createPayment(payment payment) throws SQLException {
+        
+        connection.setAutoCommit(false); // Set auto-commit to false
 
         String sql = "INSERT INTO Payments (Order_ID, User_ID, Name_on_Card, "
                + "Card_Number, Expiry_Date, CVV) VALUES (?, ?, ?, ?, ?, ?)";
@@ -34,33 +36,45 @@ public class paymentDAO {
             statement.setString(6, payment.getCvc());
             
             statement.executeUpdate();
+            connection.commit();
+            System.out.println("After commit");
         }
     }
 
     // Method to update an existing payment
     public void updatePaymentDetails(int paymentID, String cardName, String cardNumber, String expiry, String cvc) throws SQLException {
+        connection.setAutoCommit(false); // Set auto-commit to false
+    
         String sql = "UPDATE Payments SET Name_on_Card = ?, Card_Number = ?, Expiry_Date = ?, CVV = ? WHERE Payment_ID = ?";
-
+    
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, cardName);      
-            pstmt.setString(2, cardNumber);  
-            pstmt.setString(3, expiry);   
-            pstmt.setString(4, cvc);          
-            pstmt.setInt(5, paymentID);        
-
-            pstmt.executeUpdate();          
+            pstmt.setString(1, cardName);
+            pstmt.setString(2, cardNumber);
+            pstmt.setString(3, expiry);
+            pstmt.setString(4, cvc);
+            pstmt.setInt(5, paymentID);
+    
+            pstmt.executeUpdate();
+            connection.commit(); // Commit the transaction
         } catch (SQLException e) {
+            connection.rollback(); // Rollback in case of an error
             throw new SQLException("Error updating payment details: " + e.getMessage());
         }
     }
 
     // Method to delete payment details by Order ID
     public void deletePayment(int paymentID) throws SQLException {
+        connection.setAutoCommit(false); // Set auto-commit to false
+    
         String sql = "DELETE FROM Payments WHERE Payment_ID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, paymentID);
-
+    
             statement.executeUpdate();
+            connection.commit(); // Commit the transaction
+        } catch (SQLException e) {
+            connection.rollback(); // Rollback in case of an error
+            throw new SQLException("Error deleting payment: " + e.getMessage());
         }
     }
 
