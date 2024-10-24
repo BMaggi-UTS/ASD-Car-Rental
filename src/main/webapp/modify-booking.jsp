@@ -66,23 +66,23 @@
                                         <tr>
                                             <td class="bg-not-active" ondblclick="swap('<%= availability.getAvailabilityID() %>')" id="<%= availability.getAvailabilityID() %>">
                                                 <p><%= availability.getAvailabilityID() %></p>
-                                                <input type="text" class="hidden" name="aID" value="<%= availability.getAvailabilityID() %>">
+                                                <input type="text" class="hidden" name="<%= availability.getAvailabilityID() %>" value="<%= availability.getAvailabilityID() %>">
                                             </td>
-                                            <td class="bg-not-active" ondblclick="swap('<%= availability.getCarID() + availability.getAvailabilityID() + 88 %>')" id="<%= availability.getCarID() + availability.getAvailabilityID() + 88 %>">
+                                            <td class="bg-not-active" ondblclick="swap('<%= Integer.toString(availability.getCarID()) + Integer.toString(availability.getAvailabilityID()) %>')" id="<%= Integer.toString(availability.getCarID()) + Integer.toString(availability.getAvailabilityID())%>">
                                                 <p><%= availability.getCarID() %></p>
-                                                <input type="text" class="hidden" name="cID" value="<%= availability.getCarID()%>">
+                                                <input type="text" class="hidden" name="cID<%= availability.getAvailabilityID() %>" value="<%= availability.getCarID()%>">
                                             </td>
-                                            <td class="bg-not-active" ondblclick="swap('<%= availability.getOrderID() + availability.getAvailabilityID() + 99 %>')" id="<%= availability.getOrderID() + availability.getAvailabilityID() + 99 %>">
+                                            <td class="bg-not-active" ondblclick="swap('<%= Integer.toString(availability.getOrderID()) + Integer.toString(availability.getAvailabilityID()) + Integer.toString(availability.getCarID()) %>')" id="<%= Integer.toString(availability.getOrderID()) + Integer.toString(availability.getAvailabilityID()) + Integer.toString(availability.getCarID())%>">
                                                 <p><%= availability.getOrderID() %></p>
-                                                <input type="text" class="hidden" name="oID" value="<%= availability.getOrderID()%>">
+                                                <input type="text" class="hidden" name="oID<%= availability.getAvailabilityID() %>" value="<%= availability.getOrderID()%>">
                                             </td>
-                                            <td class="bg-not-active" ondblclick="swap('<%= availability.getStartDate() + availability.getAvailabilityID() %>')" id="<%= availability.getStartDate() + availability.getAvailabilityID() %>">
+                                            <td class="bg-not-active" ondblclick="swap('<%= availability.getStartDate() + availability.getAvailabilityID() + availability.getCarID()%>')" id="<%= availability.getStartDate() + availability.getAvailabilityID() + availability.getCarID()%>">
                                                 <p><%= availability.getStartDate() %></p>
-                                                <input type="text" class="hidden" name="startDate" value="<%= availability.getStartDate() %>">
+                                                <input type="text" class="hidden" name="startDate<%= availability.getAvailabilityID() %>" value="<%= availability.getStartDate() %>">
                                             </td>
-                                            <td class="bg-not-active" ondblclick="swap('<%= availability.getFinishDate() + availability.getAvailabilityID() %>')" id="<%= availability.getFinishDate() + availability.getAvailabilityID() %>">
+                                            <td class="bg-not-active" ondblclick="swap('<%= availability.getFinishDate() + availability.getAvailabilityID() + availability.getCarID()%>')" id="<%= availability.getFinishDate() + availability.getAvailabilityID() + availability.getCarID()%>">
                                                 <p><%= availability.getFinishDate() %></p>
-                                                <input type="text" class="hidden" name="finishDate" value="<%= availability.getFinishDate() %>">
+                                                <input type="text" class="hidden" name="finishDate<%= availability.getAvailabilityID() %>" value="<%= availability.getFinishDate() %>">
                                             </td>
                                         </tr>
                                     <% } %>

@@ -35,6 +35,7 @@
             
              <% ArrayList<Car> cars = carDAO.fetchCars(); %>
             <% for(Car car : cars) { %>
+            <% String uniqueKey = Integer.toString(car.getCarID()) + car.getCarModel() + car.getCarTrim(); %>
                 <form action="/UpdateListingServlet" method="post" autocomplete="off" id="update-listing-form">
                     <div id="<%=car.getCarID() + "overlay" %>" class="modal-overlay">
                         <div class="modal">
@@ -50,11 +51,11 @@
                             </div>
                             <div class="table-emulator">
                                 <input type="text" value="<%= car.getCarID() %>" name="id">
-                                <input type="text" value="<%= car.getCarMake() %>" name="make">
-                                <input type="text" value="<%= car.getCarModel() %>" name="model">
-                                <input type="text" value="<%= car.getCarTrim() %>" name="trim">
-                                <input type="text" value="<%= car.getCarOdometer() %>" name="odometer">
-                                <input type="text" value="<%= car.getCarImage() %>" name="imageurl">
+                                <input type="text" value="<%= car.getCarMake() %>" name="make<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarModel() %>" name="model<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarTrim() %>" name="trim<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarOdometer() %>" name="odometer<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarImage() %>" name="imageurl<%= uniqueKey %>">
                             </div>
                             <div class="table-emulator">
                                 <h2>Transmission</h2>
@@ -65,12 +66,12 @@
                                 <h2>Purchase Price</h2>
                             </div>
                             <div class="table-emulator">
-                                <input type="text" value="<%= car.getCarTransmission() %>" name="transmission">
-                                <input type="text" value="<%= car.getCarFuel() %>" name="fuel">
-                                <input type="text" value="<%= car.getCarSeats() %>" name="seats">
-                                <input type="text" value="<%= car.getCarBodyStyle() %>" name="bodystyle">
-                                <input type="text" value="<%= car.getCarQuip() %>" name="quip">
-                                <input type="text" value="<%= car.getCarPurchasePrice() %>" name="purchaseprice">
+                                <input type="text" value="<%= car.getCarTransmission() %>" name="transmission<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarFuel() %>" name="fuel<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarSeats() %>" name="seats<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarBodyStyle() %>" name="bodystyle<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarQuip() %>" name="quip<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarPurchasePrice() %>" name="purchaseprice<%= uniqueKey %>">
                             </div>
                             <div class="table-emulator">
                                 <h2>Current Price</h2>
@@ -79,10 +80,10 @@
                                 <h2>Location ID</h2>
                             </div>
                             <div class="table-emulator">
-                                <input type="text" value="<%= car.getCarCurrentPrice() %>" name="currentprice">
-                                <input type="text" value="<%= car.getCarPriceKM() %>" name="pricekm">
-                                <input type="text" value="<%= car.getCarRating() %>" name="rating">
-                                <input type="text" value="<%= car.getLocationID() %>" name="locID">
+                                <input type="text" value="<%= car.getCarCurrentPrice() %>" name="currentprice<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarPriceKM() %>" name="pricekm<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getCarRating() %>" name="rating<%= uniqueKey %>">
+                                <input type="text" value="<%= car.getLocationID() %>" name="locID<%= uniqueKey %>">
                             </div>
                             <button type="submit" class="submit-modal"><i class="fa-solid fa-floppy-disk "></i></button>
                         </div>
@@ -123,22 +124,44 @@
                                         <th>More Details</th>
                                     </tr>
                                     <% for(Car car : cars) { %>
+                                    <% String uniqueKey = Integer.toString(car.getCarID()) + car.getCarModel() + car.getCarTrim(); %>
                                             <tr>
-                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarID() %>')" id="<%= car.getCarID() %>"><p><%= car.getCarID() %></p><input type="text" class="hidden" name="id" value="<%= car.getCarID() %>"></td>
-                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarMake() + car.getCarID() %>')" id="<%= car.getCarMake() + car.getCarID()%>"><p><%= car.getCarMake()%></p> <input type="text" class="hidden" name="make" value="<%= car.getCarMake()%>"> </td>
-                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarModel() + car.getCarID() %>')" id="<%= car.getCarModel() + car.getCarID()%>"><p><%= car.getCarModel()%></p> <input type="text" class="hidden" name="model" value="<%= car.getCarModel()%>"> </td>
-                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarOdometer() + car.getCarID() %>')" id="<%= car.getCarOdometer() + car.getCarID()%>"><p><%= car.getCarOdometer() %></p><input type="text" class="hidden" name="odometer" value="<%= car.getCarOdometer() %>"></td>
-                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarTransmission() + car.getCarID() %>')" id="<%= car.getCarTransmission() + car.getCarID() %>"><p><%= car.getCarTransmission() %></p><input type="text" class="hidden" name="transmission" value="<%= car.getCarTransmission() %>"></td>
-                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarFuel() + car.getCarID() %>')" id="<%= car.getCarFuel() + car.getCarID() %>"><p><%= car.getCarFuel() %></p><input type="text" class="hidden" name="fuel" value="<%= car.getCarFuel() %>"></td>
-                                                <td class="bg-not-active" ondblclick="swap('<%= car.getLocationID() + car.getCarMake() + car.getCarID() %>')" id="<%= car.getLocationID() + car.getCarMake() + car.getCarID() %>"><p><%= car.getLocationID() %></p><input type="text" class="hidden" name="locID" value="<%= car.getLocationID() %>"></td>
-                                                <input type="hidden" value="<%= car.getCarImage() %>" name="imageurl">
-                                                <input type="hidden" value="<%= car.getCarSeats() %>" name="seats">
-                                                <input type="hidden" value="<%= car.getCarBodyStyle() %>" name="bodystyle">
-                                                <input type="hidden" value="<%= car.getCarQuip() %>" name="quip">
-                                                <input type="hidden" value="<%= car.getCarPurchasePrice() %>" name="purchaseprice">
-                                                <input type="hidden" value="<%= car.getCarCurrentPrice() %>" name="currentprice">
-                                                <input type="hidden" value="<%= car.getCarPriceKM() %>" name="pricekm">
-                                                <input type="hidden" value="<%= car.getCarRating() %>" name="rating">
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarID() %>')" id="<%= car.getCarID() %>">
+                                                    <p><%= car.getCarID() %></p>
+                                                    <input type="text" class="hidden" name="id<%= uniqueKey %>" value="<%= car.getCarID() %>">
+                                                </td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarMake() + uniqueKey %>')" id="<%= car.getCarMake() + uniqueKey %>">
+                                                    <p><%= car.getCarMake() %></p>
+                                                    <input type="text" class="hidden" name="make<%= uniqueKey %>" value="<%= car.getCarMake()%>">
+                                                </td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarModel() + uniqueKey %>')" id="<%= car.getCarModel() + uniqueKey %>">
+                                                    <p><%= car.getCarModel()%></p>
+                                                    <input type="text" class="hidden" name="model<%= uniqueKey %>" value="<%= car.getCarModel()%>">
+                                                </td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= Integer.toString(car.getCarOdometer()) + uniqueKey %>')" id="<%= Integer.toString(car.getCarOdometer()) + uniqueKey %>">
+                                                    <p><%= car.getCarOdometer() %></p>
+                                                    <input type="text" class="hidden" name="odometer<%= uniqueKey %>" value="<%= car.getCarOdometer() %>">
+                                                </td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarTransmission() + uniqueKey %>')" id="<%= car.getCarTransmission() + uniqueKey %>">
+                                                    <p><%= car.getCarTransmission()%></p>
+                                                    <input type="text" class="hidden" name="transmission<%= uniqueKey %>" value="<%= car.getCarTransmission() %>">
+                                                </td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= car.getCarFuel() + uniqueKey %>')" id="<%= car.getCarFuel() + uniqueKey %>">
+                                                    <p><%= car.getCarFuel() %></p>
+                                                    <input type="text" class="hidden" name="fuel<%= uniqueKey %>" value="<%= car.getCarFuel() %>">
+                                                </td>
+                                                <td class="bg-not-active" ondblclick="swap('<%= Integer.toString(car.getLocationID()) + uniqueKey  %>')" id="<%= Integer.toString(car.getLocationID()) + uniqueKey %>">
+                                                    <p><%= car.getLocationID() %></p>
+                                                    <input type="text" class="hidden" name="locID<%= uniqueKey %>" value="<%= car.getLocationID() %>">
+                                                </td>
+                                                <input type="hidden" value="<%= car.getCarImage() %>" name="imageurl<%= uniqueKey %>">
+                                                <input type="hidden" value="<%= car.getCarSeats() %>" name="seats<%= uniqueKey %>">
+                                                <input type="hidden" value="<%= car.getCarBodyStyle() %>" name="bodystyle<%= uniqueKey %>">
+                                                <input type="hidden" value="<%= car.getCarQuip() %>" name="quip<%= uniqueKey %>">
+                                                <input type="hidden" value="<%= car.getCarPurchasePrice() %>" name="purchaseprice<%= uniqueKey %>">
+                                                <input type="hidden" value="<%= car.getCarCurrentPrice() %>" name="currentprice<%= uniqueKey %>">
+                                                <input type="hidden" value="<%= car.getCarPriceKM() %>" name="pricekm<%= uniqueKey %>">
+                                                <input type="hidden" value="<%= car.getCarRating() %>" name="rating<%= uniqueKey %>">
                                                 
                                                 <td onclick="openModal( <%= car.getCarID()%> + 'overlay')" class="bg-not-active">
                                                    <i class="fa-solid fa-chevron-right"></i>

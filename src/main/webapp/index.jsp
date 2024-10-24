@@ -19,9 +19,9 @@
         DBConnector conn = new DBConnector(); %>
         <% //open a connection
         Connection con = conn.openConnection(); %>
-        <% //use the connection to create a productDAO controller 
+        <%-- //use the connection to create a productDAO controller 
         //CarDAO carDAO = new CarDAO(con); %>
-        <% LocationDAO locationDAO = new LocationDAO(con); %>
+        LocationDAO locationDAO = new LocationDAO(con); --%>
     </head>
 
     <body>
@@ -29,6 +29,7 @@
         <% 
             CarDAO carDAO = (CarDAO) session.getAttribute("carDAO"); 
             UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
+            LocationDAO locationDAO = (LocationDAO) session.getAttribute("locationDAO");
             User user = (User) session.getAttribute("user");
         %>
         <div class="web-wrapper">
