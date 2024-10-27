@@ -6,13 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Car;
 import model.order;
 
-public class orderDAO { 
 public class orderDAO { 
 
     private Connection connection;
@@ -248,8 +245,5 @@ public class orderDAO {
         }
         return null;
     }
-
-    
-
 
 }

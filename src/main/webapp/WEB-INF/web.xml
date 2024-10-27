@@ -35,6 +35,15 @@
 
 
     <servlet>
+  	    <servlet-class>controller.SuppliersServlet</servlet-class>
+  	    <servlet-name>Suppliers</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>Suppliers</servlet-name>
+  	    <url-pattern>/suppliers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
   	    <servlet-class>controller.SupplierServlet</servlet-class>
   	    <servlet-name>Supplier</servlet-name>
     </servlet>
@@ -87,18 +96,6 @@
   	    <url-pattern>/user/delete</url-pattern>
     </servlet-mapping>
 
-
-
-
-    <!-- <servlet>
-         Override init parameter to avoid nasty -->
-        <!-- file locking issue on windows.         -->
-        <servlet-name>default</servlet-name>
-        <init-param>
-            <param-name>useFileMappedBuffer</param-name>
-            <param-value>false</param-value>
-        </init-param>
-    </servlet> 
     
     <servlet>
         <servlet-name>ConnServlet</servlet-name>

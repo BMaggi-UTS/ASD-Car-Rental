@@ -3,8 +3,7 @@
   if(isStaff == null) {
     isStaff = false;
   }
-
-  User user = (User) session.getAttribute("user");
+  User checkUser = (User) session.getAttribute("user");
 %>
 
 <nav>
@@ -21,15 +20,15 @@
     <div class="dropdown">
       <button class="dropbtn">Menu <i class="fa-solid fa-bars "></i></button>
         <div class="dropdown-content">
-            <% if(user == null) { %>
+            <% if(checkUser == null) { %>
             <a class="dropdown-content" href="/login.jsp">Login</a>
             <% } else { %>
             <a class="dropdown-content" href="/settings.jsp">My account</a>
-            <a class="dropdown-content" href="/viewOrders">Order history</a>
+            <a class="dropdown-content" href="/viewOrders">My orders</a>
             <% if(isStaff) { %>
             <a class="dropdown-content" href="/catalogueStaffView.jsp">Staff dashboard</a>
             <% } %>
-            <a class="dropdown-content" href="/logout.jsp">Logout</a>
+            <a class="dropdown-content" href="/signout.jsp">Logout</a>
             <% } %>
         </div>
     </div>

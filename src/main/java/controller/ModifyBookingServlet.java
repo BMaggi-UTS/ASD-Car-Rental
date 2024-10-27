@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;

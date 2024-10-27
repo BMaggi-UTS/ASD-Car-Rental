@@ -47,9 +47,7 @@
             <main class="main-container">
                 <div class="settings-sidebar">
                     <h1 id="settings-heading">Settings</h1>
-                    <a class="setting-menu-item" href="account">Account</a>
-                    <a class="setting-menu-item" href="preferences">Preferences</a>
-                    <a class="setting-menu-item" href="paymentmethods">Payment methods</a>
+                    <a class="setting-menu-item" href="settings.jsp">Account</a>
                     <hr class="setting-divider">
                     <a class="setting-menu-item" href="signout.jsp">Sign out</a>
                 </div>

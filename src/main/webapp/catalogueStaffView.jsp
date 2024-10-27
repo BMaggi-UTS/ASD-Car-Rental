@@ -83,10 +83,10 @@
                                     <p>Bookings Audit</p>
                                 </div>
                             </a>
-                            <a class="option-box" href="#">
+                            <a class="option-box" href="/suppliers">
                                 <div class="inside-option-box">
-                                    <i class="fa-solid fa-envelope box-icon"></i>
-                                    <p>Catalogue Audit</p>
+                                    <i class="fa-solid fa-boxes-packing box-icon"></i>
+                                    <p>Suppliers</p>
                                 </div>
                             </a>
                         </div>
