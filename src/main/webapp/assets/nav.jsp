@@ -1,3 +1,12 @@
+<% 
+  Boolean isStaff = (Boolean) session.getAttribute("isStaff");
+  if(isStaff == null) {
+    isStaff = false;
+  }
+
+  User user = (User) session.getAttribute("user");
+%>
+
 <nav>
   <div class="container navbar">
     <a href="/"><img src="/assets/imgs/logo.png" alt="logo" class="logo"/></a>
@@ -9,11 +18,20 @@
         </a>
       </form>
     </div>
-    <div class="order-history">
-      <a href="/viewOrders" class="order-history-button">Order History</a>
-    </div>
-    <div class="cart-div">
-      <i class="fa-solid fa-car fa-2xl"></i>
+    <div class="dropdown">
+      <button class="dropbtn">Menu <i class="fa-solid fa-bars "></i></button>
+        <div class="dropdown-content">
+            <% if(user == null) { %>
+            <a class="dropdown-content" href="/login.jsp">Login</a>
+            <% } else { %>
+            <a class="dropdown-content" href="/settings.jsp">My account</a>
+            <a class="dropdown-content" href="/viewOrders">Order history</a>
+            <% if(isStaff) { %>
+            <a class="dropdown-content" href="/catalogueStaffView.jsp">Staff dashboard</a>
+            <% } %>
+            <a class="dropdown-content" href="/logout.jsp">Logout</a>
+            <% } %>
+        </div>
     </div>
   </div>
 </nav>
