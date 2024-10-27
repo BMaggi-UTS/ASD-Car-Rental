@@ -35,6 +35,11 @@
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
             <main class="main-container">
+            <% if(user == null) { %>
+                <a class="index-login-btn" href="login.jsp">Login</a>
+            <% } else { %>
+                        <a class="index-login-btn" href="settings.jsp">Settings</a>
+                   <% } %>
                 <%
                 ArrayList<Integer> carIDs = (ArrayList<Integer>) session.getAttribute("searchIDResult");
                 ArrayList<Integer> carIDLocation = (ArrayList<Integer>) session.getAttribute("carID");

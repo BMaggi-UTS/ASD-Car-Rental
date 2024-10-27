@@ -35,7 +35,63 @@
 
 
     <servlet>
-        <!-- Override init parameter to avoid nasty -->
+  	    <servlet-class>controller.SupplierServlet</servlet-class>
+  	    <servlet-name>Supplier</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>Supplier</servlet-name>
+  	    <url-pattern>/supplier/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+  	    <servlet-class>controller.EditSupplierServlet</servlet-class>
+  	    <servlet-name>EditSupplier</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>EditSupplier</servlet-name>
+  	    <url-pattern>/supplier/edit/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+  	    <servlet-name>EditSupplier</servlet-name>
+  	    <url-pattern>/supplier/save/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+  	    <servlet-class>controller.AddSupplierServlet</servlet-class>
+  	    <servlet-name>AddSupplier</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>AddSupplier</servlet-name>
+  	    <url-pattern>/supplier/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+  	    <servlet-class>controller.DeleteSupplierServlet</servlet-class>
+  	    <servlet-name>DeleteSupplier</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>DeleteSupplier</servlet-name>
+  	    <url-pattern>/supplier/delete/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+  	    <servlet-class>controller.UpdateDetailsServlet</servlet-class>
+  	    <servlet-name>UpdateDetailsServlet</servlet-name>
+    </servlet>
+    <servlet-mapping>
+  	    <servlet-name>UpdateDetailsServlet</servlet-name>
+  	    <url-pattern>/user/save</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+  	    <servlet-name>UpdateDetailsServlet</servlet-name>
+  	    <url-pattern>/user/delete</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <!-- <servlet>
+         Override init parameter to avoid nasty -->
         <!-- file locking issue on windows.         -->
         <servlet-name>default</servlet-name>
         <init-param>

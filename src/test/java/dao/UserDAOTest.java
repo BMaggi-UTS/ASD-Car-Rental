@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import model.Admin;
 import model.Customer;
@@ -17,29 +18,36 @@ import model.Staff;
 import model.dao.UserDAO;
 import model.dao.DBConnector;
 
+@TestInstance(Lifecycle.PER_CLASS)
 @DisplayName("Test class testing UserDAO read/write funcionality to DB.")
 public class UserDAOTest {
     Connection conn;
     UserDAO userDAO;
 
-    @BeforeEach
-    public void initialize() {
+    @BeforeAll
+    public void openConnection() {
+
         try {
             DBConnector db = new DBConnector();
             conn = db.openConnection();
-
             conn.setAutoCommit(false);
+            userDAO = new UserDAO(conn);
+        }
+        catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);     
+        }
+    }
+
+    @BeforeEach
+    public void reset() {
+        try {
             conn.prepareStatement("DELETE FROM User_Roles").executeUpdate();
             conn.prepareStatement("DELETE FROM Users").executeUpdate();
-
-            userDAO = new UserDAO(conn); 
-
             userDAO.registerNewCustomer("Initial", "Customer", "customer@mail.com", "0403111222", DigestUtils.sha256Hex("password"), "2000-09-10");
             userDAO.registerNewStaff("Initial", "Staff", "staff@mail.com", "0403111223", DigestUtils.sha256Hex("password"), "2000-09-11");
             userDAO.registerNewAdmin("Initial", "Admin", "admin@mail.com", "0403111224", DigestUtils.sha256Hex("password"), "2000-09-12");
-
         }
-        catch (ClassNotFoundException | SQLException ex) {
+        catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);     
         }
     }
@@ -48,17 +56,25 @@ public class UserDAOTest {
     public void cleanUp() {
         try {
             conn.rollback();
-            conn.close();
         }
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
         }
     }
 
+    @AfterAll
+    public void closeConnection() {
+        try {
+            conn.close();
+        }
+        catch (SQLException ex){
+            Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);     
+        }
+    }
+
     @Test
     @DisplayName("Test registering a new customer.")
     public void testRegisterNewCustomer() {
-
         try {
             userDAO.registerNewCustomer("Customer", "Test", "newcustomer@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
@@ -75,7 +91,6 @@ public class UserDAOTest {
     @Test
     @DisplayName("Test registering a new staff.")
     public void testRegisterNewStaff() {
-
         try {
             userDAO.registerNewStaff("Staff", "Test", "newstaff@mail.com", "0400111222", DigestUtils.sha256Hex("password"), "2000-09-09");
             ResultSet rs = conn.prepareStatement("SELECT * FROM Users WHERE User_ID=last_insert_id()").executeQuery();
@@ -234,7 +249,5 @@ public class UserDAOTest {
         catch (SQLException ex) {
             Logger.getLogger(UserDAOTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
 }

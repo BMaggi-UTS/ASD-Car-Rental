@@ -44,8 +44,8 @@
                         </div>
                         <br><br>
                         <div class="supplier-detail-line">
-                            <a id="edit-supplier">Edit</a>
-                            <a id="delete-supplier">Delete</a>
+                            <a href="/supplier/edit/<%= supplier.getSupplierID()%>" id="edit-supplier">Edit</a>
+                            <a href="/supplier/delete/<%= supplier.getSupplierID()%>" id="delete-supplier">Delete</a>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class DBConnector extends DB {
 
@@ -18,9 +20,10 @@ public class DBConnector extends DB {
 
 		try {
 			conn = DriverManager.getConnection(URL + db, dbProperties);
-		} catch (SQLException e) {
-			System.out.println(e);
-      throw e;
+		} catch (SQLException ex) {
+			Logger.getLogger(DBConnector.class.getName()).log(Level.SEVERE, null, ex);
+			System.out.println(ex);
+      		throw ex;
 		}
 	}
 

@@ -18,7 +18,7 @@
     <body>
         <div class="web-wrapper">
             <main class="main-container">
-                <a class="add-supplier-btn" href="add">Add New Supplier</a>
+                <a class="add-supplier-btn" href="/addSupplierView.jsp">Add New Supplier</a>
                 <h1>Suppliers</h1>
                 <br><br>
                 <div class="supplier-search-bar">

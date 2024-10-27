@@ -7,24 +7,20 @@ import java.sql.SQLException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 
-import model.dao.CarDAO;
-import model.dao.DBConnector;
-import model.dao.UserDAO;
-import model.dao.orderDAO;
-import model.dao.paymentDAO;
-import model.dao.LocationDAO;
-import model.dao.AvailabilityDAO;
-
 import model.dao.*;
+
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 
 public class ConnServlet extends HttpServlet{
+    private Connection connection;
     private DBConnector db;
+
     private CarDAO carDAO;
     private orderDAO orderDAO;
     private UserDAO userDAO;
     private paymentDAO paymentDAO;
-    private Connection connection;
     private LocationDAO locationDAO;
     private SupplierDAO supplierDAO;
     private AvailabilityDAO availabilityDAO;
@@ -45,30 +41,61 @@ public class ConnServlet extends HttpServlet{
         HttpSession session = request.getSession();
         session.setAttribute("carDAO", carDAO);
 
-        connection = db.openConnection();
-
-        try {
-            carDAO = new CarDAO(connection);
-            orderDAO = new orderDAO(connection);
-            paymentDAO = new paymentDAO(connection);
-            userDAO = new UserDAO(connection);
-            locationDAO = new LocationDAO(connection);
-            supplierDAO = new SupplierDAO(connection);
-            availabilityDAO = new AvailabilityDAO(connection);
-
-        } catch (SQLException e) {
-            System.out.print(e);
+        connection = (Connection) session.getAttribute("connection");
+        if(connection == null) {
+            connection = db.openConnection();
+            session.setAttribute("connection", connection);
         }
 
-        session.setAttribute("carDAO", carDAO);
-        session.setAttribute("orderDAO", orderDAO);
-        session.setAttribute("paymentDAO", paymentDAO);
-        session.setAttribute("userDAO", userDAO);
-        session.setAttribute("locationDAO", locationDAO);
-        session.setAttribute("supplierDAO", supplierDAO);
-        session.setAttribute("availabilityDAO", availabilityDAO);
-        System.out.println("All DAOs have been set in session.");
-        // request.getRequestDispatcher("index.jsp").include(request, response);
+        try {
+            carDAO = (CarDAO) session.getAttribute("carDAO");
+            if(carDAO == null) {
+                carDAO = new CarDAO(connection);
+                session.setAttribute("carDAO", carDAO);
+            }
+
+            userDAO = (UserDAO) session.getAttribute("userDAO");
+            if(userDAO == null) {
+                userDAO = new UserDAO(connection);
+                session.setAttribute("userDAO", userDAO);
+            }
+
+            locationDAO = (LocationDAO) session.getAttribute("locationDAO");
+            if(locationDAO == null) {
+                locationDAO = new LocationDAO(connection);
+                session.setAttribute("locationDAO", locationDAO);
+            }
+
+            supplierDAO = (SupplierDAO) session.getAttribute("supplierDAO");
+            if(supplierDAO == null) {
+                supplierDAO = new SupplierDAO(connection);
+                session.setAttribute("supplierDAO", supplierDAO);
+            }
+
+            orderDAO = (orderDAO) session.getAttribute("orderDAO");
+            if(orderDAO == null) {
+                orderDAO = new orderDAO(connection);
+                session.setAttribute("orderDAO", orderDAO);
+            }
+
+            paymentDAO = (paymentDAO) session.getAttribute("paymentDAO");
+            if(paymentDAO == null) {
+                paymentDAO = new paymentDAO(connection);
+                session.setAttribute("paymentDAO", paymentDAO);
+            }
+
+            availabilityDAO = (AvailabilityDAO) session.getAttribute("availabilityDAO");
+            if(availabilityDAO == null) {
+                availabilityDAO = new AvailabilityDAO(connection);
+                session.setAttribute("availabilityDAO", availabilityDAO);
+            }
+
+            System.out.println("All DAOs have been set in session.");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
