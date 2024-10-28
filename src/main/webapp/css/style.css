@@ -171,8 +171,15 @@ h2 {
   color: black;
   border-style: none;
   position: relative;
-  z-index: 20;
+  z-index: 200;
   height: 3rem;
+  text-align: center;
+  padding: 0.5rem;
+  transition: 0.2s;
+}
+.pickme a:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
 }
 .pickup {
   z-index: 2;
@@ -282,6 +289,7 @@ h2 {
   justify-content: center;
   align-items: center;
   margin-top: 3rem;
+  z-index: 1;
 }
 
 .filter-bar-wrapper-div {
@@ -368,12 +376,13 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
   background-color: white;
+  z-index: 1;
 }
 
 .card {
   background: #fff;
   margin: 1rem 2.5rem;
-  box-shadow: 0rem 0rem 5px 0px;
+  box-shadow: 0rem 0rem 5px 0px #000;
 }
 
 .card .imgBox {

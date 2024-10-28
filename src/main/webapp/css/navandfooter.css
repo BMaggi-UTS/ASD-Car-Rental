@@ -87,6 +87,7 @@ footer {
   .footer-container {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   
   .footer-left {
@@ -103,6 +104,7 @@ footer {
   
   .AOC-div {
     width: 80%;
+    text-align: center;
   }
   
   .AOC-div h1 {
@@ -115,22 +117,6 @@ footer {
     font-size: 15px;
     font-weight: 300;
   }
-  
-  .footer-right {
-    width: 50%;
-    color: white;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .footer-links {
-    display: flex;
-    padding: 1rem;
-  }
-
-.footer-links p {
-    padding: 1rem;
-}
   
   .footer-links div {
     display: flex;
