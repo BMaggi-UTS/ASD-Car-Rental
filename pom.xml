@@ -17,7 +17,7 @@
 
     <repositories>
         <repository>
-        <id>MichaelALunn</id>
+        <id>ASD</id>
         <url>https://pkgs.dev.azure.com/MichaelALunn/64d79d82-784e-4d61-b381-09bd257cf95d/_packaging/ASD/maven/v1</url>
         <releases>
             <enabled>true</enabled>
@@ -30,7 +30,7 @@
 
     <distributionManagement>
         <repository>
-        <id>MichaelALunn</id>
+        <id>ASD</id>
         <url>https://pkgs.dev.azure.com/MichaelALunn/64d79d82-784e-4d61-b381-09bd257cf95d/_packaging/ASD/maven/v1</url>
         <releases>
             <enabled>true</enabled>
@@ -38,7 +38,7 @@
         <snapshots>
             <enabled>true</enabled>
         </snapshots>
-        </repository>   
+        </repository>
     </distributionManagement>
 
     <dependencies>
