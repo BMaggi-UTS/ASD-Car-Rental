@@ -29,8 +29,8 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Michael'
+    azureSubscription: 'Azure subscription 1 (1ae9a130-fa70-4ab3-b434-37e0b4d7f85a)'
     appType: 'webAppLinux'
-    appName: 'SydneyCarRental'
+    appName: 'ASD'
     package: '$(System.DefaultWorkingDirectory)/**/*.war'
     runtimeStack: 'Java'
