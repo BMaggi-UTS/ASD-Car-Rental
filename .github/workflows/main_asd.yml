@@ -75,14 +75,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F185264849B14CEA8FB597512AE160B7 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_092C01C81F654AE688F7F2488C1F95E7 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_265F7A0D493B4BCA8AB9FAAB06B8C8AA }}
+          client-id: '3516765f-2db6-408a-8c6c-ddaf8f2e6d09'
+          tenant-id: 'e8911c26-cf9f-4a9c-878e-527807be8791'
+          subscription-id: '99be90fe-fbd7-4834-ba3b-40bfdf020e58'
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          app-name: SydneyCarRental
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: '*.jar'
