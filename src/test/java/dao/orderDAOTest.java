@@ -147,7 +147,7 @@ public class orderDAOTest {
 
             // Retrieve the updated order to validate the change
             List<order> updatedOrders = orderDAO.getOrdersByUserID(3);
-            assertEquals(newLicenseNumber, updatedOrders.get(0).getLicenseNumber());
+            assertEquals(newLicenseNumber, updatedOrders.get(updatedOrders.size()-1).getLicenseNumber());
         } catch (SQLException ex) {
             Logger.getLogger(orderDAOTest.class.getName()).log(Level.SEVERE, null, ex);  
             fail("Exception thrown while updating driver license: " + ex.getMessage());
