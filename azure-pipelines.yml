@@ -21,10 +21,5 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
     goals: deploy
 
