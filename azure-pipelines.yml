@@ -7,14 +7,14 @@ trigger:
 - main
 
 pool: 
-  vmImage: 'ubuntu-latest'
+  vmImage: MyPool
 
 steps:
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '21'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
+# - task: JavaToolInstaller@0
+#   inputs:
+#     versionSpec: '21'
+#     jdkArchitectureOption: 'x64'
+#     jdkSourceOption: 'PreInstalled'
 
 - task: Maven@4
   inputs:
@@ -26,8 +26,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'deploy'
-- task: PublishPipelineArtifact@1
+
+- task: AzureWebApp@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'ASD-Car-Rental'
-    publishLocation: 'pipeline'
+    azureSubscription: 'Michael'
+    appType: 'webAppLinux'
+    appName: 'SydneyCarRental'
+    package: '$(System.DefaultWorkingDirectory)/**/*.war'
+    runtimeStack: 'Java 21'
