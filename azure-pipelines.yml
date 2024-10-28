@@ -21,5 +21,10 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-    goals: deploy
+    goals: package
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(System.DefaultWorkingDirectory)/bin/ASD'
+    artifact: 'ASD-Car-Rental'
+    publishLocation: 'pipeline'
 
