@@ -70,6 +70,13 @@ jobs:
         with:
           name: java-app
 
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F185264849B14CEA8FB597512AE160B7 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_092C01C81F654AE688F7F2488C1F95E7 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_265F7A0D493B4BCA8AB9FAAB06B8C8AA }}
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
