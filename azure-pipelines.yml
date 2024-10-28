@@ -26,5 +26,5 @@ steps:
     mavenPomFile: 'pom.xml'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
-    goals: build
+    goals: deploy
 
