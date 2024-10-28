@@ -8,8 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.User;
-import model.order;
-import model.dao.orderDAO;
 import model.dao.paymentDAO;
 
 public class deletePayment extends HttpServlet {
@@ -17,7 +15,6 @@ public class deletePayment extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        orderDAO orderDAO = (orderDAO) session.getAttribute("orderDAO");
         paymentDAO paymentDAO = (paymentDAO) session.getAttribute("paymentDAO");
         User user = (User) session.getAttribute("user");
 

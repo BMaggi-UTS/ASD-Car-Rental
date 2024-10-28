@@ -8,6 +8,8 @@ public class RegexUtils {
     private static String namePattern = "[A-Z][a-z]*";
     private static String passwordPattern = "[A-Z][a-z][0-9]{2,}";
     private static String phonePattern = "04[0-9]{8}$";
+    private static String abnPattern = "\\d{11}";
+    private static String acnPattern = "\\d{9}";
 
 
     private static boolean validate(String pattern, String input){       
@@ -30,6 +32,14 @@ public class RegexUtils {
 
     public static boolean validatePhoneNo(String phoneNo) {
       return validate(phonePattern, phoneNo);
+    }
+
+    public static boolean validateABN(String abn) {
+      return validate(abnPattern, abn);
+    }
+
+    public static boolean validateACN(String acn) {
+      return validate(acnPattern, acn);
     }
 
 }

@@ -77,6 +77,18 @@
                                     <p>Delete Listing</p>
                                 </div>
                             </a>
+                            <a class="option-box" href="#">
+                                <div class="inside-option-box">
+                                    <i class="fa-solid fa-headset box-icon"></i>
+                                    <p>Bookings Audit</p>
+                                </div>
+                            </a>
+                            <a class="option-box" href="/suppliers">
+                                <div class="inside-option-box">
+                                    <i class="fa-solid fa-boxes-packing box-icon"></i>
+                                    <p>Suppliers</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

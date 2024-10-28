@@ -12,6 +12,15 @@
         <title>Login</title>
     </head>
 
+    <%
+        String loginErr = (String) session.getAttribute("loginErr");
+        session.setAttribute("loginErr", "");
+
+        if(loginErr == null) {
+            loginErr = "";
+        }
+    %>
+
     <body>
         <div class="web-wrapper">
             <%@ include file="assets/nav.jsp" %>
@@ -19,6 +28,7 @@
 
                     <form class="login-form" action="login", method="post">
                         <h1 id="login-heading">Login</h1>
+                        <p class="error"><%= loginErr%></p>
                         <div class="form-group">
                             <input class="register-input" type="text" id="email" name="email" placeholder="Email address" required>
                             <img class="form-icon" src="/assets/icons/mail.png">

@@ -9,10 +9,9 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 
 import model.dao.*;
-import model.*;
 
-public class SupplierServlet extends HttpServlet {
-
+public class DeleteSupplierServlet extends HttpServlet {
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
@@ -23,14 +22,13 @@ public class SupplierServlet extends HttpServlet {
         int id = Integer.parseInt(url[url.length-1]);
 
         try {
-            Supplier supplier = supplierDAO.getSupplierByID(id);
-            session.setAttribute("supplier", supplier);
-            request.getRequestDispatcher("/supplierView.jsp").forward(request, response);
-            return;
+            supplierDAO.deleteSupplier(id);
+            response.sendRedirect("/suppliers");
         }
         catch (SQLException ex) {
-            Logger.getLogger(SupplierServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteSupplierServlet.class.getName()).log(Level.SEVERE, null, ex);
+
         }
-    }
     
+    }
 }

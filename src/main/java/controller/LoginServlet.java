@@ -34,14 +34,17 @@ public class LoginServlet extends HttpServlet {
                 case 1:
                     user = userDAO.createInstanceOfCustomer(email, hashedPassword);
                     session.setAttribute("user", user);
+                    session.setAttribute("isStaff", false);
                     break;
                 case 2:
                     user = userDAO.createInstanceOfStaff(email, hashedPassword);
                     session.setAttribute("user", user);
+                    session.setAttribute("isStaff", true);
                     break;
                 case 3:
                     user = userDAO.createInstanceOfAdmin(email, hashedPassword);
                     session.setAttribute("user", user);
+                    session.setAttribute("isStaff", true);
                     break;
             }
 

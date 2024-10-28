@@ -6,7 +6,7 @@
 trigger:
 - michael
 
-pool:   
+pool: 
   MyPool
 
 steps:
