@@ -28,7 +28,7 @@ steps:
     goals: 'package'
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/bin/ASD'
+    targetPath: '$(Pipeline.Workspace)'
     artifact: 'ASD-Car-Rental'
     publishLocation: 'pipeline'
 
