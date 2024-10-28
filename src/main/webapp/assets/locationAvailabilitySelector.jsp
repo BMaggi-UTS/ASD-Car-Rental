@@ -39,13 +39,8 @@
         </div>
         <div class="availability-selector">
             <div class="date-wrapper">
-                <input type="date" name="pickup-date" id="pickup-date" required>
-                <input type="date" name="dropoff-date" id="dropoff-date" required>
-            </div>
-            <div class="price-selector-wrapper selector-wrapper" id="age">
-                <button onclick="darken('21-25')" id="15-25" class="not-selected" type="button">21-25</button>
-                <button onclick="darken('25+')" id="25" class="not-selected" type="button">25+</button>
-                <input type="hidden" id="selected-type-age" name="selected-type-age">
+                <input type="date" name="pickup-date" id="pickup-date" required value="<% if(pickupDate != null) { %><%= pickupDate %><% } %>">
+                <input type="date" name="dropoff-date" id="dropoff-date" required value="<% if(dropoffDate != null) { %><%= dropoffDate %><% } %>">
             </div>
             <div class="submit-search">
                 <input type="submit" value="Search">
@@ -61,5 +56,4 @@
         </div>
          <% } %>
     </form>
-    
 </div>

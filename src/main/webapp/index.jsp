@@ -4,7 +4,7 @@
 <%@page import="java.sql.*"%> 
 <%@page import="model.dao.*"%>
 <%@page import="model.dao.DBConnector"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.*"%>
 <%@page import="java.time.*"%>
 
 <!DOCTYPE html>
@@ -84,6 +84,7 @@
                 <% } else {
                     %> <%= "Error loading cars" %> <%
                 } %>
+                <%@ include file="assets/filterbar.jsp" %>
                 </div>
             </main>
             <%@ include file="assets/footer.jsp" %>

@@ -269,6 +269,7 @@ h2 {
   color: white;
   font-weight: 900;
   letter-spacing: 0.1rem;
+  margin-left: 10rem;
 }
 .submit-search input:hover {
   background-color: #429c9f;
@@ -282,8 +283,9 @@ h2 {
   width: 70rem;
   height: 5rem;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
+  margin-top: 3rem;
 }
 
 .filter-bar-wrapper-div {
@@ -306,6 +308,11 @@ h2 {
 }
 .filter-bar-wrapper-div:active {
   background-color: #cccccc;
+}
+
+.filter-bar-wrapper p {
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 
 
@@ -365,10 +372,6 @@ h2 {
   align-items: center;
   flex-wrap: wrap;
   background-color: white;
-  border-style: solid;
-  border-right: #fff;
-  border-left: #fff;
-  border-bottom: #fff;
 }
 
 .card {
@@ -503,11 +506,14 @@ h2 {
 
 }
 .detail-price {
-  border-style: solid;
+  /* border-style: solid;
   border-top: #d5d5d5;
-  /* border-bottom: #d5d5d5; */
+  border-bottom: #d5d5d5 !important;
   border-right: #fff;
-  border-left: #fff;
+  border-left: #fff; */
+  border: 1px solid #d5d5d5;
+  border-top: #fff;
+
   width: 20rem;
   height: 7.5rem;
   display: flex;
@@ -921,4 +927,17 @@ h2 {
   font-weight: 600;
   color: black;
   text-decoration: underline;
+}
+
+.delete-button {
+  background-color: var(--primary);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  padding: 1rem;
+  transition: 0.2s;
+}
+.delete-button:hover {
+  cursor: pointer;
+  background-color: #004d25;
 }

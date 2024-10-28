@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
@@ -34,11 +33,16 @@ public class LocationAvailabilityServlet extends HttpServlet {
         try {
             LocationDAO locationDAO = (LocationDAO) session.getAttribute("locationDAO");
             CarDAO carDAO = (CarDAO) session.getAttribute("carDAO");
-            
             cars = carDAO.fetchCars();
             String paymentSelectName = request.getParameter("selected-type");
             Integer expectedKMs = Integer.parseInt("0" + request.getParameter("km-amount"));
-            
+            System.out.println(paymentSelectName + " " + expectedKMs);
+            if(paymentSelectName.equals("")) {
+                throw new IllegalArgumentException("Please select either pay by day, or by km amount");
+            }
+            if(paymentSelectName.equals("km") && expectedKMs == 0) {
+                throw new IllegalArgumentException("If kms selected, please input km amount");
+            }
             
             //availability handling may throw DateTimeParseException
             DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");

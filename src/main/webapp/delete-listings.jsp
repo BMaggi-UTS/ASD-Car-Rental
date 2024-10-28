@@ -50,7 +50,7 @@
                            
 
                             <% for(Car car : cars) { %>
-                             <form action="/DeleteListingServlet" method="post" autocomplete="off" id="delete-listing-form">>
+                             <form action="/DeleteListingServlet" method="post" autocomplete="off" id="delete-listing-form">
                                 <tr>
                                     <td class="bg-not-active"><p><%= car.getCarID()%></p> </td>
                                     <td class="bg-not-active"><p><%= car.getCarMake()%></p> </td>
