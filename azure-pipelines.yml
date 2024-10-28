@@ -33,4 +33,4 @@ steps:
     appType: 'webAppLinux'
     appName: 'SydneyCarRental'
     package: '$(System.DefaultWorkingDirectory)/**/*.war'
-    runtimeStack: 'Java 21'
+    runtimeStack: 'Java'
