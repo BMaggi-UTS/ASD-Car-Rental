@@ -18,7 +18,7 @@ variables:
   environmentName: 'ASD-Spring-2024-G1'
 
 pool: 
-  MyPool
+  BradPool
 
 stages:
 - stage: Build
