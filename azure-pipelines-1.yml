@@ -17,8 +17,8 @@ variables:
   # Environment name
   environmentName: 'ASD-Spring-2024-G1'
 
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+pool: 
+  MyPool
 
 stages:
 - stage: Build
