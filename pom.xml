@@ -16,29 +16,29 @@
     </properties>
 
     <repositories>
-	<repository>
-	  <id>MichaelALunn</id>
-	  <url>https://pkgs.dev.azure.com/MichaelALunn/_packaging/MichaelALunn/maven/v1</url>
-	  <releases>
-	    <enabled>true</enabled>
-	  </releases>
-	  <snapshots>
-	    <enabled>true</enabled>
-	  </snapshots>
-	</repository>
+        <repository>
+        <id>ASD</id>
+        <url>https://pkgs.dev.azure.com/MichaelALunn/64d79d82-784e-4d61-b381-09bd257cf95d/_packaging/ASD/maven/v1</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+        </repository>
     </repositories>
 
     <distributionManagement>
-	<repository>
-	  <id>MichaelALunn</id>
-	  <url>https://pkgs.dev.azure.com/MichaelALunn/_packaging/MichaelALunn/maven/v1</url>
-	  <releases>
-	    <enabled>true</enabled>
-	  </releases>
-	  <snapshots>
-	    <enabled>true</enabled>
-	  </snapshots>
-	</repository>
+        <repository>
+        <id>ASD</id>
+        <url>https://pkgs.dev.azure.com/MichaelALunn/64d79d82-784e-4d61-b381-09bd257cf95d/_packaging/ASD/maven/v1</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+        </repository>   
     </distributionManagement>
 
     <dependencies>
