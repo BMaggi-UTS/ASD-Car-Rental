@@ -7,18 +7,30 @@ trigger:
 - main
 
 pool: 
-  MyPool
+  vmImage: ubuntu-latest
 
 steps:
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '21'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: 'default'
+    jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenOptions: '-Xmx3072m'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+    goals: 'package'
 
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Michael'
+    appType: 'webAppLinux'
+    appName: 'SydneyCarRental'
+    package: '$(System.DefaultWorkingDirectory)/**/*.war'
+    runtimeStack: 'Java'
