@@ -28,6 +28,11 @@ stages:
       BradPool
 
     steps:
+    - task: JavaToolInstaller@0
+      inputs:
+      versionSpec: '21'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
     - task: Maven@4
       displayName: 'Maven Package'
       inputs:
