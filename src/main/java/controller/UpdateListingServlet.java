@@ -27,18 +27,39 @@ public class UpdateListingServlet extends HttpServlet{
                 String carMake = request.getParameter("make" + uniqueKey);
                 String carModel = request.getParameter("model" + uniqueKey);
                 String carTrim = request.getParameter("trim" + uniqueKey);
-                int carOdometer = Integer.parseInt(request.getParameter("odometer" + uniqueKey));
+                int carOdometer = 0;
+                if(request.getParameter("odometer" + uniqueKey) != null) {
+                    carOdometer = Integer.parseInt(request.getParameter("odometer" + uniqueKey));
+                }
                 String carImage = request.getParameter("imageurl" + uniqueKey);
                 String carTransmission = request.getParameter("transmission" + uniqueKey);
                 String carFuel = request.getParameter("fuel" + uniqueKey);
-                int carSeats = Integer.parseInt(request.getParameter("seats" + uniqueKey));
+                int carSeats = 0;
+                if(request.getParameter("seats" + uniqueKey) != null) {
+                    carSeats = Integer.parseInt(request.getParameter("seats" + uniqueKey));
+                }
                 String carBodyStyle = request.getParameter("bodystyle" + uniqueKey);
                 String carQuip = request.getParameter("quip" + uniqueKey);
-                int carPurchasePrice = Integer.parseInt(request.getParameter("purchaseprice" + uniqueKey));
-                int carCurrentPrice = Integer.parseInt(request.getParameter("currentprice" + uniqueKey));
-                int carPriceKM = Integer.parseInt(request.getParameter("pricekm" + uniqueKey));
-                int carRating = Integer.parseInt(request.getParameter("rating" + uniqueKey));
-                int locationID = Integer.parseInt(request.getParameter("locID" + uniqueKey));
+                int carPurchasePrice = 0;
+                if(request.getParameter("purchaseprice" + uniqueKey) != null) {
+                    carPurchasePrice = Integer.parseInt(request.getParameter("purchaseprice" + uniqueKey));
+                }
+                int carCurrentPrice = 0;
+                if(request.getParameter("currentprice" + uniqueKey) != null) {
+                    carCurrentPrice = Integer.parseInt(request.getParameter("currentprice" + uniqueKey));
+                }
+                int carPriceKM = 0;
+                if(request.getParameter("pricekm" + uniqueKey) != null) {
+                    carPriceKM = Integer.parseInt(request.getParameter("pricekm" + uniqueKey));
+                }
+                int carRating = 0;
+                if(request.getParameter("rating" + uniqueKey) != null) {
+                    carRating = Integer.parseInt(request.getParameter("rating" + uniqueKey));
+                }
+                int locationID = 0;
+                if(request.getParameter("locID" + uniqueKey) != null) {
+                    locationID = Integer.parseInt(request.getParameter("locID" + uniqueKey));
+                }
                 if(carTransmission.length() != 1) {
                     throw new IllegalArgumentException("Please only enter one character for transmission, e.g. M for manual, A for Automatic");
                 }
