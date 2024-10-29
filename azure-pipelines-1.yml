@@ -33,7 +33,7 @@ stages:
         versionSpec: '21'
         jdkArchitectureOption: 'x64'
         jdkSourceOption: 'LocalDirectory'
-        jdkFile: '/Library/Java/JavaVirtualMachines/ jdk-21_macos-aarch64_bin.dmg'
+        jdkFile: '/Library/Java/JavaVirtualMachines/jdk-21_macos-aarch64_bin.dmg'
     - task: Maven@4
       displayName: 'Maven Package'
       inputs:
