@@ -22,3 +22,6 @@
 .DS_Store
 
 target/
+
+vscode
+.vscode/
