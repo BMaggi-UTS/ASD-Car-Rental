@@ -3,6 +3,8 @@ Sydney Car Rental Web Application
 Overview
 This is a Car Rental Web Application built using Maven and Java Development Kit (JDK) 21. The application allows users to browse available cars, make orders, and payments and manage their rentals seamlessly through a user-friendly interface.
 
+This is Maven project following an MVC architecture. Source code is located in the src/main directory, separated into Java and webapp (HTML, JSP, CSS, Javascript) components. Test classes are located in src/test directory. The full directory tree is displayed at the end of this README.
+
 ======================================================================
 Code Authors
 ======================================================================
@@ -19,13 +21,14 @@ Michael Lunn - 13917657
         SuppliersServlet.java
         UpdateDetailsServlet.java
     src/main/java/model:
-        dao/UserDAO.java
-        dao/SupplierDAO.java
         User.java
         Admin.java
         Customer.java
         Staff.java
         Supplier.java
+    src/main/java/model/dao:
+        UserDAO.java
+        SupplierDAO.java
     src/main/webapp:
         assets/nav.jsp (Dropdown menu button)
         css/style.css (For supplier and user login, registration, settings pages etc.)
@@ -43,7 +46,6 @@ Michael Lunn - 13917657
         SupplierDAOTest.java
     .github/workflows:
         cd.yml
-        
     /:
         README.md
         azure-pipelines-michael.yml
