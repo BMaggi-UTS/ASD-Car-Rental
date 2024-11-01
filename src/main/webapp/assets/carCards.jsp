@@ -37,37 +37,32 @@
                     <h2><%= car.getCarQuip() %></h2>
                 </div>
             </div>
-            <% if (user != null && paymentSelected != null) { %>
-                <form method="get" action="/orderView.jsp" id="orderItem">
-                    <input type="hidden" name="orderCarID" value="<%= car.getCarID() %>">
-                    <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
-                    <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">
-                    <% if (user == null) { %>
-                        <p>Please log in</p>
-                    <% } else if(dropoffDate == null) { %>
-                        <p>Select a date</p>
-                        <% } else { %>
-                        <input type="submit" value="Book Now" class="submit">
+            <form method="get" action="/orderView.jsp" id="orderItem">
+                <input type="hidden" name="orderCarID" value="<%= car.getCarID() %>">
+                <input type="hidden" name="pickupDate" value="<%= pickupDate %>">
+                <input type="hidden" name="dropoffDate" value="<%= dropoffDate %>">
+                <% if (user == null) { %>
+                    <p>Please log in</p>
+                <% } else if(dropoffDate == null) { %>
+                    <p>Select a date</p>
+                    <% } else { %>
+                    <input type="submit" value="Book Now" class="submit">
+                    <% } %>
+                <div class="price-div">
+                    <% if(paymentSelected != null) { %>
+                        <% if(paymentSelected.equals("km")) { %>
+                            <% Integer cost = expectedKMs * car.getCarPriceKM(); %>
+                            <%= "$" + cost %>
+                            <input type="hidden" name="booking-price" value="<%= cost %>">
                         <% } %>
-                    <div class="price-div">
-                        <% if(paymentSelected != null) { %>
-                            <% if(paymentSelected.equals("km")) { %>
-                                <% Integer cost = expectedKMs * car.getCarPriceKM(); %>
-                                <%= "$" + cost %>
-                                <input type="hidden" name="booking-price" value="<%= cost %>">
-                            <% } %>
-                            <% if(paymentSelected.equals("day")) { %>
-                                <% Random rand = new Random(); %>
-                                <% int randomNumber = rand.nextInt(100); %>
-                                <% int costRand = 200 - randomNumber; %>
-                                <% Long cost = daysBetween + costRand; %>
-                                <%= "$" + cost %>
-                                <input type="hidden" name="booking-price" value="<%= cost %>">
-                            <% } %>
+                        <% if(paymentSelected.equals("day")) { %>
+                            <% Long cost = daysBetween * 0; %>
+                            <%= "$" + cost %>
+                            <input type="hidden" name="booking-price" value="<%= cost %>">
                         <% } %>
-                    </div>
-                </form>
-            <% } %>
+                    <% } %>
+                </div>
+            </form>
         </div>
     </div>
 </a>
