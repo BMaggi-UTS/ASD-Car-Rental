@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/navandfooter.css">
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
         <title>Settings</title>
-        <script defer src="script.js"></script>
+        <script defer src="js/settingsModal.js"></script>
     </head>
 
     <% 

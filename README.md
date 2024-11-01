@@ -3,6 +3,55 @@ Sydney Car Rental Web Application
 Overview
 This is a Car Rental Web Application built using Maven and Java Development Kit (JDK) 21. The application allows users to browse available cars, make orders, and payments and manage their rentals seamlessly through a user-friendly interface.
 
+======================================================================
+Code Authors
+======================================================================
+
+Michael Lunn - 13917657
+    src/main/java/controller:
+        AddSupplierServlet.java
+        DeleteSupplierServlet.java
+        EditSupplierServlet.java
+        LoginServlet.java
+        RegexUtils.java
+        RegisterServlet.java
+        SupplierServlet.java
+        SuppliersServlet.java
+        UpdateDetailsServlet.java
+    src/main/java/model:
+        dao/UserDAO.java
+        dao/SupplierDAO.java
+        User.java
+        Admin.java
+        Customer.java
+        Staff.java
+        Supplier.java
+    src/main/webapp:
+        assets/nav.jsp (Dropdown menu button)
+        css/style.css (For supplier and user login, registration, settings pages etc.)
+        js/settingsModal.js
+        editSupplierView.jsp
+        login.jsp
+        register.jsp
+        resetpassword.jsp
+        settings.jsp
+        signout.jsp
+        suppliersView.jsp
+        supplierView.jsp
+    src/test/java/dao:
+        UserDAOTest.java
+        SupplierDAOTest.java
+    .github/workflows:
+        ...
+    /:
+        azure-pipelines-michael.yml
+
+
+
+        
+
+
+
 Features
 1. User Access Management
 2. Order Management
