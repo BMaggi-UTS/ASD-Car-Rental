@@ -15,32 +15,6 @@
         <jettyVersion>11.0.23</jettyVersion>
     </properties>
 
-    <repositories>
-        <repository>
-        <id>MichaelALunn</id>
-        <url>https://pkgs.dev.azure.com/MichaelALunn/64d79d82-784e-4d61-b381-09bd257cf95d/_packaging/ASD/maven/v1</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-        <id>MichaelALunn</id>
-        <url>https://pkgs.dev.azure.com/MichaelALunn/64d79d82-784e-4d61-b381-09bd257cf95d/_packaging/ASD/maven/v1</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-        </repository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -104,33 +78,6 @@
                     <httpConnector>
                         <port>8080</port>
                     </httpConnector>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.microsoft.azure</groupId>
-                <artifactId>azure-webapp-maven-plugin</artifactId>
-                <version>2.13.0</version>
-                <configuration>
-                    <schemaVersion>v2</schemaVersion>
-                    <resourceGroup>ASD-Car-Rental-1730101892447-rg</resourceGroup>
-                    <appName>ASD-Car-Rental-1730101892447</appName>
-                    <pricingTier>B3</pricingTier>
-                    <region>centralus</region>
-                    <runtime>
-                        <os>Linux</os>
-                        <javaVersion>Java 17</javaVersion>
-                        <webContainer>Tomcat 10.0</webContainer>
-                    </runtime>
-                    <deployment>
-                        <resources>
-                            <resource>
-                                <directory>${project.basedir}/target</directory>
-                                <includes>
-                                    <include>*.war</include>
-                                </includes>
-                            </resource>
-                        </resources>
-                    </deployment>
                 </configuration>
             </plugin>
         </plugins>

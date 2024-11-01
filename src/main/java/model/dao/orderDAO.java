@@ -9,8 +9,6 @@ import java.util.List;
 
 import model.Car;
 import model.order;
-import model.Availability;
-import model.dao.AvailabilityDAO;
 
 public class orderDAO { 
 
