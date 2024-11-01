@@ -84,12 +84,57 @@ Jason Yap - 24503854
         orderDAOTest.java
         paymentDAOTest.java
         
-
-
-
-
-        
-
+Bradley Madgwick - 14249522
+    src/main/java/controller:
+        ConnServlet.java
+        CreateBookingServlet.java
+        CreateListingServlet.java
+        DeleteBookingServlet.java
+        DeleteListingServlet.java
+        LocationAvailabilityServlet.java
+        ModifyBookingServlet.java
+        SearchCarServlet.java
+        UpdateListingServlet.java
+    src/main/java/model:
+        Availability.java
+        Car.java
+        Location.java
+    src/main/java/model/dao:
+        AvailabilityDAO.java
+        CarDAO.java
+        DB.java
+        DBConnector.java
+        LocationDAO.java
+    src/main/webapp:
+        /assets:
+            carCards.jsp
+            filterbar.jsp
+            footer.jsp
+            locationAvailabilitySelector.jsp
+            nav.jsp
+        /css:
+            carDetail.css
+            navandfooter.css
+            staffView.css
+            style.css (most of styling for index and related pages)
+        /js:
+            script.js
+            modify-listings.js
+        car.jsp
+        catalogueStaffView.jsp
+        create-booking.jsp
+        create-listings.jsp
+        critical-errors.jsp
+        delete-booking.jsp
+        delete-listings.jsp
+        index.jsp
+        modify-booking.jsp
+        modify-listings.jsp
+        script.js
+        style.css:
+    src/test/java/dao:
+        AvailabilityDAOTest.java
+        CarDAOTest.java
 
 
 Features
