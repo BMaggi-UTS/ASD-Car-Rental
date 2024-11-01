@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/navandfooter.css">
         <script src="https://kit.fontawesome.com/cd2f5b5ad0.js" crossorigin="anonymous"></script>
         <title>Settings</title>
-        <script defer src="script.js"></script>
+        <script defer src="js/settingsModal.js"></script>
     </head>
 
     <% 
@@ -48,6 +48,7 @@
                 <div class="settings-sidebar">
                     <h1 id="settings-heading">Settings</h1>
                     <a class="setting-menu-item" href="settings.jsp">Account</a>
+                    <a class="setting-menu-item" href="catalogueStaffView.jsp">Staff View</a>
                     <hr class="setting-divider">
                     <a class="setting-menu-item" href="signout.jsp">Sign out</a>
                 </div>

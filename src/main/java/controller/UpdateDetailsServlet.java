@@ -30,7 +30,7 @@ public class UpdateDetailsServlet extends HttpServlet {
         String dob = request.getParameter("dob");
 
         try {
-
+            // Input validation
             Boolean valid = true;
             if (!RegexUtils.validateName(firstName)) {
                 session.setAttribute("fnameErr", "Invalid first name! Please enter a valid first name.");
@@ -44,6 +44,8 @@ public class UpdateDetailsServlet extends HttpServlet {
                 session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid phone number.");
                 valid = false;
             }
+            
+            // Passes input validation, info is updated in DB and model 
             if (valid) {
 
                 userDAO.updateFirstName(userID, firstName);

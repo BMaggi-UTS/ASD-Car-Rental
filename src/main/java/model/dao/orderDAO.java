@@ -17,7 +17,7 @@ public class orderDAO {
     public orderDAO(Connection connection) {
         this.connection = connection;
     }
-
+    
     // Method to create a new order
     public void createOrder(order order) throws SQLException {
         connection.setAutoCommit(false); // Set auto-commit to false
@@ -40,7 +40,25 @@ public class orderDAO {
             statement.setString(11, order.gettotalPriceString()); 
 
             statement.executeUpdate();
-            connection.commit(); // Commit the transaction
+            connection.commit();
+
+            PreparedStatement st1 = connection.prepareStatement("SELECT MAX(Order_ID) FROM Orders");
+            ResultSet rs = st1.executeQuery();
+            int orderID = 0;
+            if (rs.next()) { // Check if result set is not empty
+                orderID = rs.getInt(1);
+            }
+
+            PreparedStatement st2 = connection.prepareStatement("INSERT INTO Availability(car_id, Order_ID, Availability_Start_Date, Availability_Finish_Date) \n" + //
+            "VALUES (?, ?, ?, ?);\n" + //
+            "");
+            st2.setInt(1, order.getCarID());
+            st2.setInt(2, orderID);
+            st2.setString(3, order.getRentalDateStart());
+            st2.setString(4, order.getRentalDateFinish());
+
+            st2.executeUpdate();
+
         } catch (SQLException e) {
             connection.rollback(); // Rollback in case of an error
             throw new SQLException("Error creating order: " + e.getMessage());

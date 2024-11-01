@@ -24,6 +24,7 @@ public class AddSupplierServlet extends HttpServlet {
         String contactName = request.getParameter("contact-name");
         String contactPhone = request.getParameter("contact-phone");
 
+        // Data validation for supplier info input
         try{
             boolean valid = true;
 
@@ -48,7 +49,7 @@ public class AddSupplierServlet extends HttpServlet {
                 session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid mobile number.");
                 valid = false;
             }
-
+            
             if(valid){
                 supplierDAO.addSupplier(businessName, abn, acn, contactName, contactPhone);
                 int newSupplierID = supplierDAO.getLastInsertID();

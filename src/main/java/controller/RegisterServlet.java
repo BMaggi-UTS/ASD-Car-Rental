@@ -28,8 +28,10 @@ public class RegisterServlet extends HttpServlet {
         String confirmPassword = request.getParameter("confirmpassword");
         String dateOfBirth = request.getParameter("dob");
 
+        // Encrypts user password input using SHA256
         String hashedPassword = DigestUtils.sha256Hex(request.getParameter("password"));
 
+        // Validating user input
         Boolean valid = true;
         try {
             if (userDAO.checkUserExists(email)) {
@@ -56,10 +58,6 @@ public class RegisterServlet extends HttpServlet {
                 session.setAttribute("phoneErr", "Invalid phone number! Please enter a valid phone number.");
                 valid = false;
             }
-            // if (!RegexUtils.validatePassword(password)) {
-            //     session.setAttribute("passwordErr", "Invalid password! Password cannot be empty.");
-            //     valid = false;   
-            // }
             if (valid) {
                 userDAO.registerNewCustomer(firstName, surname, email, phone, hashedPassword, dateOfBirth);
                 request.getRequestDispatcher("login.jsp").include(request, response);

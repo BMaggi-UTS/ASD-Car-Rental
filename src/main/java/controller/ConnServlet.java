@@ -39,14 +39,14 @@ public class ConnServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        session.setAttribute("carDAO", carDAO);
 
+        // Checks if database connection already established, if not, creates database connection
         connection = (Connection) session.getAttribute("connection");
         if(connection == null) {
             connection = db.openConnection();
             session.setAttribute("connection", connection);
         }
-
+        // Checks if DAOs are already in the session, if they are, it will reuse them to reduce open db connections
         try {
             carDAO = (CarDAO) session.getAttribute("carDAO");
             if(carDAO == null) {

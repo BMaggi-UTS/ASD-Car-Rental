@@ -35,7 +35,7 @@
              <% ArrayList<Availability> availabilities = availabilityDAO.fetchAllAvailability(); %>
                 <div class="product-wrapper br-top">
                     <div class="option-container">
-                        <h1>Delete a listing</h1>
+                        <h1>Delete a booking</h1>
                         <table>
                             <tr>
                                 <th>ID</th>
@@ -47,7 +47,7 @@
                             
 
                             <% for(Availability availability : availabilities) { %>
-                            <form action="/DeleteBookingServlet" method="post" autocomplete="off" id="delete-listing-form">>
+                            <form action="/DeleteBookingServlet" method="post" autocomplete="off" id="delete-listing-form">
                                 <tr>
                                 
                                     <td class="bg-not-active"><p><%= availability.getAvailabilityID() %></p></td>
@@ -57,7 +57,7 @@
                                      <td class="bg-not-active"><p><%= availability.getFinishDate() %></p></td>
                                     <td class="bg-not-active">
                                         <input type="hidden" value="<%= availability.getAvailabilityID()%>" name="aID">
-                                        <button type="submit">submit</button>
+                                        <button type="submit" class="delete-button">Delete</button>
                                     </td>
                                 </tr>
                                 </form>

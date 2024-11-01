@@ -19,6 +19,7 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         UserDAO userDAO = (UserDAO) session.getAttribute("userDAO");
         
+        // Gets credentials from login form
         String email = request.getParameter("email");
         String hashedPassword = request.getParameter("password");
 
@@ -27,9 +28,13 @@ public class LoginServlet extends HttpServlet {
         
      
         try {
+            // Finds user in db with matching credentials
             int userID = userDAO.getUserID(email, hashedPassword);
+            
+            // Finds users role (customer, staff, admin)
             int roleID = userDAO.getRoleID(userID);
             
+            // Assigns an instance of customer, staff or admin, depending on the user's role in the db
             switch(roleID) {
                 case 1:
                     user = userDAO.createInstanceOfCustomer(email, hashedPassword);
@@ -48,11 +53,13 @@ public class LoginServlet extends HttpServlet {
                     break;
             }
 
+            // If no user found, sends error message, redirect to login
             if (user == null) {
                 session.setAttribute("loginErr", "Email or password is incorrect!");
                 response.sendRedirect("login.jsp");
                 return;
             }
+            // If user found, redirect to index
             else {
                 response.sendRedirect("index.jsp");
                 return;

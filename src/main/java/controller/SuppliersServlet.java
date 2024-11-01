@@ -27,10 +27,12 @@ public class SuppliersServlet extends HttpServlet {
         
         String searchTerm = request.getParameter("search");
 
+        // Checking for null input, convert to wildcard for DB search purposes if null
         if(searchTerm == null) {
             searchTerm = "";
         }
 
+        // Pull suppliers matching search term from DB
         try {
             ArrayList<Supplier> suppliers = supplierDAO.getSuppliersBySearch(searchTerm);
             session.setAttribute("suppliers", suppliers);

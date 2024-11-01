@@ -3,6 +3,95 @@ Sydney Car Rental Web Application
 Overview
 This is a Car Rental Web Application built using Maven and Java Development Kit (JDK) 21. The application allows users to browse available cars, make orders, and payments and manage their rentals seamlessly through a user-friendly interface.
 
+This is Maven project following an MVC architecture. Source code is located in the src/main directory, separated into Java and webapp (HTML, JSP, CSS, Javascript) components. Test classes are located in src/test directory. The full directory tree is displayed at the end of this README.
+
+======================================================================
+Code Authors
+======================================================================
+
+Michael Lunn - 13917657
+    src/main/java/controller:
+        AddSupplierServlet.java
+        DeleteSupplierServlet.java
+        EditSupplierServlet.java
+        LoginServlet.java
+        RegexUtils.java
+        RegisterServlet.java
+        SupplierServlet.java
+        SuppliersServlet.java
+        UpdateDetailsServlet.java
+    src/main/java/model:
+        User.java
+        Admin.java
+        Customer.java
+        Staff.java
+        Supplier.java
+    src/main/java/model/dao:
+        UserDAO.java
+        SupplierDAO.java
+    src/main/webapp:
+        assets/nav.jsp (Dropdown menu button)
+        css/style.css (For supplier and user login, registration, settings pages etc.)
+        js/settingsModal.js
+        editSupplierView.jsp
+        login.jsp
+        register.jsp
+        resetpassword.jsp
+        settings.jsp
+        signout.jsp
+        suppliersView.jsp
+        supplierView.jsp
+    src/test/java/dao:
+        UserDAOTest.java
+        SupplierDAOTest.java
+    .github/workflows:
+        cd.yml
+    /:
+        README.md
+        azure-pipelines-michael.yml
+        .gitignore
+
+
+Jason Yap - 24503854
+    src/main/java/controller:
+        addOrderItem.java
+        addPayment.java
+        deleteOrder.java
+        deletePayment.java
+        UpdateDetailsServlet.java
+        UpdateDriver.java
+        updatePayment.java
+        viewOrders.java
+    src/main/java/model:
+        order.java
+        payment.java
+    src/main/java/model/dao:
+        orderDAO.java
+        paymentDAO.java
+    src/main/webapp:
+        assets/nav.jsp (view order button)
+        css/style.css:
+            orderStyle.css
+            paymentStyle.css
+        checkoutView.jsp
+        confirmation.jsp
+        editDriverView.jsp
+        editPaymentView.jsp
+        orderHistoryView.jsp
+        orderView.jsp
+        paymentView.jsp
+    src/test/java/dao:
+        orderDAOTest.java
+        paymentDAOTest.java
+        
+
+
+
+
+        
+
+
+
 Features
 1. User Access Management
 2. Order Management
@@ -48,14 +137,11 @@ Dependencies:
 - MySQL Connector 8.3.0
 
 Project structure:
-
+.
 ├── README.md
-├── azure-pipelines-michael.yml
+├── azure-pipelines-main.yml
 ├── db
-│   └── CarRental.sql
-├── flake.lock
-├── flake.nix
-├── nb-configuration.xml
+│   └── Dump20241101.sql
 ├── pom.xml
 ├── src
 │   ├── main
@@ -63,10 +149,15 @@ Project structure:
 │   │   │   ├── controller
 │   │   │   │   ├── AddSupplierServlet.java
 │   │   │   │   ├── ConnServlet.java
+│   │   │   │   ├── CreateBookingServlet.java
+│   │   │   │   ├── CreateListingServlet.java
+│   │   │   │   ├── DeleteBookingServlet.java
+│   │   │   │   ├── DeleteListingServlet.java
 │   │   │   │   ├── DeleteSupplierServlet.java
 │   │   │   │   ├── EditSupplierServlet.java
 │   │   │   │   ├── LocationAvailabilityServlet.java
 │   │   │   │   ├── LoginServlet.java
+│   │   │   │   ├── ModifyBookingServlet.java
 │   │   │   │   ├── RegexUtils.java
 │   │   │   │   ├── RegisterServlet.java
 │   │   │   │   ├── SearchCarServlet.java
@@ -74,9 +165,16 @@ Project structure:
 │   │   │   │   ├── SuppliersServlet.java
 │   │   │   │   ├── UpdateDetailsServlet.java
 │   │   │   │   ├── UpdateListingServlet.java
-│   │   │   │   └── addOrderItem.java
+│   │   │   │   ├── addOrderItem.java
+│   │   │   │   ├── addPayment.java
+│   │   │   │   ├── deleteOrder.java
+│   │   │   │   ├── deletePayment.java
+│   │   │   │   ├── updateDriver.java
+│   │   │   │   ├── updatePayment.java
+│   │   │   │   └── viewOrders.java
 │   │   │   └── model
 │   │   │       ├── Admin.java
+│   │   │       ├── Availability.java
 │   │   │       ├── Car.java
 │   │   │       ├── Customer.java
 │   │   │       ├── Location.java
@@ -84,6 +182,7 @@ Project structure:
 │   │   │       ├── Supplier.java
 │   │   │       ├── User.java
 │   │   │       ├── dao
+│   │   │       │   ├── AvailabilityDAO.java
 │   │   │       │   ├── CarDAO.java
 │   │   │       │   ├── DB.java
 │   │   │       │   ├── DBConnector.java
@@ -99,17 +198,6 @@ Project structure:
 │   │       │   └── context.xml
 │   │       ├── WEB-INF
 │   │       │   ├── beans.xml
-│   │       │   ├── classes
-│   │       │   │   ├── controller
-│   │       │   │   │   └── ConnServlet.class
-│   │       │   │   └── model
-│   │       │   │       ├── dao
-│   │       │   │       │   ├── DB.class
-│   │       │   │       │   ├── DBConnector.class
-│   │       │   │       │   ├── orderDAO.class
-│   │       │   │       │   └── paymentDAO.class
-│   │       │   │       ├── order.class
-│   │       │   │       └── payment.class
 │   │       │   └── web.xml
 │   │       ├── addSupplierView.jsp
 │   │       ├── assets
@@ -141,8 +229,13 @@ Project structure:
 │   │       │       └── placeholder.png
 │   │       ├── car.jsp
 │   │       ├── catalogueStaffView.jsp
+│   │       ├── checkoutView.jsp
 │   │       ├── confirmationView.jsp
+│   │       ├── create-booking.jsp
+│   │       ├── create-listings.jsp
+│   │       ├── critical-errors.jsp
 │   │       ├── css
+│   │       │   ├── backup style.css
 │   │       │   ├── carDetail.css
 │   │       │   ├── navandfooter.css
 │   │       │   ├── oldstyle.css
@@ -151,19 +244,24 @@ Project structure:
 │   │       │   ├── paymentStyle.css
 │   │       │   ├── staffView.css
 │   │       │   └── style.css
+│   │       ├── delete-booking.jsp
+│   │       ├── delete-listings.jsp
+│   │       ├── editDriverView.jsp
+│   │       ├── editPaymentView.jsp
 │   │       ├── editSupplierView.jsp
 │   │       ├── index.jsp
 │   │       ├── js
 │   │       │   ├── modify-listings.js
-│   │       │   └── script.js
+│   │       │   ├── script.js
+│   │       │   └── settingsModal.js
 │   │       ├── login.jsp
+│   │       ├── modify-booking.jsp
 │   │       ├── modify-listings.jsp
 │   │       ├── orderHistoryView.jsp
 │   │       ├── orderView.jsp
 │   │       ├── paymentView.jsp
 │   │       ├── register.jsp
 │   │       ├── resetpassword.jsp
-│   │       ├── script.js
 │   │       ├── settings.jsp
 │   │       ├── signout.jsp
 │   │       ├── supplierView.jsp
@@ -171,5 +269,10 @@ Project structure:
 │   └── test
 │       └── java
 │           └── dao
-│               ├── SupplierDAOTest.java
-│               └── UserDAOTest.java
+│               ├── AvailabilityDAOTest.java
+│               ├── CarDAOTest.java
+│               ├── SupplierDAOTest.java
+│               ├── UserDAOTest.java
+│               ├── orderDAOTest.java
+│               └── paymentDAOTest.java
+└── target (omitted)

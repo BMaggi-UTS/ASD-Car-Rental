@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>src.main</groupId>
     <artifactId>ASD-Car-Rental</artifactId>
@@ -14,32 +14,6 @@
         <maven.compiler.target>21</maven.compiler.target>
         <jettyVersion>11.0.23</jettyVersion>
     </properties>
-
-    <repositories>
-	<repository>
-	  <id>MichaelALunn</id>
-	  <url>https://pkgs.dev.azure.com/MichaelALunn/_packaging/MichaelALunn/maven/v1</url>
-	  <releases>
-	    <enabled>true</enabled>
-	  </releases>
-	  <snapshots>
-	    <enabled>true</enabled>
-	  </snapshots>
-	</repository>
-    </repositories>
-
-    <distributionManagement>
-	<repository>
-	  <id>MichaelALunn</id>
-	  <url>https://pkgs.dev.azure.com/MichaelALunn/_packaging/MichaelALunn/maven/v1</url>
-	  <releases>
-	    <enabled>true</enabled>
-	  </releases>
-	  <snapshots>
-	    <enabled>true</enabled>
-	  </snapshots>
-	</repository>
-    </distributionManagement>
 
     <dependencies>
         <dependency>
