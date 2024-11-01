@@ -18,9 +18,11 @@ public class DeleteSupplierServlet extends HttpServlet {
         HttpSession session = request.getSession();
         SupplierDAO supplierDAO = (SupplierDAO) session.getAttribute("supplierDAO");
 
+        // Pulls supplier ID from URL
         String[] url = request.getRequestURI().split("/");
         int id = Integer.parseInt(url[url.length-1]);
 
+        // Deletes supplier
         try {
             supplierDAO.deleteSupplier(id);
             response.sendRedirect("/suppliers");

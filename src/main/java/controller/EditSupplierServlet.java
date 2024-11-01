@@ -19,9 +19,11 @@ public class EditSupplierServlet extends HttpServlet {
         HttpSession session = request.getSession();
         SupplierDAO supplierDAO = (SupplierDAO) session.getAttribute("supplierDAO");
 
+        // Pulls supplier ID from URL
         String[] url = request.getRequestURI().split("/");
         int id = Integer.parseInt(url[url.length-1]);
 
+        // Pulls supplier info from db, redirects to supplier view
         try {
             Supplier supplier = supplierDAO.getSupplierByID(id);
             session.setAttribute("supplier", supplier);
