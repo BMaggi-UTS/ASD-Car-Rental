@@ -1,0 +1,32 @@
+name: Deploy Java War package to Azure web app
+
+on:
+  [push,pull_request]
+
+
+env:
+  AZURE_WEBAPP_NAME: SydneyCarRental1
+  AZURE_WEBAPP_PACKAGE_PATH: ${{ github.workspace }}
+  JAVA_VERSION: '21'              
+  AZURE_WEBAPP_PUBLISH_PROFILE: '<publishData><publishProfile profileName="SydneyCarRental1 - Web Deploy" publishMethod="MSDeploy" publishUrl="sydneycarrental1-fzcnhtddehcue9hm.scm.australiaeast-01.azurewebsites.net:443" msdeploySite="SydneyCarRental1" userName="$SydneyCarRental1" userPWD="y8gXyYqWzkzpS5Hm1HQDbqCPmngjZwsFrFM0mGlr8ow8gDbCbEGfwBxDrs8n" destinationAppUrl="https://sydneycarrental1-fzcnhtddehcue9hm.australiaeast-01.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="SydneyCarRental1 - FTP" publishMethod="FTP" publishUrl="ftps://waws-prod-sy3-123.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="REDACTED" userPWD="REDACTED" destinationAppUrl="https://sydneycarrental1-fzcnhtddehcue9hm.australiaeast-01.azurewebsites.net" SQLServerDBConnectionString="REDACTED" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="SydneyCarRental1 - Zip Deploy" publishMethod="ZipDeploy" publishUrl="sydneycarrental1-fzcnhtddehcue9hm.scm.australiaeast-01.azurewebsites.net:443" userName="$SydneyCarRental1" userPWD="y8gXyYqWzkzpS5Hm1HQDbqCPmngjZwsFrFM0mGlr8ow8gDbCbEGfwBxDrs8n" destinationAppUrl="https://sydneycarrental1-fzcnhtddehcue9hm.australiaeast-01.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="https://portal.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>'    # set GH repo secret with the publish profile of the web app
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 21
+      uses: actions/setup-java@v1
+      with:
+        java-version: ${{ env.JAVA_VERSION }}
+    - name: Build with Maven
+      run: mvn package -DskipTests --file pom.xml
+    - name: 'Deploy to Azure WebApp'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/*.war'
+        
