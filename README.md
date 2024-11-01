@@ -231,13 +231,11 @@ Project structure:
 │   │       └── suppliersView.jsp
 │   └── test
 │       └── java
-│           ├── dao
-│           │   ├── AvailabilityDAOTest.java
-│           │   ├── CarDAOTest.java
-│           │   ├── SupplierDAOTest.java
-│           │   ├── UserDAOTest.java
-│           │   ├── orderDAOTest.java
-│           │   └── paymentDAOTest.java
-│           └── model
-│               └── dao
+│           └── dao
+│               ├── AvailabilityDAOTest.java
+│               ├── CarDAOTest.java
+│               ├── SupplierDAOTest.java
+│               ├── UserDAOTest.java
+│               ├── orderDAOTest.java
+│               └── paymentDAOTest.java
 └── target (omitted)
